@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 5 Intro to ggplot2 | PSY406</title>
+<meta name="author" content="Catie Nielson (with help from Ethan Hurwitz)">
+<meta name="description" content="library(tidyverse) library(palmerpenguins)  “The greatest value of a picture is when it forces us to notice what we never expected to see.”— John Tukey  “There is no single statistical tool that...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="Chapter 5 Intro to ggplot2 | PSY406">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://cateness.github.io/psy406-unlv/intro-to-ggplot2.html">
+<meta property="og:description" content="library(tidyverse) library(palmerpenguins)  “The greatest value of a picture is when it forces us to notice what we never expected to see.”— John Tukey  “There is no single statistical tool that...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 5 Intro to ggplot2 | PSY406">
+<meta name="twitter:description" content="library(tidyverse) library(palmerpenguins)  “The greatest value of a picture is when it forces us to notice what we never expected to see.”— John Tukey  “There is no single statistical tool that...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">PSY406</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
+<li class="book-part">R Basics</li>
+<li><a class="" href="why-use-r.html"><span class="header-section-number">2</span> Why use R?</a></li>
+<li><a class="" href="r-coding-basics.html"><span class="header-section-number">3</span> R Coding Basics</a></li>
+<li><a class="" href="using-r-effectively.html"><span class="header-section-number">4</span> Using R Effectively</a></li>
+<li class="book-part">Visualizations</li>
+<li><a class="active" href="intro-to-ggplot2.html"><span class="header-section-number">5</span> Intro to ggplot2</a></li>
+<li><a class="" href="aesthetics.html"><span class="header-section-number">6</span> Aesthetics</a></li>
+<li><a class="" href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></li>
+<li><a class="" href="customization.html"><span class="header-section-number">8</span> Customization</a></li>
+<li><a class="" href="color-theory.html"><span class="header-section-number">9</span> Color Theory</a></li>
+<li class="book-part">Data Manipulation</li>
+<li><a class="" href="control-flow.html"><span class="header-section-number">10</span> Control Flow</a></li>
+<li><a class="" href="tidy-data-and-tidyverse.html"><span class="header-section-number">11</span> Tidy Data and Tidyverse</a></li>
+<li><a class="" href="basic-wrangling.html"><span class="header-section-number">12</span> Basic Wrangling</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro-to-ggplot2" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> Intro to ggplot2<a class="anchor" aria-label="anchor" href="#intro-to-ggplot2"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></span></code></pre></div>
+<!-- <a href="exercises/Exercise_Viz1.Rmd" download>Exercise Sheet</a> -->
+<blockquote>
+<p>“The greatest value of a picture is when it forces us to notice what we never expected to see.”<br>— John Tukey</p>
+</blockquote>
+<blockquote>
+<p>“There is no single statistical tool that is as powerful as a well‐chosen graph.” (Chambers et al. 1983)</p>
+</blockquote>
+<p><span style="font-size:14.0pt"><b><u>Why Do We Care About Visualizing Our Data?</u></b></span></p>
+<p>Consider the following scenario:</p>
+<p>There are two different datasets, each comprised of individuals measured on two outcomes (say height and weight). The mean and standard deviation of height and of weight are the same in both datasets. The correlation between height and weight is the same in both datasets as well. By every statistical metric, these datasets are the same. So, they must <strong><em>look</em></strong> similar, right?</p>
+<p>Click the button below:</p>
+<button class="btn btn-primary" data-toggle="collapse" data-target="#BlockName">
+Show/Hide
+</button>
+<div id="BlockName" class="collapse">
+<div class="inline-figure"><img src="figures/DinoSequential.gif" alt="" width="100%"></div>
+<div class="inline-figure"><img src="figures/datasaurus_dozen.jpeg" alt="" width="100%"></div>
+</div>
+<p><br></p>
+<p>This collection of data is called the <a href="https://github.com/jumpingrivers/datasauRus">datasauRus</a>, and more information about how these were generated can be found in <a href="https://www.autodesk.com/research/publications/same-stats-different-graphs">this</a> technical paper. This is a modern version of the famous Anscombe’s Quartet:</p>
+<div class="inline-figure"><img src="figures/anscombes-quartet.jpeg" width="100%"></div>
+<p>All four of these datasets have matching n’s, means, standard deviations, and correlations. This means that the slope and intercept, and corresponding statistical tests, will all be equivalent. The data <strong>clearly</strong> look different though. (These data are built into R in an object called <code>anscombe</code>, which you can look at to test this for yourself!)</p>
+<p>The key point here is that the summary statistics of some variables and their linear relationships inherently overlook some aspects of the data. This highlights the critical importance of visualizing your data, and not just relying on summary statistics alone. The point of a visualization, just like a summary statistic, is to understand a relationship or pattern in your data. However, by looking at the raw data itself, you do not run the risk of missing things the way you do by relying on summary statistics alone.</p>
+<div id="when-visualizing-go-wrong" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> When Visualizing Go Wrong<a class="anchor" aria-label="anchor" href="#when-visualizing-go-wrong"><i class="fas fa-link"></i></a>
+</h2>
+<p>It is easy enough to just say, “Look at your raw data! Create a visualization!” However, a bad visualization is often times worse than no visualization at all. One of the things that the Covid-19 pandemic brought with it originally was a plethora of data visualizations. Below are a few that were observed out in the real world over the last 2 years:</p>
+<div class="inline-figure"><img src="figures/bad_visualizations/badviz3.jpeg" style="width:100.0%"></div>
+<div class="inline-figure"><img src="figures/bad_visualizations/badviz4.jpeg" style="width:100.0%"></div>
+<div class="inline-figure"><img src="figures/bad_visualizations/badviz2.png" style="width:100.0%"></div>
+<div class="inline-figure"><img src="figures/bad_visualizations/badviz1.png" style="width:100.0%"></div>
+<p>So, it is not enough to just make <em>some</em> visualization, it is important to also consider the principles that make a <strong><em>GOOD</em></strong> visualization. Over the next few lessons, both will be covered.</p>
+</div>
+<div id="ggplot2" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> ggplot2<a class="anchor" aria-label="anchor" href="#ggplot2"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data visualization is one of the things that sets R apart from other programming languages that can be used for statistics, like Python. R still has the best data visualization capabilities, and it is one of the primary reasons it is used over Python in Social Sciences. This is also one of the first times you will get to see what coding can be all about. You are actually going to be creating stuff with your code!</p>
+<p>In this class, the <code>ggplot2</code> package will be used to create visualizations. Graphs are constructed by mapping data to geometric objects (lines, bars, points, etc.) according to some aesthetic attributes (color, shape, size, etc.). <code>ggplot2</code> uses this to inform its grammar.</p>
+<img src="figures/ggplot2_masterpiece.png" style="width:100.0%"><p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<div id="meet-the-penguins" class="section level3" number="5.2.1">
+<h3>
+<span class="header-section-number">5.2.1</span> Meet the Penguins<a class="anchor" aria-label="anchor" href="#meet-the-penguins"><i class="fas fa-link"></i></a>
+</h3>
+<p>To create visualizations, you need some data to visualize! The <code>palmerpenguins</code> dataset from <a href="https://allisonhorst.github.io/palmerpenguins/">Alison Horst</a> will be used to create examples throughout.</p>
+<div class="inline-figure"><img src="figures/palmerpenguins_logo.png" width="207"></div>
+<p>This dataset contains measurements from 344 different penguins. Measurements include things like bill length and depth, sex, among others.</p>
+<img src="figures/palmerpenguins_bills.png" style="width:100.0%"><p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<p><br></p>
+<p>There are 3 different species of penguins in this dataset, collected from 3 islands in the Palmer Archipelago, Antarctica.</p>
+<img src="figures/palmerpenguins_species.png" style="width:100.0%"><p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<p>Use the <code><a href="https://allisonhorst.github.io/palmerpenguins/">library(palmerpenguins)</a></code> call to load in the dataset.</p>
+</div>
+</div>
+<div id="a-basic-graph" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> A Basic Graph<a class="anchor" aria-label="anchor" href="#a-basic-graph"><i class="fas fa-link"></i></a>
+</h2>
+<p>The most sensible place to start is building a basic graph. There are going to be <u><strong>LOTS</strong><u> of exercise breaks throughout.</u></u></p>
+<p class="text-info">
+<strong><u>Note:</u> As you move forward with building your first graph, each new piece of code added will be accompanied by a literate programming portion, where you will describe in words what the code is doing.</strong>
+</p>
+<p>All ggplot graphs are build using the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> call. The first thing it needs is some data. The <code>%&gt;%</code> will be used to pass in the <code>penguins</code> dataframe.</p>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672"></div>
+<blockquote>
+<p><strong>Start by telling ggplot to use the <code>penguins</code> dataframe for the data</strong></p>
+</blockquote>
+<p>Woo! This actually created something. A grey rectangle! Of course, the code above alone will not do anything. You have to tell ggplot what you want to plot. Hmm… As an example, consider how a penguin’s <code>bill_length_mm</code> is related to its <code>flipper_length_mm</code>. You might imagine that bigger penguins would tend to have longer bills and flippers, but maybe not? That is why you create visualizations, to try and help answer questions you may have about your data (which consist of samples thought to be representative of the world at large)!</p>
+<p>ggplot needs to be told what variables from your data should be mapped to the aesthetics you want to render on your graph. You will do that with the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> call, and start with specifying what to display on each axis.</p>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>                       x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1_files/figure-html/unnamed-chunk-6-1.png" alt="" width="672"></div>
+<blockquote>
+<p>“Start by telling ggplot to use the <code>penguins</code> dataframe for the data, <strong>map flipper length to the y-axis and bill length to the x-axis.</strong>”</p>
+</blockquote>
+<p>Above, it was specified that <code>flipper_length_mm</code> should be on the y-axis, and <code>bill_length_mm</code> on the x-axis (it is good practice to specify <em>y</em> first and <em>x</em> second). All aesthetic mappings must be separated by a comma, and it does not matter the order you list them (though it is good practice to start with the axes first). As you can see, ggplot figured out how to label the axes on its own.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 1**</div> -->
+<!--   <div class="panel-body">Create your own graph using the `penguins` data and pick 2 of the following to put on your x and y axes: `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, or `body_mass_g`.</div> -->
+<!-- </div> -->
+<!-- <br> -->
+<p>ggplot was told what the aesthetic mappings are (what data source to use), but not what it should render from those mappings! You want ggplot to use those mappings to construct some <strong>geom</strong>etric object, and the way you do that is by adding a <em>geom</em>, aptly named. There are a number of different geoms, which have the general syntax of <code>geom_X()</code>, where X usually refers to the specific geometric object you want to render. Here, you want a point on the graph for each penguin, so <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> will be used.</p>
+<p class="text-info">
+<strong><u>Note:</u> There are a TON of different geoms. You will see many more later.</strong>
+</p>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>                       x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Removed 2 rows containing missing values or values outside</span></span>
+<span><span class="co">#&gt; the scale range (`geom_point()`).</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672"></div>
+<blockquote>
+<p>“Start by telling ggplot to use the <code>penguins</code> dataframe for the data, map flipper length to the y-axis and bill length to the x-axis. <strong>Represent each observation with a point.</strong>”</p>
+</blockquote>
+<p>Okay, <strong>NOW</strong> we are talking! This looks like an actual real graph. Look at your very first ggplot masterpiece!</p>
+<p>There are two important things to note here:</p>
+<ol style="list-style-type: decimal">
+<li><p>The <code>+</code> was used instead of <code>%&gt;%</code> to add on a new function. The ggplot system is additive/layered, which is a very powerful idea that will be explained later. For now, it is enough to know that the <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> was being added to the code. You do not want to take the <code>penguins %&gt;% ggplot(mapping = aes(y = flipper_length_mm, x = bill_length_mm))</code> code and use it as the argument for the <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> function, which is what would happen if a <code>%&gt;%</code> was used to pipe it! You want to just add the points on top of the existing base that code created, which is why the <code>+</code> is used.</p></li>
+<li><p>When running this code, in addition to creating the graph (in the “Plots” section of RStudio or inline under your code), the following showed up in the console:</p></li>
+</ol>
+<p style="color:#A79BF0">
+<strong>Warning message:<br>Removed 2 rows containing missing values (geom_point).</strong>
+</p>
+<p>Looking at your warnings and errors is always important, but especially so when creating visualizations! This says that it removed 2 rows of data, which may not seem like a big deal but you do not want your visualizations to be misleading. Especially when you start visualizing summary statistics (like means). If you look at your actual data though, you can verify that there are two penguins that do not have a measurement value for flipper length or bill length. So obviously without either or both of those, it cannot be included on the graph. In this case, this is okay, but it is important to always verify!</p>
+<div class="rmdtip">
+<p style="font-size:10pt">
+<u><strong>NOTE:</strong></u> <em>moving forward, for pedagogical purposes this warning message will be hidden so the output from subsequent code is cleaner. However, those 2 rows are still being removed!</em>
+</p>
+</div>
+<p>Above, it was noted that the goal of a visualization is to understand a relationship, or pattern, in your data. For every visualization you make, a verbal description of the pattern seen (should one exist!) will be provided underneath. This will help develop an intuitive <strong>graph literacy</strong>. Being able to quickly and accurately interpret visualizations is an important skill, and one of the pillars of this course.</p>
+<div class="rmdimportant">
+<p style="font-size:10pt">
+<em>Things related to graph literacy and comprehension will appear in boxes like this moving forward!</em>
+</p>
+<p>In the visualization it can be seen that, generally speaking, penguins with greater flipper length tend to have greater bill length as well. There seems to be a positive linear relationship between bill length and flipper length such that, as flipper length increases, bill length increases in turn.</p>
+</div>
+<p class="text-info">
+<strong><u>Note:</u> You have to use a lot of tentative language and include many qualifiers here. No formal statistical analyses have been done to afford the ability to state any relationship or effect definitively.</strong>
+</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 2**</div> -->
+<!--   <div class="panel-body">Update your graph above by telling ggplot you want it to render a point for each observation in the penguins dataset. Describe the pattern/relationship you see.</div> -->
+<!-- </div> -->
+</div>
+<div id="references" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> References:<a class="anchor" aria-label="anchor" href="#references"><i class="fas fa-link"></i></a>
+</h2>
+<p>Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. <a href="https://allisonhorst.github.io/palmerpenguins/" class="uri">https://allisonhorst.github.io/palmerpenguins/</a></p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="using-r-effectively.html"><span class="header-section-number">4</span> Using R Effectively</a></div>
+<div class="next"><a href="aesthetics.html"><span class="header-section-number">6</span> Aesthetics</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#intro-to-ggplot2"><span class="header-section-number">5</span> Intro to ggplot2</a></li>
+<li><a class="nav-link" href="#when-visualizing-go-wrong"><span class="header-section-number">5.1</span> When Visualizing Go Wrong</a></li>
+<li>
+<a class="nav-link" href="#ggplot2"><span class="header-section-number">5.2</span> ggplot2</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#meet-the-penguins"><span class="header-section-number">5.2.1</span> Meet the Penguins</a></li></ul>
+</li>
+<li><a class="nav-link" href="#a-basic-graph"><span class="header-section-number">5.3</span> A Basic Graph</a></li>
+<li><a class="nav-link" href="#references"><span class="header-section-number">5.4</span> References:</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-08-20.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

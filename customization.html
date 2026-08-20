@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 8 Customization | PSY406</title>
+<meta name="author" content="Catie Nielson (with help from Ethan Hurwitz)">
+<meta name="description" content="library(tidyverse) library(palmerpenguins) You now have a number of different graphs in your toolkit to use when visualizing different types of relationships or comparisons in your data. You also...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="Chapter 8 Customization | PSY406">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://cateness.github.io/psy406-unlv/customization.html">
+<meta property="og:description" content="library(tidyverse) library(palmerpenguins) You now have a number of different graphs in your toolkit to use when visualizing different types of relationships or comparisons in your data. You also...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 8 Customization | PSY406">
+<meta name="twitter:description" content="library(tidyverse) library(palmerpenguins) You now have a number of different graphs in your toolkit to use when visualizing different types of relationships or comparisons in your data. You also...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">PSY406</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
+<li class="book-part">R Basics</li>
+<li><a class="" href="why-use-r.html"><span class="header-section-number">2</span> Why use R?</a></li>
+<li><a class="" href="r-coding-basics.html"><span class="header-section-number">3</span> R Coding Basics</a></li>
+<li><a class="" href="using-r-effectively.html"><span class="header-section-number">4</span> Using R Effectively</a></li>
+<li class="book-part">Visualizations</li>
+<li><a class="" href="intro-to-ggplot2.html"><span class="header-section-number">5</span> Intro to ggplot2</a></li>
+<li><a class="" href="aesthetics.html"><span class="header-section-number">6</span> Aesthetics</a></li>
+<li><a class="" href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></li>
+<li><a class="active" href="customization.html"><span class="header-section-number">8</span> Customization</a></li>
+<li><a class="" href="color-theory.html"><span class="header-section-number">9</span> Color Theory</a></li>
+<li class="book-part">Data Manipulation</li>
+<li><a class="" href="control-flow.html"><span class="header-section-number">10</span> Control Flow</a></li>
+<li><a class="" href="tidy-data-and-tidyverse.html"><span class="header-section-number">11</span> Tidy Data and Tidyverse</a></li>
+<li><a class="" href="basic-wrangling.html"><span class="header-section-number">12</span> Basic Wrangling</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="customization" class="section level1" number="8">
+<h1>
+<span class="header-section-number">8</span> Customization<a class="anchor" aria-label="anchor" href="#customization"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></span></code></pre></div>
+<!-- <a href="exercises/Exercise_Viz3.Rmd" download>Exercise Sheet</a> -->
+<p>You now have a number of different graphs in your toolkit to use when visualizing different types of relationships or comparisons in your data. You also learned a lot of ways to tinker with the geoms and their aesthetics. Now it is time to add some techniques and skills to customize the other elements of the graphs.</p>
+<p>This will serve as a base plot to customize:</p>
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">base_plot</span> <span class="op">=</span> <span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0</span>, width <span class="op">=</span> <span class="fl">0.1</span>, </span>
+<span>              size <span class="op">=</span> <span class="fl">2</span>, alpha <span class="op">=</span> <span class="fl">0.3</span>,</span>
+<span>              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color<span class="op">=</span><span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"pointrange"</span>,</span>
+<span>               color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">island</span><span class="op">)</span>,</span>
+<span>               shape <span class="op">=</span> <span class="fl">21</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">base_plot</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-2-1.png" alt="" width="672"></div>
+<p>Saving the visualization to a variable prevents the need to copy/paste the entire code each time.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 1**</div> -->
+<!--   <div class="panel-body">Use the `penguins` dataframe and create your own `base_plot`. Make sure to have a continuous variable on the y-axis and a categorical variable on the x-axis. -->
+<!--   </div> -->
+<!-- </div> -->
+<div id="scaling-the-axes" class="section level2" number="8.1">
+<h2>
+<span class="header-section-number">8.1</span> Scaling The Axes<a class="anchor" aria-label="anchor" href="#scaling-the-axes"><i class="fas fa-link"></i></a>
+</h2>
+<p>By default, ggplot will use axes settings that it thinks best highlight the data being visualized. Here,the y-axis runs from ~2000 - 7000 and has intervals of 1000 starting at 3000.</p>
+<p>This can be changed using a <code>scale_*_*</code> function. The first <code>*</code> is replaced by which axis you want to modify, and the second with what type of data or scale you want it to have. Here, the y-axis is continuous, so <code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous()</a></code> would be used. Its arguments can be used to modify what is shown on the axis. There are two reasons why you might want to change this.</p>
+<ol style="list-style-type: decimal">
+<li><p>Generally speaking, it is good practice to have your axes start at 0 and show the full scale. It can be misleading when parts of a scale are obscured and removed.</p></li>
+<li><p>You might have an issue with points being jittered past the scale and result in the Warning message covered in previous lessons.</p></li>
+</ol>
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">base_plot</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">7000</span>, by <span class="op">=</span> <span class="fl">500</span><span class="op">)</span>,</span>
+<span>                     labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">7000</span>, by <span class="op">=</span> <span class="fl">500</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672"></div>
+<p>Hm. So it DID change the intervals from 1000 to 500, but it still only shows values from 3000 to 6000. This is because the actual range of the axis was not changed. Remember that all graphs are plotted with (x,y) <strong>cartesian</strong> <strong>coord</strong>inates. With this in mind, what needs to be modified are the limits of that coordinate system. This can be done with <code><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian()</a></code>.</p>
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">base_plot</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">7000</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">7000</span>, by <span class="op">=</span> <span class="fl">500</span><span class="op">)</span>,</span>
+<span>                     labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">7000</span>, by <span class="op">=</span> <span class="fl">500</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672"></div>
+<p>Changing the limits of the coordinate system changes the zoom of your visualization and not the underlying data.</p>
+<p>There are a number of other scale commands that override the default, such as <code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10()</a></code>, <code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_sqrt()</a></code>, and <code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_reverse()</a></code>, to quickly and easily change the scale. Instead of having to completely transform all your data, just adding a transform to the axis in your plot can be a big time saver and much safer!</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 2**</div> -->
+<!--   <div class="panel-body">Modify your `base_plot` so the scale is more appropriate and represents the full range. -->
+<!--   </div> -->
+<!-- </div> -->
+<div id="get-rid-of-padding" class="section level3" number="8.1.1">
+<h3>
+<span class="header-section-number">8.1.1</span> Get Rid Of Padding<a class="anchor" aria-label="anchor" href="#get-rid-of-padding"><i class="fas fa-link"></i></a>
+</h3>
+<p>Even though the y-axis starts at 0 now, there is a bit of space between the actual start of the graph and the 0. By default there will be a bit of padding. This can be particularly egregious when you have bars:</p>
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"bar"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672"></div>
+<p>This can be eliminated with the <code>expand</code> argument.</p>
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">base_plot</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">7000</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">7000</span>, by <span class="op">=</span> <span class="fl">500</span><span class="op">)</span>,</span>
+<span>                     labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">7000</span>, by <span class="op">=</span> <span class="fl">500</span><span class="op">)</span>,</span>
+<span>                     expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-6-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 3**</div> -->
+<!--   <div class="panel-body">Modify your `base_plot` so the padding is gone. -->
+<!--   </div> -->
+<!-- </div> -->
+</div>
+</div>
+<div id="titles-captions-and-labels-oh-my" class="section level2" number="8.2">
+<h2>
+<span class="header-section-number">8.2</span> Titles, Captions, and Labels, Oh My!<a class="anchor" aria-label="anchor" href="#titles-captions-and-labels-oh-my"><i class="fas fa-link"></i></a>
+</h2>
+<p>While it is the case that your visualization should be interpretable without reference to a title or caption, a good visualization should have a clear and informative title. Additionally, you may have noticed that ggplot uses the variable names and values as the x- and y-axis labels and values, respectively. It is often the case that the names that are easiest to work with for data manipulation/cleaning are not what you want displayed on your visualizations.</p>
+<p>Fortunately, it is extremely easy to change all of these things! They are all different arguments that can be passed to the <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> function:</p>
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">base_plot</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">7000</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">7000</span>, by <span class="op">=</span> <span class="fl">500</span><span class="op">)</span>,</span>
+<span>                     labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">7000</span>, by <span class="op">=</span> <span class="fl">500</span><span class="op">)</span>,</span>
+<span>                     expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"How Does Penguin Weight Vary Across Islands?"</span>,</span>
+<span>       subtitle <span class="op">=</span> <span class="st">"Islands Contain Different Penguin Species"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"Body Mass (grams)"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"Island"</span>,</span>
+<span>       tag <span class="op">=</span> <span class="st">"Figure 1"</span>,</span>
+<span>       caption <span class="op">=</span> <span class="st">"Note: Error bars represent +/- 1 SEM"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672"></div>
+<p>The specific arguments used are pretty self explanatory. While this added more information to the visualization, it does not particularly look great. The size of the title and subtitle are too close together, and both rather small. In fact, all the text is pretty small. The titles should be centered while the footnote should be left-aligned. Adding more information just created more that needs to be customized!</p>
+<p class="text-info">
+<strong><u>Note:</u> Graphs here may look slightly different from those you generate with the same code. There is some hidden formatting in the back-end included to help the graphs render properly in the space constraint.</strong>
+</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 4**</div> -->
+<!--   <div class="panel-body">Modify your `base_plot` so that it has more appropriate titles for the y- and x-axis. Additionally, add an appropriate title, subtitle (if needed), figure tag, and caption. -->
+<!--   </div> -->
+<!-- </div> -->
+</div>
+<div id="themes" class="section level2" number="8.3">
+<h2>
+<span class="header-section-number">8.3</span> Themes<a class="anchor" aria-label="anchor" href="#themes"><i class="fas fa-link"></i></a>
+</h2>
+<p>The <strong>theme</strong> of a visualization is where most of the nuanced customization will take place.</p>
+<p>First, all the tweaks made thus far will be saved, again to prevent the need from more copy/pasting:</p>
+<p>Again, to prevent the need for more copy/pasting and long code strings, all subsequent changes will just be added and saved to one variable. The full code will be displayed at the end.</p>
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">modified_plot</span> <span class="op">=</span> <span class="va">base_plot</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">7000</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">7000</span>, by <span class="op">=</span> <span class="fl">500</span><span class="op">)</span>,</span>
+<span>                     labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">7000</span>, by <span class="op">=</span> <span class="fl">500</span><span class="op">)</span>,</span>
+<span>                     expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"How Does Penguin Weight Vary Across Islands?"</span>,</span>
+<span>       subtitle <span class="op">=</span> <span class="st">"Islands Contain Different Penguin Species"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"Body Mass (grams)"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"Island"</span>,</span>
+<span>       tag <span class="op">=</span> <span class="st">"Figure 1"</span>,</span>
+<span>       caption <span class="op">=</span> <span class="st">"Note: Error bars represent +/- 1 SEM"</span><span class="op">)</span></span></code></pre></div>
+<p>ggplot comes with a number of built in themes that have preset settings. Among the most common are <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal()</a></code>, <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw()</a></code>, and <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic()</a></code>.</p>
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">modified_plot</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">modified_plot</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-13-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">modified_plot</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-15-1.png" alt="" width="672"></div>
+<p>You should start to develop your own personal taste for which visualizations you find the most pleasing and informative. For the sake of illustration, subsequent figures will use <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic()</a></code>.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 5**</div> -->
+<!--   <div class="panel-body">Create a new variable called `modified_graph` that takes your `base_graph` and saves all modifications you've added thus far. Then, try applying some different themes to your `modified_graph`. -->
+<!--   </div> -->
+<!-- </div> -->
+<p>While using one of ggplot’s built in themes serves as a good starting point, to make manual changes to the theme’s settings, you use the <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme()</a></code> function. This function works as follows, generally speaking, you first specify the specific element of the visualization you want to modify, set that equal to what type of element it is with an <code>element_*()</code> call (e.g., text, line, blank, etc.), and then specify what part of that element you want to change and what value it should be equal to.</p>
+<p>For example, if you wanted to change the title so the text had a size 18 font, you would add the following to your code:</p>
+<p><code>theme(plot.title = element_text(size = 18))</code></p>
+<p>You do not have to, and should not, commit to memory all the different visualization element names and arguments to modify! In fact, just check out <a href="figures/ggplot_theme_cheatsheet.png">this</a> handy cheat sheet!</p>
+<p>A few of the most common elements and ways in which you may want to modify them are highlighted below. These should be pretty intuitive, so there will not be a ton of explanation.</p>
+<div id="titles" class="section level3" number="8.3.1">
+<h3>
+<span class="header-section-number">8.3.1</span> Titles<a class="anchor" aria-label="anchor" href="#titles"><i class="fas fa-link"></i></a>
+</h3>
+<p>Changing some of the the size, font face (by making some bold), and color, of text in your visualization will help improve its overall legibility.</p>
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">modified_plot</span> <span class="op">=</span> <span class="va">modified_plot</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">18</span><span class="op">)</span>,</span>
+<span>        plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span>, </span>
+<span>                                     color <span class="op">=</span> <span class="st">"grey50"</span>,</span>
+<span>                                     face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
+<span>        plot.tag <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">modified_plot</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-17-1.png" alt="" width="672"></div>
+<p>By default, most text in ggplot2 is left-aligned. To change the location of the text, you need to ad<strong>just</strong> its <strong>v</strong>ertical or <strong>h</strong>orizontal location in the coordinate system, using <code>vjust</code> or <code>hjust</code>, respectively. When adjusting:</p>
+<ul>
+<li>0 == left-aligned</li>
+<li>0.5 == centered</li>
+<li>1 == right-aligned</li>
+</ul>
+<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">modified_plot</span> <span class="op">=</span> <span class="va">modified_plot</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">18</span>,</span>
+<span>                                  hjust <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                                  face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
+<span>        plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span>, </span>
+<span>                                     color <span class="op">=</span> <span class="st">"grey50"</span>,</span>
+<span>                                     hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>        plot.tag <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">modified_plot</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-18-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 6**</div> -->
+<!--   <div class="panel-body">Add some code to `modified_graph` to modify your visualization's titles and increase their legibility. -->
+<!--   </div> -->
+<!-- </div> -->
+</div>
+<div id="captions" class="section level3" number="8.3.2">
+<h3>
+<span class="header-section-number">8.3.2</span> Captions<a class="anchor" aria-label="anchor" href="#captions"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">modified_plot</span> <span class="op">=</span> <span class="va">modified_plot</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.caption <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>                                    face <span class="op">=</span> <span class="st">'italic'</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">modified_plot</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-19-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 7**</div> -->
+<!--   <div class="panel-body">Add some code to `modified_graph` to modify your visualization's caption and increase its legibility. -->
+<!--   </div> -->
+<!-- </div> -->
+</div>
+<div id="axes-titles" class="section level3" number="8.3.3">
+<h3>
+<span class="header-section-number">8.3.3</span> Axes Titles<a class="anchor" aria-label="anchor" href="#axes-titles"><i class="fas fa-link"></i></a>
+</h3>
+<p>When there are multiple elements in your visualization (e.g., multiple axis titles), you can either change both simultaneously (e.g., using <code>axis.title</code>) or specify each individually (e.g., using <code>axis.title.x</code> and <code>axis.title.y</code>).</p>
+<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">modified_plot</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">14</span>,</span>
+<span>                                    face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
+<span>        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">14</span>,</span>
+<span>                                    face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-20-1.png" alt="" width="672"></div>
+<p>As the text gets bigger, the axes titles seem too close to the tick mark values. There needs to be some breathing room to keep the different elements visually distinct and easy to parse. Otherwise, your visualization will be in <strong>tr</strong>ou<strong>bl</strong>e This can be achieved by modifying the text’s margins – the area to the <strong>t</strong>op, <strong>r</strong>ight, <strong>b</strong>ottom, and <strong>l</strong>eft of it.</p>
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">modified_plot</span> <span class="op">=</span> <span class="va">modified_plot</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span>, </span>
+<span>                                     color <span class="op">=</span> <span class="st">"grey50"</span>,</span>
+<span>                                     hjust <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                                     margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>b <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>                                                     unit <span class="op">=</span> <span class="st">"inch"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>        axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">16</span>,</span>
+<span>                                    face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                    margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>t <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>                                                    unit <span class="op">=</span> <span class="st">"inch"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>        axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">16</span>,</span>
+<span>                                    face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                    margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>                                                    unit <span class="op">=</span> <span class="st">"inch"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">modified_plot</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-21-1.png" alt="" width="672"></div>
+<p>Notice that the margins are in reference to the overall orientation of the graph. To add space between the y-axis title and the values, even though it is the “bottom” of the element, it is to the right of the overall graph. Thus, some “r” space is added in <code><a href="https://ggplot2.tidyverse.org/reference/element.html">margin()</a></code>.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 8**</div> -->
+<!--   <div class="panel-body">Add some code to `modified_graph` to modify your visualization's axes titles and increase their legibility. -->
+<!--   </div> -->
+<!-- </div> -->
+</div>
+<div id="axes-values" class="section level3" number="8.3.4">
+<h3>
+<span class="header-section-number">8.3.4</span> Axes Values<a class="anchor" aria-label="anchor" href="#axes-values"><i class="fas fa-link"></i></a>
+</h3>
+<p>You saw previously how the actual values on the axes could be modified with a <code>scale_*_*</code> function. The appearance of those values can also be customized. The values on the axis, as well as the tick marks and lines themselves!</p>
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">modified_plot</span> <span class="op">=</span> <span class="va">modified_plot</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.line.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"gray40"</span>, size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>        axis.ticks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"gray40"</span>, size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>        axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                 color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>                                 size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">modified_plot</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-22-1.png" alt="" width="672"></div>
+<p class="text-info">
+<strong><u>Note:</u> It is generally not recommended to change the color of your axis lines or tick marks. This is included for instructional purposes.</strong>
+</p>
+<p>Now <strong>THAT</strong> is looking like a publication-worthy visualization!</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 9**</div> -->
+<!--   <div class="panel-body">Add some code to `modified_graph` to modify your visualization's axes values and increase their legibility. -->
+<!--   </div> -->
+<!-- </div> -->
+</div>
+<div id="setting-a-default" class="section level3" number="8.3.5">
+<h3>
+<span class="header-section-number">8.3.5</span> Setting a Default<a class="anchor" aria-label="anchor" href="#setting-a-default"><i class="fas fa-link"></i></a>
+</h3>
+<p>So you have gone through and learned all these ways to customize your visualizations. You may have started to develop a sense of what you think looks best generally – e.g., particular font sizes, spacing, etc. While individual visualizations will of course need some tweaks (like the correct titles), you may have some settings you think can serve as a good baseline.</p>
+<p>Instead of having to include all the same <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme()</a></code> code for every single visualization you make:</p>
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">18</span>,</span>
+<span>                                face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>      plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span>, </span>
+<span>                                   color <span class="op">=</span> <span class="st">"grey50"</span>,</span>
+<span>                                   face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                   hjust <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                                   margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>b <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>                                                   unit <span class="op">=</span> <span class="st">"inch"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      plot.tag <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
+<span>      plot.caption <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>                                  face <span class="op">=</span> <span class="st">'italic'</span><span class="op">)</span>,</span>
+<span>      axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">16</span>,</span>
+<span>                                  face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                  margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>t <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>                                                  unit <span class="op">=</span> <span class="st">"inch"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">16</span>,</span>
+<span>                                  face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                  margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>                                                  unit <span class="op">=</span> <span class="st">"inch"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      axis.line.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"gray40"</span>, size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>      axis.ticks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"gray40"</span>, size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>      axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                               color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>                               size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>You can just set a default that will automatically be applied to all visualizations you make with ggplot until you restart your R session. You can do this with <code><a href="https://ggplot2.tidyverse.org/reference/get_theme.html">theme_set()</a></code></p>
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/get_theme.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>            <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">18</span>,</span>
+<span>                                face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>      plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span>, </span>
+<span>                                   color <span class="op">=</span> <span class="st">"grey50"</span>,</span>
+<span>                                   face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                   hjust <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                                   margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>b <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>                                                   unit <span class="op">=</span> <span class="st">"inch"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      plot.tag <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
+<span>      plot.caption <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>                                  face <span class="op">=</span> <span class="st">'italic'</span><span class="op">)</span>,</span>
+<span>      axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">16</span>,</span>
+<span>                                  face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                  margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>t <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>                                                  unit <span class="op">=</span> <span class="st">"inch"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">16</span>,</span>
+<span>                                  face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                  margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>                                                  unit <span class="op">=</span> <span class="st">"inch"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      axis.line.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"gray40"</span>, size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>      axis.ticks <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"gray40"</span>, size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>      axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                               color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>                               size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Now all new visualizations will automatically have these settings applied by default!</p>
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">island</span><span class="op">)</span>,</span>
+<span>              alpha <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.4</span>, width <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"pointrange"</span>,</span>
+<span>               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">island</span><span class="op">)</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-26-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 10**</div> -->
+<!--   <div class="panel-body">Use the code you've generated throughout the previous few examples to create a new default theme setting. -->
+<!--   </div> -->
+<!-- </div> -->
+</div>
+<div id="legends" class="section level3" number="8.3.6">
+<h3>
+<span class="header-section-number">8.3.6</span> Legends<a class="anchor" aria-label="anchor" href="#legends"><i class="fas fa-link"></i></a>
+</h3>
+<p>Modifying the visualization’s legend can be a bit tricky because there are a lot of changes you can make. One of the first options is to get rid of it altogether, since your graphs should not rely on a legend for comprehension:</p>
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">modified_plot</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-27-1.png" alt="" width="672"></div>
+<p>However, in certain cases, particularly if you are displaying information from another variable (e.g., indicating penguin <code>sex</code> by point <code>shape</code>), a legend is needed and customization may be useful.</p>
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span>, alpha <span class="op">=</span> <span class="fl">0.3</span>,</span>
+<span>               shape <span class="op">=</span> <span class="fl">21</span>,</span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">sex</span><span class="op">)</span>,</span>
+<span>                position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_jitterdodge.html">position_jitterdodge</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>,</span>
+<span>                 geom <span class="op">=</span> <span class="st">"pointrange"</span>,</span>
+<span>                 color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>                 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">sex</span><span class="op">)</span>,</span>
+<span>                 shape <span class="op">=</span> <span class="fl">21</span>,</span>
+<span>                 size <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                 position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">7000</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">7000</span>, by <span class="op">=</span> <span class="fl">500</span><span class="op">)</span>,</span>
+<span>                     labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">7000</span>, by <span class="op">=</span> <span class="fl">500</span><span class="op">)</span>,</span>
+<span>                     expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"How Does Penguin Weight Vary Across Islands?"</span>,</span>
+<span>       subtitle <span class="op">=</span> <span class="st">"Islands Contain Different Penguin Species"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"Body Mass (grams)"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"Island"</span>,</span>
+<span>       tag <span class="op">=</span> <span class="st">"Figure 1"</span>,</span>
+<span>       caption <span class="op">=</span> <span class="st">"Note: Error bars represent +/- 1 SEM"</span>,</span>
+<span>        <span class="co"># New code starts here:</span></span>
+<span>       fill <span class="op">=</span> <span class="st">"Sex"</span> <span class="co"># Change Legend label with the name of the mapped aesthetic.</span></span>
+<span>       <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.box.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, <span class="co"># Add a defined box around legend</span></span>
+<span>                                             size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>        legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>, <span class="co"># Modify the title</span></span>
+<span>        legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>, <span class="co"># Modify text</span></span>
+<span>        legend.title.align <span class="op">=</span> <span class="fl">0.5</span>, <span class="co"># Change alignment of legend title. Think of this like an hjust.</span></span>
+<span>        legend.key <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"white"</span>, colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="co"># Add defined boxes around legend key graphic</span></span>
+<span>        <span class="op">)</span> </span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-28-1.png" alt="" width="672"></div>
+<!-- ## Text and Labels -->
+</div>
+</div>
+<div id="combining-graphs" class="section level2" number="8.4">
+<h2>
+<span class="header-section-number">8.4</span> Combining Graphs<a class="anchor" aria-label="anchor" href="#combining-graphs"><i class="fas fa-link"></i></a>
+</h2>
+<p>With these newly acquired data visualization skills, you will likely be creating more than a single visualization at a time. To combine and arrange multiple graphs into a single figure, you can use the <code>patchwork</code> package!</p>
+<img src="figures/patchwork.jpg" style="width:100.0%"><p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<p>Take the following 3 graphs for example:</p>
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">a</span> <span class="op">=</span> <span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0</span>, width <span class="op">=</span> <span class="fl">0.1</span>, </span>
+<span>              size <span class="op">=</span> <span class="fl">2</span>, alpha <span class="op">=</span> <span class="fl">0.3</span>,</span>
+<span>              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color<span class="op">=</span><span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"pointrange"</span>,</span>
+<span>               color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">island</span><span class="op">)</span>,</span>
+<span>               shape <span class="op">=</span> <span class="fl">21</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="va">a</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-29-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">b</span> <span class="op">=</span> <span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0</span>, width <span class="op">=</span> <span class="fl">0.1</span>, </span>
+<span>              size <span class="op">=</span> <span class="fl">2</span>, alpha <span class="op">=</span> <span class="fl">0.3</span>,</span>
+<span>              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color<span class="op">=</span><span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"pointrange"</span>,</span>
+<span>               color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span>,</span>
+<span>               shape <span class="op">=</span> <span class="fl">21</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="va">b</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-29-2.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">c</span> <span class="op">=</span> <span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">2</span>, alpha <span class="op">=</span> <span class="fl">0.3</span>,</span>
+<span>               shape <span class="op">=</span> <span class="fl">21</span>,</span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">sex</span><span class="op">)</span>,</span>
+<span>                position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_jitter.html">position_jitter</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>,</span>
+<span>                 geom <span class="op">=</span> <span class="st">"pointrange"</span>,</span>
+<span>                 color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>                 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">sex</span><span class="op">)</span>,</span>
+<span>                 shape <span class="op">=</span> <span class="fl">21</span>,</span>
+<span>                 size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="va">c</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-29-3.png" alt="" width="672"></div>
+<p>Patchwork uses a pretty intuitive system to create different layouts when combining graphs by using the <code>+</code>, <code>/</code>, and <code>|</code> operators.</p>
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span></span></code></pre></div>
+<p><code>+</code> combines graphs using the default layout (creating as square a grid as possible)</p>
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">a</span> <span class="op">+</span> <span class="va">b</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-31-1.png" alt="" width="672"></div>
+<p><code>/</code> will stack graphs on top of each other</p>
+<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">b</span> <span class="op">/</span> <span class="va">c</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-32-1.png" alt="" width="672"></div>
+<p><code>|</code> places graphs next to each other and can nest arrangements created with the other operators. For up to 3 graphs the result from using <code>|</code> is identical to <code>+</code>. Using <code>|</code> best communicates the intended layout.</p>
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">c</span> <span class="op">|</span> <span class="op">(</span><span class="va">a</span> <span class="op">/</span> <span class="va">b</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations3_files/figure-html/unnamed-chunk-33-1.png" alt="" width="672"></div>
+<p class="text-info">
+<strong><u>Note:</u> The format settings defined for a single graph may not be best for an arrangement of multiple graphs combined into a single visualization. In the visualizations above the axes titles and labels are a little too big, causing some of them to overlap and be unreadable.</strong>
+</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 11**</div> -->
+<!--   <div class="panel-body">Use patchwork to combine your `base_graph` and `modified_graph` to compare the two. Try arranging them in different layouts using different operators. -->
+<!--   </div> -->
+<!-- </div> -->
+<!-- You can use the `plot_layouts()` function to specify the number of columns in the graph arrangement and have more manual control over the layout. Compare the two outputs below. -->
+<!-- ```{r warning=FALSE} -->
+<!-- a + b + c -->
+<!-- ``` -->
+<!-- ```{r warning=FALSE} -->
+<!-- a + b + c +  -->
+<!--   plot_layout(ncol = 1, -->
+<!--               guides = "collect") -->
+<!-- ``` -->
+</div>
+<div id="saving-graphs" class="section level2" number="8.5">
+<h2>
+<span class="header-section-number">8.5</span> Saving Graphs<a class="anchor" aria-label="anchor" href="#saving-graphs"><i class="fas fa-link"></i></a>
+</h2>
+<p>Once you have created your masterpieces, you may want to export them so they can be added to manuscripts created outside of R, posters, or anything else. To save your ggplot graphs, you can use <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code>. You have several file type options, but I would recommend pdf. It generally maintains a high resolution AND aspect ratio. In <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code>, you must specify:</p>
+<ul>
+<li>the <code>filename</code> you want your graph to be saved with (which can/should include a relative file path)</li>
+<li>which <code>plot</code> you want to be saving</li>
+<li>the <code>width</code> and <code>height</code> of the file</li>
+</ul>
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span>plot <span class="op">=</span> <span class="va">a</span>, </span>
+<span>       filename <span class="op">=</span> <span class="st">"visualizations/test_plot.pdf"</span>,</span>
+<span>       width <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>       height <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></code></pre></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 12**</div> -->
+<!--   <div class="panel-body">Save your `modified_graph` and include that graph file with your submission. -->
+<!--   </div> -->
+<!-- </div> -->
+</div>
+<div id="extra-resources-1" class="section level2" number="8.6">
+<h2>
+<span class="header-section-number">8.6</span> Extra resources<a class="anchor" aria-label="anchor" href="#extra-resources-1"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><a href="http://socviz.co/">Data Visualization – A practical introduction (by Kieran Healy)</a></li>
+<li><a href="http://r4ds.had.co.nz/graphics-for-communication.html">Graphics for communication</a></li>
+<li><a href="https://github.com/thomasp85/patchwork">Patchwork source</a></li>
+<li><a href="https://www.data-imaginist.com/2019/patch-it-up-and-send-it-out/">Patchwork background</a></li>
+<li><a href="figures/ggplot_theme_cheatsheet.png">ggplot theme cheat sheet</a></li>
+</ul>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></div>
+<div class="next"><a href="color-theory.html"><span class="header-section-number">9</span> Color Theory</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#customization"><span class="header-section-number">8</span> Customization</a></li>
+<li>
+<a class="nav-link" href="#scaling-the-axes"><span class="header-section-number">8.1</span> Scaling The Axes</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#get-rid-of-padding"><span class="header-section-number">8.1.1</span> Get Rid Of Padding</a></li></ul>
+</li>
+<li><a class="nav-link" href="#titles-captions-and-labels-oh-my"><span class="header-section-number">8.2</span> Titles, Captions, and Labels, Oh My!</a></li>
+<li>
+<a class="nav-link" href="#themes"><span class="header-section-number">8.3</span> Themes</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#titles"><span class="header-section-number">8.3.1</span> Titles</a></li>
+<li><a class="nav-link" href="#captions"><span class="header-section-number">8.3.2</span> Captions</a></li>
+<li><a class="nav-link" href="#axes-titles"><span class="header-section-number">8.3.3</span> Axes Titles</a></li>
+<li><a class="nav-link" href="#axes-values"><span class="header-section-number">8.3.4</span> Axes Values</a></li>
+<li><a class="nav-link" href="#setting-a-default"><span class="header-section-number">8.3.5</span> Setting a Default</a></li>
+<li><a class="nav-link" href="#legends"><span class="header-section-number">8.3.6</span> Legends</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#combining-graphs"><span class="header-section-number">8.4</span> Combining Graphs</a></li>
+<li><a class="nav-link" href="#saving-graphs"><span class="header-section-number">8.5</span> Saving Graphs</a></li>
+<li><a class="nav-link" href="#extra-resources-1"><span class="header-section-number">8.6</span> Extra resources</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-08-20.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

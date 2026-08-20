@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 2 Why use R? | PSY406</title>
+<meta name="author" content="Catie Nielson (with help from Ethan Hurwitz)">
+<meta name="description" content="Consider some of the main tasks done in Social Sciences. As in all sciences, you work with data. You inspect and manipulate that data in different ways, and modify it to make it amenable to...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="Chapter 2 Why use R? | PSY406">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://cateness.github.io/psy406-unlv/why-use-r.html">
+<meta property="og:description" content="Consider some of the main tasks done in Social Sciences. As in all sciences, you work with data. You inspect and manipulate that data in different ways, and modify it to make it amenable to...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 2 Why use R? | PSY406">
+<meta name="twitter:description" content="Consider some of the main tasks done in Social Sciences. As in all sciences, you work with data. You inspect and manipulate that data in different ways, and modify it to make it amenable to...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">PSY406</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
+<li class="book-part">R Basics</li>
+<li><a class="active" href="why-use-r.html"><span class="header-section-number">2</span> Why use R?</a></li>
+<li><a class="" href="r-coding-basics.html"><span class="header-section-number">3</span> R Coding Basics</a></li>
+<li><a class="" href="using-r-effectively.html"><span class="header-section-number">4</span> Using R Effectively</a></li>
+<li class="book-part">Visualizations</li>
+<li><a class="" href="intro-to-ggplot2.html"><span class="header-section-number">5</span> Intro to ggplot2</a></li>
+<li><a class="" href="aesthetics.html"><span class="header-section-number">6</span> Aesthetics</a></li>
+<li><a class="" href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></li>
+<li><a class="" href="customization.html"><span class="header-section-number">8</span> Customization</a></li>
+<li><a class="" href="color-theory.html"><span class="header-section-number">9</span> Color Theory</a></li>
+<li class="book-part">Data Manipulation</li>
+<li><a class="" href="control-flow.html"><span class="header-section-number">10</span> Control Flow</a></li>
+<li><a class="" href="tidy-data-and-tidyverse.html"><span class="header-section-number">11</span> Tidy Data and Tidyverse</a></li>
+<li><a class="" href="basic-wrangling.html"><span class="header-section-number">12</span> Basic Wrangling</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="why-use-r" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> Why use R?<a class="anchor" aria-label="anchor" href="#why-use-r"><i class="fas fa-link"></i></a>
+</h1>
+<p>Consider some of the main tasks done in Social Sciences. As in all sciences, you work with data. You <strong>inspect</strong> and <strong>manipulate</strong> that data in different ways, and modify it to make it amenable to <strong>analysis</strong> and <strong>visualizations</strong>. Visualizations and statistical analyses help to explore relationships you have observed in the real world and test for relationships in your experiments/studies. You then use these to <strong>communicate</strong> some findings to the general public.</p>
+<p>So why would you want to use R or <strong>any</strong> programming language vs a Graphical User Interface (GUI) software like Excel, JMP, SPSS, or SAS, to do this?</p>
+<p>To start, there are some simple and practical considerations:</p>
+<ol style="list-style-type: decimal">
+<li>R is free. Most other software is not.</li>
+<li>R can handle very large datasets, GUI-based software struggle and often crash with these.</li>
+<li>R is an open-source language, which means that anyone can contribute to it. This results in it constantly evolving and improving, increasing its capabilities.</li>
+</ol>
+<div class="inline-figure"><img src="figures/cranPackages.png" style="width:100.0%"></div>
+<ol start="4" style="list-style-type: decimal">
+<li>As a consequence of this, with R, you can perform <strong><em>MUCH</em></strong> more complex and sophisticated statistical analyses and data visualization. R was literally created for this very purpose!</li>
+</ol>
+<div class="inline-figure"><img src="figures/GUI-vs-code.png" style="width:100.0%"></div>
+<p>These are all important, however, one of the main reasons to use a programming language to accomplish your main tasks in Social Sciences is for <em>Reproducibility</em>.</p>
+<p>Excel and the conventional statistics software like SPSS use a point-and-click GUI, and thus lack a simple way to document and share your analyses. This makes repeating or editing your work later very hard as you will need to rely on memory and repetition. <strong>It is hard to work backwards from the end result and see how you arrived there because it is not documented anywhere.</strong> You will have to “reinvent the wheel” to perform the same analysis across different data sets. R is an open-source interpreted <em>programming language</em>. Instead of pointing and clicking through some software to accomplish your tasks, you write code that will execute them. All the code you write is read and evaluated line by line in documents you save. This has some very practical consequences for you:</p>
+<ul>
+<li>Selfishly, it allows you to prepare your cleaning, analysis, and visualization code beforehand. As soon as you finish with data collection, you can just run all the code you’ve written and you will immediately be done!</li>
+<li>Also, it allows you to automate tasks for yourself. This way, you do not have to repeat the same process of clicking through the GUI and re-doing the same thing many times.</li>
+</ul>
+<img src="figures/automate-task.png" style="width:100.0%"><p style="font-size:6pt">
+Source: <a href="http://trendct.org/2015/06/12/r-for-beginners-how-to-transition-from-excel-to-r">trendct.org</a>
+</p>
+<ul>
+<li>Allows you to create literate programming documents (you will do this in markdown, more on that later) – where you explain in English what your code is doing. This <strong>drastically</strong> helps you <em>communicate</em> your results by making your code be more interpretable, even when you re-visit it weeks/months/years down the line.
+<ul>
+<li><strong>“You are always working with at least one collaborator: Future you.”<br>-Hadley Wickham</strong></li>
+</ul>
+</li>
+<li>Often times you will be working with other non-you collaborators, and this makes doing so easier. People can build off the work (code writing) you have done and see step by step exactly what that work is.</li>
+<li>Generally, this helps others be able to see exactly what you did and run the same analyses themselves. This is great practice for the open-science movement, and can actually help you fight back against any critiques or questions about your data/analyses.</li>
+</ul>
+<img src="figures/reproducibility_court.png" style="width:100.0%"><p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<p>So why R in particular instead of any other programming language?</p>
+<p>“What about Python?” – you might ask. You should learn that too! Python is great for advanced machine learning (neural networks and deep learning), fMRI and other image analyses, and lots of other advanced programming things. However, for data science tasks that social scientists and researchers are most often concerned with, R is preferable because it uses the same basic syntax and approach to everything. With Python, your toolbox may be bigger, but all the tools are very different.</p>
+<img src="figures/python.png" style="width:100.0%"><p style="font-size:6pt">
+from Tobi Gerstenberg’s <em>Statistical Methods for Behavioral and Social Sciences</em> class
+</p>
+<div id="r-tools" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> R tools<a class="anchor" aria-label="anchor" href="#r-tools"><i class="fas fa-link"></i></a>
+</h2>
+<div id="base-r-vs-rstudio" class="section level3" number="2.1.1">
+<h3>
+<span class="header-section-number">2.1.1</span> Base R vs RStudio<a class="anchor" aria-label="anchor" href="#base-r-vs-rstudio"><i class="fas fa-link"></i></a>
+</h3>
+<p>When talking about R, what is being referred to is the programming language R itself. You use RStudio to help write and use R code. RStudio is an Integrated Development Environment (IDE). Basically, it provides an interface to make writing and using R code easier.</p>
+<ul>
+<li>R itself can be downloaded <a href="https://www.r-project.org/">here</a>.</li>
+<li>RStudio can be downloaded <a href="https://www.rstudio.com/products/rstudio/download/#download">here</a>.
+<ul>
+<li>You <u>must</u> download R <strong>before</strong> RStudio.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="rstudio-tour" class="section level3" number="2.1.2">
+<h3>
+<span class="header-section-number">2.1.2</span> RStudio Tour<a class="anchor" aria-label="anchor" href="#rstudio-tour"><i class="fas fa-link"></i></a>
+</h3>
+<p>Generally speaking, you will see 4 sections in your RStudio window. To quickly overview each:</p>
+<p><span style="font-size:18.0pt"><u><strong>R file / document</strong></u></span></p>
+<p>This is the contents of your file where you write all of your code. This is usually the largest section and at the top left of this window.</p>
+<div class="inline-figure"><img src="figures/rmd_file.png" style="width:100.0%"></div>
+<p><span style="font-size:18.0pt"><u><strong>Console</strong></u></span></p>
+<p>This is where all code is executed/ran, and where the output of that code appears after running. You can run a line of code from your file by clicking on that line and pressing command+enter for OSX, or control+enter for windows.</p>
+<div class="inline-figure"><img src="figures/rmd_console.png" style="width:100.0%"></div>
+<p><span style="font-size:18.0pt"><u><strong>Environment</strong></u></span></p>
+<p>This is where all your defined objects are, more on this later.</p>
+<div class="inline-figure"><img src="figures/rmd_environment.png" style="width:100.0%"></div>
+<p><span style="font-size:18.0pt"><u><strong>Extra/swiss army knife section</strong></u></span></p>
+<p>This is where any graphs/visualizations you make will appear (under <strong>plots</strong>), the list of your installed or loaded packages (under <strong>Packages</strong>), or any R Documentation or functions you look up (under <strong>Help</strong>).</p>
+<div class="inline-figure"><img src="figures/rmd_help.png" style="width:100.0%"></div>
+</div>
+<div id="customize-your-rstudio" class="section level3" number="2.1.3">
+<h3>
+<span class="header-section-number">2.1.3</span> Customize Your RStudio<a class="anchor" aria-label="anchor" href="#customize-your-rstudio"><i class="fas fa-link"></i></a>
+</h3>
+<p>Looking at a default white screen for a long time can put a lot of strain on your eyes. RStudio comes with a lot of different themes you can apply by going to:</p>
+<p>preferences -&gt; appearance. I personally use a <a href="https://github.com/patrickshox/Mojave-Dark-RStudio-Theme">custom theme</a> called “Mojave Dark” (the one you see in the screenshots is called “Cobalt”). What theme to use is personal preference.</p>
+<p>Additionally, there are two other settings tweaks to make. Go to preferences and then…</p>
+<ol style="list-style-type: decimal">
+<li>R Markdown -&gt; deselect “show output inline for all R markdown documents”</li>
+<li>Code -&gt; Display -&gt; check Rainbow Parentheses</li>
+</ol>
+</div>
+<div id="file-types" class="section level3" number="2.1.4">
+<h3>
+<span class="header-section-number">2.1.4</span> Different types of files<a class="anchor" aria-label="anchor" href="#file-types"><i class="fas fa-link"></i></a>
+</h3>
+<p>There are three main types of R files.</p>
+<ol style="list-style-type: decimal">
+<li>R scripts (“fileName.r”) which contain only R code.</li>
+<li>R markdown notebooks (“fileName.rmd”) which contain text, code, and outputs.</li>
+</ol>
+<img src="figures/rmarkdown_rockstar.png" style="width:100.0%"><p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<ol start="3" style="list-style-type: decimal">
+<li>RData files (“fileName.RData”), which contain saved R objects/variables.</li>
+</ol>
+<p>You will use markdown files in this class because they enable you to more easily annotate your code and create literate programming documents. They also allow you to easily abide by a general programming philosophy called <strong>“separation of concerns,”</strong> which says code should be organized into distinct sections, each handling a specific task. Doing this enables you to quickly navigate your code and know where to look if something is not working as intended.</p>
+<p>Markdown files can also be used to create documents that help communicate what you are doing in your data analysis pipeline. If you use Microsoft Word, then every time a figure or result changes, you have to go through and copy/paste a bunch of stuff, make a million changes throughout, save new files, it is a nuisance and often error prone. R Markdown files are living, breathing documents. Figures and results are automatically updated if the data is changed. Also, everything is in one place. In fact, what you are looking at here is the output of a markdown file!</p>
+<div class="inline-figure"><img src="figures/rmarkdown_wizards.png" style="width:100.0%"></div>
+<p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+</div>
+<div id="components-of-a-markdown-file" class="section level3" number="2.1.5">
+<h3>
+<span class="header-section-number">2.1.5</span> Components of a Markdown File<a class="anchor" aria-label="anchor" href="#components-of-a-markdown-file"><i class="fas fa-link"></i></a>
+</h3>
+<p>Markdown files themselves have 2 components:</p>
+<ol style="list-style-type: decimal">
+<li>General text, like what this is</li>
+<li>Code chunks, like this:</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># This is a code chunk -- essentially mini r files</span></span>
+<span><span class="co"># You put R code inside chunks, text outside.</span></span>
+<span><span class="co"># You can comment out text by starting the line with a hashtag. </span></span>
+<span>  <span class="co"># Comments are text that is not run.</span></span></code></pre></div>
+<p>You put code inside chunks, text outside. You can comment out text by starting the line with a hashtag. Comments are text that is ignored by R when running your code.</p>
+<p>You create a code chunk by putting three back-ticks ( ``` ) on two lines with a break between them,</p>
+<p>And adding a set of curly brackets {} with an “r” in it next to the first set of back ticks: ```{r}</p>
+<div class="inline-figure"><img src="figures/rmd1.png" style="width:100.0%"></div>
+<p>You can also insert code chunks by pressing control+option+i on OSX or control+alt+i on windows (RStudio is full of nifty shortcuts!)</p>
+<p>Generally speaking, you want to name your code chunks to help readily identify what task that section of code is handling.</p>
+<div class="inline-figure"><img src="figures/rmd2.png" style="width:100.0%"></div>
+</div>
+</div>
+<div id="resources" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Resources<a class="anchor" aria-label="anchor" href="#resources"><i class="fas fa-link"></i></a>
+</h2>
+<p>Here are some good resources that will help you throughout this class and your R learning journey.</p>
+<ul>
+<li><p><a href="https://github.com/rstudio/cheatsheets">R Cheatsheets</a></p></li>
+<li><p><a href="https://sites.ualberta.ca/~ahamann/teaching/renr690/R_Cheat_Data.pdf">A particularly useful cheatsheet</a></p></li>
+<li><p><a href="http://www.cookbook-r.com/">Solutions to common problems</a></p></li>
+<li><p><a href="https://support.rstudio.com/hc/en-us/articles/200404846-Working-in-the-Console">Working with your console</a></p></li>
+<li><p><a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">Keyboard shortcuts</a></p></li>
+<li><p><a href="https://appsilon.com/rstudio-shortcuts-and-tips/">More Keyboard shortcuts</a></p></li>
+<li><p><a href="https://www.datacamp.com/community/tutorials/five-tips-r-code-improve">Tips for efficient code</a></p></li>
+<li><p><a href="https://github.com/rstudio/cheatsheets/blob/main/purrr.pdf">Functional Programming (Advanced)</a></p></li>
+</ul>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html"><span class="header-section-number">1</span> Welcome!</a></div>
+<div class="next"><a href="r-coding-basics.html"><span class="header-section-number">3</span> R Coding Basics</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#why-use-r"><span class="header-section-number">2</span> Why use R?</a></li>
+<li>
+<a class="nav-link" href="#r-tools"><span class="header-section-number">2.1</span> R tools</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#base-r-vs-rstudio"><span class="header-section-number">2.1.1</span> Base R vs RStudio</a></li>
+<li><a class="nav-link" href="#rstudio-tour"><span class="header-section-number">2.1.2</span> RStudio Tour</a></li>
+<li><a class="nav-link" href="#customize-your-rstudio"><span class="header-section-number">2.1.3</span> Customize Your RStudio</a></li>
+<li><a class="nav-link" href="#file-types"><span class="header-section-number">2.1.4</span> Different types of files</a></li>
+<li><a class="nav-link" href="#components-of-a-markdown-file"><span class="header-section-number">2.1.5</span> Components of a Markdown File</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#resources"><span class="header-section-number">2.2</span> Resources</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-08-20.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

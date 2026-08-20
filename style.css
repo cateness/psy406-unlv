@@ -1,0 +1,161 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+  background-color: #dfdfdf;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+  background-color: #dfdfdf;
+}
+
+/*new test below*/
+
+h1, h2 {
+  color: #fafafa;
+}
+
+.header-section-number {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.collapse-lg.show {
+  background: #414141;
+    /*background: #565656;
+  background: #6b6b6b;*/
+}
+
+nav[data-toggle="toc"] .nav a.nav-link.active, nav[data-toggle="toc"] .nav .nav-link.active > li > a {
+  background-color: #dfdfdf;
+  color: #5eb7ef;
+  font-weight: bolder;
+}
+
+pre.downlit.sourceCode.r {
+  background-image: none;
+  background-color: #dfdfdf;
+  border: 2px solid #414141;
+}
+
+.book-toc .active {
+  color: #5eb7ef;
+}
+
+.chapter-nav .prev, .chapter-nav .next {
+  background-color: #858585;
+  border: 1px solid #565656;
+  
+  font-weight: bolder;
+  /*-webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #414141;*/
+  /* fix the background color. Make it less dark to begin with.*/
+}
+
+
+.chapter-nav .prev:hover, .chapter-nav .next:hover {
+  background-color: #f8f8f8;
+  /*fix this -- make it something less bright. Possibly another color? 
+  Add a thicker border on hover? something*/
+}
+
+/*PANEL CSS BELOW*/
+
+.panel-primary {
+    border-color: #337ab7;
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
+}
+
+.panel-primary>.panel-heading {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+.panel-heading {
+    padding: 5px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    font-weight: bold;
+}
+
+.panel-body {
+    padding: 15px;
+    background-color: #ececec;
+    font-weight: bold;    
+}
+
+.panel-success {
+    border-color: #d6e9c6;
+}
+
+.panel-success>.panel-heading {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.panel-success>.panel-body {
+    color: #67b268;
+}
+
+.panel-info {
+    border-color: #bce8f1;
+}
+
+.panel-info>.panel-heading {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.panel-warning {
+    border-color: #faebcc;
+}
+
+.panel-warning>.panel-heading {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+.panel-warning>.panel-body {
+    color: #a28a12;
+}
+
+.panel-danger {
+    border-color: #ebccd1;
+}
+
+.panel-danger>.panel-heading {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+/*Fix border on inline figures?*/
+.inline-figure {
+    border: 0px transparent;
+}
+
+/*Fix Search Results*/
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion{
+  background-color: #d9d9d9;
+  color: #5EB7EF;
+  font-weight: bolder;
+}

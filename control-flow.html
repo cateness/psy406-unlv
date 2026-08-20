@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 10 Control Flow | PSY406</title>
+<meta name="author" content="Catie Nielson (with help from Ethan Hurwitz)">
+<meta name="description" content="library(tidyverse) library(palmerpenguins)  10.1 If/Else statements  10.1.1 Traditional Sometimes, you will want your code to perform different actions depending on something’s value. In these...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="Chapter 10 Control Flow | PSY406">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://cateness.github.io/psy406-unlv/control-flow.html">
+<meta property="og:description" content="library(tidyverse) library(palmerpenguins)  10.1 If/Else statements  10.1.1 Traditional Sometimes, you will want your code to perform different actions depending on something’s value. In these...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 10 Control Flow | PSY406">
+<meta name="twitter:description" content="library(tidyverse) library(palmerpenguins)  10.1 If/Else statements  10.1.1 Traditional Sometimes, you will want your code to perform different actions depending on something’s value. In these...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">PSY406</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
+<li class="book-part">R Basics</li>
+<li><a class="" href="why-use-r.html"><span class="header-section-number">2</span> Why use R?</a></li>
+<li><a class="" href="r-coding-basics.html"><span class="header-section-number">3</span> R Coding Basics</a></li>
+<li><a class="" href="using-r-effectively.html"><span class="header-section-number">4</span> Using R Effectively</a></li>
+<li class="book-part">Visualizations</li>
+<li><a class="" href="intro-to-ggplot2.html"><span class="header-section-number">5</span> Intro to ggplot2</a></li>
+<li><a class="" href="aesthetics.html"><span class="header-section-number">6</span> Aesthetics</a></li>
+<li><a class="" href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></li>
+<li><a class="" href="customization.html"><span class="header-section-number">8</span> Customization</a></li>
+<li><a class="" href="color-theory.html"><span class="header-section-number">9</span> Color Theory</a></li>
+<li class="book-part">Data Manipulation</li>
+<li><a class="active" href="control-flow.html"><span class="header-section-number">10</span> Control Flow</a></li>
+<li><a class="" href="tidy-data-and-tidyverse.html"><span class="header-section-number">11</span> Tidy Data and Tidyverse</a></li>
+<li><a class="" href="basic-wrangling.html"><span class="header-section-number">12</span> Basic Wrangling</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="control-flow" class="section level1" number="10">
+<h1>
+<span class="header-section-number">10</span> Control Flow<a class="anchor" aria-label="anchor" href="#control-flow"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></span></code></pre></div>
+<!-- <a href="exercises/Exercise_Manip1.Rmd" download>Exercise Sheet</a> -->
+<div id="ifelse-statements" class="section level2" number="10.1">
+<h2>
+<span class="header-section-number">10.1</span> If/Else statements<a class="anchor" aria-label="anchor" href="#ifelse-statements"><i class="fas fa-link"></i></a>
+</h2>
+<div id="traditional" class="section level3" number="10.1.1">
+<h3>
+<span class="header-section-number">10.1.1</span> Traditional<a class="anchor" aria-label="anchor" href="#traditional"><i class="fas fa-link"></i></a>
+</h3>
+<p>Sometimes, you will want your code to perform different actions depending on something’s value. In these circumstances, it is useful to implement <code>if...else</code> statements. <code>if</code> statements work as such:</p>
+<p><strong>if</strong> some test/condition evaluates to <code>TRUE</code>, execute some specific code.</p>
+<p>Other tests/conditions can be appended with <code>else</code> statements, which specify what to do when the original test/condition evaluates to <code>FALSE</code> and is based on subsequent tests/conditions. The syntax of a basic <code>if</code> statement is as follows:</p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="control-flow.html#cb231-1" tabindex="-1"></a><span class="cf">if</span>(some test<span class="sc">/</span>condition to evaluate) {</span>
+<span id="cb231-2"><a href="control-flow.html#cb231-2" tabindex="-1"></a>  code <span class="cf">for</span> what to do <span class="cf">if</span> that test<span class="sc">/</span>condition evaluates to true</span>
+<span id="cb231-3"><a href="control-flow.html#cb231-3" tabindex="-1"></a>}</span></code></pre></div>
+<p>For example:</p>
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fl">4</span></span>
+<span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="fl">3</span> <span class="op">&lt;</span> <span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"The condition evaluated TRUE"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co">#&gt; [1] "The condition evaluated TRUE"</span></span></code></pre></div>
+<p><code>x</code> was set equal to 4. R evaluates the test <code>3 &lt; x</code> in the <code>if</code> statement, here equivalent to <code>3 &lt; 4</code>, which evaluates to <code>TRUE</code>. Since the <code>if</code> condition evaluates <code>TRUE</code>, it runs the code in the curly brackets.</p>
+<p><code>x</code> may not always be 4 though. What if <code>x</code> was not 4? What if you do not know what <code>x</code> is? If the test in the <code>if</code> statement evaluates to <code>FALSE</code>, nothing happens. If nothing at all happens, you may not know if there was an error in the code or the test just evaluated to <code>FALSE</code>. Considering this, it is always good practice to set up an alternative for when the test evaluates to <code>FALSE</code>. That is where <code>else</code> statements come in.</p>
+<p>The code below will change <code>x</code> to be a random value, so its actual value will be unknown.</p>
+<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span> <span class="co"># From the values 1 to 6, sample 1 value</span></span>
+<span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="fl">3</span> <span class="op">&lt;</span> <span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"The condition evaluated TRUE"</span><span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"the condition evaluated FALSE"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co">#&gt; [1] "The condition evaluated TRUE"</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] 4</span></span></code></pre></div>
+<p>This code specifies what to do depending on whether the test evaluates to <code>TRUE</code> or if it evaluates to <code>FALSE</code>.</p>
+<p>You can get more specific and link several conditions together. You may not want just 2 options – e.g., something to do if a test is <code>TRUE</code> and something else done in <strong>all</strong> other cases. Instead of using <code>else</code>, you use <code>else if()</code> and specify another test.</p>
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="fl">4</span> <span class="op">&lt;</span> <span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"The first condition evaluated TRUE"</span><span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fl">2</span> <span class="op">&lt;</span> <span class="va">x</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">5</span><span class="op">)</span> <span class="op">{</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"The second condition evaluated TRUE"</span><span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Neither the first or second condition evaluated TRUE."</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co">#&gt; [1] "Neither the first or second condition evaluated TRUE."</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] 2</span></span></code></pre></div>
+<p>Writing <code>if</code> statements like this is most useful when the code you want to run executes a function. As you will note above, in all instances the <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> function was the code being executed (what is in the curly brackets). An infinite number of <code>if</code> conditions can be chained together in an <code>if...else</code> chain.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 1**</div> -->
+<!--   <div class="panel-body"> -->
+<!--   1. define a variable `z` that will randomly sample a value from `1:100`.<br> -->
+<!--   2. Write an `if` statement that will `print()` "My first R if" if `z` is less than 20. Run all the code in the cell.<br> -->
+<!--   3. Add an `else` condition to your `if` statement that will print, "Still my first R if, but z is not less than 20." Run all the code in the cell.<br> -->
+<!--   4. Between your `if` and `else` conditions, add an `else if` that will print "The else if evaluated TRUE!" when z is greater than 40 but less than 80. Run all the code in the cell.<br> -->
+<!--   5. Try running all the code in the cell and see how often each string gets printed. -->
+<!--   </div> -->
+<!-- </div> -->
+<p>There are two alternative ways to write <code>if...else</code> statements.</p>
+</div>
+<div id="ifelse" class="section level3" number="10.1.2">
+<h3>
+<span class="header-section-number">10.1.2</span> ifelse()<a class="anchor" aria-label="anchor" href="#ifelse"><i class="fas fa-link"></i></a>
+</h3>
+<p><code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> is most useful when you need to <em>return values</em> rather than execute some other code/function (like printing a character string).</p>
+<p><code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> statements take the form:</p>
+<p><code>ifelse(test, the value to return if the test evaluates *TRUE*, the value to return if the test evaluates *FALSE*)</code></p>
+<p>Multiple <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> statements can be chained together, akin to an <code>else if</code> by adding a nested <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> call in place of the <code>FALSE</code> argument.</p>
+<p>The examples below demonstrates this:</p>
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fl">4</span> <span class="op">&lt;</span> <span class="va">x</span>, <span class="st">"The first condition evaluated true."</span>,</span>
+<span>       <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">&lt;</span> <span class="va">x</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">5</span>, <span class="st">"The second condition evaluated true."</span>, </span>
+<span>              <span class="st">"Neither the first or second condition evaluated true."</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "The first condition evaluated true."</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] 6</span></span></code></pre></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 2**</div> -->
+<!--   <div class="panel-body">Reformat your code from Exercise 1 to use the `ifelse()` syntax.</div> -->
+<!-- </div> -->
+</div>
+<div id="case_when" class="section level3" number="10.1.3">
+<h3>
+<span class="header-section-number">10.1.3</span> case_when()<a class="anchor" aria-label="anchor" href="#case_when"><i class="fas fa-link"></i></a>
+</h3>
+<p><code><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when()</a></code> is just a different way to formulate <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> strings, and is most useful when you have many nested tests/conditions to specify.</p>
+<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when</a></span><span class="op">(</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">4</span> <span class="op">~</span> <span class="st">"The first condition evaluated true."</span>,</span>
+<span>  <span class="fl">2</span> <span class="op">&lt;</span> <span class="va">x</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">5</span> <span class="op">~</span> <span class="st">"The second condition evaluated true."</span>,</span>
+<span>  <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"Neither the first or second condition evaluated true."</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "The first condition evaluated true."</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 3**</div> -->
+<!--   <div class="panel-body">Reformat your code from Exercise 1 to use the `case_when()` syntax.</div> -->
+<!-- </div> -->
+<p><strong>In sum:</strong></p>
+<ul>
+<li>Traditional <code>if...else</code> statements are useful when you need the result to execute some code.</li>
+<li>
+<code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when()</a></code> are useful when you need the result to be a specific value and are often used to create new data or variables.</li>
+</ul>
+</div>
+</div>
+<div id="loops" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> Loops<a class="anchor" aria-label="anchor" href="#loops"><i class="fas fa-link"></i></a>
+</h2>
+<p>Loops are used to repeat certain code iteratively, for example when you want to apply the same code to each element in a sequence (e.g., columns in a dataframe, elements in a vector, etc). The basic syntax of a for loop is as follows:</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="control-flow.html#cb237-1" tabindex="-1"></a><span class="cf">for</span> (val <span class="cf">in</span> sequence) </span>
+<span id="cb237-2"><a href="control-flow.html#cb237-2" tabindex="-1"></a>  {code to be executed}</span></code></pre></div>
+<p>The <code>for</code> initiates the for loop, <code>val</code> is completely arbitrary and can be replaced with any character string. Conventionally it is just the letter <code>i</code>, and subsequently <code>j</code> then <code>k</code> if you are doing nested for loops (loops within loops).</p>
+<p>For a simple use case, imagine the following scenario:</p>
+<p>You are a UGIA and are helping the professor with an exam. You have a series of exam scores <code>c(1:10)</code>. The professor was feeling generous and wants to curve the scores by 1 point. It would be pretty annoying to have to try and manually change each value. Instead, you can do this automatically with a <code>for</code> loop!</p>
+<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="co"># Exam scores</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">=</span> <span class="va">x</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">+</span> <span class="fl">1</span> <span class="co"># Set the ith X to be equal to itself + 1</span></span>
+<span>  <span class="co"># This will be iterated through each value in x</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">x</span> <span class="co"># Look at output to verify changes</span></span>
+<span><span class="co">#&gt;  [1]  2  3  4  5  6  7  8  9 10 11</span></span></code></pre></div>
+<p>Breaking down the code above step by step: First a <code>for</code> loop was initiated, saying you wanted to iterate over each element in the sequence 1 to <code>length(x)</code>. The <code><a href="https://rdrr.io/r/base/length.html">length()</a></code> function returns the number of elements in the object you pass it. Then it was specified that the ith element of <code>x</code> should be replaced with the value resulting from the sum of that value + 1 (<code>x[i] + 1</code>). The value of <code>i</code> will change in each iteration of the loop. It starts with 1 (because that is what the code tells it to do with the <code>1:</code> part), and increments by 1 each iteration, iterating <code>length(x)</code> times.</p>
+<div class="rmdcaution">
+<p><strong><code>1:length(x)</code> was used instead of just 10 (the number of elements in the vector x) above to keep the code dynamic. This illustrates an important coding principle: <u>soft coding</u> vs <u>hard coding</u>. Hard coding is static and unchanging, whereas soft coding is dynamic. What does this mean? Well, <code>x</code> may not always have 10 exam scores. Maybe you have some students who take their exams with OSD, and you have to wait a few days to get their exams back. You want to be able to run the same code without making any modifications. If <code>1:10</code> is used in the <code>for</code> loop, then when the new exam scores are added to <code>x</code>, the code won’t run on all exams! The <code>for</code> loop is specificed to explicitly iterate over the range 1:10. However, by using <code>1:length(x)</code>, <code>length(x)</code> will always be replaced by the exact number of elements in the vector <code>x</code>! This way, the same code can be used no matter how many exam scores you have! Generally speaking, you <u>always</u> want to soft code and make your code dynamic.</strong></p>
+</div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 4**</div> -->
+<!--   <div class="panel-body">Use a `for` loop to to subtract 2 from all values in vector `v`.</div> -->
+<!-- </div> -->
+<p><code>for</code> loops are often combined with <code>if</code> statements to apply conditional code iteratively through your data.</p>
+<img src="figures/monster_for_loop.png" style="width:100.0%"><p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<p>Imagine that instead of needing to add a bonus point to every exam, you need to give <em>particular</em> students a bonus if they completed a SONA experiment for extra credit.</p>
+<p>This can be accomplished by adding an <code>if</code> statement to the code executed executed in each iteration:</p>
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">y</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">"Exam"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span>, </span>
+<span>               <span class="st">"Score"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">88</span>,<span class="fl">90</span>,<span class="fl">77</span>,<span class="fl">98</span><span class="op">)</span>, </span>
+<span>               <span class="st">"Student"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Dave"</span>, <span class="st">"Ally"</span>, </span>
+<span>                             <span class="st">"Tyreek"</span>, <span class="st">"Jeanie"</span><span class="op">)</span>, </span>
+<span>               <span class="st">"Sona"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">y</span></span>
+<span><span class="co">#&gt;   Exam Score Student Sona</span></span>
+<span><span class="co">#&gt; 1    1    88    Dave    0</span></span>
+<span><span class="co">#&gt; 2    2    90    Ally    1</span></span>
+<span><span class="co">#&gt; 3    3    77  Tyreek    1</span></span>
+<span><span class="co">#&gt; 4    4    98  Jeanie    0</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span> </span>
+<span>    <span class="co"># Use nrow for a dataframe</span></span>
+<span>  <span class="kw">if</span><span class="op">(</span><span class="va">y</span><span class="op">$</span><span class="va">Sona</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span><span class="op">{</span> </span>
+<span>    <span class="co"># $ to index -- You want the y dataframe, </span></span>
+<span>    <span class="co"># the Student column, and the ith row. </span></span>
+<span>    <span class="va">y</span><span class="op">$</span><span class="va">Score</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">=</span> <span class="va">y</span><span class="op">$</span><span class="va">Score</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">+</span> <span class="fl">5</span> </span>
+<span>          <span class="co"># For every row in the Score column of </span></span>
+<span>          <span class="co"># the y dataframe, if the condition y$Sona[i] == 1 </span></span>
+<span>          <span class="co"># evaluates to TRUE, that value is going to be </span></span>
+<span>          <span class="co"># equal to what is currently there + 5.</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>The same task can be accomplished using <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>, since the goal here is to return values:</p>
+<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">y</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="st">"Exam"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span>, </span>
+<span>               <span class="st">"Score"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">88</span>,<span class="fl">90</span>,<span class="fl">77</span>,<span class="fl">98</span><span class="op">)</span>, </span>
+<span>               <span class="st">"Student"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Dave"</span>, <span class="st">"Ally"</span>, </span>
+<span>                             <span class="st">"Tyreek"</span>, <span class="st">"Jeanie"</span><span class="op">)</span>, </span>
+<span>               <span class="st">"Sona"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">y</span><span class="op">$</span><span class="va">Score</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">y</span><span class="op">$</span><span class="va">Sona</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">==</span> <span class="fl">1</span>, <span class="co"># Test</span></span>
+<span>                      <span class="va">y</span><span class="op">$</span><span class="va">Score</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">+</span><span class="fl">5</span>, <span class="co"># What to do if TRUE</span></span>
+<span>                      <span class="va">y</span><span class="op">$</span><span class="va">Score</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span> <span class="co"># What to do if FALSE</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">y</span></span>
+<span><span class="co">#&gt;   Exam Score Student Sona</span></span>
+<span><span class="co">#&gt; 1    1    88    Dave    0</span></span>
+<span><span class="co">#&gt; 2    2    95    Ally    1</span></span>
+<span><span class="co">#&gt; 3    3    82  Tyreek    1</span></span>
+<span><span class="co">#&gt; 4    4    98  Jeanie    0</span></span></code></pre></div>
+<p>You can see that only Ally and Tyreek’s scores, the students who completed the SONA extra credit, have changed.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 5**</div> -->
+<!--   <div class="panel-body"> -->
+<!--   1. Use a `for` loop to give a 1.5x bonus only to the employees in dataframe `work_df` who worked overtime.<br> -->
+<!--   2. Rewrite your code using `ifelse()` syntax to accomplish the same goal.</div> -->
+<!-- </div> -->
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="color-theory.html"><span class="header-section-number">9</span> Color Theory</a></div>
+<div class="next"><a href="tidy-data-and-tidyverse.html"><span class="header-section-number">11</span> Tidy Data and Tidyverse</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#control-flow"><span class="header-section-number">10</span> Control Flow</a></li>
+<li>
+<a class="nav-link" href="#ifelse-statements"><span class="header-section-number">10.1</span> If/Else statements</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#traditional"><span class="header-section-number">10.1.1</span> Traditional</a></li>
+<li><a class="nav-link" href="#ifelse"><span class="header-section-number">10.1.2</span> ifelse()</a></li>
+<li><a class="nav-link" href="#case_when"><span class="header-section-number">10.1.3</span> case_when()</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#loops"><span class="header-section-number">10.2</span> Loops</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-08-20.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

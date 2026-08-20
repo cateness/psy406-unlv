@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 Different Geoms and When To Use Them | PSY406</title>
+<meta name="author" content="Catie Nielson (with help from Ethan Hurwitz)">
+<meta name="description" content="library(tidyverse) library(palmerpenguins) Previously, it was stated that the point of a visualization is to explore and understand a relationship or pattern in your data (often between a...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="Chapter 7 Different Geoms and When To Use Them | PSY406">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://cateness.github.io/psy406-unlv/different-geoms-and-when-to-use-them.html">
+<meta property="og:description" content="library(tidyverse) library(palmerpenguins) Previously, it was stated that the point of a visualization is to explore and understand a relationship or pattern in your data (often between a...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 Different Geoms and When To Use Them | PSY406">
+<meta name="twitter:description" content="library(tidyverse) library(palmerpenguins) Previously, it was stated that the point of a visualization is to explore and understand a relationship or pattern in your data (often between a...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">PSY406</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
+<li class="book-part">R Basics</li>
+<li><a class="" href="why-use-r.html"><span class="header-section-number">2</span> Why use R?</a></li>
+<li><a class="" href="r-coding-basics.html"><span class="header-section-number">3</span> R Coding Basics</a></li>
+<li><a class="" href="using-r-effectively.html"><span class="header-section-number">4</span> Using R Effectively</a></li>
+<li class="book-part">Visualizations</li>
+<li><a class="" href="intro-to-ggplot2.html"><span class="header-section-number">5</span> Intro to ggplot2</a></li>
+<li><a class="" href="aesthetics.html"><span class="header-section-number">6</span> Aesthetics</a></li>
+<li><a class="active" href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></li>
+<li><a class="" href="customization.html"><span class="header-section-number">8</span> Customization</a></li>
+<li><a class="" href="color-theory.html"><span class="header-section-number">9</span> Color Theory</a></li>
+<li class="book-part">Data Manipulation</li>
+<li><a class="" href="control-flow.html"><span class="header-section-number">10</span> Control Flow</a></li>
+<li><a class="" href="tidy-data-and-tidyverse.html"><span class="header-section-number">11</span> Tidy Data and Tidyverse</a></li>
+<li><a class="" href="basic-wrangling.html"><span class="header-section-number">12</span> Basic Wrangling</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="different-geoms-and-when-to-use-them" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> Different Geoms and When To Use Them<a class="anchor" aria-label="anchor" href="#different-geoms-and-when-to-use-them"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></span></code></pre></div>
+<!-- <a href="exercises/Exercise_Viz2.Rmd" download>Exercise Sheet</a> -->
+<p>Previously, it was stated that the point of a visualization is to explore and understand a relationship or pattern in your data (often between a response/outcome variable and one or more explanatory/predictor variables). It is important to know how to best graphically represent your data based on the types of variables (categorical vs continuous) you have and the relationships or patterns you are trying to visualize. There are a number of ways you can visualize specific types of relationships. Some are better than others, and sometimes what is “best” depends on the specific context.</p>
+<p>What follows here is an overview of a number of different ways you can visualize different data and relationships, as well as recommendations as to which are best and when.</p>
+<div id="one-categorical" class="section level2" number="7.1">
+<h2>
+<span class="header-section-number">7.1</span> One Categorical<a class="anchor" aria-label="anchor" href="#one-categorical"><i class="fas fa-link"></i></a>
+</h2>
+<p>Graphing one categorical variable is used to show counts or proportions.</p>
+<div id="bar" class="section level3" number="7.1.1">
+<h3>
+<span class="header-section-number">7.1.1</span> Bar<a class="anchor" aria-label="anchor" href="#bar"><i class="fas fa-link"></i></a>
+</h3>
+<p>One good way of visualizing a single categorical variable is with a bar chart.</p>
+<p>Think about the following question:</p>
+<blockquote>
+<p>“How many penguin observations do we have from each island?”</p>
+</blockquote>
+<p>Let’s create a visualization that has a bar for each island, and that bar’s height corresponds to the number of penguins recorded on that island. To do so, we will use <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code>.</p>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-2-1.png" alt="" width="672"></div>
+<p>If you wanted the bars to represent the <em>proportion</em> of all observations that came from each island instead of the raw counts, you would need some way of telling R this. The proportions are not something that already exist in the data, but could be easily computed. The proportion of observations from each island would simply be:</p>
+<p><span class="math display">\[\frac{nObservationsFromIslandX}{sumOfObservationsFromAllIslands}\]</span></p>
+<p>If the <strong>count</strong>’s were on the y-axis before, then you would just want each <code>..count..</code> (numerator above) divided by the sum of all the <code>..count..</code>s (denominator above). Luckily, you can just give that to R!</p>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="op">(</span><span class="va">..count..</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">..count..</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672"></div>
+<p class="text-info">
+<strong><u>Note:</u> Proportions must sum to 1! If your bars ever do not sum to one, there is an issue!</strong>
+</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 1**</div> -->
+<!--   <div class="panel-body">Create bar plots to explore both the count and proportion of penguins of each species. Try out different aesthetic **<u>settings</u>**, and see how they change the graph (if you want to try an aesthetic **<u>mapping</u>**, only use the singular variable on your x-axis).</div> -->
+<!-- </div> -->
+</div>
+<div id="pie" class="section level3" number="7.1.2">
+<h3>
+<span class="header-section-number">7.1.2</span> Pie<a class="anchor" aria-label="anchor" href="#pie"><i class="fas fa-link"></i></a>
+</h3>
+<p>The less good way of doing this is with a pie chart. You do not have to worry about understanding this code, because for the most part you should not use it. You may, unfortunately, find yourself working with a particularly intransigent PI or collaborator. I include this code here so you have a template for those scenarios.</p>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>             fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_radial.html">coord_polar</a></span><span class="op">(</span><span class="st">"y"</span>, start <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672"></div>
+<p>More information on why it is recommended to avoid using pie charts can be found <a href="https://www.data-to-viz.com/caveat/pie.html">here</a> (stop before the “Alternatives” section).</p>
+<div class="rmdcaution">
+<p><strong>When you are creating a visualization to communicate something about a single categorical variable, you really should just use a table and not a graph at all.</strong></p>
+</div>
+</div>
+</div>
+<div id="one-continuous" class="section level2" number="7.2">
+<h2>
+<span class="header-section-number">7.2</span> One Continuous<a class="anchor" aria-label="anchor" href="#one-continuous"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>Looking at distributions</strong></p>
+<p>Being able to understand and characterize distributions is an integral part of the Social/Data Scientists toolbox. When you want to know more about the distribution of a particular numerical variable in your dataset, you have a few options available to you.</p>
+<div id="histogram" class="section level3" number="7.2.1">
+<h3>
+<span class="header-section-number">7.2.1</span> Histogram<a class="anchor" aria-label="anchor" href="#histogram"><i class="fas fa-link"></i></a>
+</h3>
+<p>One of the most powerful tools you have for examining distributions is the <strong>histogram.</strong> In a histogram, values of the variable of interest are separated into different bins on the x-axis.</p>
+<p>The y-axis of a histogram will most often represent the <em>frequency</em> or <em>count</em> of some value or range of values in the distribution. However, it can also represent the <em>proportion</em> of a distribution that had some value. So pay attention to the scale of the y-axis!</p>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value</span></span>
+<span><span class="co">#&gt; `binwidth`.</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672"></div>
+<p>In the histogram above, the height of the bars does not correspond to how long a penguin’s flipper was, but rather the number of penguins in this sample with flipper lengths of a particular range/value. For example, it looks like ~28 penguins in this sample had flipper lengths around 190mm.</p>
+<p>It is a little difficult to tell the difference between each individual bar though. Giving them an outline would help with this tremendously. You can do this with the color aesthetic. Remember, <em>‘color’</em> often refers to the outline/outside, while <em>‘fill’</em> often refers to the inside.</p>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">'black'</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value</span></span>
+<span><span class="co">#&gt; `binwidth`.</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-6-1.png" alt="" width="672"></div>
+<div id="bins" class="section level4" number="7.2.1.1">
+<h4>
+<span class="header-section-number">7.2.1.1</span> Bins<a class="anchor" aria-label="anchor" href="#bins"><i class="fas fa-link"></i></a>
+</h4>
+<p>You may have noticed a weird message coming out with the histograms so far:</p>
+<p style="color:#A79BF0">
+<strong>stat_bin() using bins = 30. Pick better value with binwidth.</strong>
+</p>
+<p>“<strong>bins</strong>” refers to the actual number of bins (bars) in your histogram. “<strong>binwidth</strong>” refers to the width of each bin (bar), in other words how many units in x wide each bin (bar) is. Setting a value for “<strong>binwidth</strong>” will override the number of “<strong>bins</strong>”, which is why R is suggesting you change that value.</p>
+<p>In a histogram, the difference of binwidth size can significantly impact how your graph looks. This, in turn, will influence what kind of impressions and inferences you make. For this reason it is <strong>very important</strong> to explore different bin settings and verify whether the patterns you notice are truly a feature of your data or just an artifact of your bin settings!</p>
+<p>Consider the example below:</p>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">'black'</span>,</span>
+<span>                 bins <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">'black'</span>,</span>
+<span>                 bins <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-7-2.png" alt="" width="672"></div>
+<p>In the first histogram you would probably say this is a unimodal distribution with most of the flipper lengths around 190mm (+/- a few). However, when looking at the second histogram, you would probably say this distribution looks more bimodal, with one cluster around 190mm and another around 210mm. The same data, visualized using the same type of graph, but two different stories based on choices that you made. You have to be very careful to make sure you are telling the <strong><u>data’s</u></strong> story, not <em>your</em> story!</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 2**</div> -->
+<!--   <div class="panel-body">Make a histogram to explore the distribution of `body_mass_g` scores in your dataset. Try out different aesthetic **<u>settings</u>** and see how they change the graph. Also, try different bin settings (size and width) and see how they change your interpretation/understanding of the data.</div> -->
+<!-- </div> -->
+</div>
+</div>
+<div id="density" class="section level3" number="7.2.2">
+<h3>
+<span class="header-section-number">7.2.2</span> Density<a class="anchor" aria-label="anchor" href="#density"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>density plots</strong>, in short, are a smoothed histogram. If you are particularly stats-minded and want further information, you click below for some further info.</p>
+<button class="btn btn-primary" data-toggle="collapse" data-target="#BlockName">
+Advanced
+</button>
+<div id="BlockName" class="collapse">
+<p>Density plots show probability density (not <em>actual</em> probability!) on the y-axis. What does that mean exactly? Well, it is a little complicated. In short, a continuous curve (aka kernel) is fit to each individual data point. The kernel is usually a gaussian. All the gaussians from each individual data point are summed and that forms the curve fit by the density plot. For those interested in more info, check <a href="https://towardsdatascience.com/histograms-and-density-plots-in-python-f6bda88f5ac0">here</a> for a fairly approachable explanation.</p>
+</div>
+<p><br>
+Use <code><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density()</a></code> for a density plot.</p>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672"></div>
+<p>To better understand the density plot, it helps to see how it overlays the histogram:</p>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">..density..</span><span class="op">)</span>, color<span class="op">=</span><span class="st">"black"</span>, alpha<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672"></div>
+<p>You can see that, by smoothing, density plots obscure some of the noisiness (variability) in your data.</p>
+</div>
+<div id="vlines" class="section level3" number="7.2.3">
+<h3>
+<span class="header-section-number">7.2.3</span> vlines<a class="anchor" aria-label="anchor" href="#vlines"><i class="fas fa-link"></i></a>
+</h3>
+<p>One thing you may want to do with a histogram is mark specific parts or regions of your data. This can be done by adding <em>vertical lines</em> with <code><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline()</a></code>. To add a vertical line you must specify where on the x-axis that line should cross. Since you are doing something to the axis, you must make the specification in an <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> call.</p>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">'black'</span>,</span>
+<span>                 bins <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>xintercept<span class="op">=</span><span class="fl">180</span><span class="op">)</span>,color<span class="op">=</span><span class="st">"black"</span>, size<span class="op">=</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>xintercept<span class="op">=</span><span class="fl">200</span><span class="op">)</span>,color<span class="op">=</span><span class="st">"black"</span>, size<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 3**</div> -->
+<!--   <div class="panel-body">Take your plot from Exercise 2 and add a colored line approximately where you think the mean would be. Add another line in a different color where you think the mode would be.</div> -->
+<!-- </div> -->
+</div>
+</div>
+<div id="continuous-continuous" class="section level2" number="7.3">
+<h2>
+<span class="header-section-number">7.3</span> Continuous ~ Continuous<a class="anchor" aria-label="anchor" href="#continuous-continuous"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>Relationships</strong></p>
+<p>When exploring the relationship between two continuous variables, there are two main visualizations you can work with: <strong>scatter plots</strong> and <strong>2d histograms</strong>. The main difference between which one you pick will be how large the dataset your are trying to visualize is.</p>
+<div id="scatter-plot" class="section level3" number="7.3.1">
+<h3>
+<span class="header-section-number">7.3.1</span> Scatter plot<a class="anchor" aria-label="anchor" href="#scatter-plot"><i class="fas fa-link"></i></a>
+</h3>
+<p>As you will recall from previous lessons, you use <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> for scatter plots. In a scatter plot each point on the visualization represents an observation in your data.</p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">bill_depth_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672"></div>
+<p>Use scatter plots for datasets with <strong>lower n’s only</strong>. You also saw before that, even with some alpha adjustments, datasets with large n’s can look pretty gnarly:</p>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">table</span>, x <span class="op">=</span> <span class="va">depth</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-12-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 4**</div> -->
+<!--   <div class="panel-body">Create a visualization to explore the relationship between a penguin's `bill_length_mm` and their `flipper_length_mm`. Try out different aesthetic **<u>settings</u>**, and see how they change the graph.</div> -->
+<!-- </div> -->
+</div>
+<div id="d-histogram" class="section level3" number="7.3.2">
+<h3>
+<span class="header-section-number">7.3.2</span> 2d Histogram<a class="anchor" aria-label="anchor" href="#d-histogram"><i class="fas fa-link"></i></a>
+</h3>
+<p>Alternatively, when working with a dataset that has a <strong>large n</strong>, you can use a 2d histogram with <code><a href="https://ggplot2.tidyverse.org/reference/geom_bin_2d.html">geom_bin2d()</a></code>.</p>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">bill_depth_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bin_2d.html">geom_bin2d</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-13-1.png" alt="" width="672"></div>
+<p>Like a scatter plot, each point represents an observation. However, you also are given some information about how many observations may be occupying the same/similar space. In this example, the lighter the spot, the more concentrated the observations in that spot.</p>
+<p>A twist on the 2d Histogram is to make a hexbin plot, which is essentially the same thing but uses hexagons instead of squares. Everything else is the same, but you use <code><a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">geom_hex()</a></code>. Which also gives the added benefit of making you feel like you are casting a hex on the data (sometimes when you’re coding, you have to look for all the little fun you can).</p>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">bill_depth_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">geom_hex</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-14-1.png" alt="" width="672"></div>
+<p>The conclusions you draw from the two should be identical. The choice between the two should largely be personal preference.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 5**</div> -->
+<!--   <div class="panel-body">Create a visualization to explore the relationship between a penguin's `bill_length_mm` and their `flipper_length_mm`. Specifically, create a visualization if you had anticipated having a large n. Try out different aesthetic **<u>settings</u>**, and see how they change the graph.</div> -->
+<!-- </div> -->
+</div>
+<div id="adding-conditional-means" class="section level3" number="7.3.3">
+<h3>
+<span class="header-section-number">7.3.3</span> Adding Conditional Means<a class="anchor" aria-label="anchor" href="#adding-conditional-means"><i class="fas fa-link"></i></a>
+</h3>
+<p>It can sometimes be a good idea to include a line of best fit to show the trend of your data. This can aid in seeing patterns in your data. You can do this with <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code>.</p>
+<p>The two main arguments of relevance for now are <code>method=</code> and <code>se=</code>. The <code>method=</code> argument gets set to “lm”, saying you want to fit a line from the linear model. <code>se=</code> refers to whether or not to show the Standard Error of the line.</p>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">bill_depth_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">'lm'</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-15-1.png" alt="" width="672"></div>
+<p>Well… Hang on. This… okay yes it <strong>IS</strong> a line, but this may not be what you were expecting to see. This highlights an important point: <u><strong>Just because you CAN fit a line to something does not always mean you should.</strong></u></p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 6**</div> -->
+<!--   <div class="panel-body">Take your visualization from Exercise 5 and add a line of best fit for your data. Try out different aesthetic **<u>settings</u>**, and see how they change the graph.</div> -->
+<!-- </div> -->
+</div>
+<div id="rugs-and-margins" class="section level3" number="7.3.4">
+<h3>
+<span class="header-section-number">7.3.4</span> Rugs and Margins<a class="anchor" aria-label="anchor" href="#rugs-and-margins"><i class="fas fa-link"></i></a>
+</h3>
+<p>Another neat trick you can do is to add some information about each individual distribution in the margins of your visualization.</p>
+<p>One way to do this is by adding a “rug” to your scatter plots. You can do this with <code><a href="https://ggplot2.tidyverse.org/reference/geom_rug.html">geom_rug()</a></code>.</p>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">bill_depth_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_rug.html">geom_rug</a></span><span class="op">(</span>alpha<span class="op">=</span><span class="fl">0.1</span>, size<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-16-1.png" alt="" width="672"></div>
+<p>Another way to do so is by showing the individual histograms for each of the continuous variables. You can do this by using <code>ggMarginal()</code> from the <code>ggExtra</code> package (<code><a href="https://rdrr.io/pkg/ggExtra/man/ggMarginal.html">ggExtra::ggMarginal()</a></code>).</p>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">bill_depth_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu">ggExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ggExtra/man/ggMarginal.html">ggMarginal</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"histogram"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-17-1.png" alt="" width="672"></div>
+<p class="text-info">
+<strong><u>Note:</u> <code>ggMarginal</code> is not part of ggplot proper, so it is not added on like other geoms. Instead, you have to pipe your ggplot graph in. In doing so, you must wrap the ggplot code in parentheses. This way, the entire visualization gets piped in and not just the last piece!</strong>
+</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 7**</div> -->
+<!--   <div class="panel-body">Take your visualization from exercise 6 and try to add some extra information to the margins. Try out different aesthetic **<u>settings</u>**, and see how they change the graph.</div> -->
+<!-- </div> -->
+</div>
+</div>
+<div id="continuous-categorical" class="section level2" number="7.4">
+<h2>
+<span class="header-section-number">7.4</span> Continuous ~ Categorical<a class="anchor" aria-label="anchor" href="#continuous-categorical"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>Comparisons</strong></p>
+<p>Arguably, the most common thing you will create a graph to visualize is the comparison of data from many different conditions (or levels) of some variable. Specifically, to compare some summary statistics between them. For example:</p>
+<blockquote>
+<p>How does the average weight (<code>body_mass_g</code>) of the penguins compare across islands (<code>island</code>)?</p>
+</blockquote>
+<p>Maybe it is the case that some islands have better food sources that others, and the penguins there can gorge themselves into a food coma all day long while the penguins on other islands are not as lucky.</p>
+<p>There are a <strong><u>LOT</u></strong> of options for how to visualize comparisons of this kind. In the examples, you will also see some important guidelines to implement or follow.</p>
+<p class="text-info">
+<strong><u>Note:</u> When looking at how the values of one continuous variable compare across levels of a categorical variable, it is helpful to first examine how the values of the continuous variable vary to begin with.</strong>
+</p>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">'black'</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-18-1.png" alt="" width="672"></div>
+<div id="stat_summary" class="section level3" number="7.4.1">
+<h3>
+<span class="header-section-number">7.4.1</span> <code>stat_summary()</code><a class="anchor" aria-label="anchor" href="#stat_summary"><i class="fas fa-link"></i></a>
+</h3>
+<p>The <code><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary()</a></code> function is an extremely powerful and versatile function which can be used to create a visualization summarizing the y values for each unique x value. The <code>fun =</code> argument specifies what type of summary you want to visualize for the y values. The <code>geom =</code> argument specifies how you want those results to be visualized. In short, you tell it what you want to visualize and how.</p>
+<p>The summary function you will use most often is likely the “mean” (or average), but you can also use a number of others including “median”, “max”, “min”, “sd” (standard deviation), etc., to compare several different summary statistics between the groups on your x-axis variable. <strong>All examples that follow will use the mean.</strong></p>
+<p>Just as there are several summary statistics you can use, there are several ways you can visualize those summary statistics…</p>
+<div id="bar-1" class="section level4" number="7.4.1.1">
+<h4>
+<span class="header-section-number">7.4.1.1</span> Bar<a class="anchor" aria-label="anchor" href="#bar-1"><i class="fas fa-link"></i></a>
+</h4>
+<p>The canonical visualization is the bar chart, using the “bar” geom.</p>
+<p style="font-size:10pt">
+Going forward, the habit of making predictions for and/or summarizing the visualizations create will be brought back. A formal prediction will first be declared by specifying two mutually exclusive alternative patterns that <em>could</em> be observed in the visualizations. The same idea (hypothesis) will be worked with, so subsequent predictions can just refer to that hypothesis rather than explicitly stating it. After making the visualization, a <u>short</u> summary of what the visualization shows will be written.
+</p>
+<div class="rmdwarning">
+<ul>
+<li>“If it is the case that the differences in penguin weight could be explained by what island they live on (e.g., penguins on some islands are heavier on average than penguins on other islands), then some bars should be higher or lower than the others. If it is not the case that the differences in penguin weight could be explained by what island they live on, the bars should all have roughly equivalent heights.”</li>
+</ul>
+</div>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"bar"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-19-1.png" alt="" width="672"></div>
+<div class="rmdimportant">
+<p>In the visualization you can see that, generally speaking, penguins on Biscoe island seem to be the heaviest and heavier on average than penguins on either Dream or Torgersen island. The penguins on Dream and Torgensen island seem to have similar weight. You can see this pattern by noticing that the bar representing Biscoe island is higher than the bars for Dream and Torgersen islands (which are both about the same height).</p>
+</div>
+<p>Unlike a histogram, the height of each bar here shows the <em>mean</em> of the levels of your categorical variable, not <em>counts</em> of observations.</p>
+</div>
+<div id="point" class="section level4" number="7.4.1.2">
+<h4>
+<span class="header-section-number">7.4.1.2</span> Point<a class="anchor" aria-label="anchor" href="#point"><i class="fas fa-link"></i></a>
+</h4>
+<p>Instead of representing the means with a bar geom, you could do the same with a <strong>“point”</strong>.</p>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"point"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-20-1.png" alt="" width="672"></div>
+<p>Compared to when the means were represented with bars, the difference between the average weight of penguins on Biscoe island to the other two islands looks <em>much</em> more drastic. Why is that? It is the same data, just visualized differently. You will note that the scale of the y-axis has changed here. Instead of running from 0 - 5000 like in the bar chart, it runs from 3750 - 4750. Modifying axis scales will be covered later, but for now this is a reminder to be mindful of scales when making your interpretation, and how the scale might skew the interpretations someone makes from your visualization!</p>
+</div>
+<div id="line" class="section level4" number="7.4.1.3">
+<h4>
+<span class="header-section-number">7.4.1.3</span> Line<a class="anchor" aria-label="anchor" href="#line"><i class="fas fa-link"></i></a>
+</h4>
+<p>Another way to visualize this is with a line instead of bars or points.</p>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"line"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `geom_line()`: Each group consists of only one observation.</span></span>
+<span><span class="co">#&gt; ℹ Do you need to adjust the group aesthetic?</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-21-1.png" alt="" width="672"></div>
+<p>Hm, okay, this did not work. R is telling you something here though:</p>
+<p style="color:#A79BF0">
+<strong>geom_path: Each group consists of only one observation. Do you need to adjust the group aesthetic?</strong>
+</p>
+<p>What this is telling you is that the line that R is trying to make needs to know what points you are trying to connect. It does not know how you want the individual pieces of the visualization (here, the <code>mean body_mass_g</code> for each level of <code>island</code>) grouped together, as each group only has one observation. R even gave you a recommendation on how to fix this by asking if you need to adjust the <strong><em>group</em></strong> aesthetic! This is a new aesthetic that will be covered more later.</p>
+<p>For now, R needs to know that all the levels in <code>island</code> should be treated as coming from the same group. This can be done by simply telling R there should be one group:</p>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span>, group <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"line"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-22-1.png" alt="" width="672"></div>
+<p><code>island</code> (the x-axis variable) is categorical, so ggplot will try to draw individual lines for each level by default. However, here, there is only one value for each factor level and at least two points are needed to create a line!</p>
+<p>There are a number of different styles of line you can use by changing the <code>linetype</code>:</p>
+<div class="inline-figure"><img src="figures/ggplot_line_types.png" style="width:100.0%"></div>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span>, group <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"line"</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-23-1.png" alt="" width="672"></div>
+<p>Different geoms can also be combined. For example, both point and lines to make the line plot look a little cleaner.</p>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span>, group <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"point"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"line"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672"></div>
+<p>While you can use this here, line plots are best used for time series data.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 8**</div> -->
+<!--   <div class="panel-body">Create 3 visualizations to explore how the average penguin `flipper_length_mm` varies across the different `species` of penguins. Use a different shape for the mean in each visualization. Try out different aesthetic **<u>settings</u>**, and see how they change the graph (if you want to try an aesthetic **<u>mapping</u>**, only use the singular variable on your x-axis).</div> -->
+<!-- </div> -->
+</div>
+</div>
+<div id="error-bars" class="section level3" number="7.4.2">
+<h3>
+<span class="header-section-number">7.4.2</span> Error bars<a class="anchor" aria-label="anchor" href="#error-bars"><i class="fas fa-link"></i></a>
+</h3>
+<p>You want your visualizations to be as informative as possible. Keeping this in mind, you will most often want to give an appreciation for how much variability there is in the data (not <strong>only</strong> showing the mean). This is accomplished by including error bars (either confidence intervals (CI) or Standard Error of the Mean (SEM)) around your summary statistics. You will use the SEM in this course.</p>
+<p>While you COULD manually compute the upper and lower values of the error bars for each mean, fortunately ggplot2 has a number of built in ways to do this for you! Even more convenient, it is just another extension of <code><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary()</a></code>. Here, you want the <strong>s</strong>tandard <strong>e</strong>rror of your <strong>mean</strong> (“mean_se”), and want that represented by error bars (“errorbar”).</p>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"bar"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, geom <span class="op">=</span> <span class="st">"errorbar"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-25-1.png" alt="" width="672"></div>
+<p>You do not have to change anything about your raw data or create new dataframes, <code><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary()</a></code> will just do everything for you!</p>
+<p>The one difference you will note is that you have to use <code>fun.data =</code> instead of <code>fun =</code>. “mean_se” will give you the mean, upper, and lower SE boundaries. Since you are getting multiple pieces of information for each x-axis value, you have to use a slightly different argument.</p>
+<p>Another thing you may note is how ugly this looks. The error bars are far too wide. You can change this with the <code>width</code> aesthetic.</p>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"bar"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, geom <span class="op">=</span> <span class="st">"errorbar"</span>,</span>
+<span>               width <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-26-1.png" alt="" width="672"></div>
+<p>This looks a bit better, and more like what you would see in a published peer-reviewed journal article.</p>
+<p>Error bars can be added to other geoms:</p>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"point"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, geom <span class="op">=</span> <span class="st">"errorbar"</span>, width <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-27-1.png" alt="" width="672"></div>
+<p>And can also be rendered with different shapes:</p>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"point"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, geom <span class="op">=</span> <span class="st">"linerange"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-28-1.png" alt="" width="672"></div>
+<p>As a shortcut, the “pointrange” geom can be used to create a point for the mean and a line for the error bars:</p>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, geom <span class="op">=</span> <span class="st">"pointrange"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-29-1.png" alt="" width="672"></div>
+<p>This gives basically the same graph as above, but only uses one <code><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary()</a></code> call! The only downside here is you have slightly less control over customizing the line and point separately.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 9**</div> -->
+<!--   <div class="panel-body">Take your 3 visualizations created from Exercise 8 and add error bars around the means. Try out different aesthetic **<u>settings</u>**, and see how they change the graph.</div> -->
+<!-- </div> -->
+</div>
+<div id="boxplots" class="section level3" number="7.4.3">
+<h3>
+<span class="header-section-number">7.4.3</span> Boxplots<a class="anchor" aria-label="anchor" href="#boxplots"><i class="fas fa-link"></i></a>
+</h3>
+<p>Another way to get a sense for the distribution of the data is to use box plots.</p>
+<div class="inline-figure"><img src="figures/boxplot_diagram.png" alt="" width="100%" style="background-color: #9ecff7"></div>
+<p>You can create a boxplot using <code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code></p>
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-31-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 10**</div> -->
+<!--   <div class="panel-body">Create a boxplot to compare how `flipper_length_mm` varies across penguin `species`. Try out different aesthetic **<u>settings</u>**, and see how they change the graph (if you want to try an aesthetic **<u>mapping</u>**, only use the singular variable on your x-axis).</div> -->
+<!-- </div> -->
+</div>
+<div id="problem-with-summary-stats" class="section level3" number="7.4.4">
+<h3>
+<span class="header-section-number">7.4.4</span> Problem With Summary Stats<a class="anchor" aria-label="anchor" href="#problem-with-summary-stats"><i class="fas fa-link"></i></a>
+</h3>
+<p>In the <a href="intro-to-ggplot2.html#intro-to-ggplot2">first lesson</a> on visualizations, you saw how many different datasets and distributions were consistent with the same summary statistics (the datasauRus dozen and Anscombe’s quartet). This was the rationale for why visualizations are so important. However, including nothing but summary statistics in your graphs is not much better than only reporting the summary statistics as numbers! You never know what your summary statistics could be hiding about your data:</p>
+<img src="figures/summary_statistics.png" style="width:100.0%"><p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<p>While boxplots give you a better sense of a distribution by providing more information than just a bar for the mean and SEM does, many datasets can be consistent with the same boxplot too!</p>
+<img src="figures/boxplots.gif" style="width:100.0%"><p style="font-size:8pt">
+Source: <a href="https://www.autodeskresearch.com/publications/samestats">Same Stats, Different Graphs…</a>
+</p>
+<div class="rmdcaution">
+<p><strong>While bar charts and boxplots are conventionally the most common way to represent your data, you have just seen who problematic this can be. It is always recommended to visualize the distribution of your data! This is the only way to be transparent and accurately communicate the patters in your data. For this reason, it is <u>strongly</u> advised to not use bars to represent means.</strong></p>
+</div>
+<p>The graphs outlined below will help you achieve the goals of both visualizing summary statistics <strong>AND</strong> the raw distributions of individual participant data in your dataset.</p>
+</div>
+<div id="violin-plots" class="section level3" number="7.4.5">
+<h3>
+<span class="header-section-number">7.4.5</span> Violin Plots<a class="anchor" aria-label="anchor" href="#violin-plots"><i class="fas fa-link"></i></a>
+</h3>
+<p>If your dataset is large and/or you are creating a visualization with a lot of observations, violin plots can be helpful. They are similar to boxplots but show a little less information and are more sensitive to changes in a distribution of raw data.</p>
+<img src="figures/box_violin.gif" style="width:100.0%"><p style="font-size:8pt">
+Source: <a href="https://www.autodeskresearch.com/publications/samestats">Same Stats, Different Graphs…</a>
+</p>
+<p>You can create a violin plot with <code><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin()</a></code></p>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-32-1.png" alt="" width="672"></div>
+<p>The width of a section of the violin plot corresponds to the number of observations in that area. Violin plots can also pair nicely with a boxplot!</p>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-33-1.png" alt="" width="672"></div>
+<p>This way, you get all the benefits of a boxplot but are also conveying more information about the underlying distribution. Since ggplot is an additive/layered system, you can combine different geoms and elements to make particularly effective visualizations!</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 11**</div> -->
+<!--   <div class="panel-body">Take your visualization from Exercise 10 and put a violin underneath to give more information about the distribution of `flipper_length_mm`. Try out different aesthetic **<u>settings</u>**, and see how they change the graph (if you want to try an aesthetic **<u>mapping</u>**, only use the singular variable on your x-axis).</div> -->
+<!-- </div> -->
+</div>
+<div id="jitter-plots" class="section level3" number="7.4.6">
+<h3>
+<span class="header-section-number">7.4.6</span> Jitter Plots<a class="anchor" aria-label="anchor" href="#jitter-plots"><i class="fas fa-link"></i></a>
+</h3>
+<p>If you wanted to actually show the full distribution of your data, you might think to use <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> like you did to create a scatter plot. However, since the x-axis is a categorical variable, all the data points will have the same value:</p>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-34-1.png" alt="" width="672"></div>
+<p>You can add some noise (space) to your data by using <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter()</a></code> and jitter your data points. Jitter plots are especially good for variables with small n’s. They can start to be a little messy and difficult to read with larger n’s though.</p>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-35-1.png" alt="" width="672"></div>
+<p>When your dataset is not too large, jitter plots can be paired with a number of other geoms and summary statistics to create very effective visualizations. Consider the examples below:</p>
+<p>Combine jitter with the mean and SE:</p>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0</span>, width <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>              size <span class="op">=</span> <span class="fl">1</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>              color <span class="op">=</span> <span class="st">"darkgreen"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"pointrange"</span>,</span>
+<span>               color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>               fill <span class="op">=</span> <span class="st">"red"</span>,</span>
+<span>               shape <span class="op">=</span> <span class="fl">21</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-36-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.4</span>, height <span class="op">=</span> <span class="fl">0</span>, width <span class="op">=</span> <span class="fl">0.2</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"errorbar"</span>,</span>
+<span>               color <span class="op">=</span> <span class="st">"orange"</span>,</span>
+<span>               width <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"point"</span>,</span>
+<span>               color <span class="op">=</span> <span class="st">"red"</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-36-2.png" alt="" width="672"></div>
+<p>Combine jitter and boxplots:</p>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0</span>, width <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>              alpha <span class="op">=</span> <span class="fl">0.5</span>, color <span class="op">=</span> <span class="st">"seagreen"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-37-1.png" alt="" width="672"></div>
+<p>Or jitter and violin plots:</p>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.4</span>, width <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"point"</span>,</span>
+<span>               color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-38-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 12**</div> -->
+<!--   <div class="panel-body">Create 2-3 jitter plots to explore the relationship between a penguin's `bill_length_mm` and their `flipper_length_mm`. Think about which you think is best and why. Try out different aesthetic **<u>settings</u>**, and see how they change the graph (if you want to try an aesthetic **<u>mapping</u>**, only use the singular variable on your x-axis).</div> -->
+<!-- </div> -->
+<div id="limits" class="section level4" number="7.4.6.1">
+<h4>
+<span class="header-section-number">7.4.6.1</span> Limits<a class="anchor" aria-label="anchor" href="#limits"><i class="fas fa-link"></i></a>
+</h4>
+<p>There are 3 very important things to be mindful of when creating a jitter plot.</p>
+<ol style="list-style-type: decimal">
+<li>By adding noise, you can quite literally change the data being visualized. This is not a problem for a categorical variable, like you have here on the x-axis, because small shifts in position will not change the value associated with the point. On continuous variables, like you have on the y-axis, this <strong>will</strong>. For this reason, it is recommended to only jitter along a categorical variable. Since your y-axis here is continuous, you do not want the height of the points to change. You can tell ggplot not to do this with the <code>height</code> argument. This will preserve the actual y-axis value, so your visualization will represent the true values in your dataset.</li>
+</ol>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-39-1.png" alt="" width="672"></div>
+<ol start="2" style="list-style-type: decimal">
+<li><p>The jitter added to a visualization is random. Every time you make a jitter plot, or even rerun the code for the same jitter plot, the jitter that is added is random and the visualization will look slightly different!</p></li>
+<li><p>When running code to generate a jitter plot, sometimes your code may work and produce a graph that seems normal but be accompanied by some text output in the console:</p></li>
+</ol>
+<p style="color:#A79BF0">
+<strong>Warning messages: 1: Removed <code>X</code> rows containing non-finite values (stat_smooth). 2: Removed <code>X</code> rows containing missing values (geom_point).</strong>
+</p>
+<p>It is <u><strong>CRITICALLY</strong></u> important to be mindful of these types of errors. What is happening there is that your visualization is not actually showing all your data! That message means that <strong>X</strong> data points are being removed from the dataset when generating the graph. This can be particularly problematic when you are visualizing summary statistics, like means and error bars, because they would not be reflecting the true values of your dataset!!!</p>
+<p>The most common reason for receiving this error is that there are some data points with values not captured by your axes limits. This can either be because you have manually limited the axis to not contain a known value, or because a value has been jittered past the axis limit. More on both of these later, but for now the take home point is to look always check your code for warning/error messages (in general, but especially when jittering).</p>
+</div>
+</div>
+<div id="variations-on-jitter" class="section level3" number="7.4.7">
+<h3>
+<span class="header-section-number">7.4.7</span> Variations on Jitter<a class="anchor" aria-label="anchor" href="#variations-on-jitter"><i class="fas fa-link"></i></a>
+</h3>
+<div id="strip-chart" class="section level4" number="7.4.7.1">
+<h4>
+<span class="header-section-number">7.4.7.1</span> Strip Chart<a class="anchor" aria-label="anchor" href="#strip-chart"><i class="fas fa-link"></i></a>
+</h4>
+<p>A strip chart is a variation on a jitter plot. It basically IS a jitter plot but represents the mean with a small horizontal line (using the “crossbar” geom).</p>
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0</span>, width <span class="op">=</span> <span class="fl">.1</span>, </span>
+<span>              color <span class="op">=</span> <span class="st">"darkmagenta"</span>,</span>
+<span>              alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, </span>
+<span>               geom <span class="op">=</span> <span class="st">"crossbar"</span>, </span>
+<span>               width <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-40-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 13**</div> -->
+<!--   <div class="panel-body">Create a strip chart to compare the mean `flipper_length_mm` between different `species` of penguins. Try out different aesthetic **<u>settings</u>**, and see how they change the graph (if you want to try an aesthetic **<u>mapping</u>**, only use the singular variable on your x-axis).</div> -->
+<!-- </div> -->
+</div>
+<div id="beeswarmdot-plot" class="section level4" number="7.4.7.2">
+<h4>
+<span class="header-section-number">7.4.7.2</span> Beeswarm/Dot Plot<a class="anchor" aria-label="anchor" href="#beeswarmdot-plot"><i class="fas fa-link"></i></a>
+</h4>
+<p>Another variation on jitter plots is the Beeswarm or Dot plot</p>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>   </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_dotplot.html">geom_dotplot</a></span><span class="op">(</span>stackdir <span class="op">=</span> <span class="st">"center"</span>, </span>
+<span>               binaxis <span class="op">=</span> <span class="st">"y"</span>, </span>
+<span>               binwidth <span class="op">=</span> <span class="fl">80</span>,</span>
+<span>               stackratio <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>               fill <span class="op">=</span> <span class="st">"cyan3"</span>, </span>
+<span>               color <span class="op">=</span> <span class="st">"cyan3"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-41-1.png" alt="" width="672"></div>
+<p>The settings can be quite temperamental, and you have to play around with the binwidth, stackratio, and dotsize, but once dialed in they can make some nice looking visualizations. Especially so when paired with a boxplot:</p>
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_dotplot.html">geom_dotplot</a></span><span class="op">(</span>binaxis <span class="op">=</span> <span class="st">'y'</span>, </span>
+<span>               stackdir <span class="op">=</span> <span class="st">'center'</span>, </span>
+<span>               stackratio <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>               binwidth <span class="op">=</span> <span class="fl">80</span>,</span>
+<span>               binpositions <span class="op">=</span> <span class="st">"all"</span>,</span>
+<span>               dotsize <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>               alpha <span class="op">=</span> <span class="fl">.45</span>, </span>
+<span>               fill <span class="op">=</span> <span class="st">"cyan3"</span>, </span>
+<span>               color <span class="op">=</span> <span class="st">"cyan3"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-42-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 14**</div> -->
+<!--   <div class="panel-body">Create a modified beeswarm/dot plot to compare the `flipper_length_mm` between different `species` of penguins. Try to see how changes to the different settings in the `dotplot()` call effect your graph.</div> -->
+<!-- </div> -->
+</div>
+</div>
+<div id="ridgeline-plot" class="section level3" number="7.4.8">
+<h3>
+<span class="header-section-number">7.4.8</span> Ridgeline Plot<a class="anchor" aria-label="anchor" href="#ridgeline-plot"><i class="fas fa-link"></i></a>
+</h3>
+<p>Ridgeline plots, formerly known as joy plots, allows you visualize the distributions of a numerical variable for the different levels of a categorical variable. An important distinction is that ridgeline plots require the continuous variable to be on the x-axis and the categorical variable to be on the y-axis. You can create a ridgeline plot using the <code>geom_density_ridges()</code> function from the <code>ggridges</code> package (<code><a href="https://wilkelab.org/ggridges/reference/geom_density_ridges.html">ggridges::geom_density_ridges()</a></code>).</p>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">body_mass_g</span>, y <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggridges</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/ggridges/reference/geom_density_ridges.html">geom_density_ridges</a></span><span class="op">(</span>scale <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-43-1.png" alt="" width="672"></div>
+<p>Using the <code>scale</code> argument gives some space between each distribution.</p>
+<p>Like jitter plots, they serve as the foundation of several different visualizations. For example, a popular extension of the ridgeline plot is to make a raincloud plot:</p>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">body_mass_g</span>, y <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu">ggridges</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/ggridges/reference/geom_density_ridges.html">geom_density_ridges</a></span><span class="op">(</span>jittered_points <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                      position <span class="op">=</span> <span class="st">"raincloud"</span>,</span>
+<span>                      scale <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-44-1.png" alt="" width="672"></div>
+<p>Or variations on raincloud plots that have lineranges (which look better when there is more variability – example <a href="https://www.nature.com/articles/s41562-021-01142-4#Sec2">here</a>), etc.:</p>
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">body_mass_g</span>, y <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggridges</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/ggridges/reference/geom_density_ridges.html">geom_density_ridges</a></span><span class="op">(</span>scale <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, geom <span class="op">=</span> <span class="st">"pointrange"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-45-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 15**</div> -->
+<!--   <div class="panel-body">Create a ridgeline plot to compare the `flipper_length_mm` across the different `species` of penguins. Try out different settings and aesthetics to see how they change your graph (if you want to try an aesthetic **<u>mapping</u>**, only use the singular variable on your y-axis).</div> -->
+<!-- </div> -->
+</div>
+</div>
+<div id="new-arguments-and-functions" class="section level2" number="7.5">
+<h2>
+<span class="header-section-number">7.5</span> New Arguments and Functions<a class="anchor" aria-label="anchor" href="#new-arguments-and-functions"><i class="fas fa-link"></i></a>
+</h2>
+<div id="faceting" class="section level3" number="7.5.1">
+<h3>
+<span class="header-section-number">7.5.1</span> Faceting<a class="anchor" aria-label="anchor" href="#faceting"><i class="fas fa-link"></i></a>
+</h3>
+<p>Any plot of data you have may contain data from several different variables at the same time.</p>
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">bill_depth_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-46-1.png" alt="" width="672"></div>
+<p>While you can help differentiate different subsets of data by adding aesthetics, sometimes you may want to just separate them entirely into different graphs. This is known as “faceting” <em>(not to be confused with facetuning)</em>, and can be done using <code><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid()</a></code>. Faceting allows you to apply the same ggplot code to different subsets of data, generating multiple graphs at the same time.</p>
+<p>In <code><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid()</a></code>, you must specify what <strong>var</strong>iable(<strong>s</strong>) you want to facet by, and whether you want those graphs spread across different <strong>col</strong>umn<strong>s</strong></p>
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">bill_depth_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">island</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-47-1.png" alt="" width="672"></div>
+<p>or spread across different <strong>rows</strong>.</p>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">bill_depth_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span>rows <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">island</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-48-1.png" alt="" width="672"></div>
+<p>For larger datasets, you can facet across rows by one variable and columns by another. This is a quick, easy, and yet very powerful way to explore larger datasets and the conditional relationships that may exist between certain variables.</p>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">bill_depth_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span>rows <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">island</span><span class="op">)</span>,</span>
+<span>               cols <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-49-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 16**</div> -->
+<!--   <div class="panel-body">Take your scatter plot exploring the relationship between a penguin's `bill_length_mm` and their `flipper_length_mm` and do the following:<br> -->
+<!--   1. Facet by `species`. -->
+<!--   2. Facet by `sex`. -->
+<!--   3. Facet by both `species` and `sex`.</div> -->
+<!-- </div> -->
+</div>
+<div id="groups" class="section level3" number="7.5.2">
+<h3>
+<span class="header-section-number">7.5.2</span> Groups<a class="anchor" aria-label="anchor" href="#groups"><i class="fas fa-link"></i></a>
+</h3>
+<p>Previously, when you made a line plot that looked something like this:</p>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">wt</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gear</span><span class="op">)</span>, group <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"line"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-50-1.png" alt="" width="672"></div>
+<p>It was noted that since <code>gear</code> (the x-axis variable) is categorical, ggplot will try to draw individual lines for each level by default. Since, there was only one value for each factor level (the mean), and at least two points are needed to create a line, you had to tell ggplot that each group only had 1 data point by using the <strong><em>group</em></strong> argument.</p>
+<p>This notion of grouping is very powerful and is another way you can plot subsets of data without having to make changes to, or manually compute summaries from, your raw data.</p>
+<p>For example, you can look at how the <code>wt</code> changes across <code>gear</code> for cars with different <code>cyl</code>inders by grouping by <code>cyl</code>.</p>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">wt</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gear</span><span class="op">)</span>, </span>
+<span>               group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span>, color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"line"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-51-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 17**</div> -->
+<!--   <div class="panel-body">Create a line plot to visualize the compare how `flipper_length_mm` varies across penguin `species`, and whether there are any differences between the sexes of each species (think about what the graph would look like to best visualize this). Try out different aesthetic **<u>settings</u>**, and see how they change the graph.</div> -->
+<!-- </div> -->
+<p>Very often in studies implementing within-subjects designs (where there are multiple measurements from the same subject – and particularly in developmental/infant studies), you will see figures that look like this:</p>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-52-1.png" alt="" width="672"></div>
+<p>This is very easily accomplished simply by adding group aesthetic!</p>
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">weight_example</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">Weight</span>, x <span class="op">=</span> <span class="va">Season</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="va">ID</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>When you are grouping your data in your visualization code, you may run into some instances where your graph winds up looking funky. Most often this is the result of overlapping geoms.</p>
+<p>To fix that, you will have to think about positions…</p>
+</div>
+<div id="positions" class="section level3" number="7.5.3">
+<h3>
+<span class="header-section-number">7.5.3</span> Positions<a class="anchor" aria-label="anchor" href="#positions"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-figure"><img src="figures/Ariana_Grande_Positions.png" alt="" width="300px" height="300px" style="display: block; margin: auto;"></div>
+No, nothing to do with Ariana Grande…
+<p style="font-size:10pt">
+<strong>(great album though!)</strong>
+</p>
+<p>ggplot2 has a number of position/adjustment arguments that can be used in these cases. In fact, you have already used one! Jittering is a position adjustment. So, while you can create a jitter plot using <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter()</a></code>, you also could accomplish the same thing using <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> and setting a position argument. e.g.,</p>
+<p><code>geom_point(position = "jitter")</code> or <code>geom_point(position=position_jitter())</code></p>
+<p>These in effect do the same thing. However, if you want to include any specific arguments (e.g., specify how much vertical or horizontal jitter to have), you can only do so by using the longer <code>position_*()</code> format. This helps create reproducible graphs, as the jitter is otherwise random every time the code is ran to create the graph! Changing the positional adjustments can drastically alter the visualization you generate.</p>
+<p>Here are a few quick examples of graphs that came out looking funky, and how using positional adjustments can fix that.</p>
+<div id="identity" class="section level4" number="7.5.3.1">
+<h4>
+<span class="header-section-number">7.5.3.1</span> Identity<a class="anchor" aria-label="anchor" href="#identity"><i class="fas fa-link"></i></a>
+</h4>
+<p>Most things start with “identity” as their default position argument. Identity just overlaps the elements:</p>
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-55-1.png" alt="" width="672"></div>
+<p>This often results in some elements of your visualization being hidden (which definitely seems counterproductive).</p>
+</div>
+<div id="dodging" class="section level4" number="7.5.3.2">
+<h4>
+<span class="header-section-number">7.5.3.2</span> Dodging<a class="anchor" aria-label="anchor" href="#dodging"><i class="fas fa-link"></i></a>
+</h4>
+<p><code>position = “dodge”</code> places overlapping objects directly beside one another. This makes it easier to compare individual values.</p>
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-56-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge2</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-56-2.png" alt="" width="672"></div>
+<p class="text-info">
+<strong><u>Note:</u> The difference between <em>dodge</em> and <em>dodge2</em> is that the latter creates a bit of space between the elements. You will also notice that, compared to <em>identity</em>, the scale of the y-axis for both of these graphs changed.</strong>
+</p>
+<p>This is useful for geoms other than bars as well:</p>
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span>, fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">21</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-57-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span>, fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">21</span>, position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">.75</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-57-2.png" alt="" width="672"></div>
+<p>Probably the most common use case for this will be with error bars and CIs. Observe the following. By default, they are often come out looking funky:</p>
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"b"</span><span class="op">)</span>,</span>
+<span>  y <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">5</span>,</span>
+<span>  g <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, group <span class="op">=</span> <span class="va">g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span>, fill <span class="op">=</span> <span class="st">"grey50"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_errorbar</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">y</span> <span class="op">-</span> <span class="fl">1</span>, ymax <span class="op">=</span> <span class="va">y</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>  width <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>  position <span class="op">=</span> <span class="st">"dodge"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-58-1.png" alt="" width="672"></div>
+<p>Adding some position adjustments corrects this!</p>
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"b"</span><span class="op">)</span>,</span>
+<span>  y <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">5</span>,</span>
+<span>  g <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, group <span class="op">=</span> <span class="va">g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span>, fill <span class="op">=</span> <span class="st">"grey50"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_errorbar</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">y</span> <span class="op">-</span> <span class="fl">1</span>, ymax <span class="op">=</span> <span class="va">y</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>    width <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>    position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-59-1.png" alt="" width="672"></div>
+<p>Sometimes you will want to simultaneously dodge and jitter. You can do both with <code>jitterdodge</code>.</p>
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, y <span class="op">=</span> <span class="va">body_mass_g</span>, fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>outlier.size <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">21</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-60-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, y <span class="op">=</span> <span class="va">body_mass_g</span>, fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>outlier.size <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">21</span>, </span>
+<span>               position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_jitterdodge.html">position_jitterdodge</a></span><span class="op">(</span>jitter.width <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-60-2.png" alt="" width="672"></div>
+<p>This is still quite cluttered and needs more work, but way better than before!</p>
+</div>
+<div id="stacking" class="section level4" number="7.5.3.3">
+<h4>
+<span class="header-section-number">7.5.3.3</span> Stacking<a class="anchor" aria-label="anchor" href="#stacking"><i class="fas fa-link"></i></a>
+</h4>
+<p><code>position = “fill”</code> works like stacking, but makes each set of stacked bars uniform in height. This makes it easier to compare proportions across groups.</p>
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_stack.html">position_fill</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-61-1.png" alt="" width="672"></div>
+<p>However, this can be misleading. Recall that the total number of <code>species</code> == “Gentoo” penguins is much greater than <code>species</code> == “Chinstrap”, even though they do not look <em>TOO</em> different here. So while you can compare the proportions easily, those proportions may correspond to drastically different raw numbers.</p>
+</div>
+</div>
+</div>
+<div id="categorical-categorical" class="section level2" number="7.6">
+<h2>
+<span class="header-section-number">7.6</span> Categorical ~ Categorical<a class="anchor" aria-label="anchor" href="#categorical-categorical"><i class="fas fa-link"></i></a>
+</h2>
+<p>This is a variation on visualizations for one categorical variable, just adding a second variable to the x-axis with an aesthetic mapping.</p>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Counts</span></span>
+<span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-62-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Proportions</span></span>
+<span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_stack.html">position_fill</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-62-2.png" alt="" width="672"></div>
+<p>All you do here is add the <code>fill=</code> mapping aesthetic and set it equal to <code>species</code> (the other categorical variable in the data). As you can see, these are kind of hard to parse, and likely would not be used in practice other than as a quick glimpse for yourself or collaborators.</p>
+<div id="cont-cat-cat" class="section level3" number="7.6.1">
+<h3>
+<span class="header-section-number">7.6.1</span> Cont ~ Cat + Cat<a class="anchor" aria-label="anchor" href="#cont-cat-cat"><i class="fas fa-link"></i></a>
+</h3>
+<p>Add another aesthetic to any Cont ~ Cat</p>
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span><span class="co">#height = 0, width = 0.2, </span></span>
+<span>              size <span class="op">=</span> <span class="fl">1</span>, alpha <span class="op">=</span> <span class="fl">0.7</span>,</span>
+<span>              <span class="co">#color = "darkgreen",</span></span>
+<span>              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span>,</span>
+<span>              pch <span class="op">=</span> <span class="fl">21</span>,</span>
+<span>              position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_jitterdodge.html">position_jitterdodge</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"pointrange"</span>,</span>
+<span>               color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>               <span class="co">#fill = "red",</span></span>
+<span>               shape <span class="op">=</span> <span class="fl">21</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="va">species</span>,</span>
+<span>                   fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span>,</span>
+<span>               position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-63-1.png" alt="" width="672"></div>
+<p>or facet</p>
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0</span>, width <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>              size <span class="op">=</span> <span class="fl">2</span>, alpha <span class="op">=</span> <span class="fl">0.4</span>,</span>
+<span>              pch <span class="op">=</span> <span class="fl">21</span>,</span>
+<span>              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="va">island</span>,</span>
+<span>                   fill <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"linerange"</span>,</span>
+<span>               color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"point"</span>,</span>
+<span>               color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>               shape <span class="op">=</span> <span class="fl">21</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">2.5</span>,</span>
+<span>               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill<span class="op">=</span><span class="va">island</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-64-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 18**</div> -->
+<!--   <div class="panel-body">Pick your favorite visualization you created that compares `flipper_length_mm` across the different `species` of penguins, and show how that comparison varies by `sex`. You can do this by adding a new aesthetic or faceting. Which do you think looks better and why? Try out different aesthetics to see how they change your graph.</div> -->
+<!-- </div> -->
+<div id="raster" class="section level4" number="7.6.1.1">
+<h4>
+<span class="header-section-number">7.6.1.1</span> Raster<a class="anchor" aria-label="anchor" href="#raster"><i class="fas fa-link"></i></a>
+</h4>
+<p>These are useful for looking how a variable of interest varies as a function of two other variables. Particularly when your categorical variables have many levels.</p>
+<!-- For example, when we are trying to fit a model with two parameters, we might be interested to see how well the model does for different combinations of these two parameters. Here, we'll plot what carat values diamonds of different color and clarity have. -->
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>,</span>
+<span>             y <span class="op">=</span> <span class="va">species</span>,</span>
+<span>             z <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary_2d.html">stat_summary_2d</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"tile"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-65-1.png" alt="" width="672"></div>
+<p>Looks way better when there are more levels to your variables, for example:</p>
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">diamonds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">color</span>,</span>
+<span>             y <span class="op">=</span> <span class="va">clarity</span>,</span>
+<span>             z <span class="op">=</span> <span class="va">carat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary_2d.html">stat_summary_2d</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"tile"</span>,</span>
+<span>                  color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-66-1.png" alt="" width="672"></div>
+<!-- I’ve added some outlines to the tiles by specifying color = "black" in geom_tile() and I’ve changed the scale for the fill gradient. I’ve defined the color for the low value to be “white”, and for the high value to be “black.” Finally, I’ve changed the lower and upper limit of the scale via the limits argument. Looks much better now! We see that diamonds with clarity I1 and color J tend to have the highest carat values on average. -->
+</div>
+<div id="extras" class="section level4" number="7.6.1.2">
+<h4>
+<span class="header-section-number">7.6.1.2</span> Extras<a class="anchor" aria-label="anchor" href="#extras"><i class="fas fa-link"></i></a>
+</h4>
+<p>You may be asked to make visualizations like the following. You should not, but here is code in case it is needed.</p>
+<p>Bars:</p>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>,</span>
+<span>             y <span class="op">=</span> <span class="va">body_mass_g</span>,</span>
+<span>             group <span class="op">=</span> <span class="va">sex</span>,</span>
+<span>             fill <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"bar"</span>,</span>
+<span>               position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span>,</span>
+<span>               color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"linerange"</span>,</span>
+<span>               position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-67-1.png" alt="" width="672"></div>
+<p>Lines:</p>
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>,</span>
+<span>             y <span class="op">=</span> <span class="va">body_mass_g</span>,</span>
+<span>             group <span class="op">=</span> <span class="va">sex</span>,</span>
+<span>             color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"line"</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"pointrange"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-68-1.png" alt="" width="672"></div>
+<p>Fancier lines:</p>
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>,</span>
+<span>             y <span class="op">=</span> <span class="va">body_mass_g</span>,</span>
+<span>             group <span class="op">=</span> <span class="va">sex</span>,</span>
+<span>             color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"line"</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"pointrange"</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                              by <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                              length.out <span class="op">=</span> <span class="fl">3.5</span><span class="op">)</span>,</span>
+<span>             linetype <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>             color <span class="op">=</span> <span class="st">"gray20"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-69-1.png" alt="" width="672"></div>
+</div>
+</div>
+<div id="cont-cont-cat" class="section level3" number="7.6.2">
+<h3>
+<span class="header-section-number">7.6.2</span> Cont ~ Cont + Cat<a class="anchor" aria-label="anchor" href="#cont-cont-cat"><i class="fas fa-link"></i></a>
+</h3>
+<p>Faceting scatter plots:</p>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">bill_depth_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-70-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 19**</div> -->
+<!--   <div class="panel-body">Take the visualization you created above to explore the relationship between a penguin's `bill_length_mm` and `flipper_length_mm`, and see if this relationship varies based on which `island` a penguin lives.</div> -->
+<!-- </div> -->
+</div>
+<div id="cont-cont-cont" class="section level3" number="7.6.3">
+<h3>
+<span class="header-section-number">7.6.3</span> Cont ~ Cont + Cont<a class="anchor" aria-label="anchor" href="#cont-cont-cont"><i class="fas fa-link"></i></a>
+</h3>
+<p>Similar to a 2d histogram except instead of counts, the z-axis shows values on a continuous variable.</p>
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_depth_mm</span>,</span>
+<span>             z <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary_2d.html">stat_summary_2d</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-71-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_depth_mm</span>,</span>
+<span>             z <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary_2d.html">stat_summary_hex</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-71-2.png" alt="" width="672"></div>
+</div>
+</div>
+<div id="custom-geoms" class="section level2" number="7.7">
+<h2>
+<span class="header-section-number">7.7</span> Custom geoms<a class="anchor" aria-label="anchor" href="#custom-geoms"><i class="fas fa-link"></i></a>
+</h2>
+<p>With one exception, all the visualizations covered above use the geoms built in with ggplot2. However, as you saw from that one exception, there are packages that contain many other geoms to use with ggplot! In addition to loading new geoms from packages, you can use code to create them yourself. Code is included here to create 2 geoms that can be used to make 2 visualizations that are currently pretty popular:</p>
+<div id="split-violin-plot" class="section level3" number="7.7.1">
+<h3>
+<span class="header-section-number">7.7.1</span> Split Violin Plot<a class="anchor" aria-label="anchor" href="#split-violin-plot"><i class="fas fa-link"></i></a>
+</h3>
+<p>A split violin plot allows you to easily compare two groups (and across the levels of another variable).</p>
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"geom_split_violin.R"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, y <span class="op">=</span> <span class="va">body_mass_g</span>, fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_split_violin</span><span class="op">(</span>trim <span class="op">=</span> <span class="cn">FALSE</span>, alpha <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">.2</span>, alpha <span class="op">=</span> <span class="fl">.6</span>, </span>
+<span>               fatten <span class="op">=</span> <span class="cn">NULL</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, geom <span class="op">=</span> <span class="st">"pointrange"</span>, </span>
+<span>               show.legend <span class="op">=</span> <span class="cn">F</span>, </span>
+<span>               position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge</a></span><span class="op">(</span><span class="fl">.175</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-73-1.png" alt="" width="672"></div>
+<p class="text-info">
+<strong><u>Note:</u> This only works if you are comparing two groups! You could imagine how it would be difficult to create this visualization if each island had measurements from more than 2 species. It would not be possible for 3 violins and 3 box plots to work.</strong>
+</p>
+</div>
+<div id="raincloud" class="section level3" number="7.7.2">
+<h3>
+<span class="header-section-number">7.7.2</span> Raincloud<a class="anchor" aria-label="anchor" href="#raincloud"><i class="fas fa-link"></i></a>
+</h3>
+<p>Raincloud plots were mentioned in passing above. However, they can be extremely effective ways of communicating a lot of information. Below is an example and template code for a more fleshed out version.</p>
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"geom_flat_violin.R"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rain_height</span> <span class="op">&lt;-</span> <span class="fl">.1</span></span>
+<span></span>
+<span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="va">body_mass_g</span>, fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># clouds  </span></span>
+<span>  <span class="fu">geom_flat_violin</span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_nudge.html">position_nudge</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rain_height</span><span class="op">+</span><span class="fl">.05</span><span class="op">)</span>,</span>
+<span>                   alpha <span class="op">=</span> <span class="fl">0.4</span>, trim <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="co"># rain</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">2</span>, </span>
+<span>             alpha <span class="op">=</span> <span class="fl">.5</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span>, </span>
+<span>              position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_jitter.html">position_jitter</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.05</span>, height <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># boxplots</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.05</span>, alpha <span class="op">=</span> <span class="fl">0.4</span>, </span>
+<span>               show.legend <span class="op">=</span> <span class="cn">FALSE</span>, outlier.shape <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>               position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_nudge.html">position_nudge</a></span><span class="op">(</span>x <span class="op">=</span> <span class="op">-</span><span class="va">rain_height</span><span class="op">*</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># mean and SE point in the cloud</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="va">mean_cl_normal</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span><span class="op">)</span>, </span>
+<span>               show.legend <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>               position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_nudge.html">position_nudge</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">rain_height</span> <span class="op">*</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># adjust layout</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">""</span>, expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">rain_height</span><span class="op">*</span><span class="fl">3</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0.7</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2000</span>, <span class="fl">7000</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-75-1.png" alt="" width="672"></div>
+</div>
+</div>
+<div id="best-practices" class="section level2" number="7.8">
+<h2>
+<span class="header-section-number">7.8</span> Best Practices:<a class="anchor" aria-label="anchor" href="#best-practices"><i class="fas fa-link"></i></a>
+</h2>
+<p>Below are some guidelines and best practices that should be considered when designing your visualizations.</p>
+<ul>
+<li>Graphs should be EASILY readable, first and foremost. This should be the top design philosophy when constructing your graphs.
+<ul>
+<li>Label everything (axes, titles, legends, anything else) and make labels intuitive.</li>
+<li>Follow conventions: y = response variable, x = predictor, be mindful of variable types, etc.</li>
+<li>People should not need to review the caption to understand what the visualization is showing.</li>
+</ul>
+</li>
+<li>Graphs should be purposeful
+<ul>
+<li>What is the specific relationship or trend in your data that you are trying to communicate with this visualization?</li>
+</ul>
+</li>
+<li>Graphs should facilitate quantitative interpretation and comparison, and allow for inferential statistics by eye.
+<ul>
+<li>Represent variability (show the full distribution, include error bars or confidence intervals).</li>
+<li>Show relationship trends, means, etc.</li>
+</ul>
+</li>
+<li>Cool =/= best.
+<ul>
+<li>Just because you <strong><u>can</u></strong> make some crazy complex graph that visualizes a lot of different variables, or might even be interactive and show you a lot of information, does not mean that is the best thing to do. Just because you CAN do something does not always mean you SHOULD. Keep things simple and clean, following the conventions for that type of data or relationship.</li>
+</ul>
+</li>
+<li>Make your visualization aesthetically pleasing but not at the cost of wasting ink.</li>
+</ul>
+</div>
+<div id="extra-resources" class="section level2" number="7.9">
+<h2>
+<span class="header-section-number">7.9</span> Extra Resources<a class="anchor" aria-label="anchor" href="#extra-resources"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><a href="https://ggplot2.tidyverse.org/reference/">ggplot2 reference</a></li>
+<li><a href="http://www.cookbook-r.com/Graphs/">R graphics cookbook</a></li>
+<li><a href="https://ggplot2-book.org/">ggplot2 book</a></li>
+<li><a href="https://rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">ggplot2 cheat sheet</a></li>
+<li><a href="https://datavizcatalogue.com/index.html">Help understand different types of graphs</a></li>
+<li><a href="https://www.data-to-viz.com/">Recommendations on best graphs for visualizing particular relationships</a></li>
+<li><a href="https://www.r-graph-gallery.com/index.html">r-specific information on how to construct graphs</a></li>
+<li><a href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html">More r-specific stuff. Top 50 ggplot geoms</a></li>
+<li><a href="https://plotly-r.com/overview.html">Info on plotly</a></li>
+<li><a href="https://exts.ggplot2.tidyverse.org/gallery/">ggplot2 extensions</a></li>
+<li><a href="https://serialmentor.com/dataviz/">Fundamentals of Data Visualization</a></li>
+</ul>
+</div>
+<div id="citations" class="section level2" number="7.10">
+<h2>
+<span class="header-section-number">7.10</span> Citations<a class="anchor" aria-label="anchor" href="#citations"><i class="fas fa-link"></i></a>
+</h2>
+<p>As always, most illustrations by <a href="https://twitter.com/allison_horst"><span class="citation">Horst (2022)</span></a></p>
+<p>Custom violin plots modified from source code <a href="https://psyteachr.github.io/introdataviz/advanced-plots.html">here</a></p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="aesthetics.html"><span class="header-section-number">6</span> Aesthetics</a></div>
+<div class="next"><a href="customization.html"><span class="header-section-number">8</span> Customization</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#different-geoms-and-when-to-use-them"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></li>
+<li>
+<a class="nav-link" href="#one-categorical"><span class="header-section-number">7.1</span> One Categorical</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#bar"><span class="header-section-number">7.1.1</span> Bar</a></li>
+<li><a class="nav-link" href="#pie"><span class="header-section-number">7.1.2</span> Pie</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#one-continuous"><span class="header-section-number">7.2</span> One Continuous</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#histogram"><span class="header-section-number">7.2.1</span> Histogram</a></li>
+<li><a class="nav-link" href="#density"><span class="header-section-number">7.2.2</span> Density</a></li>
+<li><a class="nav-link" href="#vlines"><span class="header-section-number">7.2.3</span> vlines</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#continuous-continuous"><span class="header-section-number">7.3</span> Continuous ~ Continuous</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#scatter-plot"><span class="header-section-number">7.3.1</span> Scatter plot</a></li>
+<li><a class="nav-link" href="#d-histogram"><span class="header-section-number">7.3.2</span> 2d Histogram</a></li>
+<li><a class="nav-link" href="#adding-conditional-means"><span class="header-section-number">7.3.3</span> Adding Conditional Means</a></li>
+<li><a class="nav-link" href="#rugs-and-margins"><span class="header-section-number">7.3.4</span> Rugs and Margins</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#continuous-categorical"><span class="header-section-number">7.4</span> Continuous ~ Categorical</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#stat_summary"><span class="header-section-number">7.4.1</span> stat_summary()</a></li>
+<li><a class="nav-link" href="#error-bars"><span class="header-section-number">7.4.2</span> Error bars</a></li>
+<li><a class="nav-link" href="#boxplots"><span class="header-section-number">7.4.3</span> Boxplots</a></li>
+<li><a class="nav-link" href="#problem-with-summary-stats"><span class="header-section-number">7.4.4</span> Problem With Summary Stats</a></li>
+<li><a class="nav-link" href="#violin-plots"><span class="header-section-number">7.4.5</span> Violin Plots</a></li>
+<li><a class="nav-link" href="#jitter-plots"><span class="header-section-number">7.4.6</span> Jitter Plots</a></li>
+<li><a class="nav-link" href="#variations-on-jitter"><span class="header-section-number">7.4.7</span> Variations on Jitter</a></li>
+<li><a class="nav-link" href="#ridgeline-plot"><span class="header-section-number">7.4.8</span> Ridgeline Plot</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#new-arguments-and-functions"><span class="header-section-number">7.5</span> New Arguments and Functions</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#faceting"><span class="header-section-number">7.5.1</span> Faceting</a></li>
+<li><a class="nav-link" href="#groups"><span class="header-section-number">7.5.2</span> Groups</a></li>
+<li><a class="nav-link" href="#positions"><span class="header-section-number">7.5.3</span> Positions</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#categorical-categorical"><span class="header-section-number">7.6</span> Categorical ~ Categorical</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#cont-cat-cat"><span class="header-section-number">7.6.1</span> Cont ~ Cat + Cat</a></li>
+<li><a class="nav-link" href="#cont-cont-cat"><span class="header-section-number">7.6.2</span> Cont ~ Cont + Cat</a></li>
+<li><a class="nav-link" href="#cont-cont-cont"><span class="header-section-number">7.6.3</span> Cont ~ Cont + Cont</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#custom-geoms"><span class="header-section-number">7.7</span> Custom geoms</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#split-violin-plot"><span class="header-section-number">7.7.1</span> Split Violin Plot</a></li>
+<li><a class="nav-link" href="#raincloud"><span class="header-section-number">7.7.2</span> Raincloud</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#best-practices"><span class="header-section-number">7.8</span> Best Practices:</a></li>
+<li><a class="nav-link" href="#extra-resources"><span class="header-section-number">7.9</span> Extra Resources</a></li>
+<li><a class="nav-link" href="#citations"><span class="header-section-number">7.10</span> Citations</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-08-20.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

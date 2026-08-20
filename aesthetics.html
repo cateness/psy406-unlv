@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 6 Aesthetics | PSY406</title>
+<meta name="author" content="Catie Nielson (with help from Ethan Hurwitz)">
+<meta name="description" content="library(tidyverse) library(palmerpenguins)  6.1 Color  In looking at the graph created in the last section (shown above), it kind of seems like there may be different groups or clusters of...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="Chapter 6 Aesthetics | PSY406">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://cateness.github.io/psy406-unlv/aesthetics.html">
+<meta property="og:description" content="library(tidyverse) library(palmerpenguins)  6.1 Color  In looking at the graph created in the last section (shown above), it kind of seems like there may be different groups or clusters of...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 6 Aesthetics | PSY406">
+<meta name="twitter:description" content="library(tidyverse) library(palmerpenguins)  6.1 Color  In looking at the graph created in the last section (shown above), it kind of seems like there may be different groups or clusters of...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">PSY406</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
+<li class="book-part">R Basics</li>
+<li><a class="" href="why-use-r.html"><span class="header-section-number">2</span> Why use R?</a></li>
+<li><a class="" href="r-coding-basics.html"><span class="header-section-number">3</span> R Coding Basics</a></li>
+<li><a class="" href="using-r-effectively.html"><span class="header-section-number">4</span> Using R Effectively</a></li>
+<li class="book-part">Visualizations</li>
+<li><a class="" href="intro-to-ggplot2.html"><span class="header-section-number">5</span> Intro to ggplot2</a></li>
+<li><a class="active" href="aesthetics.html"><span class="header-section-number">6</span> Aesthetics</a></li>
+<li><a class="" href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></li>
+<li><a class="" href="customization.html"><span class="header-section-number">8</span> Customization</a></li>
+<li><a class="" href="color-theory.html"><span class="header-section-number">9</span> Color Theory</a></li>
+<li class="book-part">Data Manipulation</li>
+<li><a class="" href="control-flow.html"><span class="header-section-number">10</span> Control Flow</a></li>
+<li><a class="" href="tidy-data-and-tidyverse.html"><span class="header-section-number">11</span> Tidy Data and Tidyverse</a></li>
+<li><a class="" href="basic-wrangling.html"><span class="header-section-number">12</span> Basic Wrangling</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="aesthetics" class="section level1" number="6">
+<h1>
+<span class="header-section-number">6</span> Aesthetics<a class="anchor" aria-label="anchor" href="#aesthetics"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></span></code></pre></div>
+<div id="color" class="section level2" number="6.1">
+<h2>
+<span class="header-section-number">6.1</span> Color<a class="anchor" aria-label="anchor" href="#color"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-2-1.png" alt="" width="672"></div>
+<p>In looking at the graph created in the last section (shown above), it kind of seems like there may be different groups or clusters of penguins in this data. When you notice a pattern like this, it is worth looking into further and considering what variables you have in our data that could be related.</p>
+<p>One way the penguins seem to be grouped is with a cluster at the top and another at the bottom:</p>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672"></div>
+<p>This might correspond to the <code>sex</code> variable in the dataset! Maybe it is the case that the bigger penguins were males, and the smaller ones were females?</p>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672"></div>
+<p>This idea could be explored if there was some way to visually indicate which of the observations on the graph were from male penguins and which were from female. Specifically, you want the <em>color</em> of the points to different based on the value for that observation’s <code>sex</code>. In fact… you can do just that! One of the best parts about coding is, you can always just try to run some code and see what happens!</p>
+<div class="rmdwarning">
+<p style="font-size:10pt">
+It is often helpful to declare formal predictions. To do so, you specify two mutually exclusive alternatives that you <em>could</em> see when exploring some idea.
+</p>
+<ul>
+<li>“If it is the case that the differences in penguin size could be explained by what sex they are (e.g., bigger penguins were males and the smaller ones were females), then all the points in the cluster at the top would be one color and all the points in the cluster at the bottom would be a different color. If it is not the case that the differences in penguin size could be explained by what sex they are, the points in each of the two clusters would not have distinct colors.”</li>
+</ul>
+</div>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>                       x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span>,</span>
+<span>         color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672"></div>
+<p>Uh… okay. So, that did not work. OH! Remember from above that <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> is used to tell ggplot what variables from the data should be <em>mapped</em> to the aesthetics you want to render on your graph? Color needs to be passed as another argument to the aesthetics of the plot via <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>.</p>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>                       x <span class="op">=</span> <span class="va">bill_length_mm</span>,</span>
+<span>                       color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-6-1.png" alt="" width="672"></div>
+<blockquote>
+<p>“Start by telling ggplot to use the <code>penguins</code> dataframe for the data, map flipper length to the y-axis and bill length to the x-axis. Represent each observation with a point, <strong>and map sex to the color of each point.</strong>”</p>
+</blockquote>
+<p>That is more like it! This does not really look like what you may have thought it might though. It is consistent with the other possible outcome, where sex does not explain the differences in penguin size. However, after looking at this more carefully, it actually kind of looks like there are 3 distinct clusters, not 2.</p>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672"></div>
+<p>This might correspond to the <code>species</code> variable in the dataset! Maybe it is the case that different penguin species differ in size? That actually makes a lot more sense. This idea can be tested as well!</p>
+<div class="rmdwarning">
+<ul>
+<li>“If it is the case that the differences in penguin size could be explained by what species they are, then all the points in each cluster would have distinct colors. If it is not the case that the differences in penguin size could be explained by what species they are, the points in each of the clusters would not have distinct colors.”</li>
+</ul>
+</div>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>                       x <span class="op">=</span> <span class="va">bill_length_mm</span>,</span>
+<span>                       color <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672"></div>
+<blockquote>
+<p>“Start by telling ggplot to use the <code>penguins</code> dataframe for the data, map flipper length to the y-axis and bill length to the x-axis. Represent each observation with a point, <strong>and map <em>species</em> to the color of each point.</strong>”</p>
+</blockquote>
+<div class="rmdimportant">
+<p>In the visualization it can be seen that, generally speaking, penguins with greater flipper length tend to have greater bill length as well. There seems to be a positive linear relationship between bill length and flipper length such that, as flipper length increases, bill length increases in turn. <strong>Additionally, penguins of the same species tend to have similar flipper and bill lengths, which are distinct from other species. Adelie penguins tend to have the shortest lengths, and Gentoo the longest. Chinstrap penguins seem to have shorter flippers but longer bills.</strong></p>
+</div>
+<p>Hot dang, looks like this could be a promising explanation for how penguins differ in size! There would obviously need to be some kind of formal statistical analysis to know for sure, but visualizing your raw data in ways like this allow you to quickly get insights into different questions you may want to use your data to answer.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 1**</div> -->
+<!--   <div class="panel-body">Think about what patterns you notice in the visualization you created, and test whether `sex` or `species` might explain those patterns. Make a prediction, test that prediction, and then describe what you see.</div> -->
+<!-- </div> -->
+<div id="global-vs-local-aesthetics" class="section level3" number="6.1.1">
+<h3>
+<span class="header-section-number">6.1.1</span> Global vs Local Aesthetics<a class="anchor" aria-label="anchor" href="#global-vs-local-aesthetics"><i class="fas fa-link"></i></a>
+</h3>
+<p>When first describing This visualization, one of the things noted was that, <em>“There seems to be a positive linear relationship between bill length and flipper length such that, as flipper length increases, bill length increases in turn.”</em> It can be helpful to add the line of best fit to actually see this linear relationship. You can do this by using <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code>. A few arguments need to be set within <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code>, but you do not have to worry much about those.</p>
+<p>The code from above will be copy/pasted and the new <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> call can be added directly to it. By doing so the best fitting line for all of the data will be displayed.</p>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>                       x <span class="op">=</span> <span class="va">bill_length_mm</span>,</span>
+<span>                       color <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672"></div>
+<blockquote>
+<p>“Start by telling ggplot to use the <code>penguins</code> dataframe for the data, map flipper length to the y-axis and bill length to the x-axis. Represent each observation with a point, and map <em>species</em> to the color of each point. <strong>Add a line of best fit for the data.</strong>”</p>
+</blockquote>
+<p>Hey, wait, that is not quite what was expected… Instead of there being one line for all of the data, it looks like there is a line for each species. What is happening here is highlighting the difference between a <strong><u>global</u></strong> aesthetic (those put in the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> call and apply to ALL added parts of your graph) and a <strong><u>local</u></strong> aesthetic (those put in individual geoms and apply only to those individual ones).</p>
+<p>Color should be moved into the <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> call, because that is the only thing that should be mapped to the values of <code>species</code> in the data.</p>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672"></div>
+<p>Alright! The points are still colored by species, but there is just the one line for all the data, as was originally intended. You will also notice that a <code>mapping=</code> was not specified in <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>, and it was removed from the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> as well! It actually is not necessary to specify that. Once you have the hang of things, you can leave that part out.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 2**</div> -->
+<!--   <div class="panel-body">Add in the line of best fit to your graph with `geom_smooth()`, making sure that your code produces a single line that is fit to ***all*** your data.</div> -->
+<!-- </div> -->
+</div>
+<div id="setting-vs-mapping-aesthetics" class="section level3" number="6.1.2">
+<h3>
+<span class="header-section-number">6.1.2</span> Setting vs Mapping Aesthetics<a class="anchor" aria-label="anchor" href="#setting-vs-mapping-aesthetics"><i class="fas fa-link"></i></a>
+</h3>
+<p>Above, to change the color of your points (and inadvertently our line of best fit), the <code>color</code> argument was specified in the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> call to map the values to the <code>species</code> variable in the data. What if you did not want to map something to a variable in your data? What if you just want to set the value of something yourself? You might think, “maybe I just take it out of the <code>mapping = aes()</code> part?” And you would be right, because you are smart! Look at the example below that does just that to try and change all the points to orange (so they have a good contrast with the line).</p>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">orange</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error:</span></span>
+<span><span class="co">#&gt; ! object 'orange' not found</span></span></code></pre></div>
+<p>Well, okay, this obviously is not right because it results in an error:</p>
+<p style="color:#A79BF0">
+<strong>Error in layer(data = data, mapping = mapping, stat = stat, geom = GeomPoint, : object ‘orange’ not found</strong>
+</p>
+<p>By writing <code>orange</code> like this, R thinks it is a variable in the <code>penguins</code> dataset that was piped in to ggplot! To tell R that this <strong>is NOT</strong> a variable/object that is defined, and instead just the color orange, you use quotes.</p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"orange"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-12-1.png" alt="" width="672"></div>
+<p>Much better! You can do this for any geom:</p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"orange"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span>, color <span class="op">=</span> <span class="st">"purple"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-13-1.png" alt="" width="672"></div>
+<p class="text-info">
+<strong><u>Note:</u> Aesthetic settings can only be set locally, not globally. Aesthetic mappings can be local OR global.</strong>
+</p>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span>,</span>
+<span>         color <span class="op">=</span> <span class="st">"orange"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-14-1.png" alt="" width="672"></div>
+</div>
+<div id="setting-colors" class="section level3" number="6.1.3">
+<h3>
+<span class="header-section-number">6.1.3</span> Setting Colors<a class="anchor" aria-label="anchor" href="#setting-colors"><i class="fas fa-link"></i></a>
+</h3>
+<p>When setting a color, this can be done by name, as was done above, or by hexcode:</p>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#9FE2BF"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span>, color <span class="op">=</span> <span class="st">"#FFBF00"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-15-1.png" alt="" width="672"></div>
+<p>A neat thing you can do is to set your colors based on some logical operation! For example, if you wanted to color penguins with flipper lengths <em>greater</em> than 200 as one color, and those with flipper lengths <em>not great</em> than 200 another color, you could do the following:</p>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">flipper_length_mm</span> <span class="op">&gt;</span> <span class="fl">200</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span>, color <span class="op">=</span> <span class="st">"#FFBF00"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-16-1.png" alt="" width="672"></div>
+<p>Notice that the color was just set to be equal to a simple logical test! This is still a mapped aesthetic, because it will be based on values of a variable in your data.</p>
+<!-- You can also set colors by using palettes from different packages. We will talk more about this later, but one package we will use often is `viridis`. -->
+<!-- ```{r warning=FALSE, message=FALSE} -->
+<!-- penguins %>% -->
+<!--   ggplot(aes(y = flipper_length_mm, -->
+<!--              x = bill_length_mm)) + -->
+<!--   geom_point(aes(color = species)) + -->
+<!--   geom_smooth(method = "lm", se = FALSE)+ -->
+<!--   scale_color_viridis_d() -->
+<!-- ``` -->
+<!-- >"Start by telling ggplot to use the `penguins` dataframe for our data, map flipper length to the y-axis and bill length to the x-axis. Represent each observation with a point, and map species to the color of each point. Add a line of best fit for our data, **and use the viridis color palette for our discrete mapped variable.**" -->
+<p>There are tons of good color guides you can find on google. Here are couple:</p>
+<ul>
+<li><a href="figures/ggplot_colors.png">one</a></li>
+<li><a href="https://github.com/EarlGlynn/colorchart/raw/master/ColorChart.pdf">two</a></li>
+<li>
+<a href="figures/ggplot_colors2.png">three</a><br>
+</li>
+</ul>
+<p>More on colors will be covered in a later lesson.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 3**</div> -->
+<!--   <div class="panel-body">Use R code to recreate the graphs below: -->
+<!-- <br> -->
+<!-- A. Make a visualization to investigate the relationship between bill length (on the y-axis) and bill depth (on the x-axis).  -->
+<!-- ```{r echo=FALSE, include=FALSE, results='hide', warning=FALSE, message=FALSE} -->
+<!-- penguins %>% -->
+<!--   ggplot(aes(y = bill_length_mm, x = bill_depth_mm)) +  -->
+<!--   geom_point() -->
+<!-- ``` -->
+<!-- B. -->
+<!-- ```{r warning=FALSE, echo=FALSE} -->
+<!-- penguins %>% -->
+<!--   ggplot(aes(y = bill_length_mm, x = bill_depth_mm, -->
+<!--              color = species)) +  -->
+<!--   geom_point() -->
+<!-- ``` -->
+<!-- C. Make a visualization to investigate the relationship between between body mass and flipper length. In doing so, make the geometric figure rendering the observations appear in blue. -->
+<!-- ```{r echo=FALSE, include=FALSE, results='hide', warning=FALSE} -->
+<!-- penguins %>% -->
+<!--   ggplot(aes(y = body_mass_g, x = flipper_length_mm)) +  -->
+<!--   geom_point(color = "blue") -->
+<!-- ``` -->
+<!-- D. -->
+<!-- ```{r warning=FALSE, echo=FALSE, message=FALSE} -->
+<!-- penguins %>% -->
+<!--   ggplot(aes(y = body_mass_g, x = flipper_length_mm)) +  -->
+<!--   geom_point(color = "blue") +  -->
+<!--   geom_smooth(method = "lm", se = FALSE, color = "black") -->
+<!-- ``` -->
+<!-- E. -->
+<!-- ```{r warning=FALSE, echo=FALSE, message=FALSE} -->
+<!-- penguins %>% -->
+<!--   ggplot(aes(y = body_mass_g, x = flipper_length_mm)) +  -->
+<!--   geom_point(aes(color = flipper_length_mm > 210)) +  -->
+<!--   geom_smooth(method = "lm", se = FALSE, color = "black") -->
+<!-- ``` -->
+<!-- </div></div> -->
+</div>
+</div>
+<div id="shape" class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> Shape<a class="anchor" aria-label="anchor" href="#shape"><i class="fas fa-link"></i></a>
+</h2>
+<div id="mapping" class="section level3" number="6.2.1">
+<h3>
+<span class="header-section-number">6.2.1</span> Mapping<a class="anchor" aria-label="anchor" href="#mapping"><i class="fas fa-link"></i></a>
+</h3>
+<p>Color is one of the aesthetics you can change, but there are many others too! Another one is shape. Like color, shape can be mapped to a variable in your data. In addition to changing the color of the points by <code>species</code>, the code below will change their shape too!</p>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span>,</span>
+<span>                 shape <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-17-1.png" alt="" width="672"></div>
+<blockquote>
+<p>“Start by telling ggplot to use the <code>penguins</code> dataframe for the data, map flipper length to the y-axis and bill length to the x-axis. Represent each observation with a point, and map species to the color of each point. Add a line of best fit for the data <strong>and change the shape of each point to be mapped to species.</strong>”</p>
+</blockquote>
+<p>However, you do not have to map the same aesthetic. The shape could be mapped to a different aesthetic too! Consider what happens when mapping it to <code>island</code> instead.</p>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span>,</span>
+<span>                 shape <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-18-1.png" alt="" width="672"></div>
+<p>You will now notice instead of each coloring having one shape, as when you mapped them to the same variable, now the colors can have multiple shapes! Mapping another variable to a different aesthetic visualizes even more data and patterns in your dataset! It can quickly become overwhelming and difficult to interpret though, so it is often best to try to just communicate one main relationship or pattern in your visualizations. For practice though, you can go nuts!</p>
+</div>
+<div id="setting" class="section level3" number="6.2.2">
+<h3>
+<span class="header-section-number">6.2.2</span> Setting<a class="anchor" aria-label="anchor" href="#setting"><i class="fas fa-link"></i></a>
+</h3>
+<p>There are a number of different shapes you can choose from when setting yourself. These can be selected by number:</p>
+<div class="inline-figure"><img src="figures/ggplot_shapes_num.png" style="width:100.0%"></div>
+<p>or by name:</p>
+<img src="figures/ggplot_shapes_name.png" style="width:100.0%"><p style="font-size:8pt">
+Source: <a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html#point">ggplot documentation</a>
+</p>
+<p>You will notice that for several shapes, there appear to be different versions. For example, there appears to be 3 different kinds of triangles. Their differences are compared below:</p>
+<ul>
+<li>17 or ‘triangle’
+<ul>
+<li>Solid color shape</li>
+</ul>
+</li>
+</ul>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span><span class="op">)</span>,</span>
+<span>             shape <span class="op">=</span> <span class="fl">17</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-19-1.png" alt="" width="672"></div>
+<ul>
+<li>2 or ‘triangle open’
+<ul>
+<li>Colored shape outline with hollow center</li>
+</ul>
+</li>
+</ul>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span><span class="op">)</span>,</span>
+<span>             shape <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-20-1.png" alt="" width="672"></div>
+<ul>
+<li>24 or ‘triangle filled’
+<ul>
+<li>Colored shape outline with center that can be filled with another color</li>
+</ul>
+</li>
+</ul>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span><span class="op">)</span>,</span>
+<span>             shape <span class="op">=</span> <span class="fl">24</span>,</span>
+<span>             fill <span class="op">=</span> <span class="st">'darkgrey'</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-21-1.png" alt="" width="672"></div>
+<p>This introduces another way to change colors in ggplot! When changing the color of something, some geoms have a ‘color’ argument, some have a ‘fill’ argument, and some, like here, have both! ‘color’ often refers to the outline/outside, while ‘fill’ often refers to… well, the fill!</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 4**</div> -->
+<!--   <div class="panel-body"><u>Part 1:</u><br>Take the code you produced for Exercise 2 and 1. Change the shape to be solid color squares mapped to the `species` variable. 2. Change the shape to be hollow squares mapped to the `species` variable. 3. Change the shape to be filled squares mapped to the `species` variable, and fill with a color of your choosing. -->
+<!--   <br> -->
+<!--   <br> -->
+<!--   <u>Part 2:</u><br> -->
+<!--   Use R code to recreate the graphs below: -->
+<!--   <br> -->
+<!-- 1.  -->
+<!-- ```{r warning=FALSE, echo=FALSE, message=FALSE} -->
+<!-- penguins %>% -->
+<!--   ggplot(aes(y = flipper_length_mm, x = bill_length_mm)) +  -->
+<!--   geom_point(aes(color = species, -->
+<!--                  shape = island)) +  -->
+<!--   geom_smooth(method = 'lm', se = FALSE) -->
+<!-- ``` -->
+<!-- 2.  -->
+<!-- ```{r warning=FALSE, echo=FALSE, message=FALSE} -->
+<!-- penguins %>% -->
+<!--   ggplot(aes(y = body_mass_g, x = bill_depth_mm)) +  -->
+<!--   geom_point(aes(color = species), -->
+<!--              shape = 4) -->
+<!-- ``` -->
+<!-- 3.  -->
+<!-- ```{r warning=FALSE, echo=FALSE, message=FALSE} -->
+<!-- penguins %>% -->
+<!--   ggplot(aes(y = bill_length_mm, x = body_mass_g)) +  -->
+<!--   geom_point(color = 'green', -->
+<!--              fill = 'red', -->
+<!--              shape = 23) -->
+<!-- ``` -->
+<!-- </div></div> -->
+</div>
+</div>
+<div id="size" class="section level2" number="6.3">
+<h2>
+<span class="header-section-number">6.3</span> Size<a class="anchor" aria-label="anchor" href="#size"><i class="fas fa-link"></i></a>
+</h2>
+<div id="mapping-1" class="section level3" number="6.3.1">
+<h3>
+<span class="header-section-number">6.3.1</span> Mapping<a class="anchor" aria-label="anchor" href="#mapping-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>So, it was actually kind of hard to see some of those shape differences, wasn’t it? The points on the graph were just too small. It would be helpful if the <em>size</em> could be changed. Wouldn’t you know it, <code>size</code> happens to be another aesthetic! Below is an example of mapping <em>size</em>:</p>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span>,</span>
+<span>                 shape <span class="op">=</span> <span class="va">species</span>,</span>
+<span>                 size <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-22-1.png" alt="" width="672"></div>
+<blockquote>
+<p>“Start by telling ggplot to use the <code>penguins</code> dataframe for the data, map flipper length to the y-axis and bill length to the x-axis. Represent each observation with a point, and map species to the color of each point. Add a line of best fit for the data, change the shape of each point to be mapped to species <strong>and do the same with corresponding size changes.</strong>”</p>
+</blockquote>
+<p>Well, this looks pretty shitty, but it gets the point across! One other thing this does is demonstrate what is meant by saying, <strong>“ggplot is additive/layered”</strong>.<code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> was the last geom added here. That means, quite literally, it is added <em>on top</em> of the graph rendered by the previous code. It gets put on top, which is why it runs over and covers up some of the observations.</p>
+<p>Think about what the graph would look like if you were to have added the <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> first and <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> second, then click the button below to find out:</p>
+<button class="btn btn-primary" data-toggle="collapse" data-target="#BlockName">
+Show/Hide
+</button>
+<div id="BlockName" class="collapse">
+<div class="inline-figure">Since the points were added last, they were added on top of the line. Parts of the line are thus covered by the points on top of it!
+<img src="Visualizations1a_files/figure-html/unnamed-chunk-23-1.png" alt="" width="672">
+</div>
+</div>
+<p><br>
+This concept is very important to keep in mind when creating your visualizations. <strong>Order matters!</strong></p>
+</div>
+<div id="setting-1" class="section level3" number="6.3.2">
+<h3>
+<span class="header-section-number">6.3.2</span> Setting<a class="anchor" aria-label="anchor" href="#setting-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Maybe instead of mapping this… you should just change the size yourself. For example, you could take one of the graphs from above and make the shapes a little bit larger.</p>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span><span class="op">)</span>,</span>
+<span>             shape <span class="op">=</span> <span class="fl">24</span>,</span>
+<span>             fill <span class="op">=</span> <span class="st">'darkgrey'</span>,</span>
+<span>             size <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672"></div>
+<p>Wow, okay, this shows the fill a lot better than before! You can actually do some pretty neat things by playing around with different size values. For example:</p>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span><span class="op">)</span>,</span>
+<span>             size <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>             shape <span class="op">=</span> <span class="fl">6</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-25-1.png" alt="" width="672"></div>
+<!-- <div class="panel panel-warning"> -->
+<!--   <div class="panel-heading">**BONUS CHALLENGE:**</div> -->
+<!--   <div class="panel-body">See if you can think of a way to use what we demonstrated above to take your code from the Exercise 4, part 2, question 3, and give each observation a thicker outside border. The result should look like the graph below:</div> -->
+<!--   <br> -->
+<!-- ```{r class.source="graph-out", warning=FALSE, echo=FALSE, message=FALSE} -->
+<!-- penguins %>% -->
+<!--   ggplot(aes(y = bill_length_mm, x = body_mass_g)) +  -->
+<!--       geom_point(color = 'green', -->
+<!--              shape = 23, -->
+<!--              size = 5) + -->
+<!--       geom_point(color = 'green', -->
+<!--              shape = 23, -->
+<!--              size = 4) + -->
+<!--   geom_point(color = 'green', -->
+<!--              fill = 'red', -->
+<!--              shape = 23, -->
+<!--              size = 3) -->
+<!-- ``` -->
+<!-- </div> -->
+<!-- <br> -->
+</div>
+</div>
+<div id="alpha" class="section level2" number="6.4">
+<h2>
+<span class="header-section-number">6.4</span> Alpha<a class="anchor" aria-label="anchor" href="#alpha"><i class="fas fa-link"></i></a>
+</h2>
+<div id="mapping-2" class="section level3" number="6.4.1">
+<h3>
+<span class="header-section-number">6.4.1</span> Mapping<a class="anchor" aria-label="anchor" href="#mapping-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>The alpha aesthetic changes how translucent vs opaque something is.</p>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span>,</span>
+<span>                 shape <span class="op">=</span> <span class="va">species</span>,</span>
+<span>                 size <span class="op">=</span> <span class="va">species</span>,</span>
+<span>                 alpha <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-26-1.png" alt="" width="672"></div>
+<blockquote>
+<p>“Start by telling ggplot to use the <code>penguins</code> dataframe for the data, map flipper length to the y-axis and bill length to the x-axis. Represent each observation with a point, and map species to the color of each point. Add a line of best fit for the data, change the shape of each point to be mapped to species, and do the same with corresponding size changes <strong>and alpha changes.</strong>”</p>
+</blockquote>
+<p>As you can see, using alpha as a mapped aesthetic is not particularly useful. There are few, if any, instances where you would want to do this.</p>
+</div>
+<div id="setting-2" class="section level3" number="6.4.2">
+<h3>
+<span class="header-section-number">6.4.2</span> Setting<a class="anchor" aria-label="anchor" href="#setting-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>More often, you will want to set the alpha levels of different elements of your graphs yourself. Alpha values range from 0-1, with 0 being completely transparent and 1 being completely opaque.</p>
+<p>Compare the two graphs below and note their alpha levels:</p>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span>,</span>
+<span>                 shape <span class="op">=</span> <span class="va">species</span><span class="op">)</span>,</span>
+<span>             size <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>             alpha <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-27-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span>,</span>
+<span>                 shape <span class="op">=</span> <span class="va">species</span><span class="op">)</span>,</span>
+<span>             size <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>             alpha <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-28-1.png" alt="" width="672"></div>
+<p>While you are working with a (relatively) small dataset here, you may already see how alpha changes could be extremely useful when working with larger datasets:</p>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-29-1.png" alt="" width="672"></div>
+<p>Looking at the observations highlighted with red circles, you can notice that they are darker in color than other observations from the same species. This means there are multiple observations with the same values, being rendered in the same spot on your graph. When the observations are completely opaque (no alpha), some may be obscured by others occupying the same space!</p>
+<p>This is even more clear when looking at an example from the built in <code>diamonds</code> dataset:</p>
+<div class="inline-figure"><img src="Visualizations1a_files/figure-html/unnamed-chunk-30-1.png" alt="" width="672"></div>
+<p>Even with a very low alpha (look how faint the points outside the center cluster are), you can see just how many observations are overlapping! You will see better ways to visualize data like this later.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 5**</div> -->
+<!--   <div class="panel-body">Update the main graph you have been working with throughout the exercises to make the observations more translucent. First try doing so by mapping it to `island`. Then, create another graph where you set the alpha yourself. Try to pick the value you think makes the graph most legible and effective.</div> -->
+<!-- </div> -->
+</div>
+</div>
+<div id="references-1" class="section level2" number="6.5">
+<h2>
+<span class="header-section-number">6.5</span> References:<a class="anchor" aria-label="anchor" href="#references-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. <a href="https://allisonhorst.github.io/palmerpenguins/" class="uri">https://allisonhorst.github.io/palmerpenguins/</a></p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="intro-to-ggplot2.html"><span class="header-section-number">5</span> Intro to ggplot2</a></div>
+<div class="next"><a href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#aesthetics"><span class="header-section-number">6</span> Aesthetics</a></li>
+<li>
+<a class="nav-link" href="#color"><span class="header-section-number">6.1</span> Color</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#global-vs-local-aesthetics"><span class="header-section-number">6.1.1</span> Global vs Local Aesthetics</a></li>
+<li><a class="nav-link" href="#setting-vs-mapping-aesthetics"><span class="header-section-number">6.1.2</span> Setting vs Mapping Aesthetics</a></li>
+<li><a class="nav-link" href="#setting-colors"><span class="header-section-number">6.1.3</span> Setting Colors</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#shape"><span class="header-section-number">6.2</span> Shape</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#mapping"><span class="header-section-number">6.2.1</span> Mapping</a></li>
+<li><a class="nav-link" href="#setting"><span class="header-section-number">6.2.2</span> Setting</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#size"><span class="header-section-number">6.3</span> Size</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#mapping-1"><span class="header-section-number">6.3.1</span> Mapping</a></li>
+<li><a class="nav-link" href="#setting-1"><span class="header-section-number">6.3.2</span> Setting</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#alpha"><span class="header-section-number">6.4</span> Alpha</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#mapping-2"><span class="header-section-number">6.4.1</span> Mapping</a></li>
+<li><a class="nav-link" href="#setting-2"><span class="header-section-number">6.4.2</span> Setting</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#references-1"><span class="header-section-number">6.5</span> References:</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-08-20.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 9 Color Theory | PSY406</title>
+<meta name="author" content="Catie Nielson (with help from Ethan Hurwitz)">
+<meta name="description" content="Load Packages: library(palmerpenguins) library(patchwork) library(RColorBrewer) library(colorspace) library(viridis) library(tidyverse) Set Theme: theme_set(theme_classic() +      ...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="Chapter 9 Color Theory | PSY406">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://cateness.github.io/psy406-unlv/color-theory.html">
+<meta property="og:description" content="Load Packages: library(palmerpenguins) library(patchwork) library(RColorBrewer) library(colorspace) library(viridis) library(tidyverse) Set Theme: theme_set(theme_classic() +      ...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 9 Color Theory | PSY406">
+<meta name="twitter:description" content="Load Packages: library(palmerpenguins) library(patchwork) library(RColorBrewer) library(colorspace) library(viridis) library(tidyverse) Set Theme: theme_set(theme_classic() +      ...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">PSY406</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
+<li class="book-part">R Basics</li>
+<li><a class="" href="why-use-r.html"><span class="header-section-number">2</span> Why use R?</a></li>
+<li><a class="" href="r-coding-basics.html"><span class="header-section-number">3</span> R Coding Basics</a></li>
+<li><a class="" href="using-r-effectively.html"><span class="header-section-number">4</span> Using R Effectively</a></li>
+<li class="book-part">Visualizations</li>
+<li><a class="" href="intro-to-ggplot2.html"><span class="header-section-number">5</span> Intro to ggplot2</a></li>
+<li><a class="" href="aesthetics.html"><span class="header-section-number">6</span> Aesthetics</a></li>
+<li><a class="" href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></li>
+<li><a class="" href="customization.html"><span class="header-section-number">8</span> Customization</a></li>
+<li><a class="active" href="color-theory.html"><span class="header-section-number">9</span> Color Theory</a></li>
+<li class="book-part">Data Manipulation</li>
+<li><a class="" href="control-flow.html"><span class="header-section-number">10</span> Control Flow</a></li>
+<li><a class="" href="tidy-data-and-tidyverse.html"><span class="header-section-number">11</span> Tidy Data and Tidyverse</a></li>
+<li><a class="" href="basic-wrangling.html"><span class="header-section-number">12</span> Basic Wrangling</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="color-theory" class="section level1" number="9">
+<h1>
+<span class="header-section-number">9</span> Color Theory<a class="anchor" aria-label="anchor" href="#color-theory"><i class="fas fa-link"></i></a>
+</h1>
+<p>Load Packages:</p>
+<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://colorspace.R-Forge.R-project.org/">colorspace</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sjmgarnier.github.io/viridis/">viridis</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
+<p>Set Theme:</p>
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/get_theme.html">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>            <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">18</span>,</span>
+<span>                                face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>      plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span>, </span>
+<span>                                   color <span class="op">=</span> <span class="st">"grey50"</span>,</span>
+<span>                                   face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                   hjust <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>                                   margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>b <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>                                                   unit <span class="op">=</span> <span class="st">"inch"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      plot.tag <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
+<span>      plot.caption <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>                                  face <span class="op">=</span> <span class="st">'italic'</span><span class="op">)</span>,</span>
+<span>      axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">16</span>,</span>
+<span>                                  face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                  margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>t <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>                                                  unit <span class="op">=</span> <span class="st">"inch"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">16</span>,</span>
+<span>                                  face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                                  margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>                                                  unit <span class="op">=</span> <span class="st">"inch"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span>,</span>
+<span>                               color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>                               size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<!-- <a href="exercises/Exercise_Viz4.Rmd" download>Exercise Sheet</a> -->
+<p>At this point, you know why it is important to visualize your data, several types of graphs to use to create visualizations of different relationships and comparisons within your data, and how to customize some of the elements in those graphs. Changes to the specific type of graph you use, or its title and axes labels, are overt ways to impact the effectiveness of your visualization. However, there are other things that, while subtle, have a very significant impact as well.</p>
+<p>Visualizations are composed of different geometric shapes, lines, edges, contours, colors, etc. With this in mind, it is important to consider different aspects of visual perception and how they affect the way your graph will be perceived by a viewer. This final part of the section on Visualizations covers color and design principles. These are often overlooked when considering how to make an effective visualization, but very important!</p>
+<p>The following graphs will serve as examples used throughout.</p>
+<p class="text-info">
+<strong><u>Note:</u> these are not great visualizations, but will be useful to illustrate some different concepts. In particular, a line plot should generally ONLY be used when there is discrete/ordered data on the x-axis. It is used here with 2 continuous variables just to help demonstrate different color principles.</strong>
+</p>
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_bar</span> <span class="op">=</span> <span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span>,</span>
+<span>             fill <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"bar"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_bar</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_jitter</span> <span class="op">=</span> <span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">0</span>, width <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>              size <span class="op">=</span> <span class="fl">2</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>,</span>
+<span>               geom <span class="op">=</span> <span class="st">"pointrange"</span>,</span>
+<span>               size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_jitter</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-5-2.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_line</span> <span class="op">=</span> <span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">bill_depth_mm</span>, color <span class="op">=</span> <span class="va">bill_depth_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"point"</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"mean"</span>, geom <span class="op">=</span> <span class="st">"line"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_line</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-5-3.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_hex</span> <span class="op">=</span> <span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>,</span>
+<span>             x <span class="op">=</span> <span class="va">bill_depth_mm</span>,</span>
+<span>             z <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary_2d.html">stat_summary_hex</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"Flipper Length"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_hex</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-5-4.png" alt="" width="672"></div>
+<p>In all of the visualizations you have created thus far the colors were either automatically chosen by R or manually, but arbitrarily, set. Color choices, like all aspects of your visualization, should be made intentionally and purposefully. What, then, are the things you should consider and factor into your decision making process?</p>
+<div id="hcl-and-color-theory" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> HCL and Color Theory<a class="anchor" aria-label="anchor" href="#hcl-and-color-theory"><i class="fas fa-link"></i></a>
+</h2>
+<p>While discussing what should be considered when deciding color choices, a good starting place is to figure out what is meant by “color”. There are many formal definitions and ways to quantify what a “color” is. For the purposes here, you can think of “color” as being composed of 3 parts.</p>
+<div id="hue" class="section level3" number="9.1.1">
+<h3>
+<span class="header-section-number">9.1.1</span> Hue<a class="anchor" aria-label="anchor" href="#hue"><i class="fas fa-link"></i></a>
+</h3>
+<p><a href="https://en.wikipedia.org/wiki/Hue">Hue</a> is what is conventionally meant when describing something’s color. e.g., red, blue, green, etc. Hues are organized along a color wheel and are defined by the angle (0° - 360°) on this wheel:</p>
+<div class="inline-figure"><img src="figures/hue.png" alt="" width="376.5px" height="400px" style="display: block; margin: auto;"></div>
+<p>Different hues are not perceived as having an inherent order. For example, even though cyan corresponds to a degree of 180 and green of 120, cyan is not perceived to be “bigger” than green. Yellow (60°) is not perceived to be in between red (0°) and green (120°).</p>
+</div>
+<div id="chrominance-chroma" class="section level3" number="9.1.2">
+<h3>
+<span class="header-section-number">9.1.2</span> Chrominance (Chroma)<a class="anchor" aria-label="anchor" href="#chrominance-chroma"><i class="fas fa-link"></i></a>
+</h3>
+<p>Chroma is technically distinct from saturation, but functionally can be viewed the same. It is the degree of purity or intensity of a color. Chroma values range from a muted/grey to the fully vivid color. Unlike hue, chroma <strong>is</strong> perceived to be ordered. e.g., pink is viewed as being “between” white and red.</p>
+<img src="figures/chroma.png" style="width:100.0%"><p style="font-size:8pt">
+Source: <a href="10.1175/BAMS-D-13-00155.1">Somewhere Over the Rainbow…</a>
+</p>
+</div>
+<div id="luminance" class="section level3" number="9.1.3">
+<h3>
+<span class="header-section-number">9.1.3</span> Luminance<a class="anchor" aria-label="anchor" href="#luminance"><i class="fas fa-link"></i></a>
+</h3>
+<p>Luminance is the brightness of a color. It ranges on a scale from black to white. Like chroma, and unlike hue, luminance is also perceived to be ordered. For example, grey is viewed as “between” black and white.</p>
+<img src="figures/luminance.png"><p style="font-size:8pt">
+Source: <a href="10.1175/BAMS-D-13-00155.1">Somewhere Over the Rainbow…</a>
+</p>
+</div>
+<div id="why-does-this-matter" class="section level3" number="9.1.4">
+<h3>
+<span class="header-section-number">9.1.4</span> Why Does This Matter?<a class="anchor" aria-label="anchor" href="#why-does-this-matter"><i class="fas fa-link"></i></a>
+</h3>
+<p>To this point, this information may seem fairly irrelevant. Interesting, but disconnected. Why care about different components of “color”? It is a fair question, because most people do not. Consider, though, what you are doing when using color in a visualization. You are mapping specific colors that a viewer will observe to a specific quantity or category (depending on the variable type) in your data. You will, of course, want this mapping to accurately and meaningfully characterize the data it is representing. For example, the difference between two data points or summary statistics should be maintained when choosing values to define the colors used to represent them. Beyond this <em>numerical</em> accuracy, you want this difference to be maintained in a viewer’s <em>perception</em> of those different colors.</p>
+<p>However, this is where things start to get tricky. Consider the two graphs below:</p>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-7-1.png" alt="" width="100%"></div>
+<p>In both, there are 5 bars of equal height which use a grey scale ranging from dark to light. Each numerically positioned bar has the same exact luminance as the corresponding bar on the other graph. In the graph where the bars are touching, the darker bars seem comparatively darker and the lighter bars comparatively lighter. These are known as “mach bands” and are a classic visual illusion. Luminance is an important property of “color”, and our perception of luminance is based on <em>relative</em> rather than <em>absolute</em> judgments. Even though two things may have precisely the same luminance, the perceived color is influenced by the environment and surrounding objects!</p>
+<p>To make matters worse, even disregarding the impact that environmental factors may have on visual/color perception, the HCL color space itself is not even perceptually uniform! Two “colors” that are one unit apart in one area of HCL space may look very similar or very different, and this is not constant across the entirety of the space.</p>
+<p>The take home point is that <u><strong>color values that are <em>numerically</em> uniform may not be <em>perceptually</em> uniform</strong></u>. This needs to be considered when choosing color scales and palettes for your visualizations. Perception is the the most important thing, so scales and palettes should only be used if there is a perceptually uniform magnitude of change between each level. The type of color scale, and specific color palette, used depends on the type of data being visualized and the use case for your visualization.</p>
+</div>
+</div>
+<div id="categorical" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Categorical<a class="anchor" aria-label="anchor" href="#categorical"><i class="fas fa-link"></i></a>
+</h2>
+<p>When visualizing categorical/discrete data, color is used as a tool to help a viewer easily distinguish different groups, levels, or categories. Importantly, it is most often the case that these groups, levels, or categories, <strong>do not</strong> have an inherent order. For example, different political parties, Hogwarts houses, UCSD colleges, pokemon types, etc. These are distinct groups, but do not have an inherent order (despite some subjective opinions…).</p>
+<p>In such instances you use a <u><em>qualitative</em></u> color scale, which contains a specific set of perceptually distinct but equivalently different colors. The set of colors does not convey any particular ordering or salience of particular colors compared to the rest.</p>
+<p>To change the color scale and/or palette used in your visualization, you will use another <code>scale_*_*()</code> command. The first asterisk gets replaced by what aesthetic you have mapped, <code>fill</code> or <code>color</code>. The second gets replaced by what type of scale you want to use or modify. For example, to manually set the HCL parameters of a color space, you would use <code>scale_*_hue()</code>. This function has 3 main arguments:</p>
+<ul>
+<li>
+<code>h</code> = range of hues to use
+<ul>
+<li>(ranged from 0 - 360 – default = (c(0,360) + 15))</li>
+</ul>
+</li>
+<li>
+<code>l</code> = luminance
+<ul>
+<li>(lightness; 0-100 – default = 65)</li>
+</ul>
+</li>
+<li>
+<code>c</code> = chroma
+<ul>
+<li>(intensity of color – maximum value varies depending on combination of hue and luminance).</li>
+</ul>
+</li>
+</ul>
+<p>Look at the examples below:</p>
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="op">(</span><span class="va">plot_bar</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Baseline"</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">plot_bar</span> <span class="op">+</span> </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_hue.html">scale_fill_hue</a></span><span class="op">(</span>c <span class="op">=</span> <span class="fl">200</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Change Chroma"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="op">(</span><span class="va">plot_bar</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_hue.html">scale_fill_hue</a></span><span class="op">(</span>l <span class="op">=</span> <span class="fl">80</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Change Luminance"</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">plot_bar</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_hue.html">scale_fill_hue</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">60</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Change Hue Range"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-8-1.png" alt="" width="100%"></div>
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="op">(</span><span class="va">plot_jitter</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Baseline"</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">plot_jitter</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_hue.html">scale_color_hue</a></span><span class="op">(</span>c <span class="op">=</span> <span class="fl">200</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Change Chroma"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|</span> <span class="op">(</span><span class="op">(</span><span class="va">plot_jitter</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_hue.html">scale_color_hue</a></span><span class="op">(</span>l <span class="op">=</span> <span class="fl">80</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Change Luminance"</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">plot_jitter</span> <span class="op">+</span> </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_hue.html">scale_color_hue</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">60</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Change Hue Range"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-8-2.png" alt="" width="100%"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 1**</div> -->
+<!--   <div class="panel-body">Practice changing the values for the 3 arguments in `scale_*_hue()` and see how they affect your visualization. Change multiple simultaneously and see how combinations work! -->
+<!--   </div> -->
+<!-- </div> -->
+<p>Instead of tweaking the HCL values, you may want to just manually choose the colors for yourself. This can be done using <code>scale_*_manual()</code>. The main argument here is <code>values</code>, which expects a vector of color names/codes to use.</p>
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_bar</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cyan"</span>, <span class="st">"lightgreen"</span>, <span class="st">"orange4"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_jitter</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"magenta"</span>, <span class="st">"mediumpurple1"</span>, </span>
+<span>                                <span class="st">"lightskyblue"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-9-2.png" alt="" width="672"></div>
+<p>You can also specify which level of the mapped variable is associated with each specific color:</p>
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_bar</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Torgersen"</span> <span class="op">=</span> <span class="st">"cyan"</span>,</span>
+<span>                               <span class="st">"Biscoe"</span> <span class="op">=</span> <span class="st">"lightgreen"</span>,</span>
+<span>                               <span class="st">"Dream"</span> <span class="op">=</span> <span class="st">"orange4"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_jitter</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Torgersen"</span> <span class="op">=</span> <span class="st">"magenta"</span>,</span>
+<span>                               <span class="st">"Biscoe"</span> <span class="op">=</span> <span class="st">"mediumpurple1"</span>,</span>
+<span>                               <span class="st">"Dream"</span> <span class="op">=</span> <span class="st">"lightskyblue"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-10-2.png" alt="" width="672"></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 2**</div> -->
+<!--   <div class="panel-body">Change the colors in both graphs to manually set values. Find a combination of colors you think work well together and are perceptually uniform. -->
+<!--   </div> -->
+<!-- </div> -->
+<p>Where possible, you should choose colors that will be intrinsically informative and intuitive. While the colors in the second graph above are pretty, they are arbitrary. The colors in the first, on the other hand, may be informative. Biscoe might be a more water-based island, while Dream might have more greenery and Torgersen more flat earth terrain. It is easy to think of other examples where this could be useful. If you were visualizing something about Hogwarts houses, you would probably want to use a red color for Gryffindor and a green color for Slytherin. This also cuts down on the need for a viewer to consult the legend to parse your visualization.</p>
+<p>It is important to consider what kind of latent information your color choices may be communicating, especially when unintentional!</p>
+</div>
+<div id="continuous" class="section level2" number="9.3">
+<h2>
+<span class="header-section-number">9.3</span> Continuous<a class="anchor" aria-label="anchor" href="#continuous"><i class="fas fa-link"></i></a>
+</h2>
+<div id="sequential" class="section level3" number="9.3.1">
+<h3>
+<span class="header-section-number">9.3.1</span> Sequential<a class="anchor" aria-label="anchor" href="#sequential"><i class="fas fa-link"></i></a>
+</h3>
+<p>When visualizing continuous data, color is used as a tool to represent the <em>actual</em> data values. Here, there <strong>is</strong> an ordering to the values. For example, a score of 80 on an exam is higher than a score of 70, a $40k salary is more than a $35k salary, etc.</p>
+<p>In such instances you use a <u><em>sequential</em></u> color scale, or color <em>gradient</em>,
+which contains a sequence of colors. Different colors in this sequence convey both which of two values is larger and additionally the relative distance between those two values. This, again, highlights the necessity for perceptual uniformity between adjacent colors in this scale. The function for this type of color scale in R is <code>scale_*_gradient()</code>. The main arguments needed are a <code>low</code> and <code>high</code> value over which to define the gradient.</p>
+<p>A sequential scale can be defined over a single hue (the default is dark to light blue):</p>
+<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_line</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_color_gradient</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_hex</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradient</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"darkgreen"</span>, high <span class="op">=</span> <span class="st">"palegreen"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-11-2.png" alt="" width="672"></div>
+<p>or multiple hues:</p>
+<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_line</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_color_gradient</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"lavender"</span>, high <span class="op">=</span> <span class="st">"goldenrod4"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-12-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_hex</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradient</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"red"</span>, high <span class="op">=</span> <span class="st">"yellow"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-12-2.png" alt="" width="672"></div>
+<p>Remember, a sequential color gradient should create the perception that values have a meaningful sequential order. One way to help with this is keep a constant hue and only vary the chrominance and luminance. Another way is to only use gradients that are readily observed in the natural world (e.g., light yellow to dark red, dark brown to green, etc.)</p>
+<p>When creating a scale based on multiple hues, you are not limited to just choosing a <code>low</code> and <code>high</code> end value. Using <code>scale_*_gradientn()</code> allows you to create a gradient over several colors. The argument <code>colors</code> takes a vector of colors over which to linearly create a gradient.</p>
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_line</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_color_gradientn</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"orange"</span>, <span class="st">"yellow"</span>, </span>
+<span>                                   <span class="st">"green"</span>, <span class="st">"blue"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-13-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_hex</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradientn</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"brown"</span>, <span class="st">"yellow"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-13-2.png" alt="" width="672"></div>
+<p>These are obviously terrible color schemes, and are just for illustrative purposes. Using <code>scale_*_gradientn()</code> can give you a bit more control over the exact gradient being used.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 3**</div> -->
+<!--   <div class="panel-body">Create 2 single hue gradients that you think seem perceptually uniform. Then create 2 multiple-hue gradients (using either function to do so) that you think seem perceptually uniform. -->
+<!--   </div> -->
+<!-- </div> -->
+</div>
+<div id="divergent" class="section level3" number="9.3.2">
+<h3>
+<span class="header-section-number">9.3.2</span> Divergent<a class="anchor" aria-label="anchor" href="#divergent"><i class="fas fa-link"></i></a>
+</h3>
+<p>Sometimes you may have data with a neutral point or true zero, where deviations in either direction from this midpoint become meaningful. For example, data that contains both positive and negative values, or visualizing deviations from the mean. In such instances, you would use a <u><em>divergent</em></u> scale. A divergent color scale is essentially two sequential scales appended to a single common point (0, the mean, etc.). Thus, the scale needs to make it readily apparent both in which direction the value is deviating <strong>and</strong> the magnitude of the deviation. It is important for the color gradients on both halves of the scale to be perceptually uniform and equivalent or the perceived magnitude of a value would be an artifact of how you defined the gradient. E.g., values above the neutral point might seem to have a large magnitude of change if the color deviations are more stark than those below it.</p>
+<p>To create a divergent color scale, you use <code>scale_*_gradient2()</code> – which admittedly is a little counterintuitive since you define 3 values and not 2 (and hopefully this little inconsistency will now serve as a way to remember this :P). In addition to the <code>low</code> and <code>high</code> values that you specified above, you also need to specify a <code>mid</code> color. Additionally, you may want to specify what value in your data should serve as the <code>midpoint</code> between the two scales. This value is 0 by default.</p>
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_hex</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradient2</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"red"</span>, mid <span class="op">=</span> <span class="st">"grey90"</span>, high <span class="op">=</span> <span class="st">"yellow"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-14-1.png" alt="" width="672"></div>
+<p>In the graph above, the <code>midpoint</code> argument was not set. The default value of 0 was used, but all values in the data fall above it!</p>
+<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_hex</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradient2</a></span><span class="op">(</span>low <span class="op">=</span> <span class="st">"red"</span>, mid <span class="op">=</span> <span class="st">"grey90"</span>, high <span class="op">=</span> <span class="st">"yellow"</span>,</span>
+<span>                       midpoint <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">$</span><span class="va">flipper_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-15-1.png" alt="" width="672"></div>
+<p>Here, the <code>midpoint</code> is set to the mean value for <code>flipper_length_mm</code>. You should note that this is not a particularly good scale to use. The midpoint appears to be at about 200, so values at 220 and 180 are equally different from the midpoint. However, because the low value (red) is darker than the high value (yellow), the 180 values are perceived to be more different.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 4**</div> -->
+<!--   <div class="panel-body">Create 2 visualizations using divergent scales that you think are equally uniform in both directions from the midpoint. -->
+<!--   </div> -->
+<!-- </div> -->
+</div>
+</div>
+<div id="pre-defined-color-scales" class="section level2" number="9.4">
+<h2>
+<span class="header-section-number">9.4</span> Pre-defined Color Scales<a class="anchor" aria-label="anchor" href="#pre-defined-color-scales"><i class="fas fa-link"></i></a>
+</h2>
+<p>As you may have realized through the practice exercises, it can be quite difficult to create a good color scale from scratch that is both perceptually uniform and aesthetically pleasing. Fortunately, R has a number of pre-defined color scales that can be used. Some of these are built-in to base R and ggplot, and others can be added from other packages and libraries.</p>
+<div id="built-in" class="section level3" number="9.4.1">
+<h3>
+<span class="header-section-number">9.4.1</span> Built-in<a class="anchor" aria-label="anchor" href="#built-in"><i class="fas fa-link"></i></a>
+</h3>
+<p>Base R comes with the following color scales:</p>
+<div class="inline-figure"><img src="figures/R_base_color_palettes.png" style="width:100.0%"></div>
+<p>Each color scale can be used as a function that takes an argument <code>n</code> for the number of colors to sample from that color scale.</p>
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">rainbow</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">heat.colors</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">terrain.colors</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">topo.colors</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">cm.colors</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span></code></pre></div>
+<p>This will return those colors’ hexcodes, and can be passed in to any argument expecting a vector of color names:</p>
+<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_hex</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradientn</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">terrain.colors</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-17-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_jitter</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">heat.colors</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-17-2.png" alt="" width="672"></div>
+</div>
+<div id="brewer" class="section level3" number="9.4.2">
+<h3>
+<span class="header-section-number">9.4.2</span> Brewer<a class="anchor" aria-label="anchor" href="#brewer"><i class="fas fa-link"></i></a>
+</h3>
+<p>By way of installing tidyverse and ggplot2, you also have access to RColorBrewer, which contains great pre-defined color scales and palettes. Info on all the palettes is stored in a dataframe called <code>brewer.pal.info</code>.</p>
+<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">brewer.pal.info</span></span>
+<span><span class="co">#&gt;          maxcolors category colorblind</span></span>
+<span><span class="co">#&gt; BrBG            11      div       TRUE</span></span>
+<span><span class="co">#&gt; PiYG            11      div       TRUE</span></span>
+<span><span class="co">#&gt; PRGn            11      div       TRUE</span></span>
+<span><span class="co">#&gt; PuOr            11      div       TRUE</span></span>
+<span><span class="co">#&gt; RdBu            11      div       TRUE</span></span>
+<span><span class="co">#&gt; RdGy            11      div      FALSE</span></span>
+<span><span class="co">#&gt; RdYlBu          11      div       TRUE</span></span>
+<span><span class="co">#&gt; RdYlGn          11      div      FALSE</span></span>
+<span><span class="co">#&gt; Spectral        11      div      FALSE</span></span>
+<span><span class="co">#&gt; Accent           8     qual      FALSE</span></span>
+<span><span class="co">#&gt; Dark2            8     qual       TRUE</span></span>
+<span><span class="co">#&gt; Paired          12     qual       TRUE</span></span>
+<span><span class="co">#&gt; Pastel1          9     qual      FALSE</span></span>
+<span><span class="co">#&gt; Pastel2          8     qual      FALSE</span></span>
+<span><span class="co">#&gt; Set1             9     qual      FALSE</span></span>
+<span><span class="co">#&gt; Set2             8     qual       TRUE</span></span>
+<span><span class="co">#&gt; Set3            12     qual      FALSE</span></span>
+<span><span class="co">#&gt; Blues            9      seq       TRUE</span></span>
+<span><span class="co">#&gt; BuGn             9      seq       TRUE</span></span>
+<span><span class="co">#&gt; BuPu             9      seq       TRUE</span></span>
+<span><span class="co">#&gt; GnBu             9      seq       TRUE</span></span>
+<span><span class="co">#&gt; Greens           9      seq       TRUE</span></span>
+<span><span class="co">#&gt; Greys            9      seq       TRUE</span></span>
+<span><span class="co">#&gt; Oranges          9      seq       TRUE</span></span>
+<span><span class="co">#&gt; OrRd             9      seq       TRUE</span></span>
+<span><span class="co">#&gt; PuBu             9      seq       TRUE</span></span>
+<span><span class="co">#&gt; PuBuGn           9      seq       TRUE</span></span>
+<span><span class="co">#&gt; PuRd             9      seq       TRUE</span></span>
+<span><span class="co">#&gt; Purples          9      seq       TRUE</span></span>
+<span><span class="co">#&gt; RdPu             9      seq       TRUE</span></span>
+<span><span class="co">#&gt; Reds             9      seq       TRUE</span></span>
+<span><span class="co">#&gt; YlGn             9      seq       TRUE</span></span>
+<span><span class="co">#&gt; YlGnBu           9      seq       TRUE</span></span>
+<span><span class="co">#&gt; YlOrBr           9      seq       TRUE</span></span>
+<span><span class="co">#&gt; YlOrRd           9      seq       TRUE</span></span></code></pre></div>
+<p>Palettes are grouped into 3 distinct categories:</p>
+<ol style="list-style-type: decimal">
+<li>Qualitative</li>
+<li>Sequential</li>
+<li>Divergent</li>
+</ol>
+<p>Just like the 3 types of color scales outlined above! You can quickly visualize all the palettes with <code><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">display.brewer.all()</a></code> and specifying which <code>type</code> you want to see:</p>
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">display.brewer.all</a></span><span class="op">(</span>colorblindFriendly <span class="op">=</span> <span class="cn">TRUE</span>, type <span class="op">=</span> <span class="st">"qual"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-19-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">display.brewer.all</a></span><span class="op">(</span>colorblindFriendly <span class="op">=</span> <span class="cn">TRUE</span>, type <span class="op">=</span> <span class="st">"seq"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-19-2.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">display.brewer.all</a></span><span class="op">(</span>colorblindFriendly <span class="op">=</span> <span class="cn">TRUE</span>, type <span class="op">=</span> <span class="st">"div"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-19-3.png" alt="" width="672"></div>
+<p>Note that the <code>colorblindFriendly</code> argument was also used and set to <code>TRUE</code>. This filters the results to only show palettes that are colorblind friendly. There is almost no reason to ever not use a colorblind friendly palette.</p>
+<p>Each palette has a maximum number of colors in the scale, but you might be curious about how the palette would look with varying numbers of colors. If you only have 4 levels to your variable, maybe one scale will accommodate that number better than another. You can see the exact colors used for a given palette and number of colors using <code><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">display.brewer.pal()</a></code>.</p>
+<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">display.brewer.pal</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">4</span>, name <span class="op">=</span> <span class="st">'Reds'</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-20-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">display.brewer.pal</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">8</span>, name <span class="op">=</span> <span class="st">'Reds'</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-20-2.png" alt="" width="672"></div>
+<p>The specific values of those colors can be identified with <code><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal()</a></code>.</p>
+<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">4</span>, name <span class="op">=</span> <span class="st">'Reds'</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "#FEE5D9" "#FCAE91" "#FB6A4A" "#CB181D"</span></span></code></pre></div>
+<p>“Okay, cool, I get it, these are AWESOME. How do I <strong><em>USE</em></strong> them?!”</p>
+<p>Fair question! The answer is: very easily! ggplot2 has built in functions to easily adopt the brewer color palettes. You can do so using <code>scale_*_brewer()</code> for categorical data and <code>scale_*_distiller()</code> for continuous. All you have to do is pass in the name of the specific <code>palette</code>.</p>
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_hex</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_distiller</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"GnBu"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_line</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_distiller</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"RdPu"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_jitter</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Dark2"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_bar</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set2"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-23-1.png" alt="" width="672"></div>
+<p>As a side note, since you can use <code><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal()</a></code> to get a vector of color values from a specific palette, that can also be used the same way you were setting colors manually above.</p>
+<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_hex</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradientn</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">4</span>, name <span class="op">=</span> <span class="st">'BuGn'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_jitter</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span>, name <span class="op">=</span> <span class="st">'Set2'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-24-2.png" alt="" width="672"></div>
+<!--
+
+``` r
+plot_hex +
+    scale_fill_gradientn(colors = brewer.pal(n = 4, name = 'Reds'))
+```
+
+<img src="Visualizations4_files/figure-html/unnamed-chunk-25-1.png" alt="" width="672" />
+
+``` r
+plot_jitter +
+  scale_color_manual(values = heat.colors(3))
+```
+
+<img src="Visualizations4_files/figure-html/unnamed-chunk-25-2.png" alt="" width="672" />
+-->
+<p>You may sometimes encounter an error like this:</p>
+<p style="color:#A79BF0">
+<strong>Error: Continuous value supplied to discrete scale</strong>
+</p>
+<p>This is another one of the errors from R that are actually pretty helpful and intuitive. This most often means the function you are using does not map on to the type of data it is being applied to. In most instances like this, you just need to change the function you are using (e.g., brewer vs distiller).</p>
+<p>However, while using the wrong function will throw you an error, using an inappropriate color scale may <strong>NOT</strong> give you an error. For example:</p>
+<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_jitter</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Oranges"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-26-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_hex</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_distiller</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set3"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-26-2.png" alt="" width="672"></div>
+<p>Thus, it is important to double check you are using the right type of scale for your data!</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 5**</div> -->
+<!--   <div class="panel-body">Try out some different palettes from RColorBrewer, pick your top 3, and modify your visualizations from above to use those palettes. -->
+<!--   </div> -->
+<!-- </div> -->
+</div>
+<div id="grey-scale" class="section level3" number="9.4.3">
+<h3>
+<span class="header-section-number">9.4.3</span> Grey scale<a class="anchor" aria-label="anchor" href="#grey-scale"><i class="fas fa-link"></i></a>
+</h3>
+<p>For ink considerations, sometimes you may want to just use a grey scale. ggplot has a built in function to help with this for categorical data (as it is easy to do for continuous) called <code>scale_*_grey()</code>. The scale can be selected automatically, or you can specify the <code>start</code> and <code>end</code> values which range from 0 (dark) to 1 (light).</p>
+<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_jitter</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_grey.html">scale_color_grey</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_bar</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_grey.html">scale_fill_grey</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_bar</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_grey.html">scale_fill_grey</a></span><span class="op">(</span>start <span class="op">=</span> <span class="fl">0</span>, end <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_bar</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_grey.html">scale_fill_grey</a></span><span class="op">(</span>start <span class="op">=</span> <span class="fl">0.5</span>, end <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-28-1.png" alt="" width="672"></div>
+</div>
+<div id="viridis" class="section level3" number="9.4.4">
+<h3>
+<span class="header-section-number">9.4.4</span> Viridis<a class="anchor" aria-label="anchor" href="#viridis"><i class="fas fa-link"></i></a>
+</h3>
+<p>The issue of colorblind friendly palettes was mentioned above and how there is almost no good reason to ever not use a colorblind friendly palette. It can be hard to determine what palettes are colorblind friendly. There are some good resources to help you see how your visualization would look in different forms of colorblindness. One of them is called <code><a href="https://colorspace.R-Forge.R-project.org/reference/cvd_emulator.html">cvd_emulator()</a></code> from the colorspace package (more on this below). Others are available <a href="https://www.vischeck.com/vischeck/vischeckImage.php">online</a>.</p>
+<p>An alternative to selecting a color palette and then checking to see whether it is colorblind friendly is to just choose a palette specifically designed to be interpretable and effective under a variety of different color vision types (typical and different forms of color blindness). These come from the <code>viridis</code> package, which was introduced earlier!</p>
+<img src="figures/r_viridis.png" style="width:100.0%"><p style="font-size:8pt">
+Source: <a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html">viridis documentation</a>
+</p>
+<p>These palettes can be easily applied by using <code>scale_*_viridis()</code>. The specific palette is set with the <code>option</code> argument, and can be applied to categorical data by using the <code>discrete</code> argument</p>
+<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_bar</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html">scale_fill_viridis</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_jitter</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html">scale_color_viridis</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="cn">TRUE</span>, option <span class="op">=</span> <span class="st">"plasma"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_line</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html">scale_color_viridis</a></span><span class="op">(</span>option <span class="op">=</span> <span class="st">"inferno"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_hex</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html">scale_fill_viridis</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-30-1.png" alt="" width="672"></div>
+<p>You can also generate specific color codes from these palettes in the same way you can from the base R palettes (outlined above)</p>
+<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://sjmgarnier.github.io/viridisLite/reference/viridis.html">viridis</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://sjmgarnier.github.io/viridisLite/reference/viridis.html">magma</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://sjmgarnier.github.io/viridisLite/reference/viridis.html">inferno</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://sjmgarnier.github.io/viridisLite/reference/viridis.html">plasma</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span></code></pre></div>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 6**</div> -->
+<!--   <div class="panel-body">Take your code from Exercise 5 and replace the color palettes from RColorBrewer with ones from viridis. -->
+<!--   </div> -->
+<!-- </div> -->
+</div>
+<div id="colorspace" class="section level3" number="9.4.5">
+<h3>
+<span class="header-section-number">9.4.5</span> colorspace<a class="anchor" aria-label="anchor" href="#colorspace"><i class="fas fa-link"></i></a>
+</h3>
+<p>colorspace is another package that, like RColorBrewer, comes by way of installing tidyverse and ggplot2. It also contains a number of pre-defined color scales and palettes. Info on all the palettes can be accessed with <code><a href="https://colorspace.R-Forge.R-project.org/reference/hcl_palettes.html">hcl_palettes()</a></code>.</p>
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/hcl_palettes.html">hcl_palettes</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; HCL palettes</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Type:  Qualitative </span></span>
+<span><span class="co">#&gt; Names: Pastel 1, Dark 2, Dark 3, Set 2, Set 3, Warm, Cold,</span></span>
+<span><span class="co">#&gt;        Harmonic, Dynamic</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Type:  Sequential (single-hue) </span></span>
+<span><span class="co">#&gt; Names: Grays, Light Grays, Blues 2, Blues 3, Purples 2,</span></span>
+<span><span class="co">#&gt;        Purples 3, Reds 2, Reds 3, Greens 2, Greens 3,</span></span>
+<span><span class="co">#&gt;        Oslo</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Type:  Sequential (multi-hue) </span></span>
+<span><span class="co">#&gt; Names: Purple-Blue, Red-Purple, Red-Blue, Purple-Orange,</span></span>
+<span><span class="co">#&gt;        Purple-Yellow, Blue-Yellow, Green-Yellow,</span></span>
+<span><span class="co">#&gt;        Red-Yellow, Heat, Heat 2, Terrain, Terrain 2,</span></span>
+<span><span class="co">#&gt;        Viridis, Plasma, Inferno, Rocket, Mako, Dark</span></span>
+<span><span class="co">#&gt;        Mint, Mint, BluGrn, Teal, TealGrn, Emrld,</span></span>
+<span><span class="co">#&gt;        BluYl, ag_GrnYl, Peach, PinkYl, Burg, BurgYl,</span></span>
+<span><span class="co">#&gt;        RedOr, OrYel, Purp, PurpOr, Sunset, Magenta,</span></span>
+<span><span class="co">#&gt;        SunsetDark, ag_Sunset, BrwnYl, YlOrRd, YlOrBr,</span></span>
+<span><span class="co">#&gt;        OrRd, Oranges, YlGn, YlGnBu, Reds, RdPu, PuRd,</span></span>
+<span><span class="co">#&gt;        Purples, PuBuGn, PuBu, Greens, BuGn, GnBu,</span></span>
+<span><span class="co">#&gt;        BuPu, Blues, Lajolla, Turku, Hawaii, Batlow</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Type:  Diverging </span></span>
+<span><span class="co">#&gt; Names: Blue-Red, Blue-Red 2, Blue-Red 3, Red-Green,</span></span>
+<span><span class="co">#&gt;        Purple-Green, Purple-Brown, Green-Brown,</span></span>
+<span><span class="co">#&gt;        Blue-Yellow 2, Blue-Yellow 3, Green-Orange,</span></span>
+<span><span class="co">#&gt;        Cyan-Magenta, Tropic, Broc, Cork, Vik, Berlin,</span></span>
+<span><span class="co">#&gt;        Lisbon, Tofino</span></span></code></pre></div>
+<p>You can also <code>plot</code> them to actually see the palettes themselves.</p>
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/hcl_palettes.html">hcl_palettes</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"Qualitative"</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-33-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/hcl_palettes.html">hcl_palettes</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"Sequential (single-hue)"</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-33-2.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/hcl_palettes.html">hcl_palettes</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"Sequential (multi-hue)"</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-33-3.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/hcl_palettes.html">hcl_palettes</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"Diverging"</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-33-4.png" alt="" width="672"></div>
+<p>The way you actually use these palettes is quite similar to how you use <code><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal()</a></code> to use RColorBrewer palettes! Each type of scale has its own function, where you specify the <code>palette</code> and <code>n</code>umber of colors from it. That vector of colors can then be used in your ggplot code.</p>
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/hcl_palettes.html">qualitative_hcl</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span>, palette <span class="op">=</span> <span class="st">"Harmonic"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "#C7A76C" "#5CBD92" "#7DB0DD"</span></span>
+<span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/hcl_palettes.html">sequential_hcl</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span>, palette <span class="op">=</span> <span class="st">"SunsetDark"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "#7D1D67" "#F65A6D" "#FFD99F"</span></span>
+<span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/hcl_palettes.html">diverging_hcl</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span>, palette <span class="op">=</span> <span class="st">"Lisbon"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "#E2FCFF" "#181818" "#FCFCD3"</span></span>
+<span><span class="va">plot_hex</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradientn</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/hcl_palettes.html">sequential_hcl</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span>, </span>
+<span>                                                 palette <span class="op">=</span> <span class="st">"SunsetDark"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-34-1.png" alt="" width="672"></div>
+<p>You may have noticed when looking at the colorspace palettes that many of them seem similar to ones from RColorBrewer or viridis. That would be astute, because there are many that are similar or attempt to be identical palettes. The word “attempt” is doing a lot of work here though, because these palettes are often not actually identical.</p>
+<p>Below, a color palette from brewer and viridis are compared to their colorspace counterpart:</p>
+<p><img src="Visualizations4_files/figure-html/unnamed-chunk-35-1.png" alt="" width="672"><img src="Visualizations4_files/figure-html/unnamed-chunk-35-2.png" alt="" width="672"></p>
+<p>While more stark in the first comparison and more subtle in the second, it is clear in both that the palettes are similar but not quite exact. The take home point here is that <u>whenever there is a similar palette available from another package, probably go with that one</u>.</p>
+<p><strong>“Why use colorspace at all then? You just showed me what it can do and then told me not to use it…”</strong></p>
+<p>Great question! There are three noteworthy things you can do with colorspace that are important here. One will be universally useful, while the other two will probably only be useful if you are <em>REALLY</em> into color stuff. That is included here for those interested, but can be skipped by those who are not.</p>
+<ol style="list-style-type: decimal">
+<li>You can make quick and dirty demo plots to test out your color palettes with the <code><a href="https://colorspace.R-Forge.R-project.org/reference/demoplot.html">demoplot()</a></code> function.</li>
+</ol>
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/demoplot.html">demoplot</a></span><span class="op">(</span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/hcl_palettes.html">sequential_hcl</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">12</span>, palette <span class="op">=</span> <span class="st">"Peach"</span><span class="op">)</span>, <span class="st">"bar"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-36-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/demoplot.html">demoplot</a></span><span class="op">(</span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/hcl_palettes.html">sequential_hcl</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">7</span>, palette <span class="op">=</span> <span class="st">"Lajolla"</span><span class="op">)</span>, <span class="st">"scatter"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-36-2.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/demoplot.html">demoplot</a></span><span class="op">(</span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/hcl_palettes.html">sequential_hcl</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">8</span>, palette <span class="op">=</span> <span class="st">"SunsetDark"</span><span class="op">)</span>, <span class="st">"lines"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-36-3.png" alt="" width="672"></div>
+<p>This can be helpful when you want to test out a color palette but not really think about what graph to apply it to.</p>
+<p>Since <code><a href="https://colorspace.R-Forge.R-project.org/reference/demoplot.html">demoplot()</a></code> just needs a vector of colors, you can use colors generated from other packages (e.g., <code>viridis(n)</code>, <code><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal()</a></code>, etc.)!</p>
+<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/demoplot.html">demoplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">terrain.colors</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>, <span class="st">"lines"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-37-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/demoplot.html">demoplot</a></span><span class="op">(</span><span class="fu"><a href="https://sjmgarnier.github.io/viridisLite/reference/viridis.html">viridis</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>, <span class="st">"bar"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-37-2.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/demoplot.html">demoplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op">(</span><span class="fl">6</span>, <span class="st">"Dark2"</span><span class="op">)</span>, <span class="st">"scatter"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-37-3.png" alt="" width="672"></div>
+<button class="btn btn-primary" data-toggle="collapse" data-target="#BlockName">
+Show/Hide
+</button>
+<div id="BlockName" class="collapse">
+<ol start="2" style="list-style-type: decimal">
+<li>You can get some diagnostic and assessment information about a given color palette using <code><a href="https://colorspace.R-Forge.R-project.org/reference/hclplot.html">hclplot()</a></code> and <code><a href="https://colorspace.R-Forge.R-project.org/reference/specplot.html">specplot()</a></code>, which both expect a vector of color values which define a particular palette. From the package repo on cran:
+<br><code><a href="https://colorspace.R-Forge.R-project.org/reference/hclplot.html">hclplot()</a></code> - “converts the colors of a palette to the corresponding hue/chroma/luminance coordinates and displays them in HCL space with one dimension collapsed. The collapsed dimension is the luminance for qualitative palettes and the hue for sequential/diverging palettes.”
+<code><a href="https://colorspace.R-Forge.R-project.org/reference/specplot.html">specplot()</a></code> - “also converts the colors to hue/chroma/luminance coordinates but draws the resulting spectrum in a line plot.”</li>
+</ol>
+<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/hclplot.html">hclplot</a></span><span class="op">(</span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/hcl_palettes.html">sequential_hcl</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">7</span>, palette <span class="op">=</span> <span class="st">"Lajolla"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-38-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/specplot.html">specplot</a></span><span class="op">(</span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/hcl_palettes.html">sequential_hcl</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">7</span>, palette <span class="op">=</span> <span class="st">"Lajolla"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-38-2.png" alt="" width="672"></div>
+<ol start="3" style="list-style-type: decimal">
+<li>You can manually adjust the chrominance and luminance from a pre-existing palette. These are arguments (<em>c</em> and <em>l</em> respectively) you can adjust in the <code>*_hcl()</code> functions.</li>
+</ol>
+<div class="inline-figure"><img src="Visualizations4_files/figure-html/unnamed-chunk-39-1.png" alt="" width="672"></div>
+</div>
+</div>
+</div>
+<div id="color-and-design-resources" class="section level2" number="9.5">
+<h2>
+<span class="header-section-number">9.5</span> Color and Design Resources<a class="anchor" aria-label="anchor" href="#color-and-design-resources"><i class="fas fa-link"></i></a>
+</h2>
+<p>It is outside the scope of this course to get more into design principles in general and how they can be applied to visualizations, but there are several good resources for this. Here are a few:</p>
+<ul>
+<li><a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/Psyc193L/Psyc193L.github.io/main/figures/visualization-principles.pdf">Visualization Principles Cheatsheet (This is worth saving!!!)</a></li>
+<li>
+<a href="https://socviz.co/lookatdata.html#lookatdata">Kieran Healy’s</a> book on data visualization, particularly chapter 1, covers a lot of different design principles and how they can be applied to graphs.</li>
+<li>
+<a href="https://clauswilke.com/dataviz/index.html">Claus Wilke’s</a> book is also great, particularly Part II.</li>
+<li><a href="https://guides.lib.uci.edu/datavis/do">General Do’s and Do Not’s</a></li>
+</ul>
+<p>Here are some general color resources:</p>
+<ul>
+<li><a href="figures/ggplot_colors.png">ggplot Colors</a></li>
+<li><a href="https://ggplot2-book.org/scale-colour.html">ggplot2 book</a></li>
+<li><a href="https://cran.r-project.org/web/packages/colorspace/vignettes/colorspace.html">colorspace info</a></li>
+</ul>
+</div>
+<div id="references-2" class="section level2" number="9.6">
+<h2>
+<span class="header-section-number">9.6</span> References<a class="anchor" aria-label="anchor" href="#references-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>Stauffer, R., Mayr, G. J., Dabernig, M., &amp; Zeileis, A. (2015). Somewhere over the rainbow: How to make effective use of colors in meteorological visualizations. <em>Bulletin of the American Meteorological Society, 96</em>(2), 203-216.</p>
+<!-- #### NAs -->
+<!-- All functions outlined above for continuous color scales include an argument called **na.value** which sets the color used to represent NAs or missing values. The default value used is a grey. This can be changed to any other color, or set to "NA" to hide any such values. -->
+<!-- ```{r} -->
+<!-- plot_hex + -->
+<!--   scale_fill_gradient(low = "red", high = "yellow", na.value = "black") -->
+<!-- plot_hex + -->
+<!--     scale_fill_gradient(low = "darkgreen", high = "palegreen", na.value = "red") -->
+<!-- penguins %>% -->
+<!--   ggplot(aes(y = body_mass_g, x = bill_depth_mm, color = bill_depth_mm)) + -->
+<!--   geom_point(size = 2) + -->
+<!--   scale_color_gradient(low = "darkgreen", high = "palegreen", na.value = "red") -->
+<!-- ``` -->
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="customization.html"><span class="header-section-number">8</span> Customization</a></div>
+<div class="next"><a href="control-flow.html"><span class="header-section-number">10</span> Control Flow</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#color-theory"><span class="header-section-number">9</span> Color Theory</a></li>
+<li>
+<a class="nav-link" href="#hcl-and-color-theory"><span class="header-section-number">9.1</span> HCL and Color Theory</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#hue"><span class="header-section-number">9.1.1</span> Hue</a></li>
+<li><a class="nav-link" href="#chrominance-chroma"><span class="header-section-number">9.1.2</span> Chrominance (Chroma)</a></li>
+<li><a class="nav-link" href="#luminance"><span class="header-section-number">9.1.3</span> Luminance</a></li>
+<li><a class="nav-link" href="#why-does-this-matter"><span class="header-section-number">9.1.4</span> Why Does This Matter?</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#categorical"><span class="header-section-number">9.2</span> Categorical</a></li>
+<li>
+<a class="nav-link" href="#continuous"><span class="header-section-number">9.3</span> Continuous</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#sequential"><span class="header-section-number">9.3.1</span> Sequential</a></li>
+<li><a class="nav-link" href="#divergent"><span class="header-section-number">9.3.2</span> Divergent</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#pre-defined-color-scales"><span class="header-section-number">9.4</span> Pre-defined Color Scales</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#built-in"><span class="header-section-number">9.4.1</span> Built-in</a></li>
+<li><a class="nav-link" href="#brewer"><span class="header-section-number">9.4.2</span> Brewer</a></li>
+<li><a class="nav-link" href="#grey-scale"><span class="header-section-number">9.4.3</span> Grey scale</a></li>
+<li><a class="nav-link" href="#viridis"><span class="header-section-number">9.4.4</span> Viridis</a></li>
+<li><a class="nav-link" href="#colorspace"><span class="header-section-number">9.4.5</span> colorspace</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#color-and-design-resources"><span class="header-section-number">9.5</span> Color and Design Resources</a></li>
+<li><a class="nav-link" href="#references-2"><span class="header-section-number">9.6</span> References</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-08-20.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
