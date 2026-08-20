@@ -1,11 +1,11 @@
 --- 
-title: "PSYC193L"
-author: "Ethan Hurwitz"
+title: "PSY406"
+author: "Catie Nielson (with help from Ethan Hurwitz)"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-url: https://psyc193l.github.io
+url: https://cateness.github.io/psy406-unlv/
 # cover-image: path to the social sharing image like images/cover.jpg
 description: |
   Course material related to PSYC193L at UCSD.
