@@ -1,9 +1,9 @@
-book_filename: "psyc193l.github.io"
+book_filename: "cateness/psy406.github.io"
 new_session: true
 before_chapter_script: _common.R
 delete_merged_file: true
 rmd_files:
-# 193L Sequence:
+# 406 Sequence:
  - index.Rmd
  - RBasics1.Rmd
  - RBasics2.Rmd
