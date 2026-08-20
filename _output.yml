@@ -15,10 +15,10 @@ bookdown::bs4_book:
   #includes: 
   #  in_header: [css.html]
   # end test
-bookdown::pdf_book:
-  includes:
-    in_header: preamble.tex
-  latex_engine: xelatex
-  citation_package: natbib
-  keep_tex: yes
+# bookdown::pdf_book:
+#   includes:
+#     in_header: preamble.tex
+#   latex_engine: xelatex
+#   citation_package: natbib
+#   keep_tex: yes
 bookdown::epub_book: default

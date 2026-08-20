@@ -1,4 +1,4 @@
-book_filename: "cateness/psy406.github.io"
+book_filename: "psy406.github.io"
 new_session: true
 before_chapter_script: _common.R
 delete_merged_file: true
