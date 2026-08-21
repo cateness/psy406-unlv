@@ -132,9 +132,9 @@
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"the condition evaluated FALSE"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="co">#&gt; [1] "The condition evaluated TRUE"</span></span>
+<span><span class="co">#&gt; [1] "the condition evaluated FALSE"</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 4</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 <p>This code specifies what to do depending on whether the test evaluates to <code>TRUE</code> or if it evaluates to <code>FALSE</code>.</p>
 <p>You can get more specific and link several conditions together. You may not want just 2 options – e.g., something to do if a test is <code>TRUE</code> and something else done in <strong>all</strong> other cases. Instead of using <code>else</code>, you use <code>else if()</code> and specify another test.</p>
 <div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
@@ -147,9 +147,9 @@
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Neither the first or second condition evaluated TRUE."</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="co">#&gt; [1] "Neither the first or second condition evaluated TRUE."</span></span>
+<span><span class="co">#&gt; [1] "The first condition evaluated TRUE"</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 6</span></span></code></pre></div>
 <p>Writing <code>if</code> statements like this is most useful when the code you want to run executes a function. As you will note above, in all instances the <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> function was the code being executed (what is in the curly brackets). An infinite number of <code>if</code> conditions can be chained together in an <code>if...else</code> chain.</p>
 <!-- <div class="panel panel-success"> -->
 <!--   <div class="panel-heading">**EXERCISE 1**</div> -->
@@ -178,9 +178,9 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fl">4</span> <span class="op">&lt;</span> <span class="va">x</span>, <span class="st">"The first condition evaluated true."</span>,</span>
 <span>       <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">&lt;</span> <span class="va">x</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">5</span>, <span class="st">"The second condition evaluated true."</span>, </span>
 <span>              <span class="st">"Neither the first or second condition evaluated true."</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "The first condition evaluated true."</span></span>
+<span><span class="co">#&gt; [1] "Neither the first or second condition evaluated true."</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 6</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 <!-- <div class="panel panel-success"> -->
 <!--   <div class="panel-heading">**EXERCISE 2**</div> -->
 <!--   <div class="panel-body">Reformat your code from Exercise 1 to use the `ifelse()` syntax.</div> -->
@@ -199,9 +199,9 @@
 <span>  <span class="fl">2</span> <span class="op">&lt;</span> <span class="va">x</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">5</span> <span class="op">~</span> <span class="st">"The second condition evaluated true."</span>,</span>
 <span>  <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"Neither the first or second condition evaluated true."</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Neither the first or second condition evaluated true."</span></span>
+<span><span class="co">#&gt; [1] "The first condition evaluated true."</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 3</span></span></code></pre></div>
 <!-- <div class="panel panel-success"> -->
 <!--   <div class="panel-heading">**EXERCISE 3**</div> -->
 <!--   <div class="panel-body">Reformat your code from Exercise 1 to use the `case_when()` syntax.</div> -->
