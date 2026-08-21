@@ -3,6 +3,7 @@ title: "PSY406"
 author: "Catie Nielson (with help from Ethan Hurwitz)"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
+output: bookdown::bs4_book
 documentclass: book
 bibliography: [book.bib, packages.bib]
 url: https://cateness.github.io/psy406-unlv/
