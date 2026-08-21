@@ -17,6 +17,8 @@ csl: apa.csl
 
 This is the textbook for PSY 406 - Data Science Skills in Psychology, taught by Dr. Catie Nielson.
 
+This textbook will be updated throughout the semester to show more chapters that match the content for the week.
+
 
 ## Acknowledgements
 
