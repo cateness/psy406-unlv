@@ -10,7 +10,7 @@ bookdown::bs4_book:
     primary: "#37A5EC"
     #color - "#03b3c1"
     #hover - "#01565d "
-  repo: https://cateness.github.io/psy406-unlv/ # Shows the "Source" and "Edit" links
+ # repo: https://cateness.github.io/psy406-unlv/ # Shows the "Source" and "Edit" links
   # test below
   #includes: 
   #  in_header: [css.html]

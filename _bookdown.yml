@@ -8,16 +8,13 @@ rmd_files:
  - RBasics1.Rmd
  - RBasics2.Rmd
  - RBasics3_new.Rmd
-# # # # # - RBasics3.Rmd
-# # # # # - RBasics4.Rmd
- - Visualizations1.Rmd
- - Visualizations1a.Rmd
- - Visualizations2.Rmd
- - Visualizations3.Rmd
- - Visualizations4.Rmd
- - Manip1.Rmd
- # - DataTransformation.Rmd #During AY
- - Manip2.Rmd
+ # - Visualizations1.Rmd
+ # - Visualizations1a.Rmd
+ # - Visualizations2.Rmd
+ # - Visualizations3.Rmd
+ # - Visualizations4.Rmd
+ # - Manip1.Rmd
+ # - Manip2.Rmd
  # - Manip3.Rmd
  # - Manip4.Rmd
  # # - DataTransformation.Rmd # During Summer
