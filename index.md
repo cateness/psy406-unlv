@@ -1,7 +1,7 @@
 --- 
 title: "PSY406"
 author: "Catie Nielson (with help from Ethan Hurwitz)"
-date: "2026-08-20"
+date: "2026-08-21"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
