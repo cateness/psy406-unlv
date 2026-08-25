@@ -1,3 +1,7 @@
+---
+output:
+  html_document: default
+---
 # R Coding Basics
 
 
@@ -138,19 +142,19 @@ You can look at some simple test expressions to see how they evaluate:
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:center;"> &amp; </td>
+   <td style="text-align:center;"> <code>&amp;</code> </td>
    <td style="text-align:center;"> And </td>
   </tr>
   <tr>
-   <td style="text-align:center;"> | </td>
+   <td style="text-align:center;"> <code>&amp;vert;</code> </td>
    <td style="text-align:center;"> Or </td>
   </tr>
   <tr>
-   <td style="text-align:center;"> ! </td>
+   <td style="text-align:center;"> <code>!</code> </td>
    <td style="text-align:center;"> Not </td>
   </tr>
   <tr>
-   <td style="text-align:center;"> %in% </td>
+   <td style="text-align:center;"> <code>%in%</code> </td>
    <td style="text-align:center;"> Checks whether an element is in an object </td>
   </tr>
 </tbody>
