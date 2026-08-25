@@ -1,3 +1,7 @@
+---
+output:
+  html_document: default
+---
 # R Coding Basics
 
 ```{r setup, include=FALSE}
@@ -97,21 +101,19 @@ You can look at some simple test expressions to see how they evaluate:
 
 ### Logical Operators
 
-```{r Logical Operators, echo=FALSE, message=F, warning=F}
+```{r Logical Operators, echo=FALSE, message=T, warning=T}
 library(tidyverse)
-kableExtra::kbl(data.frame("Operator" = c("&",
-                                            "|",
-                                            "!",
-                                            "%in%"), 
+kableExtra::kbl(data.frame("Operator" = c("<code>&amp;</code>", 
+                              "<code>&vert;</code>", 
+                              "<code>!</code>", 
+                              "<code>%in%</code>"),
                            "Description" = c("And", 
                                              "Or", 
                                              "Not", 
                                              "Checks whether an element is in an object")),
-                align = "c") %>%
-    #kableExtra::kable_paper("striped", full_width = T) %>%
-    #column_spec(5:7, bold = T) %>%
-    #kableExtra::row_spec(1, bold = T, color = "white", background = "grey")
-  #kable_material(c("striped", "hover"))
+                align = "c",
+                format = "html",
+                escape = FALSE) %>% # Added to prevent kable from altering your HTML entities)
     kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed", "bordered"), full_width = F, position = "center")
 ```
 
