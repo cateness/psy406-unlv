@@ -104,7 +104,7 @@ You can look at some simple test expressions to see how they evaluate:
 ```{r Logical Operators, echo=FALSE, message=T, warning=T}
 library(tidyverse)
 kableExtra::kbl(data.frame("Operator" = c("<code>&amp;</code>", 
-                              "<code>&vert;</code>", 
+                              "<code>|</code>", 
                               "<code>!</code>", 
                               "<code>%in%</code>"),
                            "Description" = c("And", 
