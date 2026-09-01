@@ -146,7 +146,7 @@ You can look at some simple test expressions to see how they evaluate:
    <td style="text-align:center;"> And </td>
   </tr>
   <tr>
-   <td style="text-align:center;"> <code>&amp;vert;</code> </td>
+   <td style="text-align:center;"> <code>|</code> </td>
    <td style="text-align:center;"> Or </td>
   </tr>
   <tr>
