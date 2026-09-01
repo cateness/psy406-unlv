@@ -146,9 +146,9 @@ Generally speaking, you want to name your code chunks to help readily identify w
 
 Here are some good resources that will help you throughout this class and your R learning journey. 
 
-* [R Cheatsheets](https://github.com/rstudio/cheatsheets)
+* [R Cheatsheets](https://rstudio.github.io/cheatsheets/contributed-cheatsheets.html)
 
-* [A particularly useful cheatsheet](https://sites.ualberta.ca/~ahamann/teaching/renr690/R_Cheat_Data.pdf)
+* [A particularly useful cheatsheet](https://gotellilab.github.io/Bio381/CheatSheets/R_Cheat_Data.pdf)
 
 * [Solutions to common problems](http://www.cookbook-r.com/)
 
