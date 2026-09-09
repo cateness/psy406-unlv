@@ -18,7 +18,7 @@ penguins %>%
   geom_point()
 ```
 
-In looking at the graph created in the last section (shown above), it kind of seems like there may be different groups or clusters of penguins in this data. When you notice a pattern like this, it is worth looking into further and considering what variables you have in our data that could be related.
+In looking at the graph created in the last section (shown above; I've removed the trendline for now), it kind of seems like there may be different groups or clusters of penguins in this data. When you notice a pattern like this, it is worth looking into further and considering what variables you have in our data that could be related.
 
 One way the penguins seem to be grouped is with a cluster at the top and another at the bottom:
 
@@ -133,9 +133,7 @@ Hot dang, looks like this could be a promising explanation for how penguins diff
 
 ### Global vs Local Aesthetics
 
-When first describing This visualization, one of the things noted was that, *"There seems to be a positive linear relationship between bill length and flipper length such that, as flipper length increases, bill length increases in turn."* It can be helpful to add the line of best fit to actually see this linear relationship. You can do this by using `geom_smooth()`. A few arguments need to be set within `geom_smooth()`. The "method" argument tells ggplot how you want to fit the line (in this case "lm" for a linear model or straight line). The "se" argument tells ggplot whether or not to put a shaded band around the line representing the standard error (se, usually 95% confidence intervals). se = FALSE turns off the error band for now, but you can try se = TRUE if you want to see what it looks like.
-
-The code from above will be copy/pasted and the new `geom_smooth()` call can be added directly to it. By doing so the best fitting line for all of the data will be displayed.
+Now that we've looked into color, let's try adding our trendline back in with the `geom_smooth()` function.
 
 ```{r warning=FALSE, message=FALSE}
 penguins %>%
