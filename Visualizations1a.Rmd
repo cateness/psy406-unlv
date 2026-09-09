@@ -133,7 +133,7 @@ Hot dang, looks like this could be a promising explanation for how penguins diff
 
 ### Global vs Local Aesthetics
 
-When first describing This visualization, one of the things noted was that, *"There seems to be a positive linear relationship between bill length and flipper length such that, as flipper length increases, bill length increases in turn."* It can be helpful to add the line of best fit to actually see this linear relationship. You can do this by using `geom_smooth()`. A few arguments need to be set within `geom_smooth()`, but you do not have to worry much about those.
+When first describing This visualization, one of the things noted was that, *"There seems to be a positive linear relationship between bill length and flipper length such that, as flipper length increases, bill length increases in turn."* It can be helpful to add the line of best fit to actually see this linear relationship. You can do this by using `geom_smooth()`. A few arguments need to be set within `geom_smooth()`. The "method" argument tells ggplot how you want to fit the line (in this case "lm" for a linear model or straight line). The "se" argument tells ggplot whether or not to put a shaded band around the line representing the standard error (se, usually 95% confidence intervals). se = FALSE turns off the error band for now, but you can try se = TRUE if you want to see what it looks like.
 
 The code from above will be copy/pasted and the new `geom_smooth()` call can be added directly to it. By doing so the best fitting line for all of the data will be displayed.
 
@@ -170,7 +170,7 @@ Alright! The points are still colored by species, but there is just the one line
 
 ### Setting vs Mapping Aesthetics
 
-Above, to change the color of your points (and inadvertently our line of best fit), the `color` argument was specified in the `aes()` call to map the values to the `species` variable in the data. What if you did not want to map something to a variable in your data? What if you just want to set the value of something yourself? You might think, "maybe I just take it out of the `mapping = aes()` part?" And you would be right, because you are smart! Look at the example below that does just that to try and change all the points to orange (so they have a good contrast with the line).
+Above, to change the color of your points (and inadvertently our line of best fit), the `color` argument was specified in the `aes()` call to map the values to the `species` variable in the data. What if you did not want to color your points based on a variable in your data (map the color to a variable), you just wanted to change the color of all the points? You might think, "maybe I just take it out of the `mapping = aes()` part?" And you would be right, because you are smart! Look at the example below that does just that to try and change all the points to orange (so they have a good contrast with the line).
 
 ```{r warning=FALSE, message=FALSE, error = TRUE}
 penguins %>%
@@ -374,7 +374,7 @@ penguins %>%
   ggplot(aes(y = flipper_length_mm,
              x = bill_length_mm)) +
   geom_point(aes(color = species),
-             shape = 2) +
+             shape = 'triangle open') +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
