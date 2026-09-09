@@ -178,6 +178,27 @@ In the visualization it can be seen that, generally speaking, penguins with grea
 <!--   <div class="panel-body">Update your graph above by telling ggplot you want it to render a point for each observation in the penguins dataset. Describe the pattern/relationship you see.</div> -->
 <!-- </div> -->
 
+## Layering
+
+Now that you've noticed there is a linear relationship in the data, what can you do about it? How can you add a trendline to the graph that visualizes this relationships? As noted above, we use the `+` when adding different parts of a ggplot together (ggplot + geom_point). This technique is called "layering", and it is powerful because it means that you can easily put different ways of visualizing the data together into one graph. Like adding a trendline!
+
+To add the line of best fit, you can use the function `geom_smooth()`. A few arguments need to be set within `geom_smooth()`. The "method" argument tells ggplot how you want to fit the line (in this case "lm" for a linear model or straight line). The "se" argument tells ggplot whether or not to put a shaded band around the line representing the standard error (se, usually 95% confidence intervals). se = FALSE turns off the error band for now, but you can try se = TRUE if you want to see what it looks like.
+
+The code from above will be copy/pasted and the new `geom_smooth()` call can be added directly to it. By doing so the best fitting line for all of the data will be displayed.
+
+
+``` r
+penguins %>%
+  ggplot(mapping = aes(y = flipper_length_mm,
+                       x = bill_length_mm)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+<img src="Visualizations1_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672" />
+
+Great! Now you have a scatterplot with a clear trendline, showing the strong linear relationship between the two variables. And now you know that you can add different `geom` functions together to make a better visualization. Now on to the fun part: changing how your graph looks!
+
 ## References:
 
 Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. https://allisonhorst.github.io/palmerpenguins/

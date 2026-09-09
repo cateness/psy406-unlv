@@ -231,9 +231,25 @@ Artwork by <span class="citation">Horst (2022)</span>
 <!--   <div class="panel-body">Update your graph above by telling ggplot you want it to render a point for each observation in the penguins dataset. Describe the pattern/relationship you see.</div> -->
 <!-- </div> -->
 </div>
-<div id="references" class="section level2" number="5.4">
+<div id="layering" class="section level2" number="5.4">
 <h2>
-<span class="header-section-number">5.4</span> References:<a class="anchor" aria-label="anchor" href="#references"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.4</span> Layering<a class="anchor" aria-label="anchor" href="#layering"><i class="fas fa-link"></i></a>
+</h2>
+<p>Now that you’ve noticed there is a linear relationship in the data, what can you do about it? How can you add a trendline to the graph that visualizes this relationships? As noted above, we use the <code>+</code> when adding different parts of a ggplot together (ggplot + geom_point). This technique is called “layering”, and it is powerful because it means that you can easily put different ways of visualizing the data together into one graph. Like adding a trendline!</p>
+<p>To add the line of best fit, you can use the function <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code>. A few arguments need to be set within <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code>. The “method” argument tells ggplot how you want to fit the line (in this case “lm” for a linear model or straight line). The “se” argument tells ggplot whether or not to put a shaded band around the line representing the standard error (se, usually 95% confidence intervals). se = FALSE turns off the error band for now, but you can try se = TRUE if you want to see what it looks like.</p>
+<p>The code from above will be copy/pasted and the new <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> call can be added directly to it. By doing so the best fitting line for all of the data will be displayed.</p>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
+<span>                       x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations1_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672"></div>
+<p>Great! Now you have a scatterplot with a clear trendline, showing the strong linear relationship between the two variables. And now you know that you can add different <code>geom</code> functions together to make a better visualization. Now on to the fun part: changing how your graph looks!</p>
+</div>
+<div id="references" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> References:<a class="anchor" aria-label="anchor" href="#references"><i class="fas fa-link"></i></a>
 </h2>
 <p>Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. <a href="https://allisonhorst.github.io/palmerpenguins/" class="uri">https://allisonhorst.github.io/palmerpenguins/</a></p>
 
@@ -251,7 +267,8 @@ Artwork by <span class="citation">Horst (2022)</span>
 <a class="nav-link" href="#ggplot2"><span class="header-section-number">5.2</span> ggplot2</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#meet-the-penguins"><span class="header-section-number">5.2.1</span> Meet the Penguins</a></li></ul>
 </li>
 <li><a class="nav-link" href="#a-basic-graph"><span class="header-section-number">5.3</span> A Basic Graph</a></li>
-<li><a class="nav-link" href="#references"><span class="header-section-number">5.4</span> References:</a></li>
+<li><a class="nav-link" href="#layering"><span class="header-section-number">5.4</span> Layering</a></li>
+<li><a class="nav-link" href="#references"><span class="header-section-number">5.5</span> References:</a></li>
 </ul>
 
       <div class="book-extra">

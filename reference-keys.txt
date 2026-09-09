@@ -47,6 +47,7 @@ when-visualizing-go-wrong
 ggplot2
 meet-the-penguins
 a-basic-graph
+layering
 references
 aesthetics
 color
