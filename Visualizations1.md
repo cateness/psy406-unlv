@@ -37,13 +37,13 @@ This collection of data is called the [datasauRus](https://github.com/jumpingriv
 
 ![](figures/anscombes-quartet.jpeg){Width=100%}
 
-All four of these datasets have matching n's, means, standard deviations, and correlations. This means that the slope and intercept, and corresponding statistical tests, will all be equivalent. The data **clearly** look different though. (These data are built into R in an object called `anscombe`, which you can look at to test this for yourself!)
+All four of these datasets have matching n's (number of points), means, standard deviations, and correlations. This means that the slope and intercept, and corresponding statistical tests, will all be equivalent. The data **clearly** look different though. (These data are built into R in an object called `anscombe`, which you can look at to test this for yourself!)
 
-The key point here is that the summary statistics of some variables and their linear relationships inherently overlook some aspects of the data. This highlights the critical importance of visualizing your data, and not just relying on summary statistics alone. The point of a visualization, just like a summary statistic, is to understand a relationship or pattern in your data. However, by looking at the raw data itself, you do not run the risk of missing things the way you do by relying on summary statistics alone.
+The key point here is that the summary statistics (means, standard deviations, etc.) of some variables and their linear relationships inherently overlook some aspects of the data. This highlights the critical importance of visualizing your data, and not just relying on summary statistics alone. The point of a visualization, just like a summary statistic, is to understand a relationship or pattern in your data. However, by looking at the raw data itself, you do not run the risk of missing things the way you do by relying on summary statistics alone.
 
 ## When Visualizing Go Wrong
 
-It is easy enough to just say, "Look at your raw data! Create a visualization!" However, a bad visualization is often times worse than no visualization at all. One of the things that the Covid-19 pandemic brought with it originally was a plethora of data visualizations. Below are a few that were observed out in the real world over the last 2 years:
+It is easy enough to just say, "Look at your raw data! Create a visualization!" However, a bad visualization is often times worse than no visualization at all. One of the things that the Covid-19 pandemic brought with it originally was a plethora of data visualizations. Below are a few that were observed out in the real world. Try to spot why each one is bad!
 
 ![](figures/bad_visualizations/badviz3.jpeg){width=100%}
 
@@ -72,7 +72,7 @@ To create visualizations, you need some data to visualize! The `palmerpenguins` 
 
 ![](figures/palmerpenguins_logo.png){width=207px}
 
-This dataset contains measurements from 344 different penguins. Measurements include things like bill length and depth, sex, among others.
+This dataset contains measurements from 344 different penguins. Measurements include things like bill length and depth, flipper length, and sex, among others.
 
 ![](figures/palmerpenguins_bills.png){width=100%}
 <p style="font-size:6pt">Artwork by @allison_horst</p>
@@ -91,7 +91,7 @@ The most sensible place to start is building a basic graph. There are going to b
 
 <p class="text-info"> **<u>Note:</u> As you move forward with building your first graph, each new piece of code added will be accompanied by a literate programming portion, where you will describe in words what the code is doing.**</p>
 
-All ggplot graphs are build using the `ggplot()` call. The first thing it needs is some data. The `%>%` will be used to pass in the `penguins` dataframe.
+All ggplot graphs are build using the `ggplot()` call. The first thing it needs is some data. The `%>%` (pipe function) will be used to pass in the `penguins` dataframe.
 
 
 ``` r
@@ -100,6 +100,10 @@ penguins %>%
 ```
 
 <img src="Visualizations1_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672" />
+
+``` r
+# This function accomplishes the same thing as ggplot(penguins).
+```
 
 > **Start by telling ggplot to use the `penguins` dataframe for the data**
 

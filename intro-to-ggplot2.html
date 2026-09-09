@@ -111,13 +111,13 @@ Show/Hide
 <p><br></p>
 <p>This collection of data is called the <a href="https://github.com/jumpingrivers/datasauRus">datasauRus</a>, and more information about how these were generated can be found in <a href="https://www.autodesk.com/research/publications/same-stats-different-graphs">this</a> technical paper. This is a modern version of the famous Anscombe’s Quartet:</p>
 <div class="inline-figure"><img src="figures/anscombes-quartet.jpeg" width="100%"></div>
-<p>All four of these datasets have matching n’s, means, standard deviations, and correlations. This means that the slope and intercept, and corresponding statistical tests, will all be equivalent. The data <strong>clearly</strong> look different though. (These data are built into R in an object called <code>anscombe</code>, which you can look at to test this for yourself!)</p>
-<p>The key point here is that the summary statistics of some variables and their linear relationships inherently overlook some aspects of the data. This highlights the critical importance of visualizing your data, and not just relying on summary statistics alone. The point of a visualization, just like a summary statistic, is to understand a relationship or pattern in your data. However, by looking at the raw data itself, you do not run the risk of missing things the way you do by relying on summary statistics alone.</p>
+<p>All four of these datasets have matching n’s (number of points), means, standard deviations, and correlations. This means that the slope and intercept, and corresponding statistical tests, will all be equivalent. The data <strong>clearly</strong> look different though. (These data are built into R in an object called <code>anscombe</code>, which you can look at to test this for yourself!)</p>
+<p>The key point here is that the summary statistics (means, standard deviations, etc.) of some variables and their linear relationships inherently overlook some aspects of the data. This highlights the critical importance of visualizing your data, and not just relying on summary statistics alone. The point of a visualization, just like a summary statistic, is to understand a relationship or pattern in your data. However, by looking at the raw data itself, you do not run the risk of missing things the way you do by relying on summary statistics alone.</p>
 <div id="when-visualizing-go-wrong" class="section level2" number="5.1">
 <h2>
 <span class="header-section-number">5.1</span> When Visualizing Go Wrong<a class="anchor" aria-label="anchor" href="#when-visualizing-go-wrong"><i class="fas fa-link"></i></a>
 </h2>
-<p>It is easy enough to just say, “Look at your raw data! Create a visualization!” However, a bad visualization is often times worse than no visualization at all. One of the things that the Covid-19 pandemic brought with it originally was a plethora of data visualizations. Below are a few that were observed out in the real world over the last 2 years:</p>
+<p>It is easy enough to just say, “Look at your raw data! Create a visualization!” However, a bad visualization is often times worse than no visualization at all. One of the things that the Covid-19 pandemic brought with it originally was a plethora of data visualizations. Below are a few that were observed out in the real world. Try to spot why each one is bad!</p>
 <div class="inline-figure"><img src="figures/bad_visualizations/badviz3.jpeg" style="width:100.0%"></div>
 <div class="inline-figure"><img src="figures/bad_visualizations/badviz4.jpeg" style="width:100.0%"></div>
 <div class="inline-figure"><img src="figures/bad_visualizations/badviz2.png" style="width:100.0%"></div>
@@ -139,7 +139,7 @@ Artwork by <span class="citation">Horst (2022)</span>
 </h3>
 <p>To create visualizations, you need some data to visualize! The <code>palmerpenguins</code> dataset from <a href="https://allisonhorst.github.io/palmerpenguins/">Alison Horst</a> will be used to create examples throughout.</p>
 <div class="inline-figure"><img src="figures/palmerpenguins_logo.png" width="207"></div>
-<p>This dataset contains measurements from 344 different penguins. Measurements include things like bill length and depth, sex, among others.</p>
+<p>This dataset contains measurements from 344 different penguins. Measurements include things like bill length and depth, flipper length, and sex, among others.</p>
 <img src="figures/palmerpenguins_bills.png" style="width:100.0%"><p style="font-size:6pt">
 Artwork by <span class="citation">Horst (2022)</span>
 </p>
@@ -159,17 +159,19 @@ Artwork by <span class="citation">Horst (2022)</span>
 <p class="text-info">
 <strong><u>Note:</u> As you move forward with building your first graph, each new piece of code added will be accompanied by a literate programming portion, where you will describe in words what the code is doing.</strong>
 </p>
-<p>All ggplot graphs are build using the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> call. The first thing it needs is some data. The <code>%&gt;%</code> will be used to pass in the <code>penguins</code> dataframe.</p>
+<p>All ggplot graphs are build using the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> call. The first thing it needs is some data. The <code>%&gt;%</code> (pipe function) will be used to pass in the <code>penguins</code> dataframe.</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="Visualizations1_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># This function accomplishes the same thing as ggplot(penguins).</span></span></code></pre></div>
 <blockquote>
 <p><strong>Start by telling ggplot to use the <code>penguins</code> dataframe for the data</strong></p>
 </blockquote>
 <p>Woo! This actually created something. A grey rectangle! Of course, the code above alone will not do anything. You have to tell ggplot what you want to plot. Hmm… As an example, consider how a penguin’s <code>bill_length_mm</code> is related to its <code>flipper_length_mm</code>. You might imagine that bigger penguins would tend to have longer bills and flippers, but maybe not? That is why you create visualizations, to try and help answer questions you may have about your data (which consist of samples thought to be representative of the world at large)!</p>
 <p>ggplot needs to be told what variables from your data should be mapped to the aesthetics you want to render on your graph. You will do that with the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> call, and start with specifying what to display on each axis.</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
 <span>                       x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -187,7 +189,7 @@ Artwork by <span class="citation">Horst (2022)</span>
 <p class="text-info">
 <strong><u>Note:</u> There are a TON of different geoms. You will see many more later.</strong>
 </p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">flipper_length_mm</span>,</span>
 <span>                       x <span class="op">=</span> <span class="va">bill_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
