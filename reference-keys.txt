@@ -42,3 +42,9 @@ importing
 csv-files
 rdata-files
 exporting
+intro-to-ggplot2
+when-visualizing-go-wrong
+ggplot2
+meet-the-penguins
+a-basic-graph
+references
