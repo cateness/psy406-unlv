@@ -10,7 +10,7 @@ rmd_files:
  - RBasics3_new.Rmd
  - Visualizations1.Rmd
  - Visualizations1a.Rmd
- # - Visualizations2.Rmd
+ - Visualizations2.Rmd
  # - Visualizations3.Rmd
  # - Visualizations4.Rmd
  # - Manip1.Rmd
