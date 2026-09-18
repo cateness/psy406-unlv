@@ -14,6 +14,9 @@ Previously, it was stated that the point of a visualization is to explore and un
 
 Recall from your statistics course (and Chapter 2 of this text) that we can divide the data we usually use in psychology into two types: categorical and continuous. *Categorical* data, also called qualitative or discrete, contains discrete categories like color (blue, pink, purple), species (sparrow, robin, pigeon), and experimental group (treatment, control). This data is often (but not always) a string or character variable. *Continuous* data, also called quantitative or numeric, is the kind of thing you can count like height, weight, age, or (for psychologists) Likert scale ratings. This is a numerical variable. Deciding what type of graph to use (and later, what type of statistical test) depends on if the variables you are interested in are categorical or continuous, and how many of each you have.
 
+![](figures/continuous_discrete.png){width=100%}
+<p style="font-size:6pt">Artwork by @allison_horst</p>
+
 What follows here is an overview of a number of different ways you can visualize these different types of data and relationships, as well as recommendations as to which are best and when. 
 
 # One Variable
@@ -891,7 +894,7 @@ This may (or may not) be easier to interpret, but at least it's another option!
 
 This section gives a few more tips to make graphs that are more readable and interpretable to your audience (and yourself!).
 
-### Groups
+## Groups
 
 Previously, when you made a line plot that looked something like this:
 
@@ -923,7 +926,7 @@ When you are grouping your data in your visualization code, you may run into som
 
 To fix that, you will have to think about positions...
 
-### Positions
+## Positions
 
 ggplot2 has a number of position/adjustment arguments that can be used in these cases. In fact, you have already used one! Jittering is a position adjustment. So, while you can create a jitter plot using `geom_jitter()`, you also could accomplish the same thing using `geom_point()` and setting a position argument. e.g.,
 
@@ -933,7 +936,7 @@ These in effect do the same thing. However, if you want to include any specific 
 
 Here are a few quick examples of graphs that came out looking funky, and how using positional adjustments can fix that.
 
-#### Identity
+### Identity
 
 Most things start with "identity" as their default position argument. Identity just overlaps the elements:
 
@@ -948,7 +951,7 @@ penguins %>%
 
 This often results in some elements of your visualization being hidden (which definitely seems counterproductive).
 
-#### Dodging
+### Dodging
 
 `position = “dodge”` places overlapping objects directly beside one another. This makes it easier to compare individual values.
 
@@ -1038,7 +1041,7 @@ ggplot(aes(x = island, y = body_mass_g, fill = species)) +
 
 This is still quite cluttered and needs more work, but way better than before!
 
-#### Stacking
+### Stacking
 
 `position = “fill”` works like stacking, but makes each set of stacked bars uniform in height. This makes it easier to compare proportions across groups.
 
