@@ -96,12 +96,6 @@ faceting
 categorical-1-continuous
 categorical-2-continuous
 continuous-variables-1
-additional-aesthetics
-groups
-positions
-identity
-dodging
-stacking
 best-practices
 extra-resources
 citations
