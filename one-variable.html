@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 8 One Variable | PSY406</title>
+<meta name="author" content="Catie Nielson (with help from Ethan Hurwitz)">
+<meta name="description" content="8.1 One Categorical Graphing one categorical variable is used to show counts of that variable. This is most commonly used as an initial visualization of your data to check against your statistics....">
+<meta name="generator" content="bookdown 0.48 with bs4_book()">
+<meta property="og:title" content="Chapter 8 One Variable | PSY406">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://cateness.github.io/psy406-unlv/one-variable.html">
+<meta property="og:description" content="8.1 One Categorical Graphing one categorical variable is used to show counts of that variable. This is most commonly used as an initial visualization of your data to check against your statistics....">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 8 One Variable | PSY406">
+<meta name="twitter:description" content="8.1 One Categorical Graphing one categorical variable is used to show counts of that variable. This is most commonly used as an initial visualization of your data to check against your statistics....">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">PSY406</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
+<li class="book-part">R Basics</li>
+<li><a class="" href="why-use-r.html"><span class="header-section-number">2</span> Why use R?</a></li>
+<li><a class="" href="r-coding-basics.html"><span class="header-section-number">3</span> R Coding Basics</a></li>
+<li><a class="" href="using-r-effectively.html"><span class="header-section-number">4</span> Using R Effectively</a></li>
+<li class="book-part">Visualizations</li>
+<li><a class="" href="intro-to-ggplot2.html"><span class="header-section-number">5</span> Intro to ggplot2</a></li>
+<li><a class="" href="aesthetics.html"><span class="header-section-number">6</span> Aesthetics</a></li>
+<li><a class="" href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></li>
+<li><a class="active" href="one-variable.html"><span class="header-section-number">8</span> One Variable</a></li>
+<li><a class="" href="two-variables.html"><span class="header-section-number">9</span> Two Variables</a></li>
+<li><a class="" href="three-variables.html"><span class="header-section-number">10</span> Three Variables</a></li>
+<li><a class="" href="additional-aesthetics.html"><span class="header-section-number">11</span> Additional Aesthetics</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="one-variable" class="section level1" number="8">
+<h1>
+<span class="header-section-number">8</span> One Variable<a class="anchor" aria-label="anchor" href="#one-variable"><i class="fas fa-link"></i></a>
+</h1>
+<div id="one-categorical" class="section level2" number="8.1">
+<h2>
+<span class="header-section-number">8.1</span> One Categorical<a class="anchor" aria-label="anchor" href="#one-categorical"><i class="fas fa-link"></i></a>
+</h2>
+<p>Graphing one categorical variable is used to show counts of that variable. This is most commonly used as an initial visualization of your data to check against your statistics.</p>
+<div id="bar" class="section level3" number="8.1.1">
+<h3>
+<span class="header-section-number">8.1.1</span> Bar<a class="anchor" aria-label="anchor" href="#bar"><i class="fas fa-link"></i></a>
+</h3>
+<p>One good way of visualizing a single categorical variable is with a bar chart.</p>
+<p>Think about the following question:</p>
+<blockquote>
+<p>“How many penguin observations do we have from each island?”</p>
+</blockquote>
+<p>Let’s create a visualization that has a bar for each island, and that bar’s height corresponds to the number of penguins recorded on that island. To do so, we will use <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> which creates a bar graph of counts. Notice that there’s only one variable <code>x</code>. ggplot will automatically count the number in each group to create the y variable (number of penguins on each island).</p>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-2-1.png" alt="" width="672"></div>
+<p>This way, we can see the distribution of penguins across the three islands. Why island has the most penguins? Which has the least?</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 1**</div> -->
+<!--   <div class="panel-body">Create bar plots to explore both the count and proportion of penguins of each species. Try out different aesthetic **<u>settings</u>**, and see how they change the graph (if you want to try an aesthetic **<u>mapping</u>**, only use the singular variable on your x-axis).</div> -->
+<!-- </div> -->
+</div>
+<div id="pie" class="section level3" number="8.1.2">
+<h3>
+<span class="header-section-number">8.1.2</span> Pie<a class="anchor" aria-label="anchor" href="#pie"><i class="fas fa-link"></i></a>
+</h3>
+<p>Another option when dealing with one categorical variables is a pie chart. However, pie charts have a tendency to misrepresent data, so I don’t recommend using them. Also, there is no geom in ggplot specifically for a pie chart, so the are also complicated to make! We won’t use them in this class, so you do not have to worry about understanding this code. You may, unfortunately, find yourself working with someone who wants to use a pie chart. I include this code here so you have a template for those scenarios.</p>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>             fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_radial.html">coord_polar</a></span><span class="op">(</span><span class="st">"y"</span>, start <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672"></div>
+<p>More information on why it is recommended to avoid using pie charts can be found <a href="https://www.data-to-viz.com/caveat/pie.html">here</a> (stop before the “Alternatives” section).</p>
+<div class="rmdcaution">
+<p><strong>When you are creating a visualization to communicate something about a single categorical variable, you can also use a table instead of a graph.</strong></p>
+</div>
+</div>
+</div>
+<div id="one-continuous" class="section level2" number="8.2">
+<h2>
+<span class="header-section-number">8.2</span> One Continuous<a class="anchor" aria-label="anchor" href="#one-continuous"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>Looking at distributions</strong></p>
+<p>Being able to understand and characterize distributions is an integral part of the Social/Data Scientist’s toolbox. When you want to know more about the distribution of a particular continuous variable in your dataset, you have a few options available to you.</p>
+<div id="histogram" class="section level3" number="8.2.1">
+<h3>
+<span class="header-section-number">8.2.1</span> Histogram<a class="anchor" aria-label="anchor" href="#histogram"><i class="fas fa-link"></i></a>
+</h3>
+<p>One of the most powerful tools you have for examining distributions is the <strong>histogram.</strong> In a histogram, values of the variable of interest are separated into different bins on the x-axis. It’s kind of like a bar graph, except the x-axis is separated into arbitrary bins of different sizes (like 1 or 10) instead of discrete categories. So, for example, all penguins with a flipper length of 190 to 200 mm might be in the same bin.</p>
+<p>As in the bar graph above, the y-axis of a histogram will most often represent the <em>frequency</em> or <em>count</em> of some value or range of values in the distribution.</p>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value</span></span>
+<span><span class="co">#&gt; `binwidth`.</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672"></div>
+<p>In the histogram above, the height of the bars does not correspond to how long a penguin’s flipper was, but rather the number of penguins in this sample with flipper lengths of a particular range/value. For example, it looks like ~28 penguins in this sample had flipper lengths around 190mm.</p>
+<p>It is a little difficult to tell the difference between each individual bar though. Giving them an outline would help with this tremendously. You can do this with the color aesthetic. Remember, <em>‘color’</em> often refers to the outline/outside, while <em>‘fill’</em> often refers to the inside.</p>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">'black'</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value</span></span>
+<span><span class="co">#&gt; `binwidth`.</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-5-1.png" alt="" width="672"></div>
+<div id="bins" class="section level4" number="8.2.1.1">
+<h4>
+<span class="header-section-number">8.2.1.1</span> Bins<a class="anchor" aria-label="anchor" href="#bins"><i class="fas fa-link"></i></a>
+</h4>
+<p>You may have noticed a weird message coming out with the histograms so far:</p>
+<p style="color:#A79BF0">
+<strong>stat_bin() using bins = 30. Pick better value with binwidth.</strong>
+</p>
+<p>“<strong>bins</strong>” refers to the actual number of bins (bars) in your histogram. “<strong>binwidth</strong>” refers to the width of each bin (bar), in other words how many units in x wide each bin (bar) is. Setting a value for “<strong>binwidth</strong>” will override the number of “<strong>bins</strong>”, which is why R is suggesting you change that value.</p>
+<p>In a histogram, the difference of binwidth size can significantly impact how your graph looks. This, in turn, will influence what kind of impressions and inferences you make. For this reason it is <strong>very important</strong> to explore different bin settings and verify whether the patterns you notice are truly a feature of your data or just an artifact of your bin settings!</p>
+<p>Consider the example below:</p>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">'black'</span>,</span>
+<span>                 bins <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-6-1.png" alt="" width="672"></div>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">'black'</span>,</span>
+<span>                 bins <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-6-2.png" alt="" width="672"></div>
+<p>In the first histogram you would probably say this is a <em>unimodal</em> distribution (one peak) with most of the flipper lengths around 190mm (+/- a few). However, when looking at the second histogram, you would probably say this distribution looks more <em>bimodal</em> (two peaks), with one cluster around 190mm and another around 210mm. The same data, visualized using the same type of graph, but two different stories based on choices that you made. You have to be very careful to make sure you are telling the <strong><u>data’s</u></strong> story, not <em>your</em> story! In this case, it would probably be better to use a smaller bin size, to show that there is a dip in the middle of the distribution.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 2**</div> -->
+<!--   <div class="panel-body">Make a histogram to explore the distribution of `body_mass_g` scores in your dataset. Try out different aesthetic **<u>settings</u>** and see how they change the graph. Also, try different bin settings (size and width) and see how they change your interpretation/understanding of the data.</div> -->
+<!-- </div> -->
+</div>
+</div>
+<div id="density" class="section level3" number="8.2.2">
+<h3>
+<span class="header-section-number">8.2.2</span> Density<a class="anchor" aria-label="anchor" href="#density"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>density plots</strong>, in short, are a smoothed histogram. If you are particularly stats-minded and want further information, you click below for some further info.</p>
+<button class="btn btn-primary" data-toggle="collapse" data-target="#BlockName">
+Advanced
+</button>
+<div id="BlockName" class="collapse">
+<p>Density plots show probability density (not <em>actual</em> probability!) on the y-axis. What does that mean exactly? Well, it is a little complicated. In short, a continuous curve (aka kernel) is fit to each individual data point. All the curves from each individual data point are summed and that forms the curve fit by the density plot or the whole dataset. For those interested in more info, check <a href="https://towardsdatascience.com/histograms-and-density-plots-in-python-f6bda88f5ac0">here</a> for a fairly approachable explanation.</p>
+</div>
+<p><br>
+Use <code><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density()</a></code> for a density plot.</p>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672"></div>
+<p>To better understand the density plot, it helps to see how it overlays the histogram:</p>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">..density..</span><span class="op">)</span>, color<span class="op">=</span><span class="st">"black"</span>, alpha<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Visualizations2_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672"></div>
+<p>You can see that, by smoothing, density plots obscure some of the noisiness (variability) in your data.</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 3**</div> -->
+<!--   <div class="panel-body">Take your plot from Exercise 2 and add a colored line approximately where you think the mean would be. Add another line in a different color where you think the mode would be.</div> -->
+<!-- </div> -->
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></div>
+<div class="next"><a href="two-variables.html"><span class="header-section-number">9</span> Two Variables</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#one-variable"><span class="header-section-number">8</span> One Variable</a></li>
+<li>
+<a class="nav-link" href="#one-categorical"><span class="header-section-number">8.1</span> One Categorical</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#bar"><span class="header-section-number">8.1.1</span> Bar</a></li>
+<li><a class="nav-link" href="#pie"><span class="header-section-number">8.1.2</span> Pie</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#one-continuous"><span class="header-section-number">8.2</span> One Continuous</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#histogram"><span class="header-section-number">8.2.1</span> Histogram</a></li>
+<li><a class="nav-link" href="#density"><span class="header-section-number">8.2.2</span> Density</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-09-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
