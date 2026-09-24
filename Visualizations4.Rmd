@@ -111,7 +111,7 @@ plot_hex = penguins %>%
   ggplot(aes(y = body_mass_g,
              x = bill_depth_mm,
              z = flipper_length_mm)) +
-  stat_summary_hex() +
+  stat_summary_2d() +
   labs(fill = "Flipper Length")
 
 plot_hex
@@ -119,116 +119,18 @@ plot_hex
 
 In all of the visualizations you have created thus far the colors were either automatically chosen by R or manually, but arbitrarily, set. Color choices, like all aspects of your visualization, should be made intentionally and purposefully. What, then, are the things you should consider and factor into your decision making process?
 
-## HCL and Color Theory
-
-While discussing what should be considered when deciding color choices, a good starting place is to figure out what is meant by "color". There are many formal definitions and ways to quantify what a "color" is. For the purposes here, you can think of "color" as being composed of 3 parts.
-
-### Hue
-
-[Hue](https://en.wikipedia.org/wiki/Hue) is what is conventionally meant when describing something's color. e.g., red, blue, green, etc. Hues are organized along a color wheel and are defined by the angle (0&deg; - 360&deg;) on this wheel:
-
-```{r fig.align='center', out.width="376.5px", out.height="400px", echo = FALSE}
-knitr::include_graphics("figures/hue.png")
-```
-
-Different hues are not perceived as having an inherent order. For example, even though cyan corresponds to a degree of 180 and green of 120, cyan is not perceived to be "bigger" than green. Yellow (60&deg;) is not perceived to be in between red (0&deg;) and green (120&deg;). 
-
-### Chrominance (Chroma)
-
-Chroma is technically distinct from saturation, but functionally can be viewed the same. It is the degree of purity or intensity of a color. Chroma values range from a muted/grey to the fully vivid color. Unlike hue, chroma **is** perceived to be ordered. e.g., pink is viewed as being "between" white and red.
-
-![](figures/chroma.png){width=100%}
-<p style="font-size:8pt">Source: [Somewhere Over the Rainbow...](10.1175/BAMS-D-13-00155.1)</p>
-
-### Luminance
-
-Luminance is the brightness of a color. It ranges on a scale from black to white. Like chroma, and unlike hue, luminance is also perceived to be ordered. For example, grey is viewed as "between" black and white. 
-
-![](figures/luminance.png){}
-<p style="font-size:8pt">Source: [Somewhere Over the Rainbow...](10.1175/BAMS-D-13-00155.1)</p>
-
-
-### Why Does This Matter?
-
-To this point, this information may seem fairly irrelevant. Interesting, but disconnected. Why care about different components of "color"? It is a fair question, because most people do not. Consider, though, what you are doing when using color in a visualization. You are mapping specific colors that a viewer will observe to a specific quantity or category (depending on the variable type) in your data. You will, of course, want this mapping to accurately and meaningfully characterize the data it is representing. For example, the difference between two data points or summary statistics should be maintained when choosing values to define the colors used to represent them. Beyond this *numerical* accuracy, you want this difference to be maintained in a viewer's *perception* of those different colors.
-
-However, this is where things start to get tricky. Consider the two graphs below:
-
-```{r echo=FALSE, out.width='100%'}
-(data.frame(x = c("a", "b", "c", "d", "e"), y = c(5, 5, 5, 5, 5)) %>%
-ggplot(., aes(x, y, fill = x)) + 
-  geom_bar(stat = "identity",
-           width=0.5) + 
-  labs(x = NULL, y = NULL) +
-  scale_fill_grey() + 
-  scale_y_continuous(expand = c(0,0)) +
-  theme_classic()+
-  theme(legend.position = "none",
-        axis.line = element_line(color = "white"))) + (data.frame(x = c("a", "b", "c", "d", "e"), y = c(5, 5, 5, 5, 5)) %>%
-ggplot(., aes(x, y, fill = x)) + 
-  geom_bar(stat = "identity",
-           position = "identity",
-           width = 1) + 
-  labs(x = NULL, y = NULL) +
-  scale_fill_grey() + 
-  scale_y_continuous(expand = c(0,0)) +
-  theme_classic() +
-  theme(legend.position = "none",
-        axis.line = element_line(color = "white"))) 
-```
-
-In both, there are 5 bars of equal height which use a grey scale ranging from dark to light. Each numerically positioned bar has the same exact luminance as the corresponding bar on the other graph. In the graph where the bars are touching, the darker bars seem comparatively darker and the lighter bars comparatively lighter. These are known as "mach bands" and are a classic visual illusion. Luminance is an important property of "color", and our perception of luminance is based on *relative* rather than *absolute* judgments. Even though two things may have precisely the same luminance, the perceived color is influenced by the environment and surrounding objects! 
-
-To make matters worse, even disregarding the impact that environmental factors may have on visual/color perception, the HCL color space itself is not even perceptually uniform! Two "colors" that are one unit apart in one area of HCL space may look very similar or very different, and this is not constant across the entirety of the space. 
-
-The take home point is that <u>**color values that are *numerically* uniform may not be *perceptually* uniform**</u>. This needs to be considered when choosing color scales and palettes for your visualizations. Perception is the the most important thing, so scales and palettes should only be used if there is a perceptually uniform magnitude of change between each level. The type of color scale, and specific color palette, used depends on the type of data being visualized and the use case for your visualization.
-
 ## Categorical 
 
 When visualizing categorical/discrete data, color is used as a tool to help a viewer easily distinguish different groups, levels, or categories. Importantly, it is most often the case that these groups, levels, or categories, **do not** have an inherent order. For example, different political parties, Hogwarts houses, UCSD colleges, pokemon types, etc. These are distinct groups, but do not have an inherent order (despite some subjective opinions...).
 
 In such instances you use a <u>*qualitative*</u> color scale, which contains a specific set of perceptually distinct but equivalently different colors. The set of colors does not convey any particular ordering or salience of particular colors compared to the rest.
 
-To change the color scale and/or palette used in your visualization, you will use another `scale_*_*()` command. The first asterisk gets replaced by what aesthetic you have mapped, `fill` or `color`. The second gets replaced by what type of scale you want to use or modify. For example, to manually set the HCL parameters of a color space, you would use `scale_*_hue()`. This function has 3 main arguments:
-
-* `h` = range of hues to use 
-  + (ranged from 0 - 360 -- default = (c(0,360) + 15))
-* `l` = luminance 
-  + (lightness; 0-100 -- default = 65)
-* `c` = chroma 
-  + (intensity of color -- maximum value varies depending on combination of hue and luminance).
-
-Look at the examples below:
-
-```{r echo = TRUE, out.width='100%'}
-((plot_bar +
-  labs(title = "Baseline")) / (plot_bar + 
-    scale_fill_hue(c = 200) +
-    labs(title = "Change Chroma"))) | ((plot_bar + 
-  scale_fill_hue(l = 80) +
-  labs(title = "Change Luminance")) / (plot_bar + 
-  scale_fill_hue(h = c(0, 60)) + 
-  labs(title = "Change Hue Range")))
-((plot_jitter +
-  labs(title = "Baseline")) / (plot_jitter + 
-  scale_color_hue(c = 200) +
-  labs(title = "Change Chroma"))) | ((plot_jitter + 
-  scale_color_hue(l = 80) +
-  labs(title = "Change Luminance")) / (plot_jitter + 
-    scale_color_hue(h = c(0, 60)) + 
-    labs(title = "Change Hue Range")))
-```
-
-<!-- <div class="panel panel-success"> -->
-<!--   <div class="panel-heading">**EXERCISE 1**</div> -->
-<!--   <div class="panel-body">Practice changing the values for the 3 arguments in `scale_*_hue()` and see how they affect your visualization. Change multiple simultaneously and see how combinations work! -->
-<!--   </div> -->
-<!-- </div> -->
-Instead of tweaking the HCL values, you may want to just manually choose the colors for yourself. This can be done using `scale_*_manual()`. The main argument here is `values`, which expects a vector of color names/codes to use.
+To change the color scale and/or palette used in your visualization, you will use another `scale_*_manual()` command. The asterisk gets replaced by what aesthetic you have mapped, `fill` or `color`. The main argument here is `values`, which expects a vector of color names/codes to use. I've used literal names here, but you could also use hex codes if you'd prefer.
 
 ```{r}
 plot_bar +
   scale_fill_manual(values = c("cyan", "lightgreen", "orange4"))
+
 plot_jitter +
   scale_color_manual(values = c("magenta", "mediumpurple1", 
                                 "lightskyblue"))
@@ -257,7 +159,7 @@ Where possible, you should choose colors that will be intrinsically informative 
 
 It is important to consider what kind of latent information your color choices may be communicating, especially when unintentional! 
 
-## Continuous 
+## Continuous
 
 ### Sequential
 
@@ -433,16 +335,6 @@ plot_jitter +
 ```
 
 
-<!--
-```{r}
-plot_hex +
-    scale_fill_gradientn(colors = brewer.pal(n = 4, name = 'Reds'))
-
-plot_jitter +
-  scale_color_manual(values = heat.colors(3))
-```
--->
-
 You may sometimes encounter an error like this:
 
 <p style="color:#A79BF0"> **Error: Continuous value supplied to discrete scale**</p>
@@ -465,36 +357,6 @@ Thus, it is important to double check you are using the right type of scale for 
 <!--   <div class="panel-body">Try out some different palettes from RColorBrewer, pick your top 3, and modify your visualizations from above to use those palettes. -->
 <!--   </div> -->
 <!-- </div> -->
-
-### Grey scale
-
-For ink considerations, sometimes you may want to just use a grey scale. ggplot has a built in function to help with this for categorical data (as it is easy to do for continuous) called `scale_*_grey()`. The scale can be selected automatically, or you can specify the `start` and `end` values which range from 0 (dark) to 1 (light).
-
-```{r eval=FALSE}
-plot_jitter + 
-  scale_color_grey()
-
-plot_bar + 
-  scale_fill_grey()
-
-plot_bar + 
-  scale_fill_grey(start = 0, end = 0.5)
-
-plot_bar + 
-  scale_fill_grey(start = 0.5, end = 0.95)
-```
-
-```{r echo=FALSE}
-((plot_jitter + 
-  scale_color_grey() + 
-    ggtitle("Default")) + (plot_bar + 
-  scale_fill_grey()+ 
-    ggtitle("Default"))) / ((plot_bar + 
-  scale_fill_grey(start = 0, end = 0.5)+ 
-    ggtitle("Range 0-0.5")) + (plot_bar + 
-  scale_fill_grey(start = 0.5, end = 0.95)+ 
-    ggtitle("Range 0.5-0.95")))
-```
 
 ### Viridis
 
@@ -544,105 +406,36 @@ plasma(n)
 <!--   </div> -->
 <!-- </div> -->
 
-### colorspace
+### Grey scale
 
-colorspace is another package that, like RColorBrewer, comes by way of installing tidyverse and ggplot2. It also contains a number of pre-defined color scales and palettes. Info on all the palettes can be accessed with `hcl_palettes()`.
+For ink considerations (or if a journal required it), sometimes you may want to just use a grey scale. ggplot has a built in function to help with this for categorical data (as it is easy to do for continuous) called `scale_*_grey()`. The scale can be selected automatically, or you can specify the `start` and `end` values which range from 0 (dark) to 1 (light).
 
-```{r}
-hcl_palettes()
+```{r eval=FALSE}
+plot_jitter + 
+  scale_color_grey()
+
+plot_bar + 
+  scale_fill_grey()
+
+plot_bar + 
+  scale_fill_grey(start = 0, end = 0.5)
+
+plot_bar + 
+  scale_fill_grey(start = 0.5, end = 0.95)
 ```
 
-You can also `plot` them to actually see the palettes themselves.
-
-```{r}
-hcl_palettes(type = "Qualitative", plot = TRUE)
-hcl_palettes(type = "Sequential (single-hue)", plot = TRUE)
-hcl_palettes(type = "Sequential (multi-hue)", plot = TRUE)
-hcl_palettes(type = "Diverging", plot = TRUE)
+```{r echo=FALSE}
+((plot_jitter + 
+  scale_color_grey() + 
+    ggtitle("Default")) + (plot_bar + 
+  scale_fill_grey()+ 
+    ggtitle("Default"))) / ((plot_bar + 
+  scale_fill_grey(start = 0, end = 0.5)+ 
+    ggtitle("Range 0-0.5")) + (plot_bar + 
+  scale_fill_grey(start = 0.5, end = 0.95)+ 
+    ggtitle("Range 0.5-0.95")))
 ```
 
-The way you actually use these palettes is quite similar to how you use `brewer.pal()` to use RColorBrewer palettes! Each type of scale has its own function, where you specify the `palette` and `n`umber of colors from it. That vector of colors can then be used in your ggplot code.
-
-```{r}
-qualitative_hcl(n = 3, palette = "Harmonic")
-sequential_hcl(n = 3, palette = "SunsetDark")
-diverging_hcl(n = 3, palette = "Lisbon")
-
-plot_hex +
-    scale_fill_gradientn(colors = sequential_hcl(n = 3, 
-                                                 palette = "SunsetDark"))
-```
-
-You may have noticed when looking at the colorspace palettes that many of them seem similar to ones from RColorBrewer or viridis. That would be astute, because there are many that are similar or attempt to be identical palettes. The word "attempt" is doing a lot of work here though, because these palettes are often not actually identical.
-
-Below, a color palette from brewer and viridis are compared to their colorspace counterpart:
-
-```{r echo = FALSE}
-(plot_bar +
-    scale_fill_manual(values = brewer.pal(n = 3, name = 'BuGn')) +
- ggtitle("brewer")) + (plot_bar +
-    scale_fill_manual(values = sequential_hcl(n = 3, palette = "BuGn")) +
-      ggtitle("colorspace"))
-(plot_hex +
-    scale_fill_viridis(option = "viridis") +
-    ggtitle("viridis")) + (plot_hex +
-    scale_fill_gradientn(colors = sequential_hcl(n = 12, 
-                                                 palette = "viridis")) +
-      ggtitle("colorspace"))
-```
-
-While more stark in the first comparison and more subtle in the second, it is clear in both that the palettes are similar but not quite exact. The take home point here is that <u>whenever there is a similar palette available from another package, probably go with that one</u>.
-
-**"Why use colorspace at all then? You just showed me what it can do and then told me not to use it..."**
-
-Great question! There are three noteworthy things you can do with colorspace that are important here. One will be universally useful, while the other two will probably only be useful if you are *REALLY* into color stuff. That is included here for those interested, but can be skipped by those who are not.
-
-1. You can make quick and dirty demo plots to test out your color palettes with the `demoplot()` function.
-
-```{r}
-demoplot(sequential_hcl(n = 12, palette = "Peach"), "bar")
-demoplot(sequential_hcl(n = 7, palette = "Lajolla"), "scatter")
-demoplot(sequential_hcl(n = 8, palette = "SunsetDark"), "lines")
-```
-
-This can be helpful when you want to test out a color palette but not really think about what graph to apply it to.
-
-Since `demoplot()` just needs a vector of colors, you can use colors generated from other packages (e.g., `viridis(n)`, `brewer.pal()`, etc.)!
-
-```{r}
-demoplot(terrain.colors(6), "lines")
-demoplot(viridis(5), "bar")
-demoplot(brewer.pal(6, "Dark2"), "scatter")
-```
-
-<button class="btn btn-primary" data-toggle="collapse" data-target="#BlockName"> Show/Hide </button>  
-<div id="BlockName" class="collapse">
-2. You can get some diagnostic and assessment information about a given color palette using `hclplot()` and `specplot()`, which both expect a vector of color values which define a particular palette. From the package repo on cran:
-<br>
-`hclplot()` - "converts the colors of a palette to the corresponding hue/chroma/luminance coordinates and displays them in HCL space with one dimension collapsed. The collapsed dimension is the luminance for qualitative palettes and the hue for sequential/diverging palettes."
-`specplot()` - "also converts the colors to hue/chroma/luminance coordinates but draws the resulting spectrum in a line plot."
-
-```{r}
-hclplot(sequential_hcl(n = 7, palette = "Lajolla"))
-specplot(sequential_hcl(n = 7, palette = "Lajolla"))
-```
-
-3. You can manually adjust the chrominance and luminance from a pre-existing palette. These are arguments (*c* and *l* respectively) you can adjust in the `*_hcl()` functions.
-
-```{r echo = FALSE}
- (plot_bar +
-    scale_fill_manual(values = sequential_hcl(n = 3, 
-                                              palette = "BuGn",
-                                              c = 400)) +
-      ggtitle("Change Chrominance")) / (plot_bar +
-    scale_fill_manual(values = sequential_hcl(n = 3, palette = "BuGn"))+
-   ggtitle("Original")) / (plot_bar +
-    scale_fill_manual(values = sequential_hcl(n = 3, 
-                                              palette = "BuGn",
-                                              l = c(10,40))) +
-      ggtitle("Change Luminance"))
-```
-</div>
 
 ## Color and Design Resources
 

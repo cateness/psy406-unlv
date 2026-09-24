@@ -15,7 +15,140 @@ library(palmerpenguins)
 
 You now have a number of different graphs in your toolkit to use when visualizing different types of relationships or comparisons in your data. You also learned a lot of ways to tinker with the geoms and their aesthetics. Now it is time to add some techniques and skills to customize the other elements of the graphs.
 
-This will serve as a base plot to customize:
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 1**</div> -->
+<!--   <div class="panel-body">Use the `penguins` dataframe and create your own `base_plot`. Make sure to have a continuous variable on the y-axis and a categorical variable on the x-axis. -->
+<!--   </div> -->
+<!-- </div> -->
+
+## Additional Aesthetics
+
+This section gives a few more tips to make graphs that are more readable and understandable to your audience (and yourself!).
+
+### Groups
+
+Previously, when you made a line plot that looked something like this:
+
+```{r}
+penguins %>%
+  ggplot(aes(y = body_mass_g, x = island, group = 1)) +
+  geom_line(stat = "summary")
+```
+
+It was noted that since `body_mass_g` (the x-axis variable) is categorical, ggplot will try to draw individual lines for each `island` (category/level) by default. Since, there was only one value for each island (the mean), and at least two points are needed to create a line, you had to tell ggplot that each group only had 1 data point by using the ***group*** argument. 
+
+This notion of grouping is very powerful and is another way you can plot subsets of data without having to make changes to, or manually compute summaries from, your raw data.
+
+For example, you can look at how body mass (y) changes across island (x) for different sexes by grouping by `sex`.
+
+```{r}
+penguins %>%
+  ggplot(aes(y = body_mass_g, x = island, group = sex, color = sex)) +
+  geom_line(stat = "summary")
+```
+
+When you are grouping your data in your visualization code, you may run into some instances where your graph winds up looking funky. Most often this is the result of overlapping geoms.
+
+To fix that, you will have to think about positions...
+
+### Positions
+
+ggplot2 has a number of position/adjustment arguments that can be used in these cases. In fact, you have already used one! Jittering is a position adjustment. So, while you can create a jitter plot using `geom_jitter()`, you also could accomplish the same thing using `geom_point()` and setting a position argument. e.g.,
+
+`geom_point(position = "jitter")` or `geom_point(position=position_jitter())`
+
+These in effect do the same thing. However, if you want to include any specific arguments (e.g., specify how much vertical or horizontal jitter to have), you can only do so by using the longer `position_jitter()` format. This helps create reproducible graphs, as the jitter is otherwise random every time the code is run to create the graph! Changing the positional adjustments can drastically alter the visualization you generate.
+
+Here are a few quick examples of graphs that came out looking funky, and how using positional adjustments can fix that.
+
+#### Identity
+
+Most things start with "identity" as their default position argument. Identity just overlaps the elements:
+
+```{r}
+penguins %>%
+ ggplot(aes(x = island, fill = species)) +
+  geom_bar(position = "identity")
+```
+
+This often results in some elements of your visualization being hidden (which definitely seems counterproductive).
+
+#### Dodging
+
+`position = “dodge”` places overlapping objects directly beside one another. This makes it easier to compare individual values.
+
+```{r}
+penguins %>%
+  ggplot(aes(x = island, fill = species)) +
+  geom_bar(position = position_dodge())
+penguins %>%
+  ggplot(aes(x = island, fill = species)) +
+  geom_bar(position = position_dodge2())
+```
+
+<p class="text-info"> **<u>Note:</u> The difference between *dodge* and *dodge2* is that the latter creates a bit of space between the elements. You will also notice that, compared to *identity*, the scale of the y-axis for both of these graphs changed.**</p>
+
+This is useful for geoms other than bars as well:
+
+```{r}
+penguins %>%
+ ggplot(aes(y = body_mass_g, x = island, fill = species)) +
+     geom_point(shape = 21)
+penguins %>%
+ ggplot(aes(y = body_mass_g, x = island, fill = species)) +
+     geom_point(shape = 21, position = position_dodge(width = .75))
+```
+
+Probably the most common use case for this will be with error bars and CIs. Observe the following. If I dodge the `stat_summary()` function with the "bar" argument, but not the other `stat_summary()` with the "errorbar" argument, it comes out looking funky:
+
+```{r}
+penguins %>%
+  ggplot(aes(y = body_mass_g, x = island, fill = species)) +
+  stat_summary(fun = "mean", geom = "bar", position = "dodge") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar")
+```
+
+Adding position adjustments to both functions corrects this!
+
+```{r}
+penguins %>%
+  ggplot(aes(y = body_mass_g, x = island, fill = species)) +
+  stat_summary(fun = "mean", geom = "bar", position = "dodge") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = position_dodge(width = 0.9), width = .2)
+```
+
+Sometimes you will want to simultaneously dodge and jitter. You can do both with `jitterdodge`. (Not to be confused with jitterbug...)
+
+```{r}
+penguins %>%
+ggplot(aes(x = island, y = body_mass_g, fill = species)) +
+    geom_boxplot(outlier.size = 0) +
+    geom_point(shape = 21)
+penguins %>%
+ggplot(aes(x = island, y = body_mass_g, fill = species)) +
+    geom_boxplot(outlier.size = 0) +
+    geom_point(shape = 21, 
+               position = position_jitterdodge(jitter.width = 0.3))
+```
+
+This is still quite cluttered and needs more work, but way better than before!
+
+#### Stacking
+
+`position = “fill”` works like stacking, but makes each set of stacked bars uniform in height. This makes it easier to compare proportions across groups.
+
+```{r}
+penguins %>%
+ggplot(aes(x = island, fill = species)) +
+  geom_bar(position = position_fill())
+```
+
+However, this can be misleading. Recall that the total number of `species` == "Gentoo" penguins is much greater than `species` == "Chinstrap", even though they do not look *TOO* different here. So while you can compare the proportions easily, those proportions may correspond to drastically different raw numbers.
+
+
+## Scaling The Axes
+
+This will serve as a base plot to customize for the rest of the sections:
 
 ```{r warning=FALSE}
 base_plot = penguins %>%
@@ -34,14 +167,6 @@ base_plot
 ```
 
 Saving the visualization to a variable prevents the need to copy/paste the entire code each time.
-
-<!-- <div class="panel panel-success"> -->
-<!--   <div class="panel-heading">**EXERCISE 1**</div> -->
-<!--   <div class="panel-body">Use the `penguins` dataframe and create your own `base_plot`. Make sure to have a continuous variable on the y-axis and a categorical variable on the x-axis. -->
-<!--   </div> -->
-<!-- </div> -->
-
-## Scaling The Axes
 
 By default, ggplot will use axes settings that it thinks best highlight the data being visualized. Here,the y-axis runs from ~2000 - 7000 and has intervals of 1000 starting at 3000.
 
@@ -73,32 +198,6 @@ There are a number of other scale commands that override the default, such as `s
 <!-- <div class="panel panel-success"> -->
 <!--   <div class="panel-heading">**EXERCISE 2**</div> -->
 <!--   <div class="panel-body">Modify your `base_plot` so the scale is more appropriate and represents the full range. -->
-<!--   </div> -->
-<!-- </div> -->
-
-### Get Rid Of Padding
-
-Even though the y-axis starts at 0 now, there is a bit of space between the actual start of the graph and the 0. By default there will be a bit of padding. This can be particularly egregious when you have bars:
-
-```{r warning=FALSE}
-penguins %>%
-  ggplot(aes(y = body_mass_g, x = island)) + 
-  stat_summary(fun = "mean", geom = "bar")
-```
-
-This can be eliminated with the `expand` argument.
-
-```{r warning=FALSE}
-base_plot +
-  coord_cartesian(ylim = c(0,7000)) + 
-  scale_y_continuous(breaks = seq(from = 0, to = 7000, by = 500),
-                     labels = seq(from = 0, to = 7000, by = 500),
-                     expand = c(0,0))
-```
-
-<!-- <div class="panel panel-success"> -->
-<!--   <div class="panel-heading">**EXERCISE 3**</div> -->
-<!--   <div class="panel-body">Modify your `base_plot` so the padding is gone. -->
 <!--   </div> -->
 <!-- </div> -->
 
@@ -523,102 +622,6 @@ penguins %>%
         ) 
 ```
 
-<!-- ## Text and Labels -->
-
-## Combining Graphs
-
-With these newly acquired data visualization skills, you will likely be creating more than a single visualization at a time. To combine and arrange multiple graphs into a single figure, you can use the `patchwork` package!
-
-![](figures/patchwork.jpg){width=100%}
-<p style="font-size:6pt">Artwork by @allison_horst</p>
-
-Take the following 3 graphs for example:
-
-```{r warning=FALSE}
-a = penguins %>%
-  ggplot(aes(y = body_mass_g, x = island)) +
-  geom_jitter(height = 0, width = 0.1, 
-              size = 2, alpha = 0.3,
-              aes(color=island)) +
-    stat_summary(fun.data = "mean_se",
-               geom = "pointrange",
-               color = "black",
-               aes(fill = island),
-               shape = 21,
-               size = 0.5)
-a
-b = penguins %>%
-  ggplot(aes(y = body_mass_g, x = species)) +
-  geom_jitter(height = 0, width = 0.1, 
-              size = 2, alpha = 0.3,
-              aes(color=species)) +
-    stat_summary(fun.data = "mean_se",
-               geom = "pointrange",
-               color = "black",
-               aes(fill = species),
-               shape = 21,
-               size = 0.5)
-b
-c = penguins %>%
-  drop_na() %>%
-    ggplot(aes(y = body_mass_g, x = sex)) +
-    geom_point(size = 2, alpha = 0.3,
-               shape = 21,
-                aes(fill = sex),
-                position = position_jitter(width = 0.1)) +
-    stat_summary(fun.data = "mean_se",
-                 geom = "pointrange",
-                 color = "black",
-                 aes(fill = sex),
-                 shape = 21,
-                 size = 0.5)
-c
-```
-
-Patchwork uses a pretty intuitive system to create different layouts when combining graphs by using the `+`, `/`, and `|` operators. 
-
-```{r warning=FALSE}
-library(patchwork)
-```
-
-`+` combines graphs using the default layout (creating as square a grid as possible)
-
-```{r warning=FALSE}
-a + b
-```
-
-`/` will stack graphs on top of each other
-
-```{r warning=FALSE}
-b / c
-```
-
-`|` places graphs next to each other and can nest arrangements created with the other operators. For up to 3 graphs the result from using `|` is identical to `+`. Using `|` best communicates the intended layout.
-
-```{r warning=FALSE}
-(c | (a / b))
-```
-
-<p class="text-info"> **<u>Note:</u> The format settings defined for a single graph may not be best for an arrangement of multiple graphs combined into a single visualization. In the visualizations above the axes titles and labels are a little too big, causing some of them to overlap and be unreadable.**</p>
-
-<!-- <div class="panel panel-success"> -->
-<!--   <div class="panel-heading">**EXERCISE 11**</div> -->
-<!--   <div class="panel-body">Use patchwork to combine your `base_graph` and `modified_graph` to compare the two. Try arranging them in different layouts using different operators. -->
-<!--   </div> -->
-<!-- </div> -->
-
-<!-- You can use the `plot_layouts()` function to specify the number of columns in the graph arrangement and have more manual control over the layout. Compare the two outputs below. -->
-
-<!-- ```{r warning=FALSE} -->
-<!-- a + b + c -->
-<!-- ``` -->
-
-<!-- ```{r warning=FALSE} -->
-<!-- a + b + c +  -->
-<!--   plot_layout(ncol = 1, -->
-<!--               guides = "collect") -->
-<!-- ``` -->
-
 ## Saving Graphs
 
 Once you have created your masterpieces, you may want to export them so they can be added to manuscripts created outside of R, posters, or anything else. To save your ggplot graphs, you can use `ggsave()`. You have several file type options, but I would recommend pdf. It generally maintains a high resolution AND aspect ratio. In `ggsave()`, you must specify:
@@ -644,6 +647,5 @@ ggsave(plot = a,
 
 * [Data Visualization -- A practical introduction (by Kieran Healy)](http://socviz.co/)
 * [Graphics for communication](http://r4ds.had.co.nz/graphics-for-communication.html)
-* [Patchwork source](https://github.com/thomasp85/patchwork)
-* [Patchwork background](https://www.data-imaginist.com/2019/patch-it-up-and-send-it-out/)
+* [Combining graphs](https://www.data-imaginist.com/2019/patch-it-up-and-send-it-out/)
 * [ggplot theme cheat sheet](figures/ggplot_theme_cheatsheet.png)

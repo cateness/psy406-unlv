@@ -11,8 +11,8 @@ rmd_files:
  - Visualizations1.Rmd
  - Visualizations1a.Rmd
  - Visualizations2.Rmd
- # - Visualizations3.Rmd
- # - Visualizations4.Rmd
+ - Visualizations3.Rmd
+ - Visualizations4.Rmd
  # - Manip1.Rmd
  # - Manip2.Rmd
  # - Manip3.Rmd
