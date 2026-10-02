@@ -4,6 +4,10 @@
 knitr::opts_chunk$set(strip.white = TRUE)
 ```
 
+```{r libraries}
+library(tidyverse)
+```
+
 So far in this class, we have learned the basics of how to code in R and we have learned about how to make graphs and visualizations. The next step is *data manipulation*, also known as data tidying, data wrangling, data cleaning, etc. The skills you learn in this unit will help you take a large, messy, and/or unwieldy dataset and make it more manageable, more graphable, and, crucially, more analyzable!
 
 # Tidy Data and Tidyverse
@@ -114,13 +118,4 @@ You can specify the exact amount of rows you want to print by passing a second a
 ```{r}
 head(penguins, 10)
 ```
-
-<!-- <div class="panel panel-success"> -->
-<!--   <div class="panel-heading">**EXERCISE 7**</div> -->
-<!--   <div class="panel-body"> -->
-<!--   1. Use `head()` to exam the `msleep` dataset.<br> -->
-<!--   2. Modify your `head()` call to look at the first 7 rows of data.</div> -->
-<!-- </div> -->
-
-<!-- You will see `head()` used in several of the examples below to help make the output more digestible. -->
 
