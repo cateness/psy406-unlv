@@ -13,24 +13,14 @@ rmd_files:
  - Visualizations2.Rmd
  - Visualizations3.Rmd
  - Visualizations4.Rmd
- # - Manip1.Rmd
- # - Manip2.Rmd
- # - Manip3.Rmd
- # - Manip4.Rmd
- # # - DataTransformation.Rmd # During Summer
+ - Manip_Intro_Investigating.Rmd
+ - Manip_BasicWrangling.Rmd
+# - Manip_Subsetting.Rmd
+# - Manip_Mutating.Rmd
+# - Manip_Summarize.Rmd
+# - DataTransformation.Rmd
  # - Projects.Rmd
 
-# # 111A Notes:
-# - index.Rmd
-# - RBasics1.Rmd
-# - RBasics2.Rmd
-# - RBasics3_new.Rmd
-# - Manip1.Rmd
-# - Manip2.Rmd
-# - Manip4.Rmd
-# - Visualizations1.Rmd
-# - Visualizations1a.Rmd
-# - Visualizations2.Rmd
 language:
   ui:
     chapter_name: "Chapter "
