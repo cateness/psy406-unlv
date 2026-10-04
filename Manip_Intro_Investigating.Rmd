@@ -49,7 +49,7 @@ It also makes all other tidy datasets seem more welcoming!
 
 ## Tidyverse
 
-`tidyverse` is a collection of packages that all "share an underlying design philosophy, grammar, and data structure" of tidy data. The tidyverse packages and functions are the tools you will use to fill your R workbench, and they will help with every step of your workflow.
+`tidyverse` is a collection of packages that all "share an underlying design philosophy, grammar, and data structure" of tidy data. The tidyverse packages and functions are the tools you will use to fill your R workbench, and they will help with every step of your workflow. Maybe of the most helpful functions that we will learn this unit come from the package `dplyr`.
 
 ![](figures/environmental-data-science-r4ds-general.png){width=100%}
 <p style="font-size:6pt"> Updated from Grolemund & Wickham's classis R4DS schematic, envisioned by Dr. Julia Lowndes for her 2019 useR! keynote talk and illustrated by Allison Horst.</p>
@@ -87,7 +87,7 @@ You can view a data object by using the `View()` function. To inspect the `pengu
 Often times datasets are very large and it is impractical to try and comb through the whole file. It would be much more helpful if there was a way to quickly glimpse at your data to get an overall impression of it. There is a very appropriately named function for this: `glimpse()`!
 
 ```{r}
-glimpse(penguins)
+dplyr::glimpse(penguins)
 ```
 
 From this one function alone, you can learn a lot about your data:
