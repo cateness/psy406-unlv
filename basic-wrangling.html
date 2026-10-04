@@ -1,0 +1,4104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 14 Basic Wrangling | PSY406</title>
+<meta name="author" content="Catie Nielson (with help from Ethan Hurwitz)">
+<meta name="description" content="Artwork by Horst (2022)  Throughout this page, explanations for the code above will appear in blocks like this one! When wrangling your data, you will be performing a series of actions to clean...">
+<meta name="generator" content="bookdown 0.48 with bs4_book()">
+<meta property="og:title" content="Chapter 14 Basic Wrangling | PSY406">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://cateness.github.io/psy406-unlv/basic-wrangling.html">
+<meta property="og:description" content="Artwork by Horst (2022)  Throughout this page, explanations for the code above will appear in blocks like this one! When wrangling your data, you will be performing a series of actions to clean...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 14 Basic Wrangling | PSY406">
+<meta name="twitter:description" content="Artwork by Horst (2022)  Throughout this page, explanations for the code above will appear in blocks like this one! When wrangling your data, you will be performing a series of actions to clean...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">PSY406</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
+<li class="book-part">R Basics</li>
+<li><a class="" href="why-use-r.html"><span class="header-section-number">2</span> Why use R?</a></li>
+<li><a class="" href="r-coding-basics.html"><span class="header-section-number">3</span> R Coding Basics</a></li>
+<li><a class="" href="using-r-effectively.html"><span class="header-section-number">4</span> Using R Effectively</a></li>
+<li class="book-part">Visualizations</li>
+<li><a class="" href="intro-to-ggplot2.html"><span class="header-section-number">5</span> Intro to ggplot2</a></li>
+<li><a class="" href="aesthetics.html"><span class="header-section-number">6</span> Aesthetics</a></li>
+<li><a class="" href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></li>
+<li><a class="" href="one-variable.html"><span class="header-section-number">8</span> One Variable</a></li>
+<li><a class="" href="two-variables.html"><span class="header-section-number">9</span> Two Variables</a></li>
+<li><a class="" href="three-variables.html"><span class="header-section-number">10</span> Three Variables</a></li>
+<li><a class="" href="customization.html"><span class="header-section-number">11</span> Customization</a></li>
+<li><a class="" href="color-theory.html"><span class="header-section-number">12</span> Color Theory</a></li>
+<li class="book-part">Data Manipulation</li>
+<li><a class="" href="tidy-data-and-tidyverse.html"><span class="header-section-number">13</span> Tidy Data and Tidyverse</a></li>
+<li><a class="active" href="basic-wrangling.html"><span class="header-section-number">14</span> Basic Wrangling</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="basic-wrangling" class="section level1" number="14">
+<h1>
+<span class="header-section-number">14</span> Basic Wrangling<a class="anchor" aria-label="anchor" href="#basic-wrangling"><i class="fas fa-link"></i></a>
+</h1>
+<img src="figures/data_cowboy.png" style="width:100.0%"><p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<div class="rmdimportant">
+<p><strong>Throughout this page, explanations for the code above will appear in blocks like this one!</strong></p>
+</div>
+<p>When wrangling your data, you will be performing a series of actions to clean and prepare it for whatever task you have. Whether you are creating visualizations, performing statistical analyses, or doing anything else, you will likely need to change your data object in some way. Below, several of the most fundamental and basic data manipulation functions will be outlined. You will notice that the function names are all verbs, denoting that they are performing some action on the data object.</p>
+<p>You may find it helpful to review the <a href="using-r-effectively.html#pipes">section</a> on pipes before moving forward!</p>
+<div id="locating" class="section level2" number="14.1">
+<h2>
+<span class="header-section-number">14.1</span> Locating<a class="anchor" aria-label="anchor" href="#locating"><i class="fas fa-link"></i></a>
+</h2>
+<div id="indexing" class="section level3" number="14.1.1">
+<h3>
+<span class="header-section-number">14.1.1</span> Indexing<a class="anchor" aria-label="anchor" href="#indexing"><i class="fas fa-link"></i></a>
+</h3>
+<p>Indexing dfs was introduced <a href="#Indexing-dfs">previously</a>, but will often need to be done throughout a pipe chain. There are two functions to help with this: <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> and <code><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck()</a></code>.</p>
+<div id="pull" class="section level4" number="14.1.1.1">
+<h4>
+<span class="header-section-number">14.1.1.1</span> pull()<a class="anchor" aria-label="anchor" href="#pull"><i class="fas fa-link"></i></a>
+</h4>
+<p><code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> will extract a variable from a df. This can be done by the variable’s name or its numeric position (using name is always preferred). <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> is like using the <code>$</code> operator to index.</p>
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 4 4 4 8 6 8 4</span></span></code></pre></div>
+<p>The result is a vector, as variables are just vectors! This is helpful because it allows the result to then be piped to a number of functions that require a vector rather than a df. For example:</p>
+<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in mean.default(.): argument is not numeric or</span></span>
+<span><span class="co">#&gt; logical: returning NA</span></span>
+<span><span class="co">#&gt; [1] NA</span></span>
+<span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 5.428571</span></span></code></pre></div>
+<p>By using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, the result is a dataframe with one column. When trying to pass this to <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, you get an <code>NA</code> and an error:</p>
+<p style="color:#A79BF0">
+<strong>Warning message: In mean.default(.) : argument is not numeric or logical: returning NA.</strong>
+</p>
+<p>By using <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code>, the result is a vector and can be passed to <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> without issue.</p>
+</div>
+<div id="pluck" class="section level4" number="14.1.1.2">
+<h4>
+<span class="header-section-number">14.1.1.2</span> pluck()<a class="anchor" aria-label="anchor" href="#pluck"><i class="fas fa-link"></i></a>
+</h4>
+<p><code><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck()</a></code> allows you to index elements from an object, and can also be done by name or numeric position. Above, the <code>cyl</code> column was indexed from <code>mtcars2</code>. Say you wanted the 4th observation from that column:</p>
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 8</span></span></code></pre></div>
+<button class="btn btn-primary" data-toggle="collapse" data-target="#BlockName">
+Advanced
+</button>
+<div id="BlockName" class="collapse">
+<p><code><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck()</a></code> is extremely useful for indexing deeply into nested data structures. These will not be covered in this course, but as a brief demonstration you can consider a df to be a nested object. Each vector is an 1st level element and then values within vectors are 2nd level elements. To get the 4th value in the 3rd vector (the previous code string), you would do the following:</p>
+<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 8</span></span></code></pre></div>
+<p>This can also be done with named positions.</p>
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"model"</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Porsche 914-2"</span></span></code></pre></div>
+<p>In short, each argument in <code><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck()</a></code> is a position to index. <code>x %&gt;% pluck(2, 2)</code> == <code>x[[2]][[2]]</code></p>
+<div id="Unique-Entries" class="section level3" number="14.1.2">
+<h3>
+<span class="header-section-number">14.1.2</span> Unique Entries<a class="anchor" aria-label="anchor" href="#Unique-Entries"><i class="fas fa-link"></i></a>
+</h3>
+<p>When working with larger dfs, it is difficult to get a sense of the unique values a particular variable may contain. You can get this using <code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a></code>.</p>
+<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span></span>
+<span><span class="co">#&gt;            model mpg cyl disp  hp   wt gear</span></span>
+<span><span class="co">#&gt; 1      Fiat X1-9  27   4   79  66 1.94    4</span></span>
+<span><span class="co">#&gt; 2  Porsche 914-2  26   4  120  91 2.14    5</span></span>
+<span><span class="co">#&gt; 3   Lotus Europa  30   4   95 113 1.51    5</span></span>
+<span><span class="co">#&gt; 4 Ford Pantera L  16   8  351 264 3.17    5</span></span>
+<span><span class="co">#&gt; 5   Ferrari Dino  20   6  145 175 2.77    5</span></span>
+<span><span class="co">#&gt; 6  Maserati Bora  15   8  301 335 3.57    5</span></span>
+<span><span class="co">#&gt; 7     Volvo 142E  21   4  121 109 2.78    4</span></span>
+<span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   cyl</span></span>
+<span><span class="co">#&gt; 1   4</span></span>
+<span><span class="co">#&gt; 2   8</span></span>
+<span><span class="co">#&gt; 3   6</span></span></code></pre></div>
+<p>The way this works is by keeping the row that corresponds with the first entry of a unique value from that particular column. This becomes clear by using the <code>.keep_all</code> argument</p>
+<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">cyl</span>, .keep_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;            model mpg cyl disp  hp   wt gear</span></span>
+<span><span class="co">#&gt; 1      Fiat X1-9  27   4   79  66 1.94    4</span></span>
+<span><span class="co">#&gt; 2 Ford Pantera L  16   8  351 264 3.17    5</span></span>
+<span><span class="co">#&gt; 3   Ferrari Dino  20   6  145 175 2.77    5</span></span></code></pre></div>
+<p>To get the <em>number</em> of unique values you can use <code><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct()</a></code>, which takes a vector of values as input.</p>
+<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="re-locating" class="section level2" number="14.2">
+<h2>
+<span class="header-section-number">14.2</span> Re-Locating<a class="anchor" aria-label="anchor" href="#re-locating"><i class="fas fa-link"></i></a>
+</h2>
+<p>Sometimes, you can find the values you want, but you want to change where they are in the dataframe. We’ll look at how to do this, first for columns, then for rows.</p>
+<div id="relocate" class="section level3" number="14.2.1">
+<h3>
+<span class="header-section-number">14.2.1</span> Relocate<a class="anchor" aria-label="anchor" href="#relocate"><i class="fas fa-link"></i></a>
+</h3>
+<p><code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> can be used to reorder the columns in your dataframe. With <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code>, you specify which column(s) you want to move, and what they should come <em>.before</em> or <em>.after</em>.</p>
+<img src="figures/dplyr_relocate.png" style="width:100.0%"><p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">wt</span>, .after <span class="op">=</span> <span class="va">model</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="kable_wrapper"><tbody><tr>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+1.94
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Porsche 914-2
+</td>
+<td style="text-align:right;color: white !important;">
+26
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;">
+91
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+2.14
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Lotus Europa
+</td>
+<td style="text-align:right;color: white !important;">
+30
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;">
+113
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+1.51
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+3.17
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ferrari Dino
+</td>
+<td style="text-align:right;color: white !important;">
+20
+</td>
+<td style="text-align:right;color: white !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;">
+175
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+2.77
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+3.57
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Volvo 142E
+</td>
+<td style="text-align:right;color: white !important;">
+21
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;">
+109
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+2.78
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-size: 0px;">
+test
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/arrow.png" width="64" height="32">
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+1.94
+</td>
+<td style="text-align:right;color: white !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Porsche 914-2
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+2.14
+</td>
+<td style="text-align:right;color: white !important;">
+26
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;">
+91
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Lotus Europa
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+1.51
+</td>
+<td style="text-align:right;color: white !important;">
+30
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;">
+113
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+3.17
+</td>
+<td style="text-align:right;color: white !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ferrari Dino
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+2.77
+</td>
+<td style="text-align:right;color: white !important;">
+20
+</td>
+<td style="text-align:right;color: white !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;">
+175
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+3.57
+</td>
+<td style="text-align:right;color: white !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Volvo 142E
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+2.78
+</td>
+<td style="text-align:right;color: white !important;">
+21
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;">
+109
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr></tbody></table></div>
+<div class="rmdimportant">
+<p><strong>This code moves the <code>wt</code> column <em>after</em> the <code>model</code> column.</strong></p>
+</div>
+<p><code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> can also move multiple columns simultaneously when passed a vector of column names.</p>
+<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">disp</span>, <span class="va">drat</span><span class="op">)</span>, .after <span class="op">=</span> <span class="va">model</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="kable_wrapper"><tbody><tr>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+1.94
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Porsche 914-2
+</td>
+<td style="text-align:right;color: white !important;">
+26
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;">
+91
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+2.14
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Lotus Europa
+</td>
+<td style="text-align:right;color: white !important;">
+30
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;">
+113
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+1.51
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+3.17
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ferrari Dino
+</td>
+<td style="text-align:right;color: white !important;">
+20
+</td>
+<td style="text-align:right;color: white !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;">
+175
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+2.77
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+3.57
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Volvo 142E
+</td>
+<td style="text-align:right;color: white !important;">
+21
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;">
+109
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+2.78
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-size: 0px;">
+test
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/arrow.png" width="64" height="32">
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+1.94
+</td>
+<td style="text-align:right;color: white !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Porsche 914-2
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+2.14
+</td>
+<td style="text-align:right;color: white !important;">
+26
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+91
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Lotus Europa
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+1.51
+</td>
+<td style="text-align:right;color: white !important;">
+30
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+113
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+3.17
+</td>
+<td style="text-align:right;color: white !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ferrari Dino
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+2.77
+</td>
+<td style="text-align:right;color: white !important;">
+20
+</td>
+<td style="text-align:right;color: white !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;">
+175
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+3.57
+</td>
+<td style="text-align:right;color: white !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Volvo 142E
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: lightgreen !important;">
+2.78
+</td>
+<td style="text-align:right;color: white !important;">
+21
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+109
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr></tbody></table></div>
+</div>
+<div id="arrange" class="section level3" number="14.2.2">
+<h3>
+<span class="header-section-number">14.2.2</span> Arrange<a class="anchor" aria-label="anchor" href="#arrange"><i class="fas fa-link"></i></a>
+</h3>
+<p><code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> orders the rows of a data frame by the values of selected columns. By default this will be ascending, where the lowest values are in the first few rows.</p>
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">wt</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="kable_wrapper"><tbody><tr>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: rgba(252, 187, 161, 1) !important;">
+1.94
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Porsche 914-2
+</td>
+<td style="text-align:right;color: white !important;">
+26
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;">
+91
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: rgba(252, 146, 114, 1) !important;">
+2.14
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Lotus Europa
+</td>
+<td style="text-align:right;color: white !important;">
+30
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;">
+113
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: rgba(254, 229, 217, 1) !important;">
+1.51
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: rgba(203, 24, 29, 1) !important;">
+3.17
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ferrari Dino
+</td>
+<td style="text-align:right;color: white !important;">
+20
+</td>
+<td style="text-align:right;color: white !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;">
+175
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: rgba(251, 106, 74, 1) !important;">
+2.77
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: rgba(153, 0, 13, 1) !important;">
+3.57
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Volvo 142E
+</td>
+<td style="text-align:right;color: white !important;">
+21
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;">
+109
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: rgba(239, 59, 44, 1) !important;">
+2.78
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-size: 0px;">
+test
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/arrow.png" width="64" height="32">
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;">
+Lotus Europa
+</td>
+<td style="text-align:right;color: white !important;">
+30
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;">
+113
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: rgba(254, 229, 217, 1) !important;">
+1.51
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: rgba(252, 187, 161, 1) !important;">
+1.94
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Porsche 914-2
+</td>
+<td style="text-align:right;color: white !important;">
+26
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;">
+91
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: rgba(252, 146, 114, 1) !important;">
+2.14
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ferrari Dino
+</td>
+<td style="text-align:right;color: white !important;">
+20
+</td>
+<td style="text-align:right;color: white !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;">
+175
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: rgba(251, 106, 74, 1) !important;">
+2.77
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Volvo 142E
+</td>
+<td style="text-align:right;color: white !important;">
+21
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;">
+109
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: rgba(239, 59, 44, 1) !important;">
+2.78
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: rgba(203, 24, 29, 1) !important;">
+3.17
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: rgba(153, 0, 13, 1) !important;">
+3.57
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr></tbody></table></div>
+<div class="rmdimportant">
+<p><strong>This code changes the order of the rows in <code>mtcars2</code> by the values in the <code>wt</code> column, with the lowest at the top.</strong></p>
+</div>
+<p>To get rows arranged in a descending order, with highest values at the top, wrap variable names in <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a></code> within the <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> call. If a second column is passed, the rows with identical values on the first variable will be arranged by the values on the second.</p>
+</div>
+</div>
+<div id="subsetting" class="section level2" number="14.3">
+<h2>
+<span class="header-section-number">14.3</span> Subsetting<a class="anchor" aria-label="anchor" href="#subsetting"><i class="fas fa-link"></i></a>
+</h2>
+<p>Sometime you will want to use only specific variables or values. This is called <em>subsetting</em>. We’ll look first at subsetting by columns (using the <code>select</code> function) and then by rows (using the <code>filter</code> function).</p>
+<div id="select" class="section level3" number="14.3.1">
+<h3>
+<span class="header-section-number">14.3.1</span> Select<a class="anchor" aria-label="anchor" href="#select"><i class="fas fa-link"></i></a>
+</h3>
+<p>Above, you used <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> when you wanted to output a preview of your dataframe. There will be many times like this when you want to <strong>subset</strong> your data (cutting it to show only subsets of it – which contain or exclude specific variables/observations).</p>
+<p>There are two primary subsetting functions. The first is <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, which selects and returns only the specified columns (passed to as a vector of column names).</p>
+<p><code>select(c(columns_of_interest))</code></p>
+<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">gear</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="kable_wrapper"><tbody><tr>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;">
+1.94
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Porsche 914-2
+</td>
+<td style="text-align:right;color: white !important;">
+26
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;">
+91
+</td>
+<td style="text-align:right;color: white !important;">
+2.14
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Lotus Europa
+</td>
+<td style="text-align:right;color: white !important;">
+30
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;">
+113
+</td>
+<td style="text-align:right;color: white !important;">
+1.51
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;">
+3.17
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ferrari Dino
+</td>
+<td style="text-align:right;color: white !important;">
+20
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;">
+175
+</td>
+<td style="text-align:right;color: white !important;">
+2.77
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;">
+3.57
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Volvo 142E
+</td>
+<td style="text-align:right;color: white !important;">
+21
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;">
+109
+</td>
+<td style="text-align:right;color: white !important;">
+2.78
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-size: 0px;">
+test
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/arrow.png" width="64" height="32">
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr></tbody></table></div>
+<p>Just as the <code>:</code> could be used to generate all the values in a range of numbers (e.g., <code>1:4</code> would return: 1,2,3,4), you can also use a <code>:</code> to return all the values in a range of <em>columns</em>. For example:</p>
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">:</span><span class="va">hp</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="kable_wrapper"><tbody><tr>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;">
+1.94
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Porsche 914-2
+</td>
+<td style="text-align:right;color: white !important;">
+26
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+91
+</td>
+<td style="text-align:right;color: white !important;">
+2.14
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Lotus Europa
+</td>
+<td style="text-align:right;color: white !important;">
+30
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+113
+</td>
+<td style="text-align:right;color: white !important;">
+1.51
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;">
+3.17
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ferrari Dino
+</td>
+<td style="text-align:right;color: white !important;">
+20
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+175
+</td>
+<td style="text-align:right;color: white !important;">
+2.77
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;">
+3.57
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Volvo 142E
+</td>
+<td style="text-align:right;color: white !important;">
+21
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+109
+</td>
+<td style="text-align:right;color: white !important;">
+2.78
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-size: 0px;">
+test
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/arrow.png" width="64" height="32">
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+66
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+91
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+113
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+264
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+175
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+335
+</td>
+</tr>
+<tr>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+109
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr></tbody></table></div>
+<div class="rmdimportant">
+<p><strong>This selects the <code>cyl</code> column, the <code>hp</code> column, and all columns in between the two!</strong></p>
+</div>
+<p><code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> can also be used to <em>get rid of columns</em> you do <strong>NOT</strong> want by negating the vector of column names using a <code>!</code>.</p>
+<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">gear</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="kable_wrapper"><tbody><tr>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;">
+1.94
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Porsche 914-2
+</td>
+<td style="text-align:right;color: white !important;">
+26
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;">
+91
+</td>
+<td style="text-align:right;color: white !important;">
+2.14
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Lotus Europa
+</td>
+<td style="text-align:right;color: white !important;">
+30
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;">
+113
+</td>
+<td style="text-align:right;color: white !important;">
+1.51
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;">
+3.17
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ferrari Dino
+</td>
+<td style="text-align:right;color: white !important;">
+20
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;">
+175
+</td>
+<td style="text-align:right;color: white !important;">
+2.77
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;">
+3.57
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Volvo 142E
+</td>
+<td style="text-align:right;color: white !important;">
+21
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;">
+109
+</td>
+<td style="text-align:right;color: white !important;">
+2.78
+</td>
+<td style="text-align:right;color: white !important;color: white !important;background-color: blueviolet !important;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-size: 0px;">
+test
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/arrow.png" width="64" height="32">
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;">
+1.94
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Porsche 914-2
+</td>
+<td style="text-align:right;color: white !important;">
+26
+</td>
+<td style="text-align:right;color: white !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;">
+91
+</td>
+<td style="text-align:right;color: white !important;">
+2.14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Lotus Europa
+</td>
+<td style="text-align:right;color: white !important;">
+30
+</td>
+<td style="text-align:right;color: white !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;">
+113
+</td>
+<td style="text-align:right;color: white !important;">
+1.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;">
+3.17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ferrari Dino
+</td>
+<td style="text-align:right;color: white !important;">
+20
+</td>
+<td style="text-align:right;color: white !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;">
+175
+</td>
+<td style="text-align:right;color: white !important;">
+2.77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;">
+3.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Volvo 142E
+</td>
+<td style="text-align:right;color: white !important;">
+21
+</td>
+<td style="text-align:right;color: white !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;">
+109
+</td>
+<td style="text-align:right;color: white !important;">
+2.78
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr></tbody></table></div>
+<div class="rmdimportant">
+<p><strong>This selects all columns <em>except</em> <code>cyl</code> and <code>gear</code>.</strong></p>
+</div>
+<p>When you specifically want to move a variable (or variables) to the front of your df, there is an easy way to do so using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> instead of <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code>:</p>
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">wt</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     wt          model mpg cyl disp  hp gear</span></span>
+<span><span class="co">#&gt; 1 1.94      Fiat X1-9  27   4   79  66    4</span></span>
+<span><span class="co">#&gt; 2 2.14  Porsche 914-2  26   4  120  91    5</span></span>
+<span><span class="co">#&gt; 3 1.51   Lotus Europa  30   4   95 113    5</span></span>
+<span><span class="co">#&gt; 4 3.17 Ford Pantera L  16   8  351 264    5</span></span>
+<span><span class="co">#&gt; 5 2.77   Ferrari Dino  20   6  145 175    5</span></span>
+<span><span class="co">#&gt; 6 3.57  Maserati Bora  15   8  301 335    5</span></span>
+<span><span class="co">#&gt; 7 2.78     Volvo 142E  21   4  121 109    4</span></span></code></pre></div>
+<p>The <code><a href="https://tidyselect.r-lib.org/reference/everything.html">everything()</a></code> function selects… everything! It will select all the variables in a df. So this is first selecting the <code>wt</code> variable, and then everything else. The result is still all the variables in the df, but <code>wt</code> is at the front.</p>
+</div>
+<div id="filter" class="section level3" number="14.3.2">
+<h3>
+<span class="header-section-number">14.3.2</span> Filter<a class="anchor" aria-label="anchor" href="#filter"><i class="fas fa-link"></i></a>
+</h3>
+<p>The second primary subsetting function is <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, which returns rows that meet specified condition(s). Each condition is a logical test performed on a column. This will results in a vector of <code>TRUE</code> and <code>FALSE</code> values, and only the rows where the test evaluates to <code>TRUE</code> will be returned!</p>
+<img src="figures/dplyr_filter.jpeg" style="width:100.0%"><p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<p>As you see in the illustration above, only the rows with a check mark (where the logical test resulted in <code>TRUE</code>) would be returned from that <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> call!</p>
+<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gear</span> <span class="op">==</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="kable_wrapper"><tbody><tr>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+1.94
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Porsche 914-2
+</td>
+<td style="text-align:right;color: white !important;">
+26
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;">
+91
+</td>
+<td style="text-align:right;color: white !important;">
+2.14
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Lotus Europa
+</td>
+<td style="text-align:right;color: white !important;">
+30
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;">
+113
+</td>
+<td style="text-align:right;color: white !important;">
+1.51
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;">
+3.17
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ferrari Dino
+</td>
+<td style="text-align:right;color: white !important;">
+20
+</td>
+<td style="text-align:right;color: white !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;">
+175
+</td>
+<td style="text-align:right;color: white !important;">
+2.77
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;">
+3.57
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Volvo 142E
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+21
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+109
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+2.78
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-size: 0px;">
+test
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/arrow.png" width="64" height="32">
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+1.94
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Volvo 142E
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+21
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+109
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+2.78
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr></tbody></table></div>
+<div class="rmdimportant">
+<p><strong>This filters the dataframe to return only rows where <code>gear</code> has a value of 4.</strong></p>
+</div>
+<p>Any evaluative operator can be used in the conditions. The test conditions only need to result in <code>TRUE</code> or <code>FALSE</code>:</p>
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">&gt;</span> <span class="fl">300</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="kable_wrapper"><tbody><tr>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;">
+1.94
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Porsche 914-2
+</td>
+<td style="text-align:right;color: white !important;">
+26
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;">
+91
+</td>
+<td style="text-align:right;color: white !important;">
+2.14
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Lotus Europa
+</td>
+<td style="text-align:right;color: white !important;">
+30
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;">
+113
+</td>
+<td style="text-align:right;color: white !important;">
+1.51
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+3.17
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ferrari Dino
+</td>
+<td style="text-align:right;color: white !important;">
+20
+</td>
+<td style="text-align:right;color: white !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;">
+175
+</td>
+<td style="text-align:right;color: white !important;">
+2.77
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+3.57
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Volvo 142E
+</td>
+<td style="text-align:right;color: white !important;">
+21
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;">
+109
+</td>
+<td style="text-align:right;color: white !important;">
+2.78
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-size: 0px;">
+test
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/arrow.png" width="64" height="32">
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+3.17
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+3.57
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+5
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr></tbody></table></div>
+<div class="rmdimportant">
+<p><strong>This filters the dataframe to return only rows where the <code>gear</code> column has a value of 4.</strong></p>
+</div>
+<p>The values specified in your tests do not have to be numbers, they can be text strings as well!</p>
+<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">model</span> <span class="op">==</span> <span class="st">"Lotus Europa"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="kable_wrapper"><tbody><tr>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;">
+1.94
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Porsche 914-2
+</td>
+<td style="text-align:right;color: white !important;">
+26
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;">
+91
+</td>
+<td style="text-align:right;color: white !important;">
+2.14
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Lotus Europa
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+30
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+113
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+1.51
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;">
+3.17
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Ferrari Dino
+</td>
+<td style="text-align:right;color: white !important;">
+20
+</td>
+<td style="text-align:right;color: white !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;">
+175
+</td>
+<td style="text-align:right;color: white !important;">
+2.77
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;">
+3.57
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Volvo 142E
+</td>
+<td style="text-align:right;color: white !important;">
+21
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;">
+109
+</td>
+<td style="text-align:right;color: white !important;">
+2.78
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-size: 0px;">
+test
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/arrow.png" width="64" height="32">
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody><tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Lotus Europa
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+30
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+113
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+1.51
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+5
+</td>
+</tr></tbody>
+</table>
+</td>
+</tr></tbody></table></div>
+<div class="rmdimportant">
+<p><strong>This filters the dataframe to return only rows where the <code>model</code> column has the value “Lotus Europa”.</strong></p>
+</div>
+<p>Multiple conditions can be strung together using logical operators:</p>
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">cyl</span> <span class="op">!=</span> <span class="fl">4</span> <span class="op">|</span> <span class="va">hp</span> <span class="op">&lt;</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="kable_wrapper"><tbody><tr>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+1.94
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Porsche 914-2
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+26
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+91
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+2.14
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Lotus Europa
+</td>
+<td style="text-align:right;color: white !important;">
+30
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+95
+</td>
+<td style="text-align:right;color: white !important;">
+113
+</td>
+<td style="text-align:right;color: white !important;">
+1.51
+</td>
+<td style="text-align:right;color: white !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+3.17
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Ferrari Dino
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+20
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+175
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+2.77
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+3.57
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;">
+Volvo 142E
+</td>
+<td style="text-align:right;color: white !important;">
+21
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;">
+121
+</td>
+<td style="text-align:right;color: white !important;">
+109
+</td>
+<td style="text-align:right;color: white !important;">
+2.78
+</td>
+<td style="text-align:right;color: white !important;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-size: 0px;">
+test
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/blank.png" width="64" height="32">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<img src="figures/arrow.png" width="64" height="32">
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table class=" lightable-paper table table-striped table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+model
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+mpg
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+cyl
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+disp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+hp
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+wt
+</th>
+<th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;text-align: center;">
+gear
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Fiat X1-9
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+27
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+79
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+66
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+1.94
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Porsche 914-2
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+26
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+4
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+120
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+91
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+2.14
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Ford Pantera L
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+16
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+351
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+264
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+3.17
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Ferrari Dino
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+20
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+6
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+145
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+175
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+2.77
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: white !important;background-color: goldenrod !important;">
+Maserati Bora
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+15
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+8
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+301
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+335
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+3.57
+</td>
+<td style="text-align:right;color: white !important;background-color: goldenrod !important;">
+5
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr></tbody></table></div>
+<div class="rmdimportant">
+<p><strong>This filters the dataframe to return only rows where <code>cyl</code> does not have a value of 4 OR <code>hp</code> is less than 100.</strong></p>
+</div>
+<p>When multiple logical tests are strung together they get evaluated from left to right. You must be mindful about the order of operations and using parentheses to make sure the conditions are evaluated as you intended. For example, say you wanted to filter for observations that were either 4 cylinder or less than 200 horse power, and also had 5 gears. In other words, cars with 4 cylinders and 5 gears or cars with less than 200 horse power and 5 gears:</p>
+<p><code>filter(cyl == 4 | hp &lt; 200 &amp; gear == 5)</code> would be evaluated as:<br><code>filter(cyl == 4 | (hp &lt; 200 &amp; gear == 5))</code>
+<br>
+which is different than:<br><code>filter((cyl == 4 | hp &lt; 200) &amp; gear == 5)</code>.</p>
+</div>
+</div>
+<div id="changing-variables" class="section level2" number="14.4">
+<h2>
+<span class="header-section-number">14.4</span> Changing variables<a class="anchor" aria-label="anchor" href="#changing-variables"><i class="fas fa-link"></i></a>
+</h2>
+<p>Sometimes you need to do more than just view, relocate, or subset your data. Sometimes you need to change it! In this section, we’ll first examine how to change the name of a column or variable (<code>rename</code>) and then how to change it’s values or even create a new column (<code>mutate</code>)!</p>
+<div id="rename" class="section level3" number="14.4.1">
+<h3>
+<span class="header-section-number">14.4.1</span> Rename<a class="anchor" aria-label="anchor" href="#rename"><i class="fas fa-link"></i></a>
+</h3>
+<img src="figures/dplyr_rename_new.jpeg" style="width:100.0%"><p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<p>Columns in a dataframe can be named poorly in several ways. They could have a name that is not meaningful or interpretable, they could have a name that is too long, or they could have a name that includes special characters or is otherwise difficult to work with (e.g., including spaces).</p>
+<p>You can rename columns by using the <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> function. This function takes the following form:</p>
+<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="st">"new_column_name"</span> <span class="op">=</span> <span class="st">"old_column_name"</span><span class="op">)</span></span></code></pre></div>
+<p>In the <code>mtcars2</code> object, several variable names are shorthand or abbreviations that may not make sense to someone who is not already familiar with the dataset. <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> can be used to change these:</p>
+<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="st">"weight"</span> <span class="op">=</span> <span class="st">"wt"</span>, <span class="st">"horse_power"</span> <span class="op">=</span> <span class="st">"hp"</span>,</span>
+<span>         <span class="st">"cylinders"</span> <span class="op">=</span> <span class="st">"cyl"</span>, <span class="st">"displacement"</span> <span class="op">=</span> <span class="st">"disp"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;            model mpg cylinders displacement horse_power</span></span>
+<span><span class="co">#&gt; 1      Fiat X1-9  27         4           79          66</span></span>
+<span><span class="co">#&gt; 2  Porsche 914-2  26         4          120          91</span></span>
+<span><span class="co">#&gt; 3   Lotus Europa  30         4           95         113</span></span>
+<span><span class="co">#&gt; 4 Ford Pantera L  16         8          351         264</span></span>
+<span><span class="co">#&gt; 5   Ferrari Dino  20         6          145         175</span></span>
+<span><span class="co">#&gt; 6  Maserati Bora  15         8          301         335</span></span>
+<span><span class="co">#&gt;   weight gear</span></span>
+<span><span class="co">#&gt; 1   1.94    4</span></span>
+<span><span class="co">#&gt; 2   2.14    5</span></span>
+<span><span class="co">#&gt; 3   1.51    5</span></span>
+<span><span class="co">#&gt; 4   3.17    5</span></span>
+<span><span class="co">#&gt; 5   2.77    5</span></span>
+<span><span class="co">#&gt; 6   3.57    5</span></span></code></pre></div>
+<p class="text-info">
+<strong><u>Note:</u> You do not have to address variables in the order they appear in the df. The variable names will be mapped regardless of their position!</strong>
+</p>
+<!-- <div class="panel panel-success"> -->
+<!--   <div class="panel-heading">**EXERCISE 2**</div> -->
+<!--   <div class="panel-body"> -->
+<!--   Both of the weight columns in this dataset are measuring in kilograms. Use `rename()` to give those variables more informative names.</div> -->
+<!-- </div> -->
+<div id="saving-changes" class="section level4" number="14.4.1.1">
+<h4>
+<span class="header-section-number">14.4.1.1</span> Saving Changes<a class="anchor" aria-label="anchor" href="#saving-changes"><i class="fas fa-link"></i></a>
+</h4>
+<p>The code above using <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> changed some of the variable names in the <code>mtcars2</code> dataframe. However, if you look at the <code>mtcars2</code> dataframe…</p>
+<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;            model mpg cyl disp  hp   wt gear</span></span>
+<span><span class="co">#&gt; 1      Fiat X1-9  27   4   79  66 1.94    4</span></span>
+<span><span class="co">#&gt; 2  Porsche 914-2  26   4  120  91 2.14    5</span></span>
+<span><span class="co">#&gt; 3   Lotus Europa  30   4   95 113 1.51    5</span></span>
+<span><span class="co">#&gt; 4 Ford Pantera L  16   8  351 264 3.17    5</span></span>
+<span><span class="co">#&gt; 5   Ferrari Dino  20   6  145 175 2.77    5</span></span>
+<span><span class="co">#&gt; 6  Maserati Bora  15   8  301 335 3.57    5</span></span></code></pre></div>
+<p>The variable names are the same as before, the the <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> code seems like it did not work! Look carefully at the code though:</p>
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="st">"weight"</span> <span class="op">=</span> <span class="st">"wt"</span>, <span class="st">"horse_power"</span> <span class="op">=</span> <span class="st">"hp"</span>,</span>
+<span>         <span class="st">"cylinders"</span> <span class="op">=</span> <span class="st">"cyl"</span>, <span class="st">"displacement"</span> <span class="op">=</span> <span class="st">"disp"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>When this code is executed it just prints the results. They are not saved anywhere! If you actually wanted to update your dataframe, you need to save these results:</p>
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op">=</span> <span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="st">"weight"</span> <span class="op">=</span> <span class="st">"wt"</span>, <span class="st">"horse_power"</span> <span class="op">=</span> <span class="st">"hp"</span>,</span>
+<span>         <span class="st">"cylinders"</span> <span class="op">=</span> <span class="st">"cyl"</span>, <span class="st">"displacement"</span> <span class="op">=</span> <span class="st">"disp"</span><span class="op">)</span></span></code></pre></div>
+<p>Saving over an object is a permanent change, though. You should be very careful when doing so. It is good practice to first make sure the code runs and does what you intend it to do. Once you have verified that, you can overwrite an object if you would like:</p>
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="st">"weight"</span> <span class="op">=</span> <span class="st">"wt"</span>, <span class="st">"horse_power"</span> <span class="op">=</span> <span class="st">"hp"</span>,</span>
+<span>         <span class="st">"cylinders"</span> <span class="op">=</span> <span class="st">"cyl"</span>, <span class="st">"displacement"</span> <span class="op">=</span> <span class="st">"disp"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">mtcars2</span> <span class="op">=</span> <span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="st">"weight"</span> <span class="op">=</span> <span class="st">"wt"</span>, <span class="st">"horse_power"</span> <span class="op">=</span> <span class="st">"hp"</span>,</span>
+<span>         <span class="st">"cylinders"</span> <span class="op">=</span> <span class="st">"cyl"</span>, <span class="st">"displacement"</span> <span class="op">=</span> <span class="st">"disp"</span><span class="op">)</span></span></code></pre></div>
+<p class="text-info">
+<strong><u>Note:</u> <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> is used here for pedagogical purposes, but in your own code you would only want to use this when testing changes in your data. When modifying your dataframe, you would not want to accidentally overwrite it with only the first 5 rows of your new output!</strong>
+</p>
+<p>A good rule of thumb is that if you need to use the object in its current state again or make significant changes to it, particularly if you change its structure, you should create a new object (e.g., mtcars3) rather than overwrite/update the existing one.</p>
+</div>
+<div id="clean-names" class="section level4" number="14.4.1.2">
+<h4>
+<span class="header-section-number">14.4.1.2</span> Clean Names<a class="anchor" aria-label="anchor" href="#clean-names"><i class="fas fa-link"></i></a>
+</h4>
+<img src="figures/janitor_clean_names.png" style="width:100.0%"><p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<p>The <code>clean_names()</code> function from the <code>janitor</code> package is a powerful tool to change all your column names at once to a specific naming convention. This can be used to easily convert all variable names to one of the naming conventions mentioned in the <a href="using-r-effectively.html#naming-convention">Coding Best Practices</a> section:</p>
+<ul>
+<li>snake (snake_case)</li>
+<li>lower_camel (lowerCamel)</li>
+<li>upper_camel (UpperCamel)</li>
+<li>screaming_snake (SCREAMING_SNAKE)</li>
+</ul>
+<p>As well as many others! You can access a particular function from a package by first specifying the package name, then two colons, then the function name. As demonstrated in the illustration above, using <code>janitor::clean_names()</code> is saying you want to use the <code>clean_names()</code> function as defined in the <code>janitor</code> package.</p>
+<div class="rmdcaution">
+<p><strong>Why would you ever want to do this? Well, it is worth recognizing that functions are just variables. Instead of a value, they are defined by a series of code. Two variables of the same name cannot co-exist in your global environment. R would not know which to use! When you define <code>x = 4</code> and then <code>x = 6</code>, the original <code>x = 4</code> is overwritten.</strong></p>
+<p><strong>Different packages may use the same variable names for the functions they contain. When you load a package with <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>, that may overwrite some functions loaded by other packages. Thus, you may want to use a function from a particular package, but not load the entire package contents and override other functions!</strong></p>
+</div>
+</div>
+</div>
+<div id="adding-variables" class="section level3" number="14.4.2">
+<h3>
+<span class="header-section-number">14.4.2</span> Adding Variables<a class="anchor" aria-label="anchor" href="#adding-variables"><i class="fas fa-link"></i></a>
+</h3>
+<p>To add new variables to your dataframe, you use the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function.</p>
+<img src="figures/dplyr_mutate.png" style="width:100.0%"><p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> takes the form:</p>
+<p><code>mutate("new_col_name" = content_for_that_column)</code></p>
+<p>The new column’s name will be whatever is passed on the left, its contents will be the result of the R expression assigned to it. For example:</p>
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>wt_lbs <span class="op">=</span> <span class="va">wt</span> <span class="op">*</span> <span class="fl">1000</span><span class="op">)</span></span>
+<span><span class="co">#&gt;            model mpg cyl disp  hp   wt gear wt_lbs</span></span>
+<span><span class="co">#&gt; 1      Fiat X1-9  27   4   79  66 1.94    4   1940</span></span>
+<span><span class="co">#&gt; 2  Porsche 914-2  26   4  120  91 2.14    5   2140</span></span>
+<span><span class="co">#&gt; 3   Lotus Europa  30   4   95 113 1.51    5   1510</span></span>
+<span><span class="co">#&gt; 4 Ford Pantera L  16   8  351 264 3.17    5   3170</span></span>
+<span><span class="co">#&gt; 5   Ferrari Dino  20   6  145 175 2.77    5   2770</span></span>
+<span><span class="co">#&gt; 6  Maserati Bora  15   8  301 335 3.57    5   3570</span></span>
+<span><span class="co">#&gt; 7     Volvo 142E  21   4  121 109 2.78    4   2780</span></span></code></pre></div>
+<div class="rmdimportant">
+<p><strong>This creates a new variable showing the weight of each observation (car) in pounds.</strong></p>
+</div>
+<p>Recall that all variables in a dataframe are each vectors. There are two consequences of this:</p>
+<ol style="list-style-type: decimal">
+<li>All new variables must be the same length as the existing columns in the dataframe.</li>
+<li>The R expression must return a vector, and so computations over vectors can be used!
+<ul>
+<li>In the example above, <code>wt</code> is a vector. The R expression was a computation over a vector! Each value in the <code>wt</code> vector (column) was multiplied by 1000. This is essentially the same thing as seen in the section where vectors were first <a href="r-coding-basics.html#Vectors">introduced</a>.</li>
+</ul>
+</li>
+</ol>
+<p>Multiple new columns can be created simultaneously within the same <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> call:</p>
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">price_of_gas</span> <span class="op">=</span> <span class="fl">6.25</span></span>
+<span></span>
+<span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cost_per_mile <span class="op">=</span> <span class="va">price_of_gas</span> <span class="op">/</span> <span class="va">mpg</span>,</span>
+<span>         wt_lbs <span class="op">=</span> <span class="va">wt</span> <span class="op">*</span> <span class="fl">1000</span><span class="op">)</span></span>
+<span><span class="co">#&gt;            model mpg cyl disp  hp   wt gear cost_per_mile</span></span>
+<span><span class="co">#&gt; 1      Fiat X1-9  27   4   79  66 1.94    4     0.2314815</span></span>
+<span><span class="co">#&gt; 2  Porsche 914-2  26   4  120  91 2.14    5     0.2403846</span></span>
+<span><span class="co">#&gt; 3   Lotus Europa  30   4   95 113 1.51    5     0.2083333</span></span>
+<span><span class="co">#&gt; 4 Ford Pantera L  16   8  351 264 3.17    5     0.3906250</span></span>
+<span><span class="co">#&gt; 5   Ferrari Dino  20   6  145 175 2.77    5     0.3125000</span></span>
+<span><span class="co">#&gt; 6  Maserati Bora  15   8  301 335 3.57    5     0.4166667</span></span>
+<span><span class="co">#&gt; 7     Volvo 142E  21   4  121 109 2.78    4     0.2976190</span></span>
+<span><span class="co">#&gt;   wt_lbs</span></span>
+<span><span class="co">#&gt; 1   1940</span></span>
+<span><span class="co">#&gt; 2   2140</span></span>
+<span><span class="co">#&gt; 3   1510</span></span>
+<span><span class="co">#&gt; 4   3170</span></span>
+<span><span class="co">#&gt; 5   2770</span></span>
+<span><span class="co">#&gt; 6   3570</span></span>
+<span><span class="co">#&gt; 7   2780</span></span></code></pre></div>
+<div class="rmdimportant">
+<p><strong>In addition to the weight in pounds variable, this code also creates a variable showing the cost of traveling 1 mile for each observation (car) considering the current price of gas.</strong></p>
+</div>
+<div id="position" class="section level4" number="14.4.2.1">
+<h4>
+<span class="header-section-number">14.4.2.1</span> Position<a class="anchor" aria-label="anchor" href="#position"><i class="fas fa-link"></i></a>
+</h4>
+<p>By default <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> adds the new variable(s) to the end of the dataframe. However, you can specify what existing column you want the new column to appear <code>.before</code> or <code>.after</code>.</p>
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">price_of_gas</span> <span class="op">=</span> <span class="fl">6.25</span></span>
+<span></span>
+<span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cost_per_mile <span class="op">=</span> <span class="va">price_of_gas</span> <span class="op">/</span> <span class="va">mpg</span>, .after <span class="op">=</span> <span class="st">"mpg"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;            model mpg cost_per_mile cyl disp  hp   wt gear</span></span>
+<span><span class="co">#&gt; 1      Fiat X1-9  27     0.2314815   4   79  66 1.94    4</span></span>
+<span><span class="co">#&gt; 2  Porsche 914-2  26     0.2403846   4  120  91 2.14    5</span></span>
+<span><span class="co">#&gt; 3   Lotus Europa  30     0.2083333   4   95 113 1.51    5</span></span>
+<span><span class="co">#&gt; 4 Ford Pantera L  16     0.3906250   8  351 264 3.17    5</span></span>
+<span><span class="co">#&gt; 5   Ferrari Dino  20     0.3125000   6  145 175 2.77    5</span></span>
+<span><span class="co">#&gt; 6  Maserati Bora  15     0.4166667   8  301 335 3.57    5</span></span>
+<span><span class="co">#&gt; 7     Volvo 142E  21     0.2976190   4  121 109 2.78    4</span></span></code></pre></div>
+<div class="rmdimportant">
+<p><strong>This specifies that the new <code>cost_per_mile</code> variable should be created after <code>mpg</code>.</strong></p>
+</div>
+<p class="text-info">
+<strong><u>Note:</u> The <code>.before</code> and <code>.after</code> specifications apply to ALL new variables created by the particular <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> call. If you want to create multiple new variables and have them added in different places in your dataframe, you will need to separate them into different <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> calls.</strong>
+</p>
+</div>
+<div id="NAs" class="section level4" number="14.4.2.2">
+<h4>
+<span class="header-section-number">14.4.2.2</span> NAs<a class="anchor" aria-label="anchor" href="#NAs"><i class="fas fa-link"></i></a>
+</h4>
+<p>When performing vector computations, you have to be mindful of <code>NA</code> values in your data. <code>NA</code> values can cause major issues. For example:</p>
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fl">4</span> <span class="op">+</span> <span class="cn">NA</span> <span class="op">+</span> <span class="fl">2</span></span>
+<span><span class="co">#&gt; [1] NA</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">3</span>,<span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] NA</span></span></code></pre></div>
+<p>As you can see, any time you have <code>NA</code> as part of your computation, the results are <code>NA</code>. It is because of this that NAs are thought to be <strong>contagious</strong>. In these instances, you get around this by utilizing functions like <code><a href="https://rdrr.io/r/stats/na.fail.html">na.omit()</a></code>, <code><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na()</a></code>, or the <code>na.rm</code> argument set to <code>TRUE</code>.</p>
+<p><code><a href="https://rdrr.io/r/stats/na.fail.html">na.omit()</a></code> will remove all NAs. When used on a dataframe, this will remove an entire row of data if it has an <code>NA</code> value for <strong><em>any</em></strong> column.</p>
+<p><code><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na()</a></code> is used specifically for dataframes, and will remove an entire row of data if it has an <code>NA</code> value for <strong><em>specific</em></strong> column(s) that you select. If you do not pass any specific columns, it will function similarly to <code><a href="https://rdrr.io/r/stats/na.fail.html">na.omit()</a></code> and remove an entire row if it as an <code>NA</code> value for <strong><em>any</em></strong> column.</p>
+<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="cn">NA</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 4</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">3</span>,<span class="cn">NA</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ex_df</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span>, </span>
+<span>           B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">NA</span>, <span class="fl">4</span><span class="op">)</span>, </span>
+<span>           C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">ex_df</span></span>
+<span><span class="co">#&gt;    A  B C</span></span>
+<span><span class="co">#&gt; 1 NA  1 1</span></span>
+<span><span class="co">#&gt; 2  1 NA 4</span></span>
+<span><span class="co">#&gt; 3  4  4 5</span></span>
+<span><span class="va">ex_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   A B C</span></span>
+<span><span class="co">#&gt; 3 4 4 5</span></span>
+<span><span class="va">ex_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   A B C</span></span>
+<span><span class="co">#&gt; 1 4 4 5</span></span>
+<span><span class="va">ex_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">A</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   A  B C</span></span>
+<span><span class="co">#&gt; 1 1 NA 4</span></span>
+<span><span class="co">#&gt; 2 4  4 5</span></span></code></pre></div>
+</div>
+<div id="Modifying-Existing-Variables" class="section level4" number="14.4.2.3">
+<h4>
+<span class="header-section-number">14.4.2.3</span> Modifying Existing Variables<a class="anchor" aria-label="anchor" href="#Modifying-Existing-Variables"><i class="fas fa-link"></i></a>
+</h4>
+<p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> can also be used to modify existing variables! This is done by passing a column name that already exists in the dataframe. For example:</p>
+<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>wt <span class="op">=</span> <span class="va">wt</span> <span class="op">*</span> <span class="fl">1000</span><span class="op">)</span></span>
+<span><span class="co">#&gt;            model mpg cyl disp  hp   wt gear</span></span>
+<span><span class="co">#&gt; 1      Fiat X1-9  27   4   79  66 1940    4</span></span>
+<span><span class="co">#&gt; 2  Porsche 914-2  26   4  120  91 2140    5</span></span>
+<span><span class="co">#&gt; 3   Lotus Europa  30   4   95 113 1510    5</span></span>
+<span><span class="co">#&gt; 4 Ford Pantera L  16   8  351 264 3170    5</span></span>
+<span><span class="co">#&gt; 5   Ferrari Dino  20   6  145 175 2770    5</span></span>
+<span><span class="co">#&gt; 6  Maserati Bora  15   8  301 335 3570    5</span></span>
+<span><span class="co">#&gt; 7     Volvo 142E  21   4  121 109 2780    4</span></span></code></pre></div>
+<p>By tweaking the code above, instead of creating a new one, the existing <code>wt</code> variable is modified.</p>
+<p class="text-info">
+<strong><u>Note:</u> You will generally not want to overwrite a variable if you are changing it in some meaningful way (as is the case in the example above). Instead, you should create a new variable.</strong>
+</p>
+
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0" line-spacing="2">
+<div id="ref-allison_horst" class="csl-entry">
+Horst, A. (2022). <em>R &amp; stats illustrations by <span class="nocase">@allison_horst</span></em>. <a href="https://github.com/allisonhorst/stats-illustrations/">https://github.com/allisonhorst/stats-illustrations/</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="tidy-data-and-tidyverse.html"><span class="header-section-number">13</span> Tidy Data and Tidyverse</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#basic-wrangling"><span class="header-section-number">14</span> Basic Wrangling</a></li>
+<li>
+<a class="nav-link" href="#locating"><span class="header-section-number">14.1</span> Locating</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#indexing"><span class="header-section-number">14.1.1</span> Indexing</a></li>
+<li><a class="nav-link" href="#Unique-Entries"><span class="header-section-number">14.1.2</span> Unique Entries</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#re-locating"><span class="header-section-number">14.2</span> Re-Locating</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#relocate"><span class="header-section-number">14.2.1</span> Relocate</a></li>
+<li><a class="nav-link" href="#arrange"><span class="header-section-number">14.2.2</span> Arrange</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#subsetting"><span class="header-section-number">14.3</span> Subsetting</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#select"><span class="header-section-number">14.3.1</span> Select</a></li>
+<li><a class="nav-link" href="#filter"><span class="header-section-number">14.3.2</span> Filter</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#changing-variables"><span class="header-section-number">14.4</span> Changing variables</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#rename"><span class="header-section-number">14.4.1</span> Rename</a></li>
+<li><a class="nav-link" href="#adding-variables"><span class="header-section-number">14.4.2</span> Adding Variables</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-10-04.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
