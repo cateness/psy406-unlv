@@ -93,6 +93,9 @@ mtcars2 %>%
 
 In short, each argument in `pluck()` is a position to index. `x %>% pluck(2, 2)` == `x[[2]][[2]]`
 
+</div>
+<br>
+
 ### Unique Entries {#Unique-Entries}
 
 When working with larger dfs, it is difficult to get a sense of the unique values a particular variable may contain. You can get this using `distinct()`.
