@@ -7,13 +7,23 @@ knitr::opts_chunk$set(strip.white = TRUE)
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(palmerpenguins)
+library(kableExtra)
+library(knitr)
 ```
+
+```{r echo = FALSE, warning=FALSE, message=FALSE}
+load("data/HELPfull.RData")
+mtcars2 <- mtcars %>% 
+     rownames_to_column(var = "model")
+```
+
 
 ## Change Variable Types
 
 One of the ways in which it *is* appropriate to modify a variable is when you need to change the *type* of data it contains. In R, you can change data type by using the `as.*` function. For example, `as.logical()` changes the passed values to be *logical.* The one exception is that when changing something to a *factor*, you should use `factor()` (more on this below.)
 
 ```{r}
+
 mtcars2 %>%
   mutate(mpg = as.character(mpg),
          cyl = factor(cyl)) %>%
