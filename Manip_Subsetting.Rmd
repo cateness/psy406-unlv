@@ -276,9 +276,17 @@ The total number of columns has decreased by exactly the number of columns that 
 
 ## Advanced Filtering
 
+Remember that filtering subsets the data by rows or observations instead of columns. In this section, we will use the `mtcars` dataset because it's a little bit more managable than the dataset we used above.
+
+```{r eval=FALSE}
+mtcars2 <- mtcars %>% 
+     rownames_to_column(var = "model")
+```
+
+
 ### %in%
 
-Stringing together multiple tests of text patterns would be very cumbersome (e.g., `model == "Lotus Europa" | model == "Ferrari Dino" | ...`). Fortunately, there is an alternative with the `%in%` operator. As a reminder, this will check to see if the value of one variable is in a vector of possible values. Test conditions using the `%in%` operator are used the same way as all test conditions using all other operators: you must specify the variable to search within and what values to return (those in the vector).
+Stringing together multiple tests of text patterns would be very cumbersome. Fortunately, there is an alternative with the `%in%` operator. As a reminder, this will check to see if the value of one variable is in a vector of possible values. Test conditions using the `%in%` operator are used the same way as all test conditions using all other operators: you must specify the variable to search within and what values to return (those in the vector).
 
 ```{r eval=FALSE}
 mtcars2 %>%
