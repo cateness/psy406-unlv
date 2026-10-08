@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Chapter 16 Advanced Variable Changing | PSY406</title>
+
+    <meta name="author" content="Catie Nielson (with help from Ethan Hurwitz)" />
+  
+   <meta name="description" content="Course material related to PSY406 at UNLV" />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="Chapter 16 Advanced Variable Changing | PSY406" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://cateness.github.io/psy406-unlv/" />
+  
+  <meta property="og:description" content="Course material related to PSY406 at UNLV" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 16 Advanced Variable Changing | PSY406" />
+  
+  <meta name="twitter:description" content="Course material related to PSY406 at UNLV" />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.12.0/transition.js"></script>
+    <script src="libs/bs3compat-0.12.0/tabs.js"></script>
+    <script src="libs/bs3compat-0.12.0/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+    <style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+      <link rel="stylesheet" href="bs4_style.css" />
+    <link rel="stylesheet" href="style.css" />
+  
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">PSY406</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="advanced-variable-changing" class="section level1" number="16">
+<h1><span class="header-section-number">Chapter 16</span> Advanced Variable Changing</h1>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="advanced-variable-changing.html#cb250-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb250-2"><a href="advanced-variable-changing.html#cb250-2" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb250-3"><a href="advanced-variable-changing.html#cb250-3" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb250-4"><a href="advanced-variable-changing.html#cb250-4" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code></pre></div>
+<div id="change-variable-types" class="section level2" number="16.1">
+<h2><span class="header-section-number">16.1</span> Change Variable Types</h2>
+<p>One of the ways in which it <em>is</em> appropriate to modify a variable is when you need to change the <em>type</em> of data it contains. In R, you can change data type by using the <code>as.*</code> function. For example, <code>as.logical()</code> changes the passed values to be <em>logical.</em> The one exception is that when changing something to a <em>factor</em>, you should use <code>factor()</code> (more on this below.)</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="advanced-variable-changing.html#cb251-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
+<span id="cb251-2"><a href="advanced-variable-changing.html#cb251-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mpg =</span> <span class="fu">as.character</span>(mpg),</span>
+<span id="cb251-3"><a href="advanced-variable-changing.html#cb251-3" tabindex="-1"></a>         <span class="at">cyl =</span> <span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span></span>
+<span id="cb251-4"><a href="advanced-variable-changing.html#cb251-4" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span>
+<span id="cb251-5"><a href="advanced-variable-changing.html#cb251-5" tabindex="-1"></a><span class="co">#&gt; Rows: 32</span></span>
+<span id="cb251-6"><a href="advanced-variable-changing.html#cb251-6" tabindex="-1"></a><span class="co">#&gt; Columns: 12</span></span>
+<span id="cb251-7"><a href="advanced-variable-changing.html#cb251-7" tabindex="-1"></a><span class="co">#&gt; $ model &lt;chr&gt; &quot;Mazda RX4&quot;, &quot;Mazda RX4 Wag&quot;, &quot;Datsun 710&quot;, …</span></span>
+<span id="cb251-8"><a href="advanced-variable-changing.html#cb251-8" tabindex="-1"></a><span class="co">#&gt; $ mpg   &lt;chr&gt; &quot;21&quot;, &quot;21&quot;, &quot;22.8&quot;, &quot;21.4&quot;, &quot;18.7&quot;, &quot;18.1&quot;, …</span></span>
+<span id="cb251-9"><a href="advanced-variable-changing.html#cb251-9" tabindex="-1"></a><span class="co">#&gt; $ cyl   &lt;fct&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8,…</span></span>
+<span id="cb251-10"><a href="advanced-variable-changing.html#cb251-10" tabindex="-1"></a><span class="co">#&gt; $ disp  &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 36…</span></span>
+<span id="cb251-11"><a href="advanced-variable-changing.html#cb251-11" tabindex="-1"></a><span class="co">#&gt; $ hp    &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 12…</span></span>
+<span id="cb251-12"><a href="advanced-variable-changing.html#cb251-12" tabindex="-1"></a><span class="co">#&gt; $ drat  &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.…</span></span>
+<span id="cb251-13"><a href="advanced-variable-changing.html#cb251-13" tabindex="-1"></a><span class="co">#&gt; $ wt    &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.…</span></span>
+<span id="cb251-14"><a href="advanced-variable-changing.html#cb251-14" tabindex="-1"></a><span class="co">#&gt; $ qsec  &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15…</span></span>
+<span id="cb251-15"><a href="advanced-variable-changing.html#cb251-15" tabindex="-1"></a><span class="co">#&gt; $ vs    &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,…</span></span>
+<span id="cb251-16"><a href="advanced-variable-changing.html#cb251-16" tabindex="-1"></a><span class="co">#&gt; $ am    &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
+<span id="cb251-17"><a href="advanced-variable-changing.html#cb251-17" tabindex="-1"></a><span class="co">#&gt; $ gear  &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3,…</span></span>
+<span id="cb251-18"><a href="advanced-variable-changing.html#cb251-18" tabindex="-1"></a><span class="co">#&gt; $ carb  &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4,…</span></span></code></pre></div>
+<div class="rmdimportant">
+<p><strong>This modifies the data in the <code>mpg</code> column to be of <em>character</em>, and the data in the <code>cyl</code> column to be a factor. The output of this is then piped to <code>glimpse()</code> so the types of each column will be displayed.</strong></p>
+</div>
+<p>You can see from this output that all the numbers in <code>mpg</code> have quotes around them. Also, it is labeled “<chr>” and not “<dbl>”. While the raw data for <code>cyl</code> look unchanged, you can see it now says “<fct>”.</p>
+<div id="factors" class="section level3" number="16.1.1">
+<h3><span class="header-section-number">16.1.1</span> Factors</h3>
+<p>Factors are important, and can be a little tricky to work with, so they get their own section. Factors are categorical data that have a specific order, and by proxy a specific defined range of possible values (e.g., Months of the year).</p>
+<div id="factor-conversion" class="section level4" number="16.1.1.1">
+<h4><span class="header-section-number">16.1.1.1</span> Factor Conversion</h4>
+<p>When working with factors, particularly when converting data to and from a factor, you have to be very careful. Consider the following:</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="advanced-variable-changing.html#cb252-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">test =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;1&quot;</span>)))</span>
+<span id="cb252-2"><a href="advanced-variable-changing.html#cb252-2" tabindex="-1"></a><span class="co">#&gt;   test</span></span>
+<span id="cb252-3"><a href="advanced-variable-changing.html#cb252-3" tabindex="-1"></a><span class="co">#&gt; 1    0</span></span>
+<span id="cb252-4"><a href="advanced-variable-changing.html#cb252-4" tabindex="-1"></a><span class="co">#&gt; 2    1</span></span></code></pre></div>
+<p>This simple dataframe that has one column with data as a factor with the values 0 and 1. Say you want to change that data from a factor to numeric. Simple enough, just apply the appropriate <code>as.*</code> function (<code>as.numeric()</code>).</p>
+<p>However, observe the output from doing so:</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="advanced-variable-changing.html#cb253-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">test =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;1&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb253-2"><a href="advanced-variable-changing.html#cb253-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">test =</span> <span class="fu">as.numeric</span>(test))</span>
+<span id="cb253-3"><a href="advanced-variable-changing.html#cb253-3" tabindex="-1"></a><span class="co">#&gt;   test</span></span>
+<span id="cb253-4"><a href="advanced-variable-changing.html#cb253-4" tabindex="-1"></a><span class="co">#&gt; 1    1</span></span>
+<span id="cb253-5"><a href="advanced-variable-changing.html#cb253-5" tabindex="-1"></a><span class="co">#&gt; 2    2</span></span></code></pre></div>
+<p>This is obviously not what was intended. What is happening here is <code>mutate()</code> is taking the <em>level</em> of each value, with <code>0</code> being level 1 and <code>1</code> being level 2. Instead, you have to circumvent this issue by first converting the values to a <em>character</em>, and then a <em>number</em>:</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="advanced-variable-changing.html#cb254-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">test =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;1&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb254-2"><a href="advanced-variable-changing.html#cb254-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">test =</span> <span class="fu">as.character</span>(test),</span>
+<span id="cb254-3"><a href="advanced-variable-changing.html#cb254-3" tabindex="-1"></a>         <span class="at">test =</span> <span class="fu">as.numeric</span>(test))</span>
+<span id="cb254-4"><a href="advanced-variable-changing.html#cb254-4" tabindex="-1"></a><span class="co">#&gt;   test</span></span>
+<span id="cb254-5"><a href="advanced-variable-changing.html#cb254-5" tabindex="-1"></a><span class="co">#&gt; 1    0</span></span>
+<span id="cb254-6"><a href="advanced-variable-changing.html#cb254-6" tabindex="-1"></a><span class="co">#&gt; 2    1</span></span></code></pre></div>
+<p>The take-home point is to always double check that your code is doing what you intend it to, especially when converting to and from a <em>factor</em>!</p>
+</div>
+<div id="reorder-levels" class="section level4" number="16.1.1.2">
+<h4><span class="header-section-number">16.1.1.2</span> Reorder Levels</h4>
+<p>While the levels of a <em>factor</em> are ordered, you may at times want to change what that order is. One of the more common instances when this will occur is in visualizations. Consider the following:</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="advanced-variable-changing.html#cb255-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
+<span id="cb255-2"><a href="advanced-variable-changing.html#cb255-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span></span>
+<span id="cb255-3"><a href="advanced-variable-changing.html#cb255-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cyl, <span class="at">fill =</span> cyl)) <span class="sc">+</span></span>
+<span id="cb255-4"><a href="advanced-variable-changing.html#cb255-4" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<p><img src="Manip_Mutating_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672" /></p>
+<p>The x-axis has a sensible arrangement, but this 1. is a function of the fact that the factors happen to be numbers, 2. is not particularly aesthetically pleasing when looking at the actual bars. The bars themselves have an inherent ordering and it may make more sense to organize them as such. This can be accomplished using <code>fct_infreq()</code>, which will reorder the levels of a factor <strong>in</strong> their <strong>freq</strong>uency of occurrence (with highest frequency first).</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="advanced-variable-changing.html#cb256-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
+<span id="cb256-2"><a href="advanced-variable-changing.html#cb256-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb256-3"><a href="advanced-variable-changing.html#cb256-3" tabindex="-1"></a>           <span class="fu">fct_infreq</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb256-4"><a href="advanced-variable-changing.html#cb256-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cyl, <span class="at">fill =</span> cyl)) <span class="sc">+</span></span>
+<span id="cb256-5"><a href="advanced-variable-changing.html#cb256-5" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<p><img src="Manip_Mutating_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672" /></p>
+<p>To order the levels with lowest frequency first, you can use <code>fct_rev()</code> for “<strong>rev</strong>erse <strong>freq</strong>uency”.</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="advanced-variable-changing.html#cb257-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
+<span id="cb257-2"><a href="advanced-variable-changing.html#cb257-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb257-3"><a href="advanced-variable-changing.html#cb257-3" tabindex="-1"></a>           <span class="fu">fct_infreq</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb257-4"><a href="advanced-variable-changing.html#cb257-4" tabindex="-1"></a>           <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb257-5"><a href="advanced-variable-changing.html#cb257-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cyl, <span class="at">fill =</span> cyl)) <span class="sc">+</span></span>
+<span id="cb257-6"><a href="advanced-variable-changing.html#cb257-6" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<p><img src="Manip_Mutating_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672" /></p>
+<p class="text-info">
+<strong><u>Note:</u> Notice that the color mapping is changing as well. In the bottom graph, the blue bar is on the 4 cylinder bar, whereas on the preceding graph it was on the 6 cylinder bar. This is because color mappings correspond to factor levels!</strong>
+</p>
+<p>Most of the time you will not be creating graphs to visualize counts of a single variable. Instead, you will be visualizing the relationship or comparison between two more more variables, like in the graph below:</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="advanced-variable-changing.html#cb258-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
+<span id="cb258-2"><a href="advanced-variable-changing.html#cb258-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span></span>
+<span id="cb258-3"><a href="advanced-variable-changing.html#cb258-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> mpg, <span class="at">x =</span> cyl)) <span class="sc">+</span></span>
+<span id="cb258-4"><a href="advanced-variable-changing.html#cb258-4" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">&quot;mean_se&quot;</span>, <span class="at">geom =</span> <span class="st">&quot;pointrange&quot;</span>)</span></code></pre></div>
+<p><img src="Manip_Mutating_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672" /></p>
+<p>To reorder the levels of a factor by their relationship with another variable (instead of frequency of occurrence), you can use <code>fct_reorder()</code>. In <code>fct_reorder()</code>, you must specify the factor to reorder, and the other variable you wish to reorder the levels by. By default, <code>fct_order()</code> will use the median. To change this, you must specify the exact function (similar to how we do in <code>stat_summary()</code>).</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="advanced-variable-changing.html#cb259-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
+<span id="cb259-2"><a href="advanced-variable-changing.html#cb259-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span></span>
+<span id="cb259-3"><a href="advanced-variable-changing.html#cb259-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> mpg, <span class="at">x =</span> <span class="fu">fct_reorder</span>(cyl, mpg, <span class="at">.fun =</span> <span class="st">&quot;mean&quot;</span>))) <span class="sc">+</span></span>
+<span id="cb259-4"><a href="advanced-variable-changing.html#cb259-4" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">&quot;mean_se&quot;</span>, <span class="at">geom =</span> <span class="st">&quot;pointrange&quot;</span>)</span></code></pre></div>
+<p><img src="Manip_Mutating_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672" /></p>
+<p class="text-info">
+<strong><u>Note:</u> <code>fct_reorder()</code> was used in the ggplot call directly because this is a fairly particular reordering. It is unlikely that, outside of for the purpose of generating this specific visualization, you would want the levels of <code>cyl</code> to be ordered based on its level of <code>mpg</code>.<br><br>Also, you can combine <code>fct_reorder()</code> with <code>fct_rev()</code> to reverse the order of the levels.</strong>
+</p>
+</div>
+</div>
+</div>
+<div id="advanced-mutating" class="section level2" number="16.2">
+<h2><span class="header-section-number">16.2</span> Advanced Mutating</h2>
+<div id="mutating-across" class="section level3" number="16.2.1">
+<h3><span class="header-section-number">16.2.1</span> Mutating <code>across()</code></h3>
+<p><code>mutate()</code> was <a href="basic-wrangling.html#Modifying-Existing-Variables">previously</a> used to make changes to the data in our columns. To do so, you had to specify the specific column you wanted to change and what you wanted to do to it. However, utilizing the <code>across()</code> function, you can instead apply some changes to <strong>multiple</strong> columns simultaneously!</p>
+<p><code>across(selection_of_columns, NAME of function to apply to each)</code></p>
+<p>For example, if you wanted to <code>scale()</code> specific columns:</p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="advanced-variable-changing.html#cb260-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
+<span id="cb260-2"><a href="advanced-variable-changing.html#cb260-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(<span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q3&quot;</span>), scale)) <span class="sc">%&gt;%</span></span>
+<span id="cb260-3"><a href="advanced-variable-changing.html#cb260-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q3&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb260-4"><a href="advanced-variable-changing.html#cb260-4" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb260-5"><a href="advanced-variable-changing.html#cb260-5" tabindex="-1"></a><span class="co">#&gt;            Q2         Q3</span></span>
+<span id="cb260-6"><a href="advanced-variable-changing.html#cb260-6" tabindex="-1"></a><span class="co">#&gt; 1  -0.3443861 -0.3158289</span></span>
+<span id="cb260-7"><a href="advanced-variable-changing.html#cb260-7" tabindex="-1"></a><span class="co">#&gt; 2  -0.3443861 -0.3158289</span></span>
+<span id="cb260-8"><a href="advanced-variable-changing.html#cb260-8" tabindex="-1"></a><span class="co">#&gt; 3  -0.3443861 -0.3158289</span></span>
+<span id="cb260-9"><a href="advanced-variable-changing.html#cb260-9" tabindex="-1"></a><span class="co">#&gt; 4  -0.3443861 -0.3158289</span></span>
+<span id="cb260-10"><a href="advanced-variable-changing.html#cb260-10" tabindex="-1"></a><span class="co">#&gt; 5  -0.3443861 -0.3158289</span></span>
+<span id="cb260-11"><a href="advanced-variable-changing.html#cb260-11" tabindex="-1"></a><span class="co">#&gt; 6  -0.3443861 -0.3158289</span></span>
+<span id="cb260-12"><a href="advanced-variable-changing.html#cb260-12" tabindex="-1"></a><span class="co">#&gt; 7   2.9017304  5.3304180</span></span>
+<span id="cb260-13"><a href="advanced-variable-changing.html#cb260-13" tabindex="-1"></a><span class="co">#&gt; 8   2.9017304  3.4483357</span></span>
+<span id="cb260-14"><a href="advanced-variable-changing.html#cb260-14" tabindex="-1"></a><span class="co">#&gt; 9   2.9017304  5.3304180</span></span>
+<span id="cb260-15"><a href="advanced-variable-changing.html#cb260-15" tabindex="-1"></a><span class="co">#&gt; 10 -0.3443861 -0.3158289</span></span></code></pre></div>
+<p>Just like in the <code>if_*()</code> calls, because the first argument of <code>across()</code> expects a selection of columns, you can use helper functions to make these selections as well!</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="advanced-variable-changing.html#cb261-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
+<span id="cb261-2"><a href="advanced-variable-changing.html#cb261-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Q&quot;</span>), scale)) <span class="sc">%&gt;%</span></span>
+<span id="cb261-3"><a href="advanced-variable-changing.html#cb261-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Q&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb261-4"><a href="advanced-variable-changing.html#cb261-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb261-5"><a href="advanced-variable-changing.html#cb261-5" tabindex="-1"></a>  <span class="co"># Take just the first 7 columns</span></span>
+<span id="cb261-6"><a href="advanced-variable-changing.html#cb261-6" tabindex="-1"></a>  <span class="co"># to save space</span></span>
+<span id="cb261-7"><a href="advanced-variable-changing.html#cb261-7" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb261-8"><a href="advanced-variable-changing.html#cb261-8" tabindex="-1"></a><span class="co">#&gt;           Q1A       Q1B         Q2         Q3         Q4</span></span>
+<span id="cb261-9"><a href="advanced-variable-changing.html#cb261-9" tabindex="-1"></a><span class="co">#&gt; 1   1.3247918 -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
+<span id="cb261-10"><a href="advanced-variable-changing.html#cb261-10" tabindex="-1"></a><span class="co">#&gt; 2          NA -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
+<span id="cb261-11"><a href="advanced-variable-changing.html#cb261-11" tabindex="-1"></a><span class="co">#&gt; 3          NA -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
+<span id="cb261-12"><a href="advanced-variable-changing.html#cb261-12" tabindex="-1"></a><span class="co">#&gt; 4          NA -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
+<span id="cb261-13"><a href="advanced-variable-changing.html#cb261-13" tabindex="-1"></a><span class="co">#&gt; 5   1.3247918 -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
+<span id="cb261-14"><a href="advanced-variable-changing.html#cb261-14" tabindex="-1"></a><span class="co">#&gt; 6          NA -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
+<span id="cb261-15"><a href="advanced-variable-changing.html#cb261-15" tabindex="-1"></a><span class="co">#&gt; 7   1.3247918  2.120156  2.9017304  5.3304180  1.4294526</span></span>
+<span id="cb261-16"><a href="advanced-variable-changing.html#cb261-16" tabindex="-1"></a><span class="co">#&gt; 8          NA  2.120156  2.9017304  3.4483357  4.8284766</span></span>
+<span id="cb261-17"><a href="advanced-variable-changing.html#cb261-17" tabindex="-1"></a><span class="co">#&gt; 9          NA  2.120156  2.9017304  5.3304180 -0.2700594</span></span>
+<span id="cb261-18"><a href="advanced-variable-changing.html#cb261-18" tabindex="-1"></a><span class="co">#&gt; 10 -0.7532261 -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
+<span id="cb261-19"><a href="advanced-variable-changing.html#cb261-19" tabindex="-1"></a><span class="co">#&gt;            Q5         Q6</span></span>
+<span id="cb261-20"><a href="advanced-variable-changing.html#cb261-20" tabindex="-1"></a><span class="co">#&gt; 1   1.3360441 -0.2731168</span></span>
+<span id="cb261-21"><a href="advanced-variable-changing.html#cb261-21" tabindex="-1"></a><span class="co">#&gt; 2  -0.6042744 -0.2731168</span></span>
+<span id="cb261-22"><a href="advanced-variable-changing.html#cb261-22" tabindex="-1"></a><span class="co">#&gt; 3  -0.6042744 -0.2731168</span></span>
+<span id="cb261-23"><a href="advanced-variable-changing.html#cb261-23" tabindex="-1"></a><span class="co">#&gt; 4  -0.6042744 -0.2731168</span></span>
+<span id="cb261-24"><a href="advanced-variable-changing.html#cb261-24" tabindex="-1"></a><span class="co">#&gt; 5   2.3062033 -0.2731168</span></span>
+<span id="cb261-25"><a href="advanced-variable-changing.html#cb261-25" tabindex="-1"></a><span class="co">#&gt; 6  -0.6042744 -0.2731168</span></span>
+<span id="cb261-26"><a href="advanced-variable-changing.html#cb261-26" tabindex="-1"></a><span class="co">#&gt; 7  -0.6042744  4.9244139</span></span>
+<span id="cb261-27"><a href="advanced-variable-changing.html#cb261-27" tabindex="-1"></a><span class="co">#&gt; 8   0.3658848 -0.2731168</span></span>
+<span id="cb261-28"><a href="advanced-variable-changing.html#cb261-28" tabindex="-1"></a><span class="co">#&gt; 9  -0.6042744  4.9244139</span></span>
+<span id="cb261-29"><a href="advanced-variable-changing.html#cb261-29" tabindex="-1"></a><span class="co">#&gt; 10 -0.6042744 -0.2731168</span></span></code></pre></div>
+<p class="text-info">
+<strong><u>Note:</u> All of the <code>select()</code> calls were added only to save space and make these notes easier for you to understand by highlighting the specific rows that are changed. Without the <code>select()</code> calls, this code will output all of the data (which is what you want!). <code>select()</code> calls are NOT something that should <em>always</em> be used in your code with <code>mutate(across())</code>.</strong>
+</p>
+<p>You can combine <code>where()</code> with <code>across()</code> to mutate conditionally. In other words, <strong>IF</strong> the column passes some test, the function will be applied to all its values.</p>
+<p>Consider the following scenario: say you wanted to convert all the <em>factors</em> to <em>characters</em>.</p>
+<p>First, you would check which columns contain <em>factors</em>:</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="advanced-variable-changing.html#cb262-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb262-2"><a href="advanced-variable-changing.html#cb262-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.factor)) <span class="sc">%&gt;%</span></span>
+<span id="cb262-3"><a href="advanced-variable-changing.html#cb262-3" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span>
+<span id="cb262-4"><a href="advanced-variable-changing.html#cb262-4" tabindex="-1"></a><span class="co">#&gt; Rows: 1,472</span></span>
+<span id="cb262-5"><a href="advanced-variable-changing.html#cb262-5" tabindex="-1"></a><span class="co">#&gt; Columns: 6</span></span>
+<span id="cb262-6"><a href="advanced-variable-changing.html#cb262-6" tabindex="-1"></a><span class="co">#&gt; $ A14G_T &lt;fct&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;JAIL&quot;, &quot;&quot;, &quot;JAIL&quot;, &quot;&quot;,…</span></span>
+<span id="cb262-7"><a href="advanced-variable-changing.html#cb262-7" tabindex="-1"></a><span class="co">#&gt; $ A17I_T &lt;fct&gt; , , , , , , , , FOOD STAMPS, , , , , , , , …</span></span>
+<span id="cb262-8"><a href="advanced-variable-changing.html#cb262-8" tabindex="-1"></a><span class="co">#&gt; $ C3F_T  &lt;fct&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,…</span></span>
+<span id="cb262-9"><a href="advanced-variable-changing.html#cb262-9" tabindex="-1"></a><span class="co">#&gt; $ U2Q_T  &lt;fct&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;NO NEED TO…</span></span>
+<span id="cb262-10"><a href="advanced-variable-changing.html#cb262-10" tabindex="-1"></a><span class="co">#&gt; $ U2R    &lt;fct&gt; , A, A, A, , H, , H, Q, , A, H, P, , H, D, …</span></span>
+<span id="cb262-11"><a href="advanced-variable-changing.html#cb262-11" tabindex="-1"></a><span class="co">#&gt; $ U7A_T  &lt;fct&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,…</span></span></code></pre></div>
+<p>Next, you can use <code>across()</code> and <code>where()</code> to change only columns that are <em>factors</em> into <em>characters</em>, checking which columns are <em>characters</em>. The columns that were previously <em>factors</em> should show up here.</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="advanced-variable-changing.html#cb263-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
+<span id="cb263-2"><a href="advanced-variable-changing.html#cb263-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.factor), as.character)) <span class="sc">%&gt;%</span></span>
+<span id="cb263-3"><a href="advanced-variable-changing.html#cb263-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.character)) <span class="sc">%&gt;%</span></span>
+<span id="cb263-4"><a href="advanced-variable-changing.html#cb263-4" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span>
+<span id="cb263-5"><a href="advanced-variable-changing.html#cb263-5" tabindex="-1"></a><span class="co">#&gt; Rows: 1,472</span></span>
+<span id="cb263-6"><a href="advanced-variable-changing.html#cb263-6" tabindex="-1"></a><span class="co">#&gt; Columns: 6</span></span>
+<span id="cb263-7"><a href="advanced-variable-changing.html#cb263-7" tabindex="-1"></a><span class="co">#&gt; $ A14G_T &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;JAIL&quot;, &quot;&quot;, &quot;JAIL&quot;, &quot;&quot;,…</span></span>
+<span id="cb263-8"><a href="advanced-variable-changing.html#cb263-8" tabindex="-1"></a><span class="co">#&gt; $ A17I_T &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;FOOD STAMP…</span></span>
+<span id="cb263-9"><a href="advanced-variable-changing.html#cb263-9" tabindex="-1"></a><span class="co">#&gt; $ C3F_T  &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,…</span></span>
+<span id="cb263-10"><a href="advanced-variable-changing.html#cb263-10" tabindex="-1"></a><span class="co">#&gt; $ U2Q_T  &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;NO NEED TO…</span></span>
+<span id="cb263-11"><a href="advanced-variable-changing.html#cb263-11" tabindex="-1"></a><span class="co">#&gt; $ U2R    &lt;chr&gt; &quot;&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;&quot;, &quot;H&quot;, &quot;&quot;, &quot;H&quot;, &quot;Q&quot;, &quot;…</span></span>
+<span id="cb263-12"><a href="advanced-variable-changing.html#cb263-12" tabindex="-1"></a><span class="co">#&gt; $ U7A_T  &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,…</span></span></code></pre></div>
+<p>Which they do!</p>
+<p class="text-info">
+<strong><u>Note:</u> <code>glimpse()</code> was added here only to make these notes easier for you to understand. Without <code>glimpse()</code>, this code will just output the actual data (which is what you want!). <code>glimpse()</code> is NOT something that should <em>always</em> be used in your code with <code>across()</code> or <code>where()</code>.</strong>
+</p>
+<p>As before, multiple helper functions can be strung together with operators and they can also be negated with <code>!</code>. For example:</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="advanced-variable-changing.html#cb264-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb264-2"><a href="advanced-variable-changing.html#cb264-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric) <span class="sc">&amp;</span> <span class="fu">starts_with</span>(<span class="st">&quot;Z&quot;</span>), log)) <span class="sc">%&gt;%</span></span>
+<span id="cb264-3"><a href="advanced-variable-changing.html#cb264-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Z&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb264-4"><a href="advanced-variable-changing.html#cb264-4" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb264-5"><a href="advanced-variable-changing.html#cb264-5" tabindex="-1"></a><span class="co">#&gt;         Z1       Z2</span></span>
+<span id="cb264-6"><a href="advanced-variable-changing.html#cb264-6" tabindex="-1"></a><span class="co">#&gt; 1       NA       NA</span></span>
+<span id="cb264-7"><a href="advanced-variable-changing.html#cb264-7" tabindex="-1"></a><span class="co">#&gt; 2     -Inf       NA</span></span>
+<span id="cb264-8"><a href="advanced-variable-changing.html#cb264-8" tabindex="-1"></a><span class="co">#&gt; 3     -Inf       NA</span></span>
+<span id="cb264-9"><a href="advanced-variable-changing.html#cb264-9" tabindex="-1"></a><span class="co">#&gt; 4 6.906755 6.906755</span></span>
+<span id="cb264-10"><a href="advanced-variable-changing.html#cb264-10" tabindex="-1"></a><span class="co">#&gt; 5       NA       NA</span></span>
+<span id="cb264-11"><a href="advanced-variable-changing.html#cb264-11" tabindex="-1"></a><span class="co">#&gt; 6 6.906755 6.906755</span></span></code></pre></div>
+<p>You also can apply <em>multiple</em> functions simultaneously by <code>list</code>ing them. For example:</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="advanced-variable-changing.html#cb265-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb265-2"><a href="advanced-variable-changing.html#cb265-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric) <span class="sc">&amp;</span> <span class="fu">starts_with</span>(<span class="st">&quot;Z&quot;</span>), <span class="fu">list</span>(<span class="at">log =</span> log, <span class="at">round =</span> round))) <span class="sc">%&gt;%</span></span>
+<span id="cb265-3"><a href="advanced-variable-changing.html#cb265-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Z&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb265-4"><a href="advanced-variable-changing.html#cb265-4" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb265-5"><a href="advanced-variable-changing.html#cb265-5" tabindex="-1"></a><span class="co">#&gt;    Z1  Z2   Z1_log Z1_round   Z2_log Z2_round</span></span>
+<span id="cb265-6"><a href="advanced-variable-changing.html#cb265-6" tabindex="-1"></a><span class="co">#&gt; 1  NA  NA       NA       NA       NA       NA</span></span>
+<span id="cb265-7"><a href="advanced-variable-changing.html#cb265-7" tabindex="-1"></a><span class="co">#&gt; 2   0  NA     -Inf        0       NA       NA</span></span>
+<span id="cb265-8"><a href="advanced-variable-changing.html#cb265-8" tabindex="-1"></a><span class="co">#&gt; 3   0  NA     -Inf        0       NA       NA</span></span>
+<span id="cb265-9"><a href="advanced-variable-changing.html#cb265-9" tabindex="-1"></a><span class="co">#&gt; 4 999 999 6.906755      999 6.906755      999</span></span>
+<span id="cb265-10"><a href="advanced-variable-changing.html#cb265-10" tabindex="-1"></a><span class="co">#&gt; 5  NA  NA       NA       NA       NA       NA</span></span>
+<span id="cb265-11"><a href="advanced-variable-changing.html#cb265-11" tabindex="-1"></a><span class="co">#&gt; 6 999 999 6.906755      999 6.906755      999</span></span></code></pre></div>
+<p>Some common functions you may want to apply to columns in this way include: <code>mean()</code>, <code>sd()</code>, <code>round()</code>, <code>scale()</code>, <code>log()</code>, and many many others!</p>
+</div>
+<div id="conditional-values" class="section level3" number="16.2.2">
+<h3><span class="header-section-number">16.2.2</span> Conditional Values</h3>
+<p>You may want a variable to have a value based on some different conditions. This can be extremely useful when creating new variables!</p>
+<div id="case_when" class="section level4" number="16.2.2.1">
+<h4><span class="header-section-number">16.2.2.1</span> case_when()</h4>
+<p><code>case_when()</code> is most useful when you have many nested tests/conditions to specify.</p>
+<img src="figures/dplyr_case_when.png" style="width:100.0%" />
+<p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="advanced-variable-changing.html#cb266-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
+<span id="cb266-2"><a href="advanced-variable-changing.html#cb266-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fuel_efficiency =</span> <span class="fu">case_when</span>(</span>
+<span id="cb266-3"><a href="advanced-variable-changing.html#cb266-3" tabindex="-1"></a>    mpg <span class="sc">&lt;=</span> <span class="dv">19</span> <span class="sc">~</span> <span class="st">&quot;Poor&quot;</span>,</span>
+<span id="cb266-4"><a href="advanced-variable-changing.html#cb266-4" tabindex="-1"></a>    mpg <span class="sc">&gt;=</span> <span class="dv">20</span> <span class="sc">&amp;</span> mpg <span class="sc">&lt;=</span> <span class="dv">25</span> <span class="sc">~</span> <span class="st">&quot;Average&quot;</span>,</span>
+<span id="cb266-5"><a href="advanced-variable-changing.html#cb266-5" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Great&quot;</span></span>
+<span id="cb266-6"><a href="advanced-variable-changing.html#cb266-6" tabindex="-1"></a>  ))</span>
+<span id="cb266-7"><a href="advanced-variable-changing.html#cb266-7" tabindex="-1"></a><span class="co">#&gt;                  model  mpg cyl  disp  hp drat    wt  qsec</span></span>
+<span id="cb266-8"><a href="advanced-variable-changing.html#cb266-8" tabindex="-1"></a><span class="co">#&gt; 1            Mazda RX4 21.0   6 160.0 110 3.90 2.620 16.46</span></span>
+<span id="cb266-9"><a href="advanced-variable-changing.html#cb266-9" tabindex="-1"></a><span class="co">#&gt; 2        Mazda RX4 Wag 21.0   6 160.0 110 3.90 2.875 17.02</span></span>
+<span id="cb266-10"><a href="advanced-variable-changing.html#cb266-10" tabindex="-1"></a><span class="co">#&gt; 3           Datsun 710 22.8   4 108.0  93 3.85 2.320 18.61</span></span>
+<span id="cb266-11"><a href="advanced-variable-changing.html#cb266-11" tabindex="-1"></a><span class="co">#&gt; 4       Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44</span></span>
+<span id="cb266-12"><a href="advanced-variable-changing.html#cb266-12" tabindex="-1"></a><span class="co">#&gt; 5    Hornet Sportabout 18.7   8 360.0 175 3.15 3.440 17.02</span></span>
+<span id="cb266-13"><a href="advanced-variable-changing.html#cb266-13" tabindex="-1"></a><span class="co">#&gt; 6              Valiant 18.1   6 225.0 105 2.76 3.460 20.22</span></span>
+<span id="cb266-14"><a href="advanced-variable-changing.html#cb266-14" tabindex="-1"></a><span class="co">#&gt; 7           Duster 360 14.3   8 360.0 245 3.21 3.570 15.84</span></span>
+<span id="cb266-15"><a href="advanced-variable-changing.html#cb266-15" tabindex="-1"></a><span class="co">#&gt; 8            Merc 240D 24.4   4 146.7  62 3.69 3.190 20.00</span></span>
+<span id="cb266-16"><a href="advanced-variable-changing.html#cb266-16" tabindex="-1"></a><span class="co">#&gt; 9             Merc 230 22.8   4 140.8  95 3.92 3.150 22.90</span></span>
+<span id="cb266-17"><a href="advanced-variable-changing.html#cb266-17" tabindex="-1"></a><span class="co">#&gt; 10            Merc 280 19.2   6 167.6 123 3.92 3.440 18.30</span></span>
+<span id="cb266-18"><a href="advanced-variable-changing.html#cb266-18" tabindex="-1"></a><span class="co">#&gt; 11           Merc 280C 17.8   6 167.6 123 3.92 3.440 18.90</span></span>
+<span id="cb266-19"><a href="advanced-variable-changing.html#cb266-19" tabindex="-1"></a><span class="co">#&gt; 12          Merc 450SE 16.4   8 275.8 180 3.07 4.070 17.40</span></span>
+<span id="cb266-20"><a href="advanced-variable-changing.html#cb266-20" tabindex="-1"></a><span class="co">#&gt; 13          Merc 450SL 17.3   8 275.8 180 3.07 3.730 17.60</span></span>
+<span id="cb266-21"><a href="advanced-variable-changing.html#cb266-21" tabindex="-1"></a><span class="co">#&gt; 14         Merc 450SLC 15.2   8 275.8 180 3.07 3.780 18.00</span></span>
+<span id="cb266-22"><a href="advanced-variable-changing.html#cb266-22" tabindex="-1"></a><span class="co">#&gt; 15  Cadillac Fleetwood 10.4   8 472.0 205 2.93 5.250 17.98</span></span>
+<span id="cb266-23"><a href="advanced-variable-changing.html#cb266-23" tabindex="-1"></a><span class="co">#&gt; 16 Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82</span></span>
+<span id="cb266-24"><a href="advanced-variable-changing.html#cb266-24" tabindex="-1"></a><span class="co">#&gt; 17   Chrysler Imperial 14.7   8 440.0 230 3.23 5.345 17.42</span></span>
+<span id="cb266-25"><a href="advanced-variable-changing.html#cb266-25" tabindex="-1"></a><span class="co">#&gt; 18            Fiat 128 32.4   4  78.7  66 4.08 2.200 19.47</span></span>
+<span id="cb266-26"><a href="advanced-variable-changing.html#cb266-26" tabindex="-1"></a><span class="co">#&gt; 19         Honda Civic 30.4   4  75.7  52 4.93 1.615 18.52</span></span>
+<span id="cb266-27"><a href="advanced-variable-changing.html#cb266-27" tabindex="-1"></a><span class="co">#&gt; 20      Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90</span></span>
+<span id="cb266-28"><a href="advanced-variable-changing.html#cb266-28" tabindex="-1"></a><span class="co">#&gt; 21       Toyota Corona 21.5   4 120.1  97 3.70 2.465 20.01</span></span>
+<span id="cb266-29"><a href="advanced-variable-changing.html#cb266-29" tabindex="-1"></a><span class="co">#&gt; 22    Dodge Challenger 15.5   8 318.0 150 2.76 3.520 16.87</span></span>
+<span id="cb266-30"><a href="advanced-variable-changing.html#cb266-30" tabindex="-1"></a><span class="co">#&gt; 23         AMC Javelin 15.2   8 304.0 150 3.15 3.435 17.30</span></span>
+<span id="cb266-31"><a href="advanced-variable-changing.html#cb266-31" tabindex="-1"></a><span class="co">#&gt; 24          Camaro Z28 13.3   8 350.0 245 3.73 3.840 15.41</span></span>
+<span id="cb266-32"><a href="advanced-variable-changing.html#cb266-32" tabindex="-1"></a><span class="co">#&gt; 25    Pontiac Firebird 19.2   8 400.0 175 3.08 3.845 17.05</span></span>
+<span id="cb266-33"><a href="advanced-variable-changing.html#cb266-33" tabindex="-1"></a><span class="co">#&gt; 26           Fiat X1-9 27.3   4  79.0  66 4.08 1.935 18.90</span></span>
+<span id="cb266-34"><a href="advanced-variable-changing.html#cb266-34" tabindex="-1"></a><span class="co">#&gt; 27       Porsche 914-2 26.0   4 120.3  91 4.43 2.140 16.70</span></span>
+<span id="cb266-35"><a href="advanced-variable-changing.html#cb266-35" tabindex="-1"></a><span class="co">#&gt; 28        Lotus Europa 30.4   4  95.1 113 3.77 1.513 16.90</span></span>
+<span id="cb266-36"><a href="advanced-variable-changing.html#cb266-36" tabindex="-1"></a><span class="co">#&gt; 29      Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.50</span></span>
+<span id="cb266-37"><a href="advanced-variable-changing.html#cb266-37" tabindex="-1"></a><span class="co">#&gt; 30        Ferrari Dino 19.7   6 145.0 175 3.62 2.770 15.50</span></span>
+<span id="cb266-38"><a href="advanced-variable-changing.html#cb266-38" tabindex="-1"></a><span class="co">#&gt; 31       Maserati Bora 15.0   8 301.0 335 3.54 3.570 14.60</span></span>
+<span id="cb266-39"><a href="advanced-variable-changing.html#cb266-39" tabindex="-1"></a><span class="co">#&gt; 32          Volvo 142E 21.4   4 121.0 109 4.11 2.780 18.60</span></span>
+<span id="cb266-40"><a href="advanced-variable-changing.html#cb266-40" tabindex="-1"></a><span class="co">#&gt;    vs am gear carb fuel_efficiency</span></span>
+<span id="cb266-41"><a href="advanced-variable-changing.html#cb266-41" tabindex="-1"></a><span class="co">#&gt; 1   0  1    4    4         Average</span></span>
+<span id="cb266-42"><a href="advanced-variable-changing.html#cb266-42" tabindex="-1"></a><span class="co">#&gt; 2   0  1    4    4         Average</span></span>
+<span id="cb266-43"><a href="advanced-variable-changing.html#cb266-43" tabindex="-1"></a><span class="co">#&gt; 3   1  1    4    1         Average</span></span>
+<span id="cb266-44"><a href="advanced-variable-changing.html#cb266-44" tabindex="-1"></a><span class="co">#&gt; 4   1  0    3    1         Average</span></span>
+<span id="cb266-45"><a href="advanced-variable-changing.html#cb266-45" tabindex="-1"></a><span class="co">#&gt; 5   0  0    3    2            Poor</span></span>
+<span id="cb266-46"><a href="advanced-variable-changing.html#cb266-46" tabindex="-1"></a><span class="co">#&gt; 6   1  0    3    1            Poor</span></span>
+<span id="cb266-47"><a href="advanced-variable-changing.html#cb266-47" tabindex="-1"></a><span class="co">#&gt; 7   0  0    3    4            Poor</span></span>
+<span id="cb266-48"><a href="advanced-variable-changing.html#cb266-48" tabindex="-1"></a><span class="co">#&gt; 8   1  0    4    2         Average</span></span>
+<span id="cb266-49"><a href="advanced-variable-changing.html#cb266-49" tabindex="-1"></a><span class="co">#&gt; 9   1  0    4    2         Average</span></span>
+<span id="cb266-50"><a href="advanced-variable-changing.html#cb266-50" tabindex="-1"></a><span class="co">#&gt; 10  1  0    4    4           Great</span></span>
+<span id="cb266-51"><a href="advanced-variable-changing.html#cb266-51" tabindex="-1"></a><span class="co">#&gt; 11  1  0    4    4            Poor</span></span>
+<span id="cb266-52"><a href="advanced-variable-changing.html#cb266-52" tabindex="-1"></a><span class="co">#&gt; 12  0  0    3    3            Poor</span></span>
+<span id="cb266-53"><a href="advanced-variable-changing.html#cb266-53" tabindex="-1"></a><span class="co">#&gt; 13  0  0    3    3            Poor</span></span>
+<span id="cb266-54"><a href="advanced-variable-changing.html#cb266-54" tabindex="-1"></a><span class="co">#&gt; 14  0  0    3    3            Poor</span></span>
+<span id="cb266-55"><a href="advanced-variable-changing.html#cb266-55" tabindex="-1"></a><span class="co">#&gt; 15  0  0    3    4            Poor</span></span>
+<span id="cb266-56"><a href="advanced-variable-changing.html#cb266-56" tabindex="-1"></a><span class="co">#&gt; 16  0  0    3    4            Poor</span></span>
+<span id="cb266-57"><a href="advanced-variable-changing.html#cb266-57" tabindex="-1"></a><span class="co">#&gt; 17  0  0    3    4            Poor</span></span>
+<span id="cb266-58"><a href="advanced-variable-changing.html#cb266-58" tabindex="-1"></a><span class="co">#&gt; 18  1  1    4    1           Great</span></span>
+<span id="cb266-59"><a href="advanced-variable-changing.html#cb266-59" tabindex="-1"></a><span class="co">#&gt; 19  1  1    4    2           Great</span></span>
+<span id="cb266-60"><a href="advanced-variable-changing.html#cb266-60" tabindex="-1"></a><span class="co">#&gt; 20  1  1    4    1           Great</span></span>
+<span id="cb266-61"><a href="advanced-variable-changing.html#cb266-61" tabindex="-1"></a><span class="co">#&gt; 21  1  0    3    1         Average</span></span>
+<span id="cb266-62"><a href="advanced-variable-changing.html#cb266-62" tabindex="-1"></a><span class="co">#&gt; 22  0  0    3    2            Poor</span></span>
+<span id="cb266-63"><a href="advanced-variable-changing.html#cb266-63" tabindex="-1"></a><span class="co">#&gt; 23  0  0    3    2            Poor</span></span>
+<span id="cb266-64"><a href="advanced-variable-changing.html#cb266-64" tabindex="-1"></a><span class="co">#&gt; 24  0  0    3    4            Poor</span></span>
+<span id="cb266-65"><a href="advanced-variable-changing.html#cb266-65" tabindex="-1"></a><span class="co">#&gt; 25  0  0    3    2           Great</span></span>
+<span id="cb266-66"><a href="advanced-variable-changing.html#cb266-66" tabindex="-1"></a><span class="co">#&gt; 26  1  1    4    1           Great</span></span>
+<span id="cb266-67"><a href="advanced-variable-changing.html#cb266-67" tabindex="-1"></a><span class="co">#&gt; 27  0  1    5    2           Great</span></span>
+<span id="cb266-68"><a href="advanced-variable-changing.html#cb266-68" tabindex="-1"></a><span class="co">#&gt; 28  1  1    5    2           Great</span></span>
+<span id="cb266-69"><a href="advanced-variable-changing.html#cb266-69" tabindex="-1"></a><span class="co">#&gt; 29  0  1    5    4            Poor</span></span>
+<span id="cb266-70"><a href="advanced-variable-changing.html#cb266-70" tabindex="-1"></a><span class="co">#&gt; 30  0  1    5    6           Great</span></span>
+<span id="cb266-71"><a href="advanced-variable-changing.html#cb266-71" tabindex="-1"></a><span class="co">#&gt; 31  0  1    5    8            Poor</span></span>
+<span id="cb266-72"><a href="advanced-variable-changing.html#cb266-72" tabindex="-1"></a><span class="co">#&gt; 32  1  1    4    2         Average</span></span></code></pre></div>
+<div class="rmdimportant">
+<p><strong>This creates a new variable called <code>fuel_efficiency</code>. Each observation’s value for this variable depends on its value for <code>mpg</code>, and differs based on different conditions.</strong></p>
+</div>
+<p>In more simple instances, <a href="advanced-variable-changing.html#ifelse">ifelse()</a> can be used:</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="advanced-variable-changing.html#cb267-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
+<span id="cb267-2"><a href="advanced-variable-changing.html#cb267-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">power =</span> <span class="fu">ifelse</span>(hp <span class="sc">&gt;=</span><span class="dv">200</span>, <span class="st">&quot;High&quot;</span>, <span class="st">&quot;Low&quot;</span>))</span>
+<span id="cb267-3"><a href="advanced-variable-changing.html#cb267-3" tabindex="-1"></a><span class="co">#&gt;                  model  mpg cyl  disp  hp drat    wt  qsec</span></span>
+<span id="cb267-4"><a href="advanced-variable-changing.html#cb267-4" tabindex="-1"></a><span class="co">#&gt; 1            Mazda RX4 21.0   6 160.0 110 3.90 2.620 16.46</span></span>
+<span id="cb267-5"><a href="advanced-variable-changing.html#cb267-5" tabindex="-1"></a><span class="co">#&gt; 2        Mazda RX4 Wag 21.0   6 160.0 110 3.90 2.875 17.02</span></span>
+<span id="cb267-6"><a href="advanced-variable-changing.html#cb267-6" tabindex="-1"></a><span class="co">#&gt; 3           Datsun 710 22.8   4 108.0  93 3.85 2.320 18.61</span></span>
+<span id="cb267-7"><a href="advanced-variable-changing.html#cb267-7" tabindex="-1"></a><span class="co">#&gt; 4       Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44</span></span>
+<span id="cb267-8"><a href="advanced-variable-changing.html#cb267-8" tabindex="-1"></a><span class="co">#&gt; 5    Hornet Sportabout 18.7   8 360.0 175 3.15 3.440 17.02</span></span>
+<span id="cb267-9"><a href="advanced-variable-changing.html#cb267-9" tabindex="-1"></a><span class="co">#&gt; 6              Valiant 18.1   6 225.0 105 2.76 3.460 20.22</span></span>
+<span id="cb267-10"><a href="advanced-variable-changing.html#cb267-10" tabindex="-1"></a><span class="co">#&gt; 7           Duster 360 14.3   8 360.0 245 3.21 3.570 15.84</span></span>
+<span id="cb267-11"><a href="advanced-variable-changing.html#cb267-11" tabindex="-1"></a><span class="co">#&gt; 8            Merc 240D 24.4   4 146.7  62 3.69 3.190 20.00</span></span>
+<span id="cb267-12"><a href="advanced-variable-changing.html#cb267-12" tabindex="-1"></a><span class="co">#&gt; 9             Merc 230 22.8   4 140.8  95 3.92 3.150 22.90</span></span>
+<span id="cb267-13"><a href="advanced-variable-changing.html#cb267-13" tabindex="-1"></a><span class="co">#&gt; 10            Merc 280 19.2   6 167.6 123 3.92 3.440 18.30</span></span>
+<span id="cb267-14"><a href="advanced-variable-changing.html#cb267-14" tabindex="-1"></a><span class="co">#&gt; 11           Merc 280C 17.8   6 167.6 123 3.92 3.440 18.90</span></span>
+<span id="cb267-15"><a href="advanced-variable-changing.html#cb267-15" tabindex="-1"></a><span class="co">#&gt; 12          Merc 450SE 16.4   8 275.8 180 3.07 4.070 17.40</span></span>
+<span id="cb267-16"><a href="advanced-variable-changing.html#cb267-16" tabindex="-1"></a><span class="co">#&gt; 13          Merc 450SL 17.3   8 275.8 180 3.07 3.730 17.60</span></span>
+<span id="cb267-17"><a href="advanced-variable-changing.html#cb267-17" tabindex="-1"></a><span class="co">#&gt; 14         Merc 450SLC 15.2   8 275.8 180 3.07 3.780 18.00</span></span>
+<span id="cb267-18"><a href="advanced-variable-changing.html#cb267-18" tabindex="-1"></a><span class="co">#&gt; 15  Cadillac Fleetwood 10.4   8 472.0 205 2.93 5.250 17.98</span></span>
+<span id="cb267-19"><a href="advanced-variable-changing.html#cb267-19" tabindex="-1"></a><span class="co">#&gt; 16 Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82</span></span>
+<span id="cb267-20"><a href="advanced-variable-changing.html#cb267-20" tabindex="-1"></a><span class="co">#&gt; 17   Chrysler Imperial 14.7   8 440.0 230 3.23 5.345 17.42</span></span>
+<span id="cb267-21"><a href="advanced-variable-changing.html#cb267-21" tabindex="-1"></a><span class="co">#&gt; 18            Fiat 128 32.4   4  78.7  66 4.08 2.200 19.47</span></span>
+<span id="cb267-22"><a href="advanced-variable-changing.html#cb267-22" tabindex="-1"></a><span class="co">#&gt; 19         Honda Civic 30.4   4  75.7  52 4.93 1.615 18.52</span></span>
+<span id="cb267-23"><a href="advanced-variable-changing.html#cb267-23" tabindex="-1"></a><span class="co">#&gt; 20      Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90</span></span>
+<span id="cb267-24"><a href="advanced-variable-changing.html#cb267-24" tabindex="-1"></a><span class="co">#&gt; 21       Toyota Corona 21.5   4 120.1  97 3.70 2.465 20.01</span></span>
+<span id="cb267-25"><a href="advanced-variable-changing.html#cb267-25" tabindex="-1"></a><span class="co">#&gt; 22    Dodge Challenger 15.5   8 318.0 150 2.76 3.520 16.87</span></span>
+<span id="cb267-26"><a href="advanced-variable-changing.html#cb267-26" tabindex="-1"></a><span class="co">#&gt; 23         AMC Javelin 15.2   8 304.0 150 3.15 3.435 17.30</span></span>
+<span id="cb267-27"><a href="advanced-variable-changing.html#cb267-27" tabindex="-1"></a><span class="co">#&gt; 24          Camaro Z28 13.3   8 350.0 245 3.73 3.840 15.41</span></span>
+<span id="cb267-28"><a href="advanced-variable-changing.html#cb267-28" tabindex="-1"></a><span class="co">#&gt; 25    Pontiac Firebird 19.2   8 400.0 175 3.08 3.845 17.05</span></span>
+<span id="cb267-29"><a href="advanced-variable-changing.html#cb267-29" tabindex="-1"></a><span class="co">#&gt; 26           Fiat X1-9 27.3   4  79.0  66 4.08 1.935 18.90</span></span>
+<span id="cb267-30"><a href="advanced-variable-changing.html#cb267-30" tabindex="-1"></a><span class="co">#&gt; 27       Porsche 914-2 26.0   4 120.3  91 4.43 2.140 16.70</span></span>
+<span id="cb267-31"><a href="advanced-variable-changing.html#cb267-31" tabindex="-1"></a><span class="co">#&gt; 28        Lotus Europa 30.4   4  95.1 113 3.77 1.513 16.90</span></span>
+<span id="cb267-32"><a href="advanced-variable-changing.html#cb267-32" tabindex="-1"></a><span class="co">#&gt; 29      Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.50</span></span>
+<span id="cb267-33"><a href="advanced-variable-changing.html#cb267-33" tabindex="-1"></a><span class="co">#&gt; 30        Ferrari Dino 19.7   6 145.0 175 3.62 2.770 15.50</span></span>
+<span id="cb267-34"><a href="advanced-variable-changing.html#cb267-34" tabindex="-1"></a><span class="co">#&gt; 31       Maserati Bora 15.0   8 301.0 335 3.54 3.570 14.60</span></span>
+<span id="cb267-35"><a href="advanced-variable-changing.html#cb267-35" tabindex="-1"></a><span class="co">#&gt; 32          Volvo 142E 21.4   4 121.0 109 4.11 2.780 18.60</span></span>
+<span id="cb267-36"><a href="advanced-variable-changing.html#cb267-36" tabindex="-1"></a><span class="co">#&gt;    vs am gear carb power</span></span>
+<span id="cb267-37"><a href="advanced-variable-changing.html#cb267-37" tabindex="-1"></a><span class="co">#&gt; 1   0  1    4    4   Low</span></span>
+<span id="cb267-38"><a href="advanced-variable-changing.html#cb267-38" tabindex="-1"></a><span class="co">#&gt; 2   0  1    4    4   Low</span></span>
+<span id="cb267-39"><a href="advanced-variable-changing.html#cb267-39" tabindex="-1"></a><span class="co">#&gt; 3   1  1    4    1   Low</span></span>
+<span id="cb267-40"><a href="advanced-variable-changing.html#cb267-40" tabindex="-1"></a><span class="co">#&gt; 4   1  0    3    1   Low</span></span>
+<span id="cb267-41"><a href="advanced-variable-changing.html#cb267-41" tabindex="-1"></a><span class="co">#&gt; 5   0  0    3    2   Low</span></span>
+<span id="cb267-42"><a href="advanced-variable-changing.html#cb267-42" tabindex="-1"></a><span class="co">#&gt; 6   1  0    3    1   Low</span></span>
+<span id="cb267-43"><a href="advanced-variable-changing.html#cb267-43" tabindex="-1"></a><span class="co">#&gt; 7   0  0    3    4  High</span></span>
+<span id="cb267-44"><a href="advanced-variable-changing.html#cb267-44" tabindex="-1"></a><span class="co">#&gt; 8   1  0    4    2   Low</span></span>
+<span id="cb267-45"><a href="advanced-variable-changing.html#cb267-45" tabindex="-1"></a><span class="co">#&gt; 9   1  0    4    2   Low</span></span>
+<span id="cb267-46"><a href="advanced-variable-changing.html#cb267-46" tabindex="-1"></a><span class="co">#&gt; 10  1  0    4    4   Low</span></span>
+<span id="cb267-47"><a href="advanced-variable-changing.html#cb267-47" tabindex="-1"></a><span class="co">#&gt; 11  1  0    4    4   Low</span></span>
+<span id="cb267-48"><a href="advanced-variable-changing.html#cb267-48" tabindex="-1"></a><span class="co">#&gt; 12  0  0    3    3   Low</span></span>
+<span id="cb267-49"><a href="advanced-variable-changing.html#cb267-49" tabindex="-1"></a><span class="co">#&gt; 13  0  0    3    3   Low</span></span>
+<span id="cb267-50"><a href="advanced-variable-changing.html#cb267-50" tabindex="-1"></a><span class="co">#&gt; 14  0  0    3    3   Low</span></span>
+<span id="cb267-51"><a href="advanced-variable-changing.html#cb267-51" tabindex="-1"></a><span class="co">#&gt; 15  0  0    3    4  High</span></span>
+<span id="cb267-52"><a href="advanced-variable-changing.html#cb267-52" tabindex="-1"></a><span class="co">#&gt; 16  0  0    3    4  High</span></span>
+<span id="cb267-53"><a href="advanced-variable-changing.html#cb267-53" tabindex="-1"></a><span class="co">#&gt; 17  0  0    3    4  High</span></span>
+<span id="cb267-54"><a href="advanced-variable-changing.html#cb267-54" tabindex="-1"></a><span class="co">#&gt; 18  1  1    4    1   Low</span></span>
+<span id="cb267-55"><a href="advanced-variable-changing.html#cb267-55" tabindex="-1"></a><span class="co">#&gt; 19  1  1    4    2   Low</span></span>
+<span id="cb267-56"><a href="advanced-variable-changing.html#cb267-56" tabindex="-1"></a><span class="co">#&gt; 20  1  1    4    1   Low</span></span>
+<span id="cb267-57"><a href="advanced-variable-changing.html#cb267-57" tabindex="-1"></a><span class="co">#&gt; 21  1  0    3    1   Low</span></span>
+<span id="cb267-58"><a href="advanced-variable-changing.html#cb267-58" tabindex="-1"></a><span class="co">#&gt; 22  0  0    3    2   Low</span></span>
+<span id="cb267-59"><a href="advanced-variable-changing.html#cb267-59" tabindex="-1"></a><span class="co">#&gt; 23  0  0    3    2   Low</span></span>
+<span id="cb267-60"><a href="advanced-variable-changing.html#cb267-60" tabindex="-1"></a><span class="co">#&gt; 24  0  0    3    4  High</span></span>
+<span id="cb267-61"><a href="advanced-variable-changing.html#cb267-61" tabindex="-1"></a><span class="co">#&gt; 25  0  0    3    2   Low</span></span>
+<span id="cb267-62"><a href="advanced-variable-changing.html#cb267-62" tabindex="-1"></a><span class="co">#&gt; 26  1  1    4    1   Low</span></span>
+<span id="cb267-63"><a href="advanced-variable-changing.html#cb267-63" tabindex="-1"></a><span class="co">#&gt; 27  0  1    5    2   Low</span></span>
+<span id="cb267-64"><a href="advanced-variable-changing.html#cb267-64" tabindex="-1"></a><span class="co">#&gt; 28  1  1    5    2   Low</span></span>
+<span id="cb267-65"><a href="advanced-variable-changing.html#cb267-65" tabindex="-1"></a><span class="co">#&gt; 29  0  1    5    4  High</span></span>
+<span id="cb267-66"><a href="advanced-variable-changing.html#cb267-66" tabindex="-1"></a><span class="co">#&gt; 30  0  1    5    6   Low</span></span>
+<span id="cb267-67"><a href="advanced-variable-changing.html#cb267-67" tabindex="-1"></a><span class="co">#&gt; 31  0  1    5    8  High</span></span>
+<span id="cb267-68"><a href="advanced-variable-changing.html#cb267-68" tabindex="-1"></a><span class="co">#&gt; 32  1  1    4    2   Low</span></span></code></pre></div>
+<div class="rmdimportant">
+<p><strong>This creates a new variable called <code>power</code>. Each observation’s value for this variable depends on its value for <code>hp</code>. If <code>hp</code> is greater than 200, it is “High” powered, if lower than 200 then “Low” powered.</strong></p>
+</div>
+</div>
+</div>
+</div>
+<div id="conditional-statements" class="section level2" number="16.3">
+<h2><span class="header-section-number">16.3</span> Conditional statements</h2>
+<p>The idea of mutating variables based on conditional values brings up the larger idea of <em>conditional statements</em>. These are powerful programming tools that help us manipulate data based on conditions, also known as <em>“if/else statements”</em>.</p>
+<p>Sometimes, you will want your code to perform different actions depending on something’s value. In these circumstances, it is useful to implement <code>if...else</code> statements. <code>if</code> statements work as such:</p>
+<p><strong>if</strong> some test/condition evaluates to <code>TRUE</code>, execute some specific code.</p>
+<p>Other tests/conditions can be appended with <code>else</code> statements, which specify what to do when the original test/condition evaluates to <code>FALSE</code> and is based on subsequent tests/conditions. The syntax of a basic <code>if</code> statement is as follows:</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="advanced-variable-changing.html#cb268-1" tabindex="-1"></a><span class="cf">if</span>(some test<span class="sc">/</span>condition to evaluate) {</span>
+<span id="cb268-2"><a href="advanced-variable-changing.html#cb268-2" tabindex="-1"></a>  code <span class="cf">for</span> what to do <span class="cf">if</span> that test<span class="sc">/</span>condition evaluates to true</span>
+<span id="cb268-3"><a href="advanced-variable-changing.html#cb268-3" tabindex="-1"></a>}</span></code></pre></div>
+<p>For example:</p>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="advanced-variable-changing.html#cb269-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">4</span></span>
+<span id="cb269-2"><a href="advanced-variable-changing.html#cb269-2" tabindex="-1"></a></span>
+<span id="cb269-3"><a href="advanced-variable-changing.html#cb269-3" tabindex="-1"></a><span class="cf">if</span>(<span class="dv">3</span> <span class="sc">&lt;</span> x) {</span>
+<span id="cb269-4"><a href="advanced-variable-changing.html#cb269-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;The condition evaluated TRUE&quot;</span>)</span>
+<span id="cb269-5"><a href="advanced-variable-changing.html#cb269-5" tabindex="-1"></a>}</span>
+<span id="cb269-6"><a href="advanced-variable-changing.html#cb269-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;The condition evaluated TRUE&quot;</span></span></code></pre></div>
+<p><code>x</code> was set equal to 4. R evaluates the test <code>3 &lt; x</code> in the <code>if</code> statement, here equivalent to <code>3 &lt; 4</code>, which evaluates to <code>TRUE</code>. Since the <code>if</code> condition evaluates <code>TRUE</code>, it runs the code in the curly brackets.</p>
+<p><code>x</code> may not always be 4 though. What if <code>x</code> was not 4? What if you do not know what <code>x</code> is? If the test in the <code>if</code> statement evaluates to <code>FALSE</code>, nothing happens. If nothing at all happens, you may not know if there was an error in the code or the test just evaluated to <code>FALSE</code>. Considering this, it is always good practice to set up an alternative for when the test evaluates to <code>FALSE</code>. That is where <code>else</code> statements come in.</p>
+<p>The code below will change <code>x</code> to be a random value, so its actual value will be unknown.</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="advanced-variable-changing.html#cb270-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), <span class="dv">1</span>) <span class="co"># From the values 1 to 6, sample 1 value</span></span>
+<span id="cb270-2"><a href="advanced-variable-changing.html#cb270-2" tabindex="-1"></a></span>
+<span id="cb270-3"><a href="advanced-variable-changing.html#cb270-3" tabindex="-1"></a><span class="cf">if</span>(<span class="dv">3</span> <span class="sc">&lt;</span> x) {</span>
+<span id="cb270-4"><a href="advanced-variable-changing.html#cb270-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;The condition evaluated TRUE&quot;</span>)</span>
+<span id="cb270-5"><a href="advanced-variable-changing.html#cb270-5" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb270-6"><a href="advanced-variable-changing.html#cb270-6" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;the condition evaluated FALSE&quot;</span>)</span>
+<span id="cb270-7"><a href="advanced-variable-changing.html#cb270-7" tabindex="-1"></a>}</span>
+<span id="cb270-8"><a href="advanced-variable-changing.html#cb270-8" tabindex="-1"></a><span class="co">#&gt; [1] &quot;the condition evaluated FALSE&quot;</span></span>
+<span id="cb270-9"><a href="advanced-variable-changing.html#cb270-9" tabindex="-1"></a>x</span>
+<span id="cb270-10"><a href="advanced-variable-changing.html#cb270-10" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<p>This code specifies what to do depending on whether the test evaluates to <code>TRUE</code> or if it evaluates to <code>FALSE</code>.</p>
+<p>You can get more specific and link several conditions together. You may not want just 2 options – e.g., something to do if a test is <code>TRUE</code> and something else done in <strong>all</strong> other cases. Instead of using <code>else</code>, you use <code>else if()</code> and specify another test.</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="advanced-variable-changing.html#cb271-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), <span class="dv">1</span>)</span>
+<span id="cb271-2"><a href="advanced-variable-changing.html#cb271-2" tabindex="-1"></a></span>
+<span id="cb271-3"><a href="advanced-variable-changing.html#cb271-3" tabindex="-1"></a><span class="cf">if</span>(<span class="dv">4</span> <span class="sc">&lt;</span> x) {</span>
+<span id="cb271-4"><a href="advanced-variable-changing.html#cb271-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;The first condition evaluated TRUE&quot;</span>)</span>
+<span id="cb271-5"><a href="advanced-variable-changing.html#cb271-5" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (<span class="dv">2</span> <span class="sc">&lt;</span> x <span class="sc">&amp;</span> x <span class="sc">&lt;</span> <span class="dv">5</span>) { </span>
+<span id="cb271-6"><a href="advanced-variable-changing.html#cb271-6" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;The second condition evaluated TRUE&quot;</span>)</span>
+<span id="cb271-7"><a href="advanced-variable-changing.html#cb271-7" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb271-8"><a href="advanced-variable-changing.html#cb271-8" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Neither the first or second condition evaluated TRUE.&quot;</span>)</span>
+<span id="cb271-9"><a href="advanced-variable-changing.html#cb271-9" tabindex="-1"></a>}</span>
+<span id="cb271-10"><a href="advanced-variable-changing.html#cb271-10" tabindex="-1"></a><span class="co">#&gt; [1] &quot;The second condition evaluated TRUE&quot;</span></span>
+<span id="cb271-11"><a href="advanced-variable-changing.html#cb271-11" tabindex="-1"></a>x</span>
+<span id="cb271-12"><a href="advanced-variable-changing.html#cb271-12" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span></code></pre></div>
+<p>Writing <code>if</code> statements like this is most useful when the code you want to run executes a function. As you will note above, in all instances the <code>print()</code> function was the code being executed (what is in the curly brackets). An infinite number of <code>if</code> conditions can be chained together in an <code>if...else</code> chain.</p>
+<p>There are two alternative ways to write <code>if...else</code> statements.</p>
+<div id="ifelse" class="section level3" number="16.3.1">
+<h3><span class="header-section-number">16.3.1</span> ifelse()</h3>
+<p><code>ifelse()</code> is most useful when you need to <em>return values</em> rather than execute some other code/function (like printing a character string).</p>
+<p><code>ifelse()</code> statements take the form:</p>
+<p><code>ifelse(test, the value to return if the test evaluates *TRUE*, the value to return if the test evaluates *FALSE*)</code></p>
+<p>Multiple <code>ifelse()</code> statements can be chained together, akin to an <code>else if</code> by adding a nested <code>ifelse()</code> call in place of the <code>FALSE</code> argument.</p>
+<p>The examples below demonstrates this:</p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="advanced-variable-changing.html#cb272-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), <span class="dv">1</span>)</span>
+<span id="cb272-2"><a href="advanced-variable-changing.html#cb272-2" tabindex="-1"></a></span>
+<span id="cb272-3"><a href="advanced-variable-changing.html#cb272-3" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="dv">4</span> <span class="sc">&lt;</span> x, <span class="st">&quot;The first condition evaluated true.&quot;</span>,</span>
+<span id="cb272-4"><a href="advanced-variable-changing.html#cb272-4" tabindex="-1"></a>       <span class="fu">ifelse</span>(<span class="dv">2</span> <span class="sc">&lt;</span> x <span class="sc">&amp;</span> x <span class="sc">&lt;</span> <span class="dv">5</span>, <span class="st">&quot;The second condition evaluated true.&quot;</span>, </span>
+<span id="cb272-5"><a href="advanced-variable-changing.html#cb272-5" tabindex="-1"></a>              <span class="st">&quot;Neither the first or second condition evaluated true.&quot;</span>))</span>
+<span id="cb272-6"><a href="advanced-variable-changing.html#cb272-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;The first condition evaluated true.&quot;</span></span>
+<span id="cb272-7"><a href="advanced-variable-changing.html#cb272-7" tabindex="-1"></a>x</span>
+<span id="cb272-8"><a href="advanced-variable-changing.html#cb272-8" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+</div>
+<div id="case_when-1" class="section level3" number="16.3.2">
+<h3><span class="header-section-number">16.3.2</span> case_when()</h3>
+<p>As shown above, <code>case_when()</code> can be used in combination with <code>mutate()</code> or on its own:</p>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="advanced-variable-changing.html#cb273-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), <span class="dv">1</span>)</span>
+<span id="cb273-2"><a href="advanced-variable-changing.html#cb273-2" tabindex="-1"></a></span>
+<span id="cb273-3"><a href="advanced-variable-changing.html#cb273-3" tabindex="-1"></a><span class="fu">case_when</span>(</span>
+<span id="cb273-4"><a href="advanced-variable-changing.html#cb273-4" tabindex="-1"></a>  x <span class="sc">&lt;</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">&quot;The first condition evaluated true.&quot;</span>,</span>
+<span id="cb273-5"><a href="advanced-variable-changing.html#cb273-5" tabindex="-1"></a>  <span class="dv">2</span> <span class="sc">&lt;</span> x <span class="sc">&amp;</span> x <span class="sc">&lt;</span> <span class="dv">5</span> <span class="sc">~</span> <span class="st">&quot;The second condition evaluated true.&quot;</span>,</span>
+<span id="cb273-6"><a href="advanced-variable-changing.html#cb273-6" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Neither the first or second condition evaluated true.&quot;</span></span>
+<span id="cb273-7"><a href="advanced-variable-changing.html#cb273-7" tabindex="-1"></a>)</span>
+<span id="cb273-8"><a href="advanced-variable-changing.html#cb273-8" tabindex="-1"></a><span class="co">#&gt; [1] &quot;The second condition evaluated true.&quot;</span></span>
+<span id="cb273-9"><a href="advanced-variable-changing.html#cb273-9" tabindex="-1"></a>x</span>
+<span id="cb273-10"><a href="advanced-variable-changing.html#cb273-10" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span></code></pre></div>
+<p><strong>In sum:</strong></p>
+<ul>
+<li>Traditional <code>if...else</code> statements are useful when you need the result to execute some code.</li>
+<li><code>ifelse()</code> and <code>case_when()</code> are useful when you need the result to be a specific value and are often used to create new data or variables.</li>
+</ul>
+</div>
+</div>
+<div id="loops" class="section level2" number="16.4">
+<h2><span class="header-section-number">16.4</span> Loops</h2>
+<p>Loops are used to repeat certain code iteratively, for example when you want to apply the same code to each element in a sequence (e.g., columns in a dataframe, elements in a vector, etc). The basic syntax of a “for” loop is as follows:</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="advanced-variable-changing.html#cb274-1" tabindex="-1"></a><span class="cf">for</span> (val <span class="cf">in</span> sequence) </span>
+<span id="cb274-2"><a href="advanced-variable-changing.html#cb274-2" tabindex="-1"></a>  {code to be executed}</span></code></pre></div>
+<p>The <code>for</code> initiates the for loop, <code>val</code> is completely arbitrary and can be replaced with any character string. Conventionally it is just the letter <code>i</code>, and subsequently <code>j</code> then <code>k</code> if you are doing nested for loops (loops within loops).</p>
+<p>For a simple use case, imagine the following scenario:</p>
+<p>You are a undergraduate TA and are helping the professor with an exam. You have a series of exam scores <code>c(1:10)</code>. The professor was feeling generous and wants to curve the scores by 1 point. It would be pretty annoying to have to try and manually change each value. Instead, you can do this automatically with a <code>for</code> loop!</p>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="advanced-variable-changing.html#cb275-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="co"># Exam scores</span></span>
+<span id="cb275-2"><a href="advanced-variable-changing.html#cb275-2" tabindex="-1"></a></span>
+<span id="cb275-3"><a href="advanced-variable-changing.html#cb275-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)) {</span>
+<span id="cb275-4"><a href="advanced-variable-changing.html#cb275-4" tabindex="-1"></a>  x[i]<span class="ot">=</span> x[i] <span class="sc">+</span> <span class="dv">1</span> <span class="co"># Set the ith X to be equal to itself + 1</span></span>
+<span id="cb275-5"><a href="advanced-variable-changing.html#cb275-5" tabindex="-1"></a>  <span class="co"># This will be iterated through each value in x</span></span>
+<span id="cb275-6"><a href="advanced-variable-changing.html#cb275-6" tabindex="-1"></a>}</span>
+<span id="cb275-7"><a href="advanced-variable-changing.html#cb275-7" tabindex="-1"></a></span>
+<span id="cb275-8"><a href="advanced-variable-changing.html#cb275-8" tabindex="-1"></a>x <span class="co"># Look at output to verify changes</span></span>
+<span id="cb275-9"><a href="advanced-variable-changing.html#cb275-9" tabindex="-1"></a><span class="co">#&gt;  [1]  2  3  4  5  6  7  8  9 10 11</span></span></code></pre></div>
+<p>Breaking down the code above step by step: First a <code>for</code> loop was initiated, saying you wanted to iterate over each element in the sequence 1 to <code>length(x)</code>. The <code>length()</code> function returns the number of elements in the object you pass it. Then it was specified that the ith element of <code>x</code> should be replaced with the value resulting from the sum of that value + 1 (<code>x[i] + 1</code>). The value of <code>i</code> will change in each iteration of the loop. It starts with 1 (because that is what the code tells it to do with the <code>1:</code> part), and increments by 1 each iteration, iterating <code>length(x)</code> times.</p>
+<div class="rmdcaution">
+<p><strong><code>1:length(x)</code> was used instead of just 10 (the number of elements in the vector x) above to keep the code dynamic. This illustrates an important coding principle: <u>soft coding</u> vs <u>hard coding</u>. Hard coding is static and unchanging, whereas soft coding is dynamic. What does this mean? Well, <code>x</code> may not always have 10 exam scores. Maybe you have some students who take their exams with OSD, and you have to wait a few days to get their exams back. You want to be able to run the same code without making any modifications. If <code>1:10</code> is used in the <code>for</code> loop, then when the new exam scores are added to <code>x</code>, the code won’t run on all exams! The <code>for</code> loop is specificed to explicitly iterate over the range 1:10. However, by using <code>1:length(x)</code>, <code>length(x)</code> will always be replaced by the exact number of elements in the vector <code>x</code>! This way, the same code can be used no matter how many exam scores you have! Generally speaking, you <u>always</u> want to soft code and make your code dynamic.</strong></p>
+</div>
+<p><code>for</code> loops are often combined with <code>if</code> statements to apply conditional code iteratively through your data.</p>
+<img src="figures/monster_for_loop.png" style="width:100.0%" />
+<p style="font-size:6pt">
+Artwork by <span class="citation">Horst (2022)</span>
+</p>
+<p>Imagine that instead of needing to add a bonus point to every exam, you need to give <em>particular</em> students a bonus if they completed a SONA experiment for extra credit.</p>
+<p>This can be accomplished by adding an <code>if</code> statement to the code executed executed in each iteration:</p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="advanced-variable-changing.html#cb276-1" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="st">&quot;Exam&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>), </span>
+<span id="cb276-2"><a href="advanced-variable-changing.html#cb276-2" tabindex="-1"></a>               <span class="st">&quot;Score&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">88</span>,<span class="dv">90</span>,<span class="dv">77</span>,<span class="dv">98</span>), </span>
+<span id="cb276-3"><a href="advanced-variable-changing.html#cb276-3" tabindex="-1"></a>               <span class="st">&quot;Student&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Dave&quot;</span>, <span class="st">&quot;Ally&quot;</span>, </span>
+<span id="cb276-4"><a href="advanced-variable-changing.html#cb276-4" tabindex="-1"></a>                             <span class="st">&quot;Tyreek&quot;</span>, <span class="st">&quot;Jeanie&quot;</span>), </span>
+<span id="cb276-5"><a href="advanced-variable-changing.html#cb276-5" tabindex="-1"></a>               <span class="st">&quot;Sona&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb276-6"><a href="advanced-variable-changing.html#cb276-6" tabindex="-1"></a></span>
+<span id="cb276-7"><a href="advanced-variable-changing.html#cb276-7" tabindex="-1"></a>y</span>
+<span id="cb276-8"><a href="advanced-variable-changing.html#cb276-8" tabindex="-1"></a><span class="co">#&gt;   Exam Score Student Sona</span></span>
+<span id="cb276-9"><a href="advanced-variable-changing.html#cb276-9" tabindex="-1"></a><span class="co">#&gt; 1    1    88    Dave    0</span></span>
+<span id="cb276-10"><a href="advanced-variable-changing.html#cb276-10" tabindex="-1"></a><span class="co">#&gt; 2    2    90    Ally    1</span></span>
+<span id="cb276-11"><a href="advanced-variable-changing.html#cb276-11" tabindex="-1"></a><span class="co">#&gt; 3    3    77  Tyreek    1</span></span>
+<span id="cb276-12"><a href="advanced-variable-changing.html#cb276-12" tabindex="-1"></a><span class="co">#&gt; 4    4    98  Jeanie    0</span></span>
+<span id="cb276-13"><a href="advanced-variable-changing.html#cb276-13" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(y)) { </span>
+<span id="cb276-14"><a href="advanced-variable-changing.html#cb276-14" tabindex="-1"></a>    <span class="co"># Use nrow for a dataframe</span></span>
+<span id="cb276-15"><a href="advanced-variable-changing.html#cb276-15" tabindex="-1"></a>  <span class="cf">if</span>(y<span class="sc">$</span>Sona[i] <span class="sc">==</span> <span class="dv">1</span>){ </span>
+<span id="cb276-16"><a href="advanced-variable-changing.html#cb276-16" tabindex="-1"></a>    <span class="co"># $ to index -- You want the y dataframe, </span></span>
+<span id="cb276-17"><a href="advanced-variable-changing.html#cb276-17" tabindex="-1"></a>    <span class="co"># the Student column, and the ith row. </span></span>
+<span id="cb276-18"><a href="advanced-variable-changing.html#cb276-18" tabindex="-1"></a>    y<span class="sc">$</span>Score[i] <span class="ot">=</span> y<span class="sc">$</span>Score[i] <span class="sc">+</span> <span class="dv">5</span> </span>
+<span id="cb276-19"><a href="advanced-variable-changing.html#cb276-19" tabindex="-1"></a>          <span class="co"># For every row in the Score column of </span></span>
+<span id="cb276-20"><a href="advanced-variable-changing.html#cb276-20" tabindex="-1"></a>          <span class="co"># the y dataframe, if the condition y$Sona[i] == 1 </span></span>
+<span id="cb276-21"><a href="advanced-variable-changing.html#cb276-21" tabindex="-1"></a>          <span class="co"># evaluates to TRUE, that value is going to be </span></span>
+<span id="cb276-22"><a href="advanced-variable-changing.html#cb276-22" tabindex="-1"></a>          <span class="co"># equal to what is currently there + 5.</span></span>
+<span id="cb276-23"><a href="advanced-variable-changing.html#cb276-23" tabindex="-1"></a>  }</span>
+<span id="cb276-24"><a href="advanced-variable-changing.html#cb276-24" tabindex="-1"></a>}</span></code></pre></div>
+<p>The same task can be accomplished using <code>ifelse()</code>, since the goal here is to return values:</p>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="advanced-variable-changing.html#cb277-1" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="st">&quot;Exam&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>), </span>
+<span id="cb277-2"><a href="advanced-variable-changing.html#cb277-2" tabindex="-1"></a>               <span class="st">&quot;Score&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">88</span>,<span class="dv">90</span>,<span class="dv">77</span>,<span class="dv">98</span>), </span>
+<span id="cb277-3"><a href="advanced-variable-changing.html#cb277-3" tabindex="-1"></a>               <span class="st">&quot;Student&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Dave&quot;</span>, <span class="st">&quot;Ally&quot;</span>, </span>
+<span id="cb277-4"><a href="advanced-variable-changing.html#cb277-4" tabindex="-1"></a>                             <span class="st">&quot;Tyreek&quot;</span>, <span class="st">&quot;Jeanie&quot;</span>), </span>
+<span id="cb277-5"><a href="advanced-variable-changing.html#cb277-5" tabindex="-1"></a>               <span class="st">&quot;Sona&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb277-6"><a href="advanced-variable-changing.html#cb277-6" tabindex="-1"></a></span>
+<span id="cb277-7"><a href="advanced-variable-changing.html#cb277-7" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(y)) {</span>
+<span id="cb277-8"><a href="advanced-variable-changing.html#cb277-8" tabindex="-1"></a>  y<span class="sc">$</span>Score[i] <span class="ot">=</span> <span class="fu">ifelse</span>(y<span class="sc">$</span>Sona[i] <span class="sc">==</span> <span class="dv">1</span>, <span class="co"># Test</span></span>
+<span id="cb277-9"><a href="advanced-variable-changing.html#cb277-9" tabindex="-1"></a>                      y<span class="sc">$</span>Score[i]<span class="sc">+</span><span class="dv">5</span>, <span class="co"># What to do if TRUE</span></span>
+<span id="cb277-10"><a href="advanced-variable-changing.html#cb277-10" tabindex="-1"></a>                      y<span class="sc">$</span>Score[i]) <span class="co"># What to do if FALSE</span></span>
+<span id="cb277-11"><a href="advanced-variable-changing.html#cb277-11" tabindex="-1"></a>}</span>
+<span id="cb277-12"><a href="advanced-variable-changing.html#cb277-12" tabindex="-1"></a></span>
+<span id="cb277-13"><a href="advanced-variable-changing.html#cb277-13" tabindex="-1"></a>y</span>
+<span id="cb277-14"><a href="advanced-variable-changing.html#cb277-14" tabindex="-1"></a><span class="co">#&gt;   Exam Score Student Sona</span></span>
+<span id="cb277-15"><a href="advanced-variable-changing.html#cb277-15" tabindex="-1"></a><span class="co">#&gt; 1    1    88    Dave    0</span></span>
+<span id="cb277-16"><a href="advanced-variable-changing.html#cb277-16" tabindex="-1"></a><span class="co">#&gt; 2    2    95    Ally    1</span></span>
+<span id="cb277-17"><a href="advanced-variable-changing.html#cb277-17" tabindex="-1"></a><span class="co">#&gt; 3    3    82  Tyreek    1</span></span>
+<span id="cb277-18"><a href="advanced-variable-changing.html#cb277-18" tabindex="-1"></a><span class="co">#&gt; 4    4    98  Jeanie    0</span></span></code></pre></div>
+<p>You can see that only Ally and Tyreek’s scores, the students who completed the SONA extra credit, have changed.</p>
+</div>
+<div id="text-cleaning" class="section level2" number="16.5">
+<h2><span class="header-section-number">16.5</span> Text Cleaning</h2>
+<p>More often than not, when working with text responses or any sort of character data output, it will initially be very difficult to work with. This is the case both when dealing with qualitative data and sometimes even just from the output of your data collection means (Qualtrics, Googleforms, etc.). What follow are some common cleaning procedures.</p>
+<div id="remove-text-from-strings" class="section level3" number="16.5.1">
+<h3><span class="header-section-number">16.5.1</span> Remove Text From Strings</h3>
+<p>Say your data output included a “Response:” before each response. Obviously, you would want the variable to just contain the actual response values. You can use <code>str_remove_all()</code> to remove a specified pattern from a text response. Here, removing “Response:”.</p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="advanced-variable-changing.html#cb278-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&quot;Response:Apple Juice&quot;</span></span>
+<span id="cb278-2"><a href="advanced-variable-changing.html#cb278-2" tabindex="-1"></a>x</span>
+<span id="cb278-3"><a href="advanced-variable-changing.html#cb278-3" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Response:Apple Juice&quot;</span></span>
+<span id="cb278-4"><a href="advanced-variable-changing.html#cb278-4" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">str_remove_all</span>(x, <span class="st">&quot;Response:&quot;</span>)</span>
+<span id="cb278-5"><a href="advanced-variable-changing.html#cb278-5" tabindex="-1"></a>x</span>
+<span id="cb278-6"><a href="advanced-variable-changing.html#cb278-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Apple Juice&quot;</span></span></code></pre></div>
+</div>
+<div id="escaping-special-characters" class="section level3" number="16.5.2">
+<h3><span class="header-section-number">16.5.2</span> Escaping Special Characters</h3>
+<p>In many programming languages, dealing with special characters is difficult. The language has trouble deciding if you are trying to <strong>use</strong> the character or just <em>refer</em> to it.</p>
+<p>Consider the example below:</p>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="advanced-variable-changing.html#cb279-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&#39;{Response:&quot;Apple Juice&quot;}&#39;</span></span>
+<span id="cb279-2"><a href="advanced-variable-changing.html#cb279-2" tabindex="-1"></a>x</span>
+<span id="cb279-3"><a href="advanced-variable-changing.html#cb279-3" tabindex="-1"></a><span class="co">#&gt; [1] &quot;{Response:\&quot;Apple Juice\&quot;}&quot;</span></span>
+<span id="cb279-4"><a href="advanced-variable-changing.html#cb279-4" tabindex="-1"></a><span class="fu">str_remove_all</span>(x, <span class="st">&#39;{&#39;</span>)</span>
+<span id="cb279-5"><a href="advanced-variable-changing.html#cb279-5" tabindex="-1"></a><span class="co">#&gt; Error in `stri_replace_all_regex()`:</span></span>
+<span id="cb279-6"><a href="advanced-variable-changing.html#cb279-6" tabindex="-1"></a><span class="co">#&gt; ! Syntax error in regex pattern. (U_REGEX_RULE_SYNTAX, context=`{`)</span></span></code></pre></div>
+<p>Instead, you have to do what is called “escaping” a special character. One way to do so in R is to wrap the character in brackets.</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="advanced-variable-changing.html#cb280-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&#39;{Response:&quot;Apple Juice&quot;}&#39;</span></span>
+<span id="cb280-2"><a href="advanced-variable-changing.html#cb280-2" tabindex="-1"></a>x</span>
+<span id="cb280-3"><a href="advanced-variable-changing.html#cb280-3" tabindex="-1"></a><span class="co">#&gt; [1] &quot;{Response:\&quot;Apple Juice\&quot;}&quot;</span></span>
+<span id="cb280-4"><a href="advanced-variable-changing.html#cb280-4" tabindex="-1"></a><span class="fu">str_remove_all</span>(x, <span class="st">&#39;[{]&#39;</span>)</span>
+<span id="cb280-5"><a href="advanced-variable-changing.html#cb280-5" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Response:\&quot;Apple Juice\&quot;}&quot;</span></span></code></pre></div>
+<p>Now this raises the question of what do you do when you want to escape a bracket? You can do so with double forward slash.</p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="advanced-variable-changing.html#cb281-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&#39;[Response:&quot;Apple Juice&quot;]&#39;</span></span>
+<span id="cb281-2"><a href="advanced-variable-changing.html#cb281-2" tabindex="-1"></a>x</span>
+<span id="cb281-3"><a href="advanced-variable-changing.html#cb281-3" tabindex="-1"></a><span class="co">#&gt; [1] &quot;[Response:\&quot;Apple Juice\&quot;]&quot;</span></span>
+<span id="cb281-4"><a href="advanced-variable-changing.html#cb281-4" tabindex="-1"></a><span class="fu">str_remove_all</span>(x, <span class="st">&#39;</span><span class="sc">\\</span><span class="st">[&#39;</span>)</span>
+<span id="cb281-5"><a href="advanced-variable-changing.html#cb281-5" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Response:\&quot;Apple Juice\&quot;]&quot;</span></span></code></pre></div>
+<p class="text-info">
+<strong>Note: Double forward slash (\) can be used to escape any special character as well, not just brackets.</strong>
+</p>
+</div>
+<div id="removing-multiple-strings-at-once" class="section level3" number="16.5.3">
+<h3><span class="header-section-number">16.5.3</span> Removing Multiple Strings at Once</h3>
+<p>You can remove multiple strings at once by using <code>paste()</code> to include all the characters or strings you want removed.</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="advanced-variable-changing.html#cb282-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&#39;Response:{&quot;Apple Juice&quot;}&#39;</span></span>
+<span id="cb282-2"><a href="advanced-variable-changing.html#cb282-2" tabindex="-1"></a></span>
+<span id="cb282-3"><a href="advanced-variable-changing.html#cb282-3" tabindex="-1"></a><span class="fu">str_remove_all</span>(x, <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&#39;Response&#39;</span>, <span class="st">&#39;[:]&#39;</span>, <span class="st">&#39;[{]&#39;</span>, <span class="st">&#39;[&quot;]&#39;</span>, <span class="st">&#39;[}]&#39;</span>), </span>
+<span id="cb282-4"><a href="advanced-variable-changing.html#cb282-4" tabindex="-1"></a>                        <span class="at">collapse=</span><span class="st">&#39;|&#39;</span>))</span>
+<span id="cb282-5"><a href="advanced-variable-changing.html#cb282-5" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Apple Juice&quot;</span></span></code></pre></div>
+</div>
+<div id="removing-the-first-instance" class="section level3" number="16.5.4">
+<h3><span class="header-section-number">16.5.4</span> Removing the First Instance</h3>
+<p>Sometimes, you do not want EVERY instance of a string removed. In the example below, the string “Answer” is actually part of a participant’s response. This should not be removed!</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="advanced-variable-changing.html#cb283-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&#39;Response:{&quot;Apple Juice Response&quot;}&#39;</span></span>
+<span id="cb283-2"><a href="advanced-variable-changing.html#cb283-2" tabindex="-1"></a></span>
+<span id="cb283-3"><a href="advanced-variable-changing.html#cb283-3" tabindex="-1"></a><span class="fu">str_remove_all</span>(x, <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&#39;Response&#39;</span>, <span class="st">&#39;[:]&#39;</span>, <span class="st">&#39;[{]&#39;</span>, <span class="st">&#39;[&quot;]&#39;</span>, <span class="st">&#39;[}]&#39;</span>), </span>
+<span id="cb283-4"><a href="advanced-variable-changing.html#cb283-4" tabindex="-1"></a>                        <span class="at">collapse=</span><span class="st">&#39;|&#39;</span>))</span>
+<span id="cb283-5"><a href="advanced-variable-changing.html#cb283-5" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Apple Juice &quot;</span></span></code></pre></div>
+<p>If we removed things as we had been before, we’d lose part of their response! Instead, we can just remove the <em>first</em> instance of a string by using <code>str_remove()</code></p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="advanced-variable-changing.html#cb284-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&#39;Response:{&quot;Apple Juice Response&quot;}&#39;</span></span>
+<span id="cb284-2"><a href="advanced-variable-changing.html#cb284-2" tabindex="-1"></a></span>
+<span id="cb284-3"><a href="advanced-variable-changing.html#cb284-3" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">str_remove_all</span>(x, <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&#39;[:]&#39;</span>, <span class="st">&#39;[{]&#39;</span>, <span class="st">&#39;[&quot;]&#39;</span>, <span class="st">&#39;[}]&#39;</span>), </span>
+<span id="cb284-4"><a href="advanced-variable-changing.html#cb284-4" tabindex="-1"></a>                            <span class="at">collapse=</span><span class="st">&#39;|&#39;</span>))</span>
+<span id="cb284-5"><a href="advanced-variable-changing.html#cb284-5" tabindex="-1"></a>x</span>
+<span id="cb284-6"><a href="advanced-variable-changing.html#cb284-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;ResponseApple Juice Response&quot;</span></span>
+<span id="cb284-7"><a href="advanced-variable-changing.html#cb284-7" tabindex="-1"></a><span class="fu">str_remove</span>(x, <span class="st">&quot;Response&quot;</span>)</span>
+<span id="cb284-8"><a href="advanced-variable-changing.html#cb284-8" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Apple Juice Response&quot;</span></span></code></pre></div>
+<div class="rmdimportant">
+<p><strong>This first gets rid of all the other text strings that are to be removed by using <code>str_remove_all()</code> as before. Then, to deal with the extra “Response”, <code>str_remove()</code> is used, and only the first instance is removed.</strong></p>
+</div>
+</div>
+<div id="replace-parts-of-a-response" class="section level3" number="16.5.5">
+<h3><span class="header-section-number">16.5.5</span> Replace Parts of a Response</h3>
+<p>Sometimes you will not want to only <strong>remove</strong> part of a response but also <strong>replace</strong> it with something else. Whereas the <code>str_remove()</code> function will simply remove the string, <code>gsub()</code> will substitute it with something else that you specify!</p>
+<p><code>gsub()</code> takes the form:<br>
+<code>gsub(string to replace, what to replace with, where to look)</code></p>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="advanced-variable-changing.html#cb285-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&quot;foo:bar&quot;</span></span>
+<span id="cb285-2"><a href="advanced-variable-changing.html#cb285-2" tabindex="-1"></a></span>
+<span id="cb285-3"><a href="advanced-variable-changing.html#cb285-3" tabindex="-1"></a><span class="fu">str_remove</span>(x, <span class="st">&quot;:&quot;</span>) <span class="co"># Not what you want</span></span>
+<span id="cb285-4"><a href="advanced-variable-changing.html#cb285-4" tabindex="-1"></a><span class="co">#&gt; [1] &quot;foobar&quot;</span></span>
+<span id="cb285-5"><a href="advanced-variable-changing.html#cb285-5" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">&quot;:&quot;</span>, <span class="st">&quot; &quot;</span>, x) <span class="co"># What you want!</span></span>
+<span id="cb285-6"><a href="advanced-variable-changing.html#cb285-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;foo bar&quot;</span></span></code></pre></div>
+</div>
+</div>
+<div id="extras" class="section level2" number="16.6">
+<h2><span class="header-section-number">16.6</span> Extras</h2>
+<ul>
+<li><a href="https://github.com/rstudio/cheatsheets/blob/main/factors.pdf">Factors cheatsheet</a></li>
+</ul>
+</div>
+<div id="references-3" class="section level2" number="16.7">
+<h2><span class="header-section-number">16.7</span> References</h2>
+
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0" line-spacing="2">
+<div id="ref-allison_horst" class="csl-entry">
+Horst, A. (2022). <em>R &amp; stats illustrations by <span class="nocase">@allison_horst</span></em>. <a href="https://github.com/allisonhorst/stats-illustrations/">https://github.com/allisonhorst/stats-illustrations/</a>
+</div>
+</div>
+</div>
+</div>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-10-08.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+
+</html>
