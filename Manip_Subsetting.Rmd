@@ -1,0 +1,420 @@
+# Advanced Subsetting
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(strip.white = TRUE)
+```
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse) # Load tidyverse packages
+```
+
+Previously, you learned about *subsetting*, which is choosing certain columns or values in your dataframe to keep (or exclude) from your analysis. This chapter expands on this idea to show more advanced techniques, especially for working for large datasets. The large dataset used in examples throughout is called `HELPfull` (`mosaicData::HELPfull`), contains data from the **H**ealth **E**valuation and **L**inkage to **P**rimary Care study. From the dataset's description:
+
+- "The HELP study was a clinical trial for adult inpatients recruited from a detoxification unit. Patients with no primary care physician were randomized to receive a multidisciplinary assessment and a brief motivational intervention or usual care, with the goal of linking them to primary medical care."
+
+This data is saved in a variable called `dat`.
+
+```{r echo = FALSE, warning=FALSE, message=FALSE}
+load("data/HELPfull.RData")
+```
+
+This dataset is ***massive***, so it is not even worth using `glimpse()` to preview it.
+
+```{r}
+ncol(dat)
+nrow(dat)
+```
+
+It contains `r ncol(dat)`(!!) variables from `r nrow(dat)` observations!!! Throughout, as has been done previously, a `head()` call will be added at the end of most of the code just to prevent having a ***giant*** output in every block! 
+
+<p class="text-info"> **<u>Note:</u> Using `head()` here is only to make these notes easier for you to understand. This is <u>NOT</u> something that should *always* be used in your code!!**</p>
+
+## Advanced Selecting
+
+### Helper Functions: Select
+
+In the case of the `HELPfull` dataset, there are a **TON** of variables, and it would be quite annoying to have to explicitly specify all of them that you want by full name. Luckily, there are a number of **<u>helper functions</u>** that you can use with `select()` to help make selecting variables easier. What they do is select the variable names you want by *matching* them based on some specified criteria.
+
+#### `starts_with()`
+
+`starts_with()` will select all variables that **start** with a specified pattern.
+
+```{r}
+dat %>%
+  select(starts_with("RAW")) %>%
+  head()
+```
+
+#### `ends_with()`
+
+`ends_with()` will select all variables that **end** with a specified pattern.
+
+```{r}
+dat %>%
+  select(ends_with("ABUSE")) %>%
+  head()
+```
+
+#### `contains()`
+
+`contains()` selects variables if their name **contains** a specified pattern.
+
+```{r}
+dat %>%
+  select(contains("RISK")) %>%
+  head()
+```
+
+This also works on special characters.
+
+```{r}
+dat %>%
+  select(contains("_")) %>% 
+  select(1:7) %>%
+  # Take just the first 7 columns
+  # to save space
+  head()
+```
+
+#### `matches()`
+
+`matches()` works similarly to `contains()` but uses *regular expressions* rather than patterns.
+
+##### Regular Expressions {#regex}
+
+Regular expressions (regex) are a way to select certain *kinds* of characters. When you want to refer to a class/type of character, you can select them with a regex.
+
+Regular expressions all get wrapped in brackets. So, to use any of these, wrap them in brackets and then quotes. (i.e., they need double brackets in quotes to be used!):
+
+- **[:punct:]** - punctuation.
+- **[:alpha:]** - letters.
+- **[:lower:]** - lowercase letters.
+- **[:upper:]** - upperclass letters.
+- **[:digit:]** - digits.
+- **[:xdigit:]** - hex digits.
+- **[:alnum:]** - letters and numbers.
+- **[:cntrl:]** - control characters.
+- **[:graph:]** - letters, numbers, and punctuation.
+- **[:print:]** - letters, numbers, punctuation, and whitespace.
+- **[:space:]** - space characters (basically equivalent to `\s`).
+- **[:blank:]** - space and tab.
+
+```{r}
+dat %>%
+  select(matches("[[:digit:]]")) %>%
+  select(1:7) %>%
+  # Take just the first 7 columns
+  # to save space
+  head()
+```
+
+<!-- #### `num_range()`
+
+`num_range()` matches a series of columns that has a string ending with a numerical range, e.g., x01, x02, x03.
+
+```{r}
+dat %>%
+  select(num_range("M", 1:15)) %>%
+  head()
+```
+
+#### `last_col()`
+
+`last_col()` selects the last column in a df. This can be especially helpful when paired with other functions. For example, when positioning columns in mutate or relocate:
+
+```{r}
+dat %>%
+  mutate(newRow = "test", .after = last_col()) %>%
+  select(last_col()) %>%
+  head()
+```
+
+::: {.rmdimportant}
+**This creates a new variable after the last column in the df, and then selects the last column (which is now the newly created variable).**
+::: -->
+
+#### `all_of()`
+
+`all_of()` matches variable names in a character vector. **All** names must be present, otherwise an error is thrown. In this way, `all_of()` is good when strict selection is needed and an error could have wide ranging consequences.
+
+```{r}
+dat %>%
+  select(all_of(c("DRUGRISK", "SEXRISK"))) %>%
+  head()
+```
+
+```{r error=TRUE}
+dat %>%
+  select(all_of(c("DRUGRISK", "DRUGRISK2"))) %>%
+  head()
+```
+
+::: {.rmdimportant}
+**The `DRUGRISK2` variable does not exist in this dataset. Thus, the 2nd code chunk will throw an error.**
+:::
+
+#### `any_of()`
+
+`any_of()` works the same as `all_of()`, except that **no error is thrown** for names that do not exist. It will only return the columns from the input that are found in the data and ignore the ones that are not.
+
+```{r}
+dat %>%
+  select(any_of(c("DRUGRISK", "SEXRISK"))) %>%
+  head()
+
+dat %>%
+  select(any_of(c("DRUGRISK", "DRUGRISK2"))) %>%
+  head()
+```
+
+`any_of()` is particularly useful when removing variables from your df, since there will be no error if you are including a variable that already does not exist. In this way, it can be used to make sure a variable is truly removed.
+
+#### `where()`
+
+`where()` takes a function and returns all variables for which the function returns `TRUE`. For example, say you wanted to find how many quantitative variables there are in this df. As a reminder, `ncol()` returns the number of columns of the object passed to it. 
+
+```{r}
+dat %>%
+  select(where(is.numeric)) %>%
+  ncol()
+```
+
+::: {.rmdimportant}
+**This takes the `dat` dataframe, selects only the columns that are numeric, and then finds the number of columns.**
+:::
+
+<p class="text-info"> **Note: 1. You do not <u>call</u> the function by including parentheses after it, you just *NAME* the function. 2. The `ncol()` here is only used to make these notes easier for you to understand (and not print hundreds of columns). It is <u>NOT</u> necessary when using `where()`.**</p>
+
+<button class="btn btn-primary" data-toggle="collapse" data-target="#BlockName"> How the Syntax Works</button>  
+<div id="BlockName" class="collapse">  
+
+Under the hood of `where()`, it just needs a function. This means it can take functions that are designed on the spot. 
+
+The long form version of the code above would be the following:
+
+```{r}
+dat %>%
+  select(where(function(x) is.numeric(x))) %>%
+  ncol()
+```
+
+Where you define the function that calls `is.numeric()` inline. A slightly condensed version of this inline defining looks like this:
+
+```{r}
+dat %>%
+  select(where(~ is.numeric(.x))) %>%
+  ncol()
+```
+
+You can replace the `function(x)` part with a `~`. Note that you need `.` before the `x` here though! 
+
+This inline shorthand is really useful because it allows you to string multiple functions together using logic statements. For example, you could first select all the abuse columns, then only the columns that are numeric and have a mean larger than 1.
+
+```{r}
+dat %>% 
+  drop_na(contains("ABUSE")) %>%
+  select(contains("ABUSE")) %>%
+  select(where(~ is.numeric(.x) && mean(.x) > 1)) %>%
+  head()
+```
+
+Breaking this down line by line:
+
+- `dat %>%` take the `dat` dataframe
+- `drop_na(contains("ABUSE")) %>%` get rid of the `NA` values in all the columns used, because it will mess things up otherwise (note that you can use the selection helper functions here too!).
+- `select(contains("ABUSE")) %>%` select only the columns that contain "ABUSE"
+- `select(where(~ is.numeric(.x) && mean(.x) > 1)) %>%` select only the columns that are numeric AND have a mean greater than 1
+- `head()` show just the first 5 observations
+
+<p class="text-info"> **NOTE: You are not looking for the mean of the column, the output *IS* the column that has a mean greater than 1. Remember, selection helper functions are to help select certain columns. You can just get VERY specific with which columns you want in this way!**</p>
+</div>
+
+<br>
+
+### Selecting & Logical operators
+
+Logical operators work as expected and can be used to create tests with multiple helper functions for even more specified selecting!
+
+```{r}
+dat %>%
+select(starts_with("RAW") | starts_with("ABUSE")) %>%
+  head()
+
+dat %>%
+  select(starts_with("A") & ends_with("C")) %>%
+  head()
+```
+
+Selection helper functions can be negated with a `!`
+
+Below, only the number of columns is shown to save space, but note the difference! 
+
+First look at how many variables there are total:
+
+```{r}
+dat %>% 
+  ncol()
+```
+
+Then see how many there are that start with "RAW":
+
+```{r}
+dat %>%
+  select(starts_with("RAW")) %>%
+  ncol()
+```
+
+Then see how many there are after selecting *NOT* the columns that start with "RAW":
+
+```{r}
+dat %>%
+  select(!starts_with("RAW")) %>%
+  ncol()
+```
+
+The total number of columns has decreased by exactly the number of columns that start with "RAW"!
+
+## Advanced Filtering
+
+### %in%
+
+Stringing together multiple tests of text patterns would be very cumbersome (e.g., `model == "Lotus Europa" | model == "Ferrari Dino" | ...`). Fortunately, there is an alternative with the `%in%` operator. As a reminder, this will check to see if the value of one variable is in a vector of possible values. Test conditions using the `%in%` operator are used the same way as all test conditions using all other operators: you must specify the variable to search within and what values to return (those in the vector).
+
+```{r eval=FALSE}
+mtcars2 %>%
+  filter(model %in% c("Lotus Europa", "Ferrari Dino", "Volvo 142E"))
+```
+
+```{r echo=FALSE, message=F, warning=F}
+Temp = mtcars2 #%>%
+  #slice(26:32)
+
+tempTable1 = Temp %>%
+  kbl() %>%
+  kable_paper(full_width = F) %>%
+  column_spec(1:ncol(Temp), color = "white") %>%
+  row_spec(c(3,5,7), background = "goldenrod") %>%
+   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+    row_spec(0, bold = T, underline = T, color = "white", align = "c")
+
+Temp2 = mtcars2 %>%
+  #slice(26:32) %>%
+  filter(model %in% c("Lotus Europa", "Ferrari Dino", "Volvo 142E"))
+
+tempTable2 = Temp2 %>%
+  kbl() %>%
+  kable_paper(full_width = F) %>%
+  column_spec(1:ncol(Temp2), color = "white") %>%
+  row_spec(c(1:3), background = "goldenrod") %>%
+  row_spec(0, bold = T, underline = T, color = "white", align = "c") %>%
+   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+kables(list(tempTable1, tempTable3, tempTable2))
+```
+
+::: {.rmdimportant}
+**This filters the dataframe to return only rows where the value of `model` is "Lotus Europa", "Ferrari Dino", or "Volvo 142E".**
+:::
+
+
+As `%in%` is an operator, it can also be combined with other operators!
+
+```{r}
+mtcars2 %>%
+  filter(hp > 300 | model %in% c("Lotus Europa", "Ferrari Dino", "Volvo 142E"))
+```
+
+::: {.rmdimportant}
+**This filters the dataframe to return only rows where the value of `hp` is greater than 300 OR the value of `model` is "Lotus Europa", "Ferrari Dino", or "Volvo 142E".**
+:::
+
+### Pattern Matching
+
+For any number of reasons there may be times you do not want to search for an exact string match. Rather, you want to filter based on whether a value *contains* a certain string. This can be accomplished with `grepl()`, which takes the form:
+
+`grepl(pattern_to_search_for, where_to_search)`
+
+```{r}
+mtcars2 %>%
+  filter(grepl("Porsche", model))
+```
+
+::: {.rmdimportant}
+**This filters the dataframe to return only rows where `model` contains the string "Porsche" in its value.**
+:::
+
+### Helper Functions: Filter
+
+There are two `if_*()` functions which take a selection of columns and apply the same test function to each. The results from each column are combined into individual logical vectors (a vector of `TRUE` and `FALSE`). **Since you are dealing with logical vectors, this is good for *filtering*!**
+
+#### `if_any()` 
+
+Returns `TRUE` when the test evaluates to `TRUE` for *any* of the selected columns.
+
+`filter(if_any(selection_of_columns, filter test to apply to each))`
+
+Since the first argument of `if_any()` is a selection of columns, you can use the same selection helper functions introduced above!
+
+```{r}
+# Show the number of rows and columns in the full df
+dim(dat)
+
+# Show the number of rows and columns for
+# All observations where the value of at least one of the selected
+# Columns is greater than or equal to 1:
+dat %>%
+  filter(if_any(starts_with("K"), ~ . >= 1)) %>%
+  dim()
+```
+
+::: {.rmdimportant}
+**From `dat`, return only the observations where the value of <u>ANY</u> column that starts with "K" is greater than or equal to 1.**
+:::
+
+<p class="text-info"> **<u>Note:</u> `dim()` was added here only to save space and make these notes easier for you to understand. Without `dim()`, this code will just output the actual rows of data like any other filter call would (which is what you want!). `dim()` is NOT something that should *always* be used in your code.**</p>
+
+Notice how the number of columns (second value) stays the same, but the number of rows (first value) differs! This is because, even though you are selecting some rows to apply the test to, you are ultimately filtering rows to return, not selecting columns to return.
+
+To break down the unique syntax here:
+
+* It is filtering for observations where any of the columns that start with "K" have a score/value greater than or equal to 1.
+
+So what is a use case for this? Maybe you have a suicidality questionnaire in your dataset and a participant who responds greater than $X$ on any of the questions needs to be contacted for emergency intervention. There are many questions on your suicidality questionnaire (the columns that start with "K" here), and this is a way to quickly filter for the people who responded with 1 or greater on **ANY** of those questions!
+
+
+#### `if_all()`
+
+`if_all()` is similar to `if_any()`, except it returns `TRUE` **only** when the test evaluates to `TRUE` for **<u>ALL</u>** of the selected columns.
+
+```{r}
+# Show the number of rows and columns for
+# the observations where ALL of the selected
+# columns have a value greater than or equal to 1:
+dat %>%
+  filter(if_all(starts_with("K"), ~ . >= 1)) %>%
+  dim()
+```
+
+::: {.rmdimportant}
+**From `dat`, return only the observations where the values of <u>ALL</u> columns that start with "K" are greater than or equal to 1.**
+:::
+
+Importantly, these functions will not give you an error if you do something incorrect (whereas using `select()` would). Since you are dealing with logical vectors and tests, having nothing return is not inherently indicative of a problem! 
+
+Look what happens when we try this on columns that we know do not exist (there are no columns that start with "Y").
+
+```{r}
+dat %>%
+  select(starts_with("Y"))
+
+dat %>%
+  filter(if_all(starts_with("Y"), ~ . > 75)) %>%
+  dim()
+
+dat %>%
+  dim()
+```
+
+## Extra Resources
+
+* [Select Vignette](https://dplyr.tidyverse.org/reference/select.html)
