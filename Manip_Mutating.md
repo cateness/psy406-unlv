@@ -13,151 +13,6 @@ library(knitr)
 
 
 
-## Change Variable Types
-
-One of the ways in which it *is* appropriate to modify a variable is when you need to change the *type* of data it contains. In R, you can change data type by using the `as.*` function. For example, `as.logical()` changes the passed values to be *logical.* The one exception is that when changing something to a *factor*, you should use `factor()` (more on this below.)
-
-
-``` r
-mtcars2 %>%
-  mutate(mpg = as.character(mpg),
-         cyl = factor(cyl)) %>%
-  glimpse()
-#> Rows: 32
-#> Columns: 12
-#> $ model <chr> "Mazda RX4", "Mazda RX4 Wag", "Datsun 710", …
-#> $ mpg   <chr> "21", "21", "22.8", "21.4", "18.7", "18.1", …
-#> $ cyl   <fct> 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8,…
-#> $ disp  <dbl> 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 36…
-#> $ hp    <dbl> 110, 110, 93, 110, 175, 105, 245, 62, 95, 12…
-#> $ drat  <dbl> 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.…
-#> $ wt    <dbl> 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.…
-#> $ qsec  <dbl> 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15…
-#> $ vs    <dbl> 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,…
-#> $ am    <dbl> 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-#> $ gear  <dbl> 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3,…
-#> $ carb  <dbl> 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4,…
-```
-
-::: {.rmdimportant}
-**This modifies the data in the `mpg` column to be of *character*, and the data in the `cyl` column to be a factor. The output of this is then piped to `glimpse()` so the types of each column will be displayed.**
-:::
-
-You can see from this output that all the numbers in `mpg` have quotes around them. Also, it is labeled "<chr>" and not "<dbl>". While the raw data for `cyl` look unchanged, you can see it now says "<fct>".
-
-
-### Factors
-
-Factors are important, and can be a little tricky to work with, so they get their own section. Factors are categorical data that have a specific order, and by proxy a specific defined range of possible values (e.g., Months of the year). 
-
-#### Factor Conversion
-
-When working with factors, particularly when converting data to and from a factor, you have to be very careful. Consider the following:
-
-
-``` r
-data.frame(test = factor(c("0", "1")))
-#>   test
-#> 1    0
-#> 2    1
-```
-
-This simple dataframe that has one column with data as a factor with the values 0 and 1. Say you want to change that data from a factor to numeric. Simple enough, just apply the appropriate `as.*` function (`as.numeric()`).
-
-However, observe the output from doing so:
-
-
-``` r
-data.frame(test = factor(c("0", "1"))) %>% 
-  mutate(test = as.numeric(test))
-#>   test
-#> 1    1
-#> 2    2
-```
-
-This is obviously not what was intended. What is happening here is `mutate()` is taking the *level* of each value, with `0` being level 1 and `1` being level 2. Instead, you have to circumvent this issue by first converting the values to a *character*, and then a *number*:
-
-
-``` r
-data.frame(test = factor(c("0", "1"))) %>% 
-  mutate(test = as.character(test),
-         test = as.numeric(test))
-#>   test
-#> 1    0
-#> 2    1
-```
-
-The take-home point is to always double check that your code is doing what you intend it to, especially when converting to and from a *factor*!
-
-#### Reorder Levels
-
-While the levels of a *factor* are ordered, you may at times want to change what that order is. One of the more common instances when this will occur is in visualizations. Consider the following:
-
-
-``` r
-mtcars2 %>%
-  mutate(cyl = factor(cyl)) %>%
-  ggplot(aes(x = cyl, fill = cyl)) +
-    geom_bar(position = "identity")
-```
-
-<img src="Manip_Mutating_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672" />
-
-The x-axis has a sensible arrangement, but this 1. is a function of the fact that the factors happen to be numbers, 2. is not particularly aesthetically pleasing when looking at the actual bars. The bars themselves have an inherent ordering and it may make more sense to organize them as such. This can be accomplished using `fct_infreq()`, which will reorder the levels of a factor **in** their **freq**uency of occurrence (with highest frequency first).
-
-
-``` r
-mtcars2 %>%
-  mutate(cyl = factor(cyl) %>%
-           fct_infreq()) %>%
-  ggplot(aes(x = cyl, fill = cyl)) +
-    geom_bar(position = "identity")
-```
-
-<img src="Manip_Mutating_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672" />
-
-To order the levels with lowest frequency first, you can use `fct_rev()` for "**rev**erse **freq**uency". 
-
-
-``` r
-mtcars2 %>%
-  mutate(cyl = factor(cyl) %>%
-           fct_infreq() %>%
-           fct_rev()) %>%
-  ggplot(aes(x = cyl, fill = cyl)) +
-    geom_bar(position = "identity")
-```
-
-<img src="Manip_Mutating_files/figure-html/unnamed-chunk-9-1.png" alt="" width="672" />
-
-<p class="text-info"> **<u>Note:</u> Notice that the color mapping is changing as well. In the bottom graph, the blue bar is on the 4 cylinder bar, whereas on the preceding graph it was on the 6 cylinder bar. This is because color mappings correspond to factor levels!**</p>
-
-Most of the time you will not be creating graphs to visualize counts of a single variable. Instead, you will be visualizing the relationship or comparison between two more more variables, like in the graph below:
-
-
-``` r
-mtcars2 %>%
-  mutate(cyl = factor(cyl)) %>%
-  ggplot(aes(y = mpg, x = cyl)) +
-  stat_summary(fun.data = "mean_se", geom = "pointrange")
-```
-
-<img src="Manip_Mutating_files/figure-html/unnamed-chunk-10-1.png" alt="" width="672" />
-
-To reorder the levels of a factor by their relationship with another variable (instead of frequency of occurrence), you can use `fct_reorder()`. In `fct_reorder()`, you must specify the factor to reorder, and the other variable you wish to reorder the levels by. By default, `fct_order()` will use the median. To change this, you must specify the exact function (similar to how we do in `stat_summary()`).
-
-
-``` r
-mtcars2 %>%
-  mutate(cyl = factor(cyl)) %>%
-  ggplot(aes(y = mpg, x = fct_reorder(cyl, mpg, .fun = "mean"))) +
-  stat_summary(fun.data = "mean_se", geom = "pointrange")
-```
-
-<img src="Manip_Mutating_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672" />
-
-<p class="text-info"> **<u>Note:</u> `fct_reorder()` was used in the ggplot call directly because this is a fairly particular reordering. It is unlikely that, outside of for the purpose of generating this specific visualization, you would want the levels of `cyl` to be ordered based on its level of `mpg`.<br><br>Also, you can combine `fct_reorder()` with `fct_rev()` to reverse the order of the levels.**</p>
-
 ## Advanced Mutating
 
 ### Mutating `across()`
@@ -518,7 +373,7 @@ if(3 < x) {
 }
 #> [1] "The condition evaluated TRUE"
 x
-#> [1] 5
+#> [1] 4
 ```
 
 This code specifies what to do depending on whether the test evaluates to `TRUE` or if it evaluates to `FALSE`.
@@ -536,9 +391,9 @@ if(4 < x) {
 } else {
   print("Neither the first or second condition evaluated TRUE.")
 }
-#> [1] "The second condition evaluated TRUE"
+#> [1] "Neither the first or second condition evaluated TRUE."
 x
-#> [1] 3
+#> [1] 2
 ```
 
 Writing `if` statements like this is most useful when the code you want to run executes a function. As you will note above, in all instances the `print()` function was the code being executed (what is in the curly brackets). An infinite number of `if` conditions can be chained together in an `if...else` chain.
@@ -567,7 +422,7 @@ ifelse(4 < x, "The first condition evaluated true.",
               "Neither the first or second condition evaluated true."))
 #> [1] "Neither the first or second condition evaluated true."
 x
-#> [1] 2
+#> [1] 1
 ```
 
 ### case_when()
@@ -583,9 +438,9 @@ case_when(
   2 < x & x < 5 ~ "The second condition evaluated true.",
   TRUE ~ "Neither the first or second condition evaluated true."
 )
-#> [1] "Neither the first or second condition evaluated true."
+#> [1] "The second condition evaluated true."
 x
-#> [1] 5
+#> [1] 4
 ```
 
 **In sum:**
@@ -593,104 +448,151 @@ x
 - Traditional `if...else` statements are useful when you need the result to execute some code.
 - `ifelse()` and `case_when()` are useful when you need the result to be a specific value and are often used to create new data or variables.
 
-## Loops
+## Change Variable Types
 
-Loops are used to repeat certain code iteratively, for example when you want to apply the same code to each element in a sequence (e.g., columns in a dataframe, elements in a vector, etc). The basic syntax of a "for" loop is as follows:
-
-
-
-``` r
-for (val in sequence) 
-  {code to be executed}
-```
-
-The `for` initiates the for loop, `val` is completely arbitrary and can be replaced with any character string. Conventionally it is just the letter `i`, and subsequently `j` then `k` if you are doing nested for loops (loops within loops).
-
-For a simple use case, imagine the following scenario:
-
-You are a undergraduate TA and are helping the professor with an exam. You have a series of exam scores `c(1:10)`. The professor was feeling generous and wants to curve the scores by 1 point. It would be pretty annoying to have to try and manually change each value. Instead, you can do this automatically with a `for` loop!
+One of the ways in which it *is* appropriate to modify a variable is when you need to change the *type* of data it contains. In R, you can change data type by using the `as.*` function. For example, `as.logical()` changes the passed values to be *logical.* The one exception is that when changing something to a *factor*, you should use `factor()` (more on this below.)
 
 
 ``` r
-x = c(1:10) # Exam scores
-
-for (i in 1:length(x)) {
-  x[i]= x[i] + 1 # Set the ith X to be equal to itself + 1
-  # This will be iterated through each value in x
-}
-
-x # Look at output to verify changes
-#>  [1]  2  3  4  5  6  7  8  9 10 11
+mtcars2 %>%
+  mutate(mpg = as.character(mpg),
+         cyl = factor(cyl)) %>%
+  glimpse()
+#> Rows: 32
+#> Columns: 12
+#> $ model <chr> "Mazda RX4", "Mazda RX4 Wag", "Datsun 710", …
+#> $ mpg   <chr> "21", "21", "22.8", "21.4", "18.7", "18.1", …
+#> $ cyl   <fct> 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8,…
+#> $ disp  <dbl> 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 36…
+#> $ hp    <dbl> 110, 110, 93, 110, 175, 105, 245, 62, 95, 12…
+#> $ drat  <dbl> 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.…
+#> $ wt    <dbl> 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.…
+#> $ qsec  <dbl> 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15…
+#> $ vs    <dbl> 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,…
+#> $ am    <dbl> 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+#> $ gear  <dbl> 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3,…
+#> $ carb  <dbl> 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4,…
 ```
 
-Breaking down the code above step by step: First a `for` loop was initiated, saying you wanted to iterate over each element in the sequence 1 to `length(x)`. The `length()` function returns the number of elements in the object you pass it. Then it was specified that the ith element of `x` should be replaced with the value resulting from the sum of that value + 1 (`x[i] + 1`). The value of `i` will change in each iteration of the loop. It starts with 1 (because that is what the code tells it to do with the `1:` part), and increments by 1 each iteration, iterating `length(x)` times. 
-
-::: {.rmdcaution} 
-**`1:length(x)` was used instead of just 10 (the number of elements in the vector x) above to keep the code dynamic. This illustrates an important coding principle: <u>soft coding</u> vs <u>hard coding</u>. Hard coding is static and unchanging, whereas soft coding is dynamic. What does this mean? Well, `x` may not always have 10 exam scores. Maybe you have some students who take their exams with OSD, and you have to wait a few days to get their exams back. You want to be able to run the same code without making any modifications. If `1:10` is used in the `for` loop, then when the new exam scores are added to `x`, the code won't run on all exams! The `for` loop is specificed to explicitly iterate over the range 1:10. However, by using `1:length(x)`, `length(x)` will always be replaced by the exact number of elements in the vector `x`! This way, the same code can be used no matter how many exam scores you have! Generally speaking, you <u>always</u> want to soft code and make your code dynamic.**
+::: {.rmdimportant}
+**This modifies the data in the `mpg` column to be of *character*, and the data in the `cyl` column to be a factor. The output of this is then piped to `glimpse()` so the types of each column will be displayed.**
 :::
 
-`for` loops are often combined with `if` statements to apply conditional code iteratively through your data. 
-
-![](figures/monster_for_loop.png){width=100%}
-<p style="font-size:6pt">Artwork by @allison_horst</p>
-
-Imagine that instead of needing to add a bonus point to every exam, you need to give *particular* students a bonus if they completed a SONA experiment for extra credit.
-
-This can be accomplished by adding an `if` statement to the code executed executed in each iteration:
+You can see from this output that all the numbers in `mpg` have quotes around them. Also, it is labeled "<chr>" and not "<dbl>". While the raw data for `cyl` look unchanged, you can see it now says "<fct>".
 
 
-``` r
-y = data.frame("Exam" = c(1:4), 
-               "Score" = c(88,90,77,98), 
-               "Student" = c("Dave", "Ally", 
-                             "Tyreek", "Jeanie"), 
-               "Sona" = c(0,1,1,0))
+### Factors
 
-y
-#>   Exam Score Student Sona
-#> 1    1    88    Dave    0
-#> 2    2    90    Ally    1
-#> 3    3    77  Tyreek    1
-#> 4    4    98  Jeanie    0
-for (i in 1:nrow(y)) { 
-    # Use nrow for a dataframe
-  if(y$Sona[i] == 1){ 
-    # $ to index -- You want the y dataframe, 
-    # the Student column, and the ith row. 
-    y$Score[i] = y$Score[i] + 5 
-          # For every row in the Score column of 
-          # the y dataframe, if the condition y$Sona[i] == 1 
-          # evaluates to TRUE, that value is going to be 
-          # equal to what is currently there + 5.
-  }
-}
-```
+Factors are important, and can be a little tricky to work with, so they get their own section. Factors are categorical data that have a specific order, and by proxy a specific defined range of possible values (e.g., Months of the year). 
 
-The same task can be accomplished using `ifelse()`, since the goal here is to return values:
+#### Factor Conversion
+
+When working with factors, particularly when converting data to and from a factor, you have to be very careful. Consider the following:
 
 
 ``` r
-y = data.frame("Exam" = c(1:4), 
-               "Score" = c(88,90,77,98), 
-               "Student" = c("Dave", "Ally", 
-                             "Tyreek", "Jeanie"), 
-               "Sona" = c(0,1,1,0))
-
-for (i in 1:nrow(y)) {
-  y$Score[i] = ifelse(y$Sona[i] == 1, # Test
-                      y$Score[i]+5, # What to do if TRUE
-                      y$Score[i]) # What to do if FALSE
-}
-
-y
-#>   Exam Score Student Sona
-#> 1    1    88    Dave    0
-#> 2    2    95    Ally    1
-#> 3    3    82  Tyreek    1
-#> 4    4    98  Jeanie    0
+data.frame(test = factor(c("0", "1")))
+#>   test
+#> 1    0
+#> 2    1
 ```
 
-You can see that only Ally and Tyreek's scores, the students who completed the SONA extra credit, have changed.
+This simple dataframe that has one column with data as a factor with the values 0 and 1. Say you want to change that data from a factor to numeric. Simple enough, just apply the appropriate `as.*` function (`as.numeric()`).
+
+However, observe the output from doing so:
+
+
+``` r
+data.frame(test = factor(c("0", "1"))) %>% 
+  mutate(test = as.numeric(test))
+#>   test
+#> 1    1
+#> 2    2
+```
+
+This is obviously not what was intended. What is happening here is `mutate()` is taking the *level* of each value, with `0` being level 1 and `1` being level 2. Instead, you have to circumvent this issue by first converting the values to a *character*, and then a *number*:
+
+
+``` r
+data.frame(test = factor(c("0", "1"))) %>% 
+  mutate(test = as.character(test),
+         test = as.numeric(test))
+#>   test
+#> 1    0
+#> 2    1
+```
+
+The take-home point is to always double check that your code is doing what you intend it to, especially when converting to and from a *factor*!
+
+#### Reorder Levels
+
+While the levels of a *factor* are ordered, you may at times want to change what that order is. One of the more common instances when this will occur is in visualizations. Consider the following:
+
+
+``` r
+mtcars2 %>%
+  mutate(cyl = factor(cyl)) %>%
+  ggplot(aes(x = cyl, fill = cyl)) +
+    geom_bar(position = "identity")
+```
+
+<img src="Manip_Mutating_files/figure-html/unnamed-chunk-21-1.png" alt="" width="672" />
+
+The x-axis has a sensible arrangement, but this 1. is a function of the fact that the factors happen to be numbers, 2. is not particularly aesthetically pleasing when looking at the actual bars. The bars themselves have an inherent ordering and it may make more sense to organize them as such. This can be accomplished using `fct_infreq()`, which will reorder the levels of a factor **in** their **freq**uency of occurrence (with highest frequency first).
+
+
+``` r
+mtcars2 %>%
+  mutate(cyl = factor(cyl) %>%
+           fct_infreq()) %>%
+  ggplot(aes(x = cyl, fill = cyl)) +
+    geom_bar(position = "identity")
+```
+
+<img src="Manip_Mutating_files/figure-html/unnamed-chunk-22-1.png" alt="" width="672" />
+
+To order the levels with lowest frequency first, you can use `fct_rev()` for "**rev**erse **freq**uency". 
+
+
+``` r
+mtcars2 %>%
+  mutate(cyl = factor(cyl) %>%
+           fct_infreq() %>%
+           fct_rev()) %>%
+  ggplot(aes(x = cyl, fill = cyl)) +
+    geom_bar(position = "identity")
+```
+
+<img src="Manip_Mutating_files/figure-html/unnamed-chunk-23-1.png" alt="" width="672" />
+
+<p class="text-info"> **<u>Note:</u> Notice that the color mapping is changing as well. In the bottom graph, the blue bar is on the 4 cylinder bar, whereas on the preceding graph it was on the 6 cylinder bar. This is because color mappings correspond to factor levels!**</p>
+
+Most of the time you will not be creating graphs to visualize counts of a single variable. Instead, you will be visualizing the relationship or comparison between two more more variables, like in the graph below:
+
+
+``` r
+mtcars2 %>%
+  mutate(cyl = factor(cyl)) %>%
+  ggplot(aes(y = mpg, x = cyl)) +
+  stat_summary(fun.data = "mean_se", geom = "pointrange")
+```
+
+<img src="Manip_Mutating_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672" />
+
+To reorder the levels of a factor by their relationship with another variable (instead of frequency of occurrence), you can use `fct_reorder()`. In `fct_reorder()`, you must specify the factor to reorder, and the other variable you wish to reorder the levels by. By default, `fct_order()` will use the median. To change this, you must specify the exact function (similar to how we do in `stat_summary()`).
+
+
+``` r
+mtcars2 %>%
+  mutate(cyl = factor(cyl)) %>%
+  ggplot(aes(y = mpg, x = fct_reorder(cyl, mpg, .fun = "mean"))) +
+  stat_summary(fun.data = "mean_se", geom = "pointrange")
+```
+
+<img src="Manip_Mutating_files/figure-html/unnamed-chunk-25-1.png" alt="" width="672" />
+
+<p class="text-info"> **<u>Note:</u> `fct_reorder()` was used in the ggplot call directly because this is a fairly particular reordering. It is unlikely that, outside of for the purpose of generating this specific visualization, you would want the levels of `cyl` to be ordered based on its level of `mpg`.<br><br>Also, you can combine `fct_reorder()` with `fct_rev()` to reverse the order of the levels.**</p>
+
 
 ## Text Cleaning
 

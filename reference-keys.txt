@@ -174,10 +174,6 @@ if_any
 if_all
 extra-resources-2
 advanced-variable-changing
-change-variable-types
-factors
-factor-conversion
-reorder-levels
 advanced-mutating
 mutating-across
 conditional-values
@@ -185,7 +181,10 @@ case_when
 conditional-statements
 ifelse
 case_when-1
-loops
+change-variable-types
+factors
+factor-conversion
+reorder-levels
 text-cleaning
 remove-text-from-strings
 escaping-special-characters
