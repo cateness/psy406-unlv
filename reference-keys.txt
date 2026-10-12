@@ -162,11 +162,9 @@ helper-functions-select
 starts_with
 ends_with
 contains
-matches
-regex
+where
 all_of
 any_of
-where
 selecting-logical-operators
 advanced-filtering
 in

@@ -197,41 +197,102 @@
 <span id="cb231-19"><a href="advanced-subsetting.html#cb231-19" tabindex="-1"></a><span class="co">#&gt; 5              NA        NA       </span></span>
 <span id="cb231-20"><a href="advanced-subsetting.html#cb231-20" tabindex="-1"></a><span class="co">#&gt; 6             191         0   JAIL</span></span></code></pre></div>
 </div>
-<div id="matches" class="section level4" number="15.1.1.4">
-<h4><span class="header-section-number">15.1.1.4</span> <code>matches()</code></h4>
-<p><code>matches()</code> works similarly to <code>contains()</code> but uses <em>regular expressions</em> rather than patterns.</p>
-<div id="regex" class="section level5" number="15.1.1.4.1">
-<h5><span class="header-section-number">15.1.1.4.1</span> Regular Expressions</h5>
-<p>Regular expressions (regex) are a way to select certain <em>kinds</em> of characters. When you want to refer to a class/type of character, you can select them with a regex.</p>
-<p>Regular expressions all get wrapped in brackets. So, to use any of these, wrap them in brackets and then quotes. (i.e., they need double brackets in quotes to be used!):</p>
-<ul>
-<li><strong>[:punct:]</strong> - punctuation.</li>
-<li><strong>[:alpha:]</strong> - letters.</li>
-<li><strong>[:lower:]</strong> - lowercase letters.</li>
-<li><strong>[:upper:]</strong> - upperclass letters.</li>
-<li><strong>[:digit:]</strong> - digits.</li>
-<li><strong>[:xdigit:]</strong> - hex digits.</li>
-<li><strong>[:alnum:]</strong> - letters and numbers.</li>
-<li><strong>[:cntrl:]</strong> - control characters.</li>
-<li><strong>[:graph:]</strong> - letters, numbers, and punctuation.</li>
-<li><strong>[:print:]</strong> - letters, numbers, punctuation, and whitespace.</li>
-<li><strong>[:space:]</strong> - space characters (basically equivalent to <code>\s</code>).</li>
-<li><strong>[:blank:]</strong> - space and tab.</li>
-</ul>
+<div id="where" class="section level4" number="15.1.1.4">
+<h4><span class="header-section-number">15.1.1.4</span> <code>where()</code></h4>
+<p><code>where()</code> takes a function and returns all variables for which the function returns <code>TRUE</code>. For example, say you wanted to find how many quantitative variables there are in this df. As a reminder, <code>ncol()</code> returns the number of columns of the object passed to it.</p>
 <div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="advanced-subsetting.html#cb232-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb232-2"><a href="advanced-subsetting.html#cb232-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">matches</span>(<span class="st">&quot;[[:digit:]]&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb232-3"><a href="advanced-subsetting.html#cb232-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb232-4"><a href="advanced-subsetting.html#cb232-4" tabindex="-1"></a>  <span class="co"># Take just the first 7 columns</span></span>
-<span id="cb232-5"><a href="advanced-subsetting.html#cb232-5" tabindex="-1"></a>  <span class="co"># to save space</span></span>
-<span id="cb232-6"><a href="advanced-subsetting.html#cb232-6" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb232-7"><a href="advanced-subsetting.html#cb232-7" tabindex="-1"></a><span class="co">#&gt;   INT_TIME1 INT_TIME2 A1 A9 A10 A11A A11B</span></span>
-<span id="cb232-8"><a href="advanced-subsetting.html#cb232-8" tabindex="-1"></a><span class="co">#&gt; 1  0.000000  6.000000  1  9   1    1    0</span></span>
-<span id="cb232-9"><a href="advanced-subsetting.html#cb232-9" tabindex="-1"></a><span class="co">#&gt; 2  8.033333  8.033333 NA NA   2    1    0</span></span>
-<span id="cb232-10"><a href="advanced-subsetting.html#cb232-10" tabindex="-1"></a><span class="co">#&gt; 3 15.533333  7.500000 NA NA   1    1    0</span></span>
-<span id="cb232-11"><a href="advanced-subsetting.html#cb232-11" tabindex="-1"></a><span class="co">#&gt; 4 27.566667 12.033333 NA NA   4    1    0</span></span>
-<span id="cb232-12"><a href="advanced-subsetting.html#cb232-12" tabindex="-1"></a><span class="co">#&gt; 5  0.000000  6.000000  1 12   6    1    0</span></span>
-<span id="cb232-13"><a href="advanced-subsetting.html#cb232-13" tabindex="-1"></a><span class="co">#&gt; 6  6.366667  6.366667 NA NA   6    1    0</span></span></code></pre></div>
-<!-- #### `num_range()`
+<span id="cb232-2"><a href="advanced-subsetting.html#cb232-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span></span>
+<span id="cb232-3"><a href="advanced-subsetting.html#cb232-3" tabindex="-1"></a>  <span class="fu">ncol</span>()</span>
+<span id="cb232-4"><a href="advanced-subsetting.html#cb232-4" tabindex="-1"></a><span class="co">#&gt; [1] 782</span></span></code></pre></div>
+<div class="rmdimportant">
+<p><strong>This takes the <code>dat</code> dataframe, selects only the columns that are numeric, and then finds the number of columns.</strong></p>
+</div>
+<p class="text-info">
+<strong>Note: 1. You do not <u>call</u> the function by including parentheses after it, you just <em>NAME</em> the function. 2. The <code>ncol()</code> here is only used to make these notes easier for you to understand (and not print hundreds of columns). It is <u>NOT</u> necessary when using <code>where()</code>.</strong>
+</p>
+<button class="btn btn-primary" data-toggle="collapse" data-target="#BlockName">
+How the Syntax Works
+</button>
+<div id="BlockName" class="collapse">
+<p>Under the hood of <code>where()</code>, it just needs a function. This means it can take functions that are designed on the spot.</p>
+<p>The long form version of the code above would be the following:</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="advanced-subsetting.html#cb233-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb233-2"><a href="advanced-subsetting.html#cb233-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(<span class="cf">function</span>(x) <span class="fu">is.numeric</span>(x))) <span class="sc">%&gt;%</span></span>
+<span id="cb233-3"><a href="advanced-subsetting.html#cb233-3" tabindex="-1"></a>  <span class="fu">ncol</span>()</span>
+<span id="cb233-4"><a href="advanced-subsetting.html#cb233-4" tabindex="-1"></a><span class="co">#&gt; [1] 782</span></span></code></pre></div>
+<p>Where you define the function that calls <code>is.numeric()</code> inline. A slightly condensed version of this inline defining looks like this:</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="advanced-subsetting.html#cb234-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb234-2"><a href="advanced-subsetting.html#cb234-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(<span class="sc">~</span> <span class="fu">is.numeric</span>(.x))) <span class="sc">%&gt;%</span></span>
+<span id="cb234-3"><a href="advanced-subsetting.html#cb234-3" tabindex="-1"></a>  <span class="fu">ncol</span>()</span>
+<span id="cb234-4"><a href="advanced-subsetting.html#cb234-4" tabindex="-1"></a><span class="co">#&gt; [1] 782</span></span></code></pre></div>
+<p>You can replace the <code>function(x)</code> part with a <code>~</code>. Note that you need <code>.</code> before the <code>x</code> here though!</p>
+<p>This inline shorthand is really useful because it allows you to string multiple functions together using logic statements. For example, you could first select all the abuse columns, then only the columns that are numeric and have a mean larger than 1.</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="advanced-subsetting.html#cb235-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
+<span id="cb235-2"><a href="advanced-subsetting.html#cb235-2" tabindex="-1"></a>  <span class="fu">drop_na</span>(<span class="fu">contains</span>(<span class="st">&quot;ABUSE&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb235-3"><a href="advanced-subsetting.html#cb235-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;ABUSE&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb235-4"><a href="advanced-subsetting.html#cb235-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(<span class="sc">~</span> <span class="fu">is.numeric</span>(.x) <span class="sc">&amp;&amp;</span> <span class="fu">mean</span>(.x) <span class="sc">&gt;</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb235-5"><a href="advanced-subsetting.html#cb235-5" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb235-6"><a href="advanced-subsetting.html#cb235-6" tabindex="-1"></a><span class="co">#&gt;   ABUSE2 ABUSE3</span></span>
+<span id="cb235-7"><a href="advanced-subsetting.html#cb235-7" tabindex="-1"></a><span class="co">#&gt; 1      3      2</span></span>
+<span id="cb235-8"><a href="advanced-subsetting.html#cb235-8" tabindex="-1"></a><span class="co">#&gt; 2      1      1</span></span>
+<span id="cb235-9"><a href="advanced-subsetting.html#cb235-9" tabindex="-1"></a><span class="co">#&gt; 3      1      1</span></span>
+<span id="cb235-10"><a href="advanced-subsetting.html#cb235-10" tabindex="-1"></a><span class="co">#&gt; 4      3      2</span></span>
+<span id="cb235-11"><a href="advanced-subsetting.html#cb235-11" tabindex="-1"></a><span class="co">#&gt; 5      0      0</span></span>
+<span id="cb235-12"><a href="advanced-subsetting.html#cb235-12" tabindex="-1"></a><span class="co">#&gt; 6      0      0</span></span></code></pre></div>
+<p>Breaking this down line by line:</p>
+<ul>
+<li><code>dat %&gt;%</code> take the <code>dat</code> dataframe</li>
+<li><code>drop_na(contains("ABUSE")) %&gt;%</code> get rid of the <code>NA</code> values in all the columns used, because it will mess things up otherwise (note that you can use the selection helper functions here too!).</li>
+<li><code>select(contains("ABUSE")) %&gt;%</code> select only the columns that contain “ABUSE”</li>
+<li><code>select(where(~ is.numeric(.x) &amp;&amp; mean(.x) &gt; 1)) %&gt;%</code> select only the columns that are numeric AND have a mean greater than 1</li>
+<li><code>head()</code> show just the first 5 observations</li>
+</ul>
+<p class="text-info">
+<strong>NOTE: You are not looking for the mean of the column, the output <em>IS</em> the column that has a mean greater than 1. Remember, selection helper functions are to help select certain columns. You can just get VERY specific with which columns you want in this way!</strong>
+</p>
+</div>
+<p><br></p>
+<!-- #### `matches()`
+
+`matches()` works similarly to `contains()` but uses *regular expressions* rather than patterns.
+
+##### Regular Expressions {#regex}
+
+Regular expressions (regex) are a way to select certain *kinds* of characters. When you want to refer to a class/type of character, you can select them with a regex.
+
+Regular expressions all get wrapped in brackets. So, to use any of these, wrap them in brackets and then quotes. (i.e., they need double brackets in quotes to be used!):
+
+- **[:punct:]** - punctuation.
+- **[:alpha:]** - letters.
+- **[:lower:]** - lowercase letters.
+- **[:upper:]** - upperclass letters.
+- **[:digit:]** - digits.
+- **[:xdigit:]** - hex digits.
+- **[:alnum:]** - letters and numbers.
+- **[:cntrl:]** - control characters.
+- **[:graph:]** - letters, numbers, and punctuation.
+- **[:print:]** - letters, numbers, punctuation, and whitespace.
+- **[:space:]** - space characters (basically equivalent to `\s`).
+- **[:blank:]** - space and tab.
+
+
+``` r
+dat %>%
+  select(matches("[[:digit:]]")) %>%
+  select(1:7) %>%
+  # Take just the first 7 columns
+  # to save space
+  head()
+#>   INT_TIME1 INT_TIME2 A1 A9 A10 A11A A11B
+#> 1  0.000000  6.000000  1  9   1    1    0
+#> 2  8.033333  8.033333 NA NA   2    1    0
+#> 3 15.533333  7.500000 NA NA   1    1    0
+#> 4 27.566667 12.033333 NA NA   4    1    0
+#> 5  0.000000  6.000000  1 12   6    1    0
+#> 6  6.366667  6.366667 NA NA   6    1    0
+```
+
+ #### `num_range()`
 
 `num_range()` matches a series of columns that has a string ending with a numerical range, e.g., x01, x02, x03.
 
@@ -272,28 +333,27 @@ dat %>%
 **This creates a new variable after the last column in the df, and then selects the last column (which is now the newly created variable).**
 ::: -->
 </div>
-</div>
 <div id="all_of" class="section level4" number="15.1.1.5">
 <h4><span class="header-section-number">15.1.1.5</span> <code>all_of()</code></h4>
 <p><code>all_of()</code> matches variable names in a character vector. <strong>All</strong> names must be present, otherwise an error is thrown. In this way, <code>all_of()</code> is good when strict selection is needed and an error could have wide ranging consequences.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="advanced-subsetting.html#cb233-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb233-2"><a href="advanced-subsetting.html#cb233-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">all_of</span>(<span class="fu">c</span>(<span class="st">&quot;DRUGRISK&quot;</span>, <span class="st">&quot;SEXRISK&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb233-3"><a href="advanced-subsetting.html#cb233-3" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb233-4"><a href="advanced-subsetting.html#cb233-4" tabindex="-1"></a><span class="co">#&gt;   DRUGRISK SEXRISK</span></span>
-<span id="cb233-5"><a href="advanced-subsetting.html#cb233-5" tabindex="-1"></a><span class="co">#&gt; 1        0       4</span></span>
-<span id="cb233-6"><a href="advanced-subsetting.html#cb233-6" tabindex="-1"></a><span class="co">#&gt; 2        0       1</span></span>
-<span id="cb233-7"><a href="advanced-subsetting.html#cb233-7" tabindex="-1"></a><span class="co">#&gt; 3        0       1</span></span>
-<span id="cb233-8"><a href="advanced-subsetting.html#cb233-8" tabindex="-1"></a><span class="co">#&gt; 4        0       3</span></span>
-<span id="cb233-9"><a href="advanced-subsetting.html#cb233-9" tabindex="-1"></a><span class="co">#&gt; 5        0       7</span></span>
-<span id="cb233-10"><a href="advanced-subsetting.html#cb233-10" tabindex="-1"></a><span class="co">#&gt; 6        0       0</span></span></code></pre></div>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="advanced-subsetting.html#cb234-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb234-2"><a href="advanced-subsetting.html#cb234-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">all_of</span>(<span class="fu">c</span>(<span class="st">&quot;DRUGRISK&quot;</span>, <span class="st">&quot;DRUGRISK2&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb234-3"><a href="advanced-subsetting.html#cb234-3" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb234-4"><a href="advanced-subsetting.html#cb234-4" tabindex="-1"></a><span class="co">#&gt; Error in `select()`:</span></span>
-<span id="cb234-5"><a href="advanced-subsetting.html#cb234-5" tabindex="-1"></a><span class="co">#&gt; ℹ In argument: `all_of(c(&quot;DRUGRISK&quot;, &quot;DRUGRISK2&quot;))`.</span></span>
-<span id="cb234-6"><a href="advanced-subsetting.html#cb234-6" tabindex="-1"></a><span class="co">#&gt; Caused by error in `all_of()`:</span></span>
-<span id="cb234-7"><a href="advanced-subsetting.html#cb234-7" tabindex="-1"></a><span class="co">#&gt; ! Can&#39;t subset elements that don&#39;t exist.</span></span>
-<span id="cb234-8"><a href="advanced-subsetting.html#cb234-8" tabindex="-1"></a><span class="co">#&gt; ✖ Element `DRUGRISK2` doesn&#39;t exist.</span></span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="advanced-subsetting.html#cb236-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb236-2"><a href="advanced-subsetting.html#cb236-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">all_of</span>(<span class="fu">c</span>(<span class="st">&quot;DRUGRISK&quot;</span>, <span class="st">&quot;SEXRISK&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb236-3"><a href="advanced-subsetting.html#cb236-3" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb236-4"><a href="advanced-subsetting.html#cb236-4" tabindex="-1"></a><span class="co">#&gt;   DRUGRISK SEXRISK</span></span>
+<span id="cb236-5"><a href="advanced-subsetting.html#cb236-5" tabindex="-1"></a><span class="co">#&gt; 1        0       4</span></span>
+<span id="cb236-6"><a href="advanced-subsetting.html#cb236-6" tabindex="-1"></a><span class="co">#&gt; 2        0       1</span></span>
+<span id="cb236-7"><a href="advanced-subsetting.html#cb236-7" tabindex="-1"></a><span class="co">#&gt; 3        0       1</span></span>
+<span id="cb236-8"><a href="advanced-subsetting.html#cb236-8" tabindex="-1"></a><span class="co">#&gt; 4        0       3</span></span>
+<span id="cb236-9"><a href="advanced-subsetting.html#cb236-9" tabindex="-1"></a><span class="co">#&gt; 5        0       7</span></span>
+<span id="cb236-10"><a href="advanced-subsetting.html#cb236-10" tabindex="-1"></a><span class="co">#&gt; 6        0       0</span></span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="advanced-subsetting.html#cb237-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb237-2"><a href="advanced-subsetting.html#cb237-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">all_of</span>(<span class="fu">c</span>(<span class="st">&quot;DRUGRISK&quot;</span>, <span class="st">&quot;DRUGRISK2&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb237-3"><a href="advanced-subsetting.html#cb237-3" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb237-4"><a href="advanced-subsetting.html#cb237-4" tabindex="-1"></a><span class="co">#&gt; Error in `select()`:</span></span>
+<span id="cb237-5"><a href="advanced-subsetting.html#cb237-5" tabindex="-1"></a><span class="co">#&gt; ℹ In argument: `all_of(c(&quot;DRUGRISK&quot;, &quot;DRUGRISK2&quot;))`.</span></span>
+<span id="cb237-6"><a href="advanced-subsetting.html#cb237-6" tabindex="-1"></a><span class="co">#&gt; Caused by error in `all_of()`:</span></span>
+<span id="cb237-7"><a href="advanced-subsetting.html#cb237-7" tabindex="-1"></a><span class="co">#&gt; ! Can&#39;t subset elements that don&#39;t exist.</span></span>
+<span id="cb237-8"><a href="advanced-subsetting.html#cb237-8" tabindex="-1"></a><span class="co">#&gt; ✖ Element `DRUGRISK2` doesn&#39;t exist.</span></span></code></pre></div>
 <div class="rmdimportant">
 <p><strong>The <code>DRUGRISK2</code> variable does not exist in this dataset. Thus, the 2nd code chunk will throw an error.</strong></p>
 </div>
@@ -301,131 +361,75 @@ dat %>%
 <div id="any_of" class="section level4" number="15.1.1.6">
 <h4><span class="header-section-number">15.1.1.6</span> <code>any_of()</code></h4>
 <p><code>any_of()</code> works the same as <code>all_of()</code>, except that <strong>no error is thrown</strong> for names that do not exist. It will only return the columns from the input that are found in the data and ignore the ones that are not.</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="advanced-subsetting.html#cb235-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb235-2"><a href="advanced-subsetting.html#cb235-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">any_of</span>(<span class="fu">c</span>(<span class="st">&quot;DRUGRISK&quot;</span>, <span class="st">&quot;SEXRISK&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb235-3"><a href="advanced-subsetting.html#cb235-3" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb235-4"><a href="advanced-subsetting.html#cb235-4" tabindex="-1"></a><span class="co">#&gt;   DRUGRISK SEXRISK</span></span>
-<span id="cb235-5"><a href="advanced-subsetting.html#cb235-5" tabindex="-1"></a><span class="co">#&gt; 1        0       4</span></span>
-<span id="cb235-6"><a href="advanced-subsetting.html#cb235-6" tabindex="-1"></a><span class="co">#&gt; 2        0       1</span></span>
-<span id="cb235-7"><a href="advanced-subsetting.html#cb235-7" tabindex="-1"></a><span class="co">#&gt; 3        0       1</span></span>
-<span id="cb235-8"><a href="advanced-subsetting.html#cb235-8" tabindex="-1"></a><span class="co">#&gt; 4        0       3</span></span>
-<span id="cb235-9"><a href="advanced-subsetting.html#cb235-9" tabindex="-1"></a><span class="co">#&gt; 5        0       7</span></span>
-<span id="cb235-10"><a href="advanced-subsetting.html#cb235-10" tabindex="-1"></a><span class="co">#&gt; 6        0       0</span></span>
-<span id="cb235-11"><a href="advanced-subsetting.html#cb235-11" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb235-12"><a href="advanced-subsetting.html#cb235-12" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">any_of</span>(<span class="fu">c</span>(<span class="st">&quot;DRUGRISK&quot;</span>, <span class="st">&quot;DRUGRISK2&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb235-13"><a href="advanced-subsetting.html#cb235-13" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb235-14"><a href="advanced-subsetting.html#cb235-14" tabindex="-1"></a><span class="co">#&gt;   DRUGRISK</span></span>
-<span id="cb235-15"><a href="advanced-subsetting.html#cb235-15" tabindex="-1"></a><span class="co">#&gt; 1        0</span></span>
-<span id="cb235-16"><a href="advanced-subsetting.html#cb235-16" tabindex="-1"></a><span class="co">#&gt; 2        0</span></span>
-<span id="cb235-17"><a href="advanced-subsetting.html#cb235-17" tabindex="-1"></a><span class="co">#&gt; 3        0</span></span>
-<span id="cb235-18"><a href="advanced-subsetting.html#cb235-18" tabindex="-1"></a><span class="co">#&gt; 4        0</span></span>
-<span id="cb235-19"><a href="advanced-subsetting.html#cb235-19" tabindex="-1"></a><span class="co">#&gt; 5        0</span></span>
-<span id="cb235-20"><a href="advanced-subsetting.html#cb235-20" tabindex="-1"></a><span class="co">#&gt; 6        0</span></span></code></pre></div>
-<p><code>any_of()</code> is particularly useful when removing variables from your df, since there will be no error if you are including a variable that already does not exist. In this way, it can be used to make sure a variable is truly removed.</p>
-</div>
-<div id="where" class="section level4" number="15.1.1.7">
-<h4><span class="header-section-number">15.1.1.7</span> <code>where()</code></h4>
-<p><code>where()</code> takes a function and returns all variables for which the function returns <code>TRUE</code>. For example, say you wanted to find how many quantitative variables there are in this df. As a reminder, <code>ncol()</code> returns the number of columns of the object passed to it.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="advanced-subsetting.html#cb236-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb236-2"><a href="advanced-subsetting.html#cb236-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span></span>
-<span id="cb236-3"><a href="advanced-subsetting.html#cb236-3" tabindex="-1"></a>  <span class="fu">ncol</span>()</span>
-<span id="cb236-4"><a href="advanced-subsetting.html#cb236-4" tabindex="-1"></a><span class="co">#&gt; [1] 782</span></span></code></pre></div>
-<div class="rmdimportant">
-<p><strong>This takes the <code>dat</code> dataframe, selects only the columns that are numeric, and then finds the number of columns.</strong></p>
-</div>
-<p class="text-info">
-<strong>Note: 1. You do not <u>call</u> the function by including parentheses after it, you just <em>NAME</em> the function. 2. The <code>ncol()</code> here is only used to make these notes easier for you to understand (and not print hundreds of columns). It is <u>NOT</u> necessary when using <code>where()</code>.</strong>
-</p>
-<button class="btn btn-primary" data-toggle="collapse" data-target="#BlockName">
-How the Syntax Works
-</button>
-<div id="BlockName" class="collapse">
-<p>Under the hood of <code>where()</code>, it just needs a function. This means it can take functions that are designed on the spot.</p>
-<p>The long form version of the code above would be the following:</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="advanced-subsetting.html#cb237-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb237-2"><a href="advanced-subsetting.html#cb237-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(<span class="cf">function</span>(x) <span class="fu">is.numeric</span>(x))) <span class="sc">%&gt;%</span></span>
-<span id="cb237-3"><a href="advanced-subsetting.html#cb237-3" tabindex="-1"></a>  <span class="fu">ncol</span>()</span>
-<span id="cb237-4"><a href="advanced-subsetting.html#cb237-4" tabindex="-1"></a><span class="co">#&gt; [1] 782</span></span></code></pre></div>
-<p>Where you define the function that calls <code>is.numeric()</code> inline. A slightly condensed version of this inline defining looks like this:</p>
 <div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="advanced-subsetting.html#cb238-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb238-2"><a href="advanced-subsetting.html#cb238-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(<span class="sc">~</span> <span class="fu">is.numeric</span>(.x))) <span class="sc">%&gt;%</span></span>
-<span id="cb238-3"><a href="advanced-subsetting.html#cb238-3" tabindex="-1"></a>  <span class="fu">ncol</span>()</span>
-<span id="cb238-4"><a href="advanced-subsetting.html#cb238-4" tabindex="-1"></a><span class="co">#&gt; [1] 782</span></span></code></pre></div>
-<p>You can replace the <code>function(x)</code> part with a <code>~</code>. Note that you need <code>.</code> before the <code>x</code> here though!</p>
-<p>This inline shorthand is really useful because it allows you to string multiple functions together using logic statements. For example, you could first select all the abuse columns, then only the columns that are numeric and have a mean larger than 1.</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="advanced-subsetting.html#cb239-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
-<span id="cb239-2"><a href="advanced-subsetting.html#cb239-2" tabindex="-1"></a>  <span class="fu">drop_na</span>(<span class="fu">contains</span>(<span class="st">&quot;ABUSE&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb239-3"><a href="advanced-subsetting.html#cb239-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;ABUSE&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb239-4"><a href="advanced-subsetting.html#cb239-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(<span class="sc">~</span> <span class="fu">is.numeric</span>(.x) <span class="sc">&amp;&amp;</span> <span class="fu">mean</span>(.x) <span class="sc">&gt;</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb239-5"><a href="advanced-subsetting.html#cb239-5" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb239-6"><a href="advanced-subsetting.html#cb239-6" tabindex="-1"></a><span class="co">#&gt;   ABUSE2 ABUSE3</span></span>
-<span id="cb239-7"><a href="advanced-subsetting.html#cb239-7" tabindex="-1"></a><span class="co">#&gt; 1      3      2</span></span>
-<span id="cb239-8"><a href="advanced-subsetting.html#cb239-8" tabindex="-1"></a><span class="co">#&gt; 2      1      1</span></span>
-<span id="cb239-9"><a href="advanced-subsetting.html#cb239-9" tabindex="-1"></a><span class="co">#&gt; 3      1      1</span></span>
-<span id="cb239-10"><a href="advanced-subsetting.html#cb239-10" tabindex="-1"></a><span class="co">#&gt; 4      3      2</span></span>
-<span id="cb239-11"><a href="advanced-subsetting.html#cb239-11" tabindex="-1"></a><span class="co">#&gt; 5      0      0</span></span>
-<span id="cb239-12"><a href="advanced-subsetting.html#cb239-12" tabindex="-1"></a><span class="co">#&gt; 6      0      0</span></span></code></pre></div>
-<p>Breaking this down line by line:</p>
-<ul>
-<li><code>dat %&gt;%</code> take the <code>dat</code> dataframe</li>
-<li><code>drop_na(contains("ABUSE")) %&gt;%</code> get rid of the <code>NA</code> values in all the columns used, because it will mess things up otherwise (note that you can use the selection helper functions here too!).</li>
-<li><code>select(contains("ABUSE")) %&gt;%</code> select only the columns that contain “ABUSE”</li>
-<li><code>select(where(~ is.numeric(.x) &amp;&amp; mean(.x) &gt; 1)) %&gt;%</code> select only the columns that are numeric AND have a mean greater than 1</li>
-<li><code>head()</code> show just the first 5 observations</li>
-</ul>
-<p class="text-info">
-<strong>NOTE: You are not looking for the mean of the column, the output <em>IS</em> the column that has a mean greater than 1. Remember, selection helper functions are to help select certain columns. You can just get VERY specific with which columns you want in this way!</strong>
-</p>
-</div>
-<p><br></p>
+<span id="cb238-2"><a href="advanced-subsetting.html#cb238-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">any_of</span>(<span class="fu">c</span>(<span class="st">&quot;DRUGRISK&quot;</span>, <span class="st">&quot;SEXRISK&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb238-3"><a href="advanced-subsetting.html#cb238-3" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb238-4"><a href="advanced-subsetting.html#cb238-4" tabindex="-1"></a><span class="co">#&gt;   DRUGRISK SEXRISK</span></span>
+<span id="cb238-5"><a href="advanced-subsetting.html#cb238-5" tabindex="-1"></a><span class="co">#&gt; 1        0       4</span></span>
+<span id="cb238-6"><a href="advanced-subsetting.html#cb238-6" tabindex="-1"></a><span class="co">#&gt; 2        0       1</span></span>
+<span id="cb238-7"><a href="advanced-subsetting.html#cb238-7" tabindex="-1"></a><span class="co">#&gt; 3        0       1</span></span>
+<span id="cb238-8"><a href="advanced-subsetting.html#cb238-8" tabindex="-1"></a><span class="co">#&gt; 4        0       3</span></span>
+<span id="cb238-9"><a href="advanced-subsetting.html#cb238-9" tabindex="-1"></a><span class="co">#&gt; 5        0       7</span></span>
+<span id="cb238-10"><a href="advanced-subsetting.html#cb238-10" tabindex="-1"></a><span class="co">#&gt; 6        0       0</span></span>
+<span id="cb238-11"><a href="advanced-subsetting.html#cb238-11" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb238-12"><a href="advanced-subsetting.html#cb238-12" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">any_of</span>(<span class="fu">c</span>(<span class="st">&quot;DRUGRISK&quot;</span>, <span class="st">&quot;DRUGRISK2&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb238-13"><a href="advanced-subsetting.html#cb238-13" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb238-14"><a href="advanced-subsetting.html#cb238-14" tabindex="-1"></a><span class="co">#&gt;   DRUGRISK</span></span>
+<span id="cb238-15"><a href="advanced-subsetting.html#cb238-15" tabindex="-1"></a><span class="co">#&gt; 1        0</span></span>
+<span id="cb238-16"><a href="advanced-subsetting.html#cb238-16" tabindex="-1"></a><span class="co">#&gt; 2        0</span></span>
+<span id="cb238-17"><a href="advanced-subsetting.html#cb238-17" tabindex="-1"></a><span class="co">#&gt; 3        0</span></span>
+<span id="cb238-18"><a href="advanced-subsetting.html#cb238-18" tabindex="-1"></a><span class="co">#&gt; 4        0</span></span>
+<span id="cb238-19"><a href="advanced-subsetting.html#cb238-19" tabindex="-1"></a><span class="co">#&gt; 5        0</span></span>
+<span id="cb238-20"><a href="advanced-subsetting.html#cb238-20" tabindex="-1"></a><span class="co">#&gt; 6        0</span></span></code></pre></div>
+<p><code>any_of()</code> is particularly useful when removing variables from your df, since there will be no error if you are including a variable that already does not exist. In this way, it can be used to make sure a variable is truly removed.</p>
 </div>
 </div>
 <div id="selecting-logical-operators" class="section level3" number="15.1.2">
 <h3><span class="header-section-number">15.1.2</span> Selecting &amp; Logical operators</h3>
 <p>Logical operators work as expected and can be used to create tests with multiple helper functions for even more specified selecting!</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="advanced-subsetting.html#cb240-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb240-2"><a href="advanced-subsetting.html#cb240-2" tabindex="-1"></a><span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;RAW&quot;</span>) <span class="sc">|</span> <span class="fu">starts_with</span>(<span class="st">&quot;ABUSE&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb240-3"><a href="advanced-subsetting.html#cb240-3" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb240-4"><a href="advanced-subsetting.html#cb240-4" tabindex="-1"></a><span class="co">#&gt;   RAWPF RAWRP RAWBP RAWGH RAWVT RAWSF RAWRE RAWMH RAW_RE</span></span>
-<span id="cb240-5"><a href="advanced-subsetting.html#cb240-5" tabindex="-1"></a><span class="co">#&gt; 1    28     7   9.4  21.4    13     4     4    15     33</span></span>
-<span id="cb240-6"><a href="advanced-subsetting.html#cb240-6" tabindex="-1"></a><span class="co">#&gt; 2    28     8  10.0  21.4    19     9     6    23     24</span></span>
-<span id="cb240-7"><a href="advanced-subsetting.html#cb240-7" tabindex="-1"></a><span class="co">#&gt; 3    30     8   8.2  22.4    16    10     6    27     15</span></span>
-<span id="cb240-8"><a href="advanced-subsetting.html#cb240-8" tabindex="-1"></a><span class="co">#&gt; 4    29     8  10.4  19.0    20    10     6    27     29</span></span>
-<span id="cb240-9"><a href="advanced-subsetting.html#cb240-9" tabindex="-1"></a><span class="co">#&gt; 5    21     4   8.1   7.0     9     6     3    13     34</span></span>
-<span id="cb240-10"><a href="advanced-subsetting.html#cb240-10" tabindex="-1"></a><span class="co">#&gt; 6    30     8  12.0  18.4    15     9     5    21     35</span></span>
-<span id="cb240-11"><a href="advanced-subsetting.html#cb240-11" tabindex="-1"></a><span class="co">#&gt;   RAW_AM RAW_TS RAW_ADS ABUSE2 ABUSE3 ABUSE</span></span>
-<span id="cb240-12"><a href="advanced-subsetting.html#cb240-12" tabindex="-1"></a><span class="co">#&gt; 1     14     38       5      3      2     1</span></span>
-<span id="cb240-13"><a href="advanced-subsetting.html#cb240-13" tabindex="-1"></a><span class="co">#&gt; 2     12     33      NA     NA     NA    NA</span></span>
-<span id="cb240-14"><a href="advanced-subsetting.html#cb240-14" tabindex="-1"></a><span class="co">#&gt; 3      8     36      NA     NA     NA    NA</span></span>
-<span id="cb240-15"><a href="advanced-subsetting.html#cb240-15" tabindex="-1"></a><span class="co">#&gt; 4     13     37      NA     NA     NA    NA</span></span>
-<span id="cb240-16"><a href="advanced-subsetting.html#cb240-16" tabindex="-1"></a><span class="co">#&gt; 5      8     30      26      1      1     1</span></span>
-<span id="cb240-17"><a href="advanced-subsetting.html#cb240-17" tabindex="-1"></a><span class="co">#&gt; 6      7     18      NA     NA     NA    NA</span></span>
-<span id="cb240-18"><a href="advanced-subsetting.html#cb240-18" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb240-19"><a href="advanced-subsetting.html#cb240-19" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;A&quot;</span>) <span class="sc">&amp;</span> <span class="fu">ends_with</span>(<span class="st">&quot;C&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb240-20"><a href="advanced-subsetting.html#cb240-20" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb240-21"><a href="advanced-subsetting.html#cb240-21" tabindex="-1"></a><span class="co">#&gt;   A11C A14C A15C A16C A17C A12B_REC</span></span>
-<span id="cb240-22"><a href="advanced-subsetting.html#cb240-22" tabindex="-1"></a><span class="co">#&gt; 1    1    0    0    0    0        1</span></span>
-<span id="cb240-23"><a href="advanced-subsetting.html#cb240-23" tabindex="-1"></a><span class="co">#&gt; 2    1    0    0   NA    0       NA</span></span>
-<span id="cb240-24"><a href="advanced-subsetting.html#cb240-24" tabindex="-1"></a><span class="co">#&gt; 3    1    0    0   NA    0       NA</span></span>
-<span id="cb240-25"><a href="advanced-subsetting.html#cb240-25" tabindex="-1"></a><span class="co">#&gt; 4    1    0    0   NA    0       NA</span></span>
-<span id="cb240-26"><a href="advanced-subsetting.html#cb240-26" tabindex="-1"></a><span class="co">#&gt; 5    1    0   12   49    0        1</span></span>
-<span id="cb240-27"><a href="advanced-subsetting.html#cb240-27" tabindex="-1"></a><span class="co">#&gt; 6    1    0  178   NA    0       NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="advanced-subsetting.html#cb239-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb239-2"><a href="advanced-subsetting.html#cb239-2" tabindex="-1"></a><span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;RAW&quot;</span>) <span class="sc">|</span> <span class="fu">starts_with</span>(<span class="st">&quot;ABUSE&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb239-3"><a href="advanced-subsetting.html#cb239-3" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb239-4"><a href="advanced-subsetting.html#cb239-4" tabindex="-1"></a><span class="co">#&gt;   RAWPF RAWRP RAWBP RAWGH RAWVT RAWSF RAWRE RAWMH RAW_RE</span></span>
+<span id="cb239-5"><a href="advanced-subsetting.html#cb239-5" tabindex="-1"></a><span class="co">#&gt; 1    28     7   9.4  21.4    13     4     4    15     33</span></span>
+<span id="cb239-6"><a href="advanced-subsetting.html#cb239-6" tabindex="-1"></a><span class="co">#&gt; 2    28     8  10.0  21.4    19     9     6    23     24</span></span>
+<span id="cb239-7"><a href="advanced-subsetting.html#cb239-7" tabindex="-1"></a><span class="co">#&gt; 3    30     8   8.2  22.4    16    10     6    27     15</span></span>
+<span id="cb239-8"><a href="advanced-subsetting.html#cb239-8" tabindex="-1"></a><span class="co">#&gt; 4    29     8  10.4  19.0    20    10     6    27     29</span></span>
+<span id="cb239-9"><a href="advanced-subsetting.html#cb239-9" tabindex="-1"></a><span class="co">#&gt; 5    21     4   8.1   7.0     9     6     3    13     34</span></span>
+<span id="cb239-10"><a href="advanced-subsetting.html#cb239-10" tabindex="-1"></a><span class="co">#&gt; 6    30     8  12.0  18.4    15     9     5    21     35</span></span>
+<span id="cb239-11"><a href="advanced-subsetting.html#cb239-11" tabindex="-1"></a><span class="co">#&gt;   RAW_AM RAW_TS RAW_ADS ABUSE2 ABUSE3 ABUSE</span></span>
+<span id="cb239-12"><a href="advanced-subsetting.html#cb239-12" tabindex="-1"></a><span class="co">#&gt; 1     14     38       5      3      2     1</span></span>
+<span id="cb239-13"><a href="advanced-subsetting.html#cb239-13" tabindex="-1"></a><span class="co">#&gt; 2     12     33      NA     NA     NA    NA</span></span>
+<span id="cb239-14"><a href="advanced-subsetting.html#cb239-14" tabindex="-1"></a><span class="co">#&gt; 3      8     36      NA     NA     NA    NA</span></span>
+<span id="cb239-15"><a href="advanced-subsetting.html#cb239-15" tabindex="-1"></a><span class="co">#&gt; 4     13     37      NA     NA     NA    NA</span></span>
+<span id="cb239-16"><a href="advanced-subsetting.html#cb239-16" tabindex="-1"></a><span class="co">#&gt; 5      8     30      26      1      1     1</span></span>
+<span id="cb239-17"><a href="advanced-subsetting.html#cb239-17" tabindex="-1"></a><span class="co">#&gt; 6      7     18      NA     NA     NA    NA</span></span>
+<span id="cb239-18"><a href="advanced-subsetting.html#cb239-18" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb239-19"><a href="advanced-subsetting.html#cb239-19" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;A&quot;</span>) <span class="sc">&amp;</span> <span class="fu">ends_with</span>(<span class="st">&quot;C&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb239-20"><a href="advanced-subsetting.html#cb239-20" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb239-21"><a href="advanced-subsetting.html#cb239-21" tabindex="-1"></a><span class="co">#&gt;   A11C A14C A15C A16C A17C A12B_REC</span></span>
+<span id="cb239-22"><a href="advanced-subsetting.html#cb239-22" tabindex="-1"></a><span class="co">#&gt; 1    1    0    0    0    0        1</span></span>
+<span id="cb239-23"><a href="advanced-subsetting.html#cb239-23" tabindex="-1"></a><span class="co">#&gt; 2    1    0    0   NA    0       NA</span></span>
+<span id="cb239-24"><a href="advanced-subsetting.html#cb239-24" tabindex="-1"></a><span class="co">#&gt; 3    1    0    0   NA    0       NA</span></span>
+<span id="cb239-25"><a href="advanced-subsetting.html#cb239-25" tabindex="-1"></a><span class="co">#&gt; 4    1    0    0   NA    0       NA</span></span>
+<span id="cb239-26"><a href="advanced-subsetting.html#cb239-26" tabindex="-1"></a><span class="co">#&gt; 5    1    0   12   49    0        1</span></span>
+<span id="cb239-27"><a href="advanced-subsetting.html#cb239-27" tabindex="-1"></a><span class="co">#&gt; 6    1    0  178   NA    0       NA</span></span></code></pre></div>
 <p>Selection helper functions can be negated with a <code>!</code></p>
 <p>Below, only the number of columns is shown to save space, but note the difference!</p>
 <p>First look at how many variables there are total:</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="advanced-subsetting.html#cb241-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
-<span id="cb241-2"><a href="advanced-subsetting.html#cb241-2" tabindex="-1"></a>  <span class="fu">ncol</span>()</span>
-<span id="cb241-3"><a href="advanced-subsetting.html#cb241-3" tabindex="-1"></a><span class="co">#&gt; [1] 788</span></span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="advanced-subsetting.html#cb240-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
+<span id="cb240-2"><a href="advanced-subsetting.html#cb240-2" tabindex="-1"></a>  <span class="fu">ncol</span>()</span>
+<span id="cb240-3"><a href="advanced-subsetting.html#cb240-3" tabindex="-1"></a><span class="co">#&gt; [1] 788</span></span></code></pre></div>
 <p>Then see how many there are that start with “RAW”:</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="advanced-subsetting.html#cb242-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb242-2"><a href="advanced-subsetting.html#cb242-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;RAW&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb242-3"><a href="advanced-subsetting.html#cb242-3" tabindex="-1"></a>  <span class="fu">ncol</span>()</span>
-<span id="cb242-4"><a href="advanced-subsetting.html#cb242-4" tabindex="-1"></a><span class="co">#&gt; [1] 12</span></span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="advanced-subsetting.html#cb241-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb241-2"><a href="advanced-subsetting.html#cb241-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;RAW&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb241-3"><a href="advanced-subsetting.html#cb241-3" tabindex="-1"></a>  <span class="fu">ncol</span>()</span>
+<span id="cb241-4"><a href="advanced-subsetting.html#cb241-4" tabindex="-1"></a><span class="co">#&gt; [1] 12</span></span></code></pre></div>
 <p>Then see how many there are after selecting <em>NOT</em> the columns that start with “RAW”:</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="advanced-subsetting.html#cb243-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb243-2"><a href="advanced-subsetting.html#cb243-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">starts_with</span>(<span class="st">&quot;RAW&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb243-3"><a href="advanced-subsetting.html#cb243-3" tabindex="-1"></a>  <span class="fu">ncol</span>()</span>
-<span id="cb243-4"><a href="advanced-subsetting.html#cb243-4" tabindex="-1"></a><span class="co">#&gt; [1] 776</span></span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="advanced-subsetting.html#cb242-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb242-2"><a href="advanced-subsetting.html#cb242-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">starts_with</span>(<span class="st">&quot;RAW&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb242-3"><a href="advanced-subsetting.html#cb242-3" tabindex="-1"></a>  <span class="fu">ncol</span>()</span>
+<span id="cb242-4"><a href="advanced-subsetting.html#cb242-4" tabindex="-1"></a><span class="co">#&gt; [1] 776</span></span></code></pre></div>
 <p>The total number of columns has decreased by exactly the number of columns that start with “RAW”!</p>
 </div>
 </div>
@@ -435,8 +439,8 @@ How the Syntax Works
 <div id="in" class="section level3" number="15.2.1">
 <h3><span class="header-section-number">15.2.1</span> %in%</h3>
 <p>Stringing together multiple tests of text patterns would be very cumbersome. Fortunately, there is an alternative with the <code>%in%</code> operator. As a reminder, this will check to see if the value of one variable is in a vector of possible values. Test conditions using the <code>%in%</code> operator are used the same way as all test conditions using all other operators: you must specify the variable to search within and what values to return (those in the vector).</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="advanced-subsetting.html#cb244-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
-<span id="cb244-2"><a href="advanced-subsetting.html#cb244-2" tabindex="-1"></a>  <span class="fu">filter</span>(model <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Lotus Europa&quot;</span>, <span class="st">&quot;Ferrari Dino&quot;</span>, <span class="st">&quot;Volvo 142E&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="advanced-subsetting.html#cb243-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
+<span id="cb243-2"><a href="advanced-subsetting.html#cb243-2" tabindex="-1"></a>  <span class="fu">filter</span>(model <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Lotus Europa&quot;</span>, <span class="st">&quot;Ferrari Dino&quot;</span>, <span class="st">&quot;Volvo 142E&quot;</span>))</span></code></pre></div>
 <table class="kable_wrapper">
 <tbody>
 <tr>
@@ -1902,18 +1906,18 @@ Volvo 142E
 <p><strong>This filters the dataframe to return only rows where the value of <code>model</code> is “Lotus Europa”, “Ferrari Dino”, or “Volvo 142E”.</strong></p>
 </div>
 <p>As <code>%in%</code> is an operator, it can also be combined with other operators!</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="advanced-subsetting.html#cb245-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
-<span id="cb245-2"><a href="advanced-subsetting.html#cb245-2" tabindex="-1"></a>  <span class="fu">filter</span>(hp <span class="sc">&gt;</span> <span class="dv">300</span> <span class="sc">|</span> model <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Lotus Europa&quot;</span>, <span class="st">&quot;Ferrari Dino&quot;</span>, <span class="st">&quot;Volvo 142E&quot;</span>))</span>
-<span id="cb245-3"><a href="advanced-subsetting.html#cb245-3" tabindex="-1"></a><span class="co">#&gt;           model  mpg cyl  disp  hp drat    wt qsec vs am</span></span>
-<span id="cb245-4"><a href="advanced-subsetting.html#cb245-4" tabindex="-1"></a><span class="co">#&gt; 1  Lotus Europa 30.4   4  95.1 113 3.77 1.513 16.9  1  1</span></span>
-<span id="cb245-5"><a href="advanced-subsetting.html#cb245-5" tabindex="-1"></a><span class="co">#&gt; 2  Ferrari Dino 19.7   6 145.0 175 3.62 2.770 15.5  0  1</span></span>
-<span id="cb245-6"><a href="advanced-subsetting.html#cb245-6" tabindex="-1"></a><span class="co">#&gt; 3 Maserati Bora 15.0   8 301.0 335 3.54 3.570 14.6  0  1</span></span>
-<span id="cb245-7"><a href="advanced-subsetting.html#cb245-7" tabindex="-1"></a><span class="co">#&gt; 4    Volvo 142E 21.4   4 121.0 109 4.11 2.780 18.6  1  1</span></span>
-<span id="cb245-8"><a href="advanced-subsetting.html#cb245-8" tabindex="-1"></a><span class="co">#&gt;   gear carb</span></span>
-<span id="cb245-9"><a href="advanced-subsetting.html#cb245-9" tabindex="-1"></a><span class="co">#&gt; 1    5    2</span></span>
-<span id="cb245-10"><a href="advanced-subsetting.html#cb245-10" tabindex="-1"></a><span class="co">#&gt; 2    5    6</span></span>
-<span id="cb245-11"><a href="advanced-subsetting.html#cb245-11" tabindex="-1"></a><span class="co">#&gt; 3    5    8</span></span>
-<span id="cb245-12"><a href="advanced-subsetting.html#cb245-12" tabindex="-1"></a><span class="co">#&gt; 4    4    2</span></span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="advanced-subsetting.html#cb244-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
+<span id="cb244-2"><a href="advanced-subsetting.html#cb244-2" tabindex="-1"></a>  <span class="fu">filter</span>(hp <span class="sc">&gt;</span> <span class="dv">300</span> <span class="sc">|</span> model <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Lotus Europa&quot;</span>, <span class="st">&quot;Ferrari Dino&quot;</span>, <span class="st">&quot;Volvo 142E&quot;</span>))</span>
+<span id="cb244-3"><a href="advanced-subsetting.html#cb244-3" tabindex="-1"></a><span class="co">#&gt;           model  mpg cyl  disp  hp drat    wt qsec vs am</span></span>
+<span id="cb244-4"><a href="advanced-subsetting.html#cb244-4" tabindex="-1"></a><span class="co">#&gt; 1  Lotus Europa 30.4   4  95.1 113 3.77 1.513 16.9  1  1</span></span>
+<span id="cb244-5"><a href="advanced-subsetting.html#cb244-5" tabindex="-1"></a><span class="co">#&gt; 2  Ferrari Dino 19.7   6 145.0 175 3.62 2.770 15.5  0  1</span></span>
+<span id="cb244-6"><a href="advanced-subsetting.html#cb244-6" tabindex="-1"></a><span class="co">#&gt; 3 Maserati Bora 15.0   8 301.0 335 3.54 3.570 14.6  0  1</span></span>
+<span id="cb244-7"><a href="advanced-subsetting.html#cb244-7" tabindex="-1"></a><span class="co">#&gt; 4    Volvo 142E 21.4   4 121.0 109 4.11 2.780 18.6  1  1</span></span>
+<span id="cb244-8"><a href="advanced-subsetting.html#cb244-8" tabindex="-1"></a><span class="co">#&gt;   gear carb</span></span>
+<span id="cb244-9"><a href="advanced-subsetting.html#cb244-9" tabindex="-1"></a><span class="co">#&gt; 1    5    2</span></span>
+<span id="cb244-10"><a href="advanced-subsetting.html#cb244-10" tabindex="-1"></a><span class="co">#&gt; 2    5    6</span></span>
+<span id="cb244-11"><a href="advanced-subsetting.html#cb244-11" tabindex="-1"></a><span class="co">#&gt; 3    5    8</span></span>
+<span id="cb244-12"><a href="advanced-subsetting.html#cb244-12" tabindex="-1"></a><span class="co">#&gt; 4    4    2</span></span></code></pre></div>
 <div class="rmdimportant">
 <p><strong>This filters the dataframe to return only rows where the value of <code>hp</code> is greater than 300 OR the value of <code>model</code> is “Lotus Europa”, “Ferrari Dino”, or “Volvo 142E”.</strong></p>
 </div>
@@ -1922,12 +1926,12 @@ Volvo 142E
 <h3><span class="header-section-number">15.2.2</span> Pattern Matching</h3>
 <p>For any number of reasons there may be times you do not want to search for an exact string match. Rather, you want to filter based on whether a value <em>contains</em> a certain string. This can be accomplished with <code>grepl()</code>, which takes the form:</p>
 <p><code>grepl(pattern_to_search_for, where_to_search)</code></p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="advanced-subsetting.html#cb246-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
-<span id="cb246-2"><a href="advanced-subsetting.html#cb246-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;Porsche&quot;</span>, model))</span>
-<span id="cb246-3"><a href="advanced-subsetting.html#cb246-3" tabindex="-1"></a><span class="co">#&gt;           model mpg cyl  disp hp drat   wt qsec vs am gear</span></span>
-<span id="cb246-4"><a href="advanced-subsetting.html#cb246-4" tabindex="-1"></a><span class="co">#&gt; 1 Porsche 914-2  26   4 120.3 91 4.43 2.14 16.7  0  1    5</span></span>
-<span id="cb246-5"><a href="advanced-subsetting.html#cb246-5" tabindex="-1"></a><span class="co">#&gt;   carb</span></span>
-<span id="cb246-6"><a href="advanced-subsetting.html#cb246-6" tabindex="-1"></a><span class="co">#&gt; 1    2</span></span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="advanced-subsetting.html#cb245-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
+<span id="cb245-2"><a href="advanced-subsetting.html#cb245-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;Porsche&quot;</span>, model))</span>
+<span id="cb245-3"><a href="advanced-subsetting.html#cb245-3" tabindex="-1"></a><span class="co">#&gt;           model mpg cyl  disp hp drat   wt qsec vs am gear</span></span>
+<span id="cb245-4"><a href="advanced-subsetting.html#cb245-4" tabindex="-1"></a><span class="co">#&gt; 1 Porsche 914-2  26   4 120.3 91 4.43 2.14 16.7  0  1    5</span></span>
+<span id="cb245-5"><a href="advanced-subsetting.html#cb245-5" tabindex="-1"></a><span class="co">#&gt;   carb</span></span>
+<span id="cb245-6"><a href="advanced-subsetting.html#cb245-6" tabindex="-1"></a><span class="co">#&gt; 1    2</span></span></code></pre></div>
 <div class="rmdimportant">
 <p><strong>This filters the dataframe to return only rows where <code>model</code> contains the string “Porsche” in its value.</strong></p>
 </div>
@@ -1940,16 +1944,16 @@ Volvo 142E
 <p>Returns <code>TRUE</code> when the test evaluates to <code>TRUE</code> for <em>any</em> of the selected columns.</p>
 <p><code>filter(if_any(selection_of_columns, filter test to apply to each))</code></p>
 <p>Since the first argument of <code>if_any()</code> is a selection of columns, you can use the same selection helper functions introduced above!</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="advanced-subsetting.html#cb247-1" tabindex="-1"></a><span class="co"># Show the number of rows and columns in the full df</span></span>
-<span id="cb247-2"><a href="advanced-subsetting.html#cb247-2" tabindex="-1"></a><span class="fu">dim</span>(dat)</span>
-<span id="cb247-3"><a href="advanced-subsetting.html#cb247-3" tabindex="-1"></a><span class="co">#&gt; [1] 1472  788</span></span>
-<span id="cb247-4"><a href="advanced-subsetting.html#cb247-4" tabindex="-1"></a><span class="co"># Show the number of rows and columns for</span></span>
-<span id="cb247-5"><a href="advanced-subsetting.html#cb247-5" tabindex="-1"></a><span class="co"># All observations where the value of at least one of the selected</span></span>
-<span id="cb247-6"><a href="advanced-subsetting.html#cb247-6" tabindex="-1"></a><span class="co"># Columns is greater than or equal to 1:</span></span>
-<span id="cb247-7"><a href="advanced-subsetting.html#cb247-7" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb247-8"><a href="advanced-subsetting.html#cb247-8" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_any</span>(<span class="fu">starts_with</span>(<span class="st">&quot;K&quot;</span>), <span class="sc">~</span> . <span class="sc">&gt;=</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb247-9"><a href="advanced-subsetting.html#cb247-9" tabindex="-1"></a>  <span class="fu">dim</span>()</span>
-<span id="cb247-10"><a href="advanced-subsetting.html#cb247-10" tabindex="-1"></a><span class="co">#&gt; [1] 1462  788</span></span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="advanced-subsetting.html#cb246-1" tabindex="-1"></a><span class="co"># Show the number of rows and columns in the full df</span></span>
+<span id="cb246-2"><a href="advanced-subsetting.html#cb246-2" tabindex="-1"></a><span class="fu">dim</span>(dat)</span>
+<span id="cb246-3"><a href="advanced-subsetting.html#cb246-3" tabindex="-1"></a><span class="co">#&gt; [1] 1472  788</span></span>
+<span id="cb246-4"><a href="advanced-subsetting.html#cb246-4" tabindex="-1"></a><span class="co"># Show the number of rows and columns for</span></span>
+<span id="cb246-5"><a href="advanced-subsetting.html#cb246-5" tabindex="-1"></a><span class="co"># All observations where the value of at least one of the selected</span></span>
+<span id="cb246-6"><a href="advanced-subsetting.html#cb246-6" tabindex="-1"></a><span class="co"># Columns is greater than or equal to 1:</span></span>
+<span id="cb246-7"><a href="advanced-subsetting.html#cb246-7" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb246-8"><a href="advanced-subsetting.html#cb246-8" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_any</span>(<span class="fu">starts_with</span>(<span class="st">&quot;K&quot;</span>), <span class="sc">~</span> . <span class="sc">&gt;=</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb246-9"><a href="advanced-subsetting.html#cb246-9" tabindex="-1"></a>  <span class="fu">dim</span>()</span>
+<span id="cb246-10"><a href="advanced-subsetting.html#cb246-10" tabindex="-1"></a><span class="co">#&gt; [1] 1462  788</span></span></code></pre></div>
 <div class="rmdimportant">
 <p><strong>From <code>dat</code>, return only the observations where the value of <u>ANY</u> column that starts with “K” is greater than or equal to 1.</strong></p>
 </div>
@@ -1966,28 +1970,28 @@ Volvo 142E
 <div id="if_all" class="section level4" number="15.2.3.2">
 <h4><span class="header-section-number">15.2.3.2</span> <code>if_all()</code></h4>
 <p><code>if_all()</code> is similar to <code>if_any()</code>, except it returns <code>TRUE</code> <strong>only</strong> when the test evaluates to <code>TRUE</code> for <strong><u>ALL</u></strong> of the selected columns.</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="advanced-subsetting.html#cb248-1" tabindex="-1"></a><span class="co"># Show the number of rows and columns for</span></span>
-<span id="cb248-2"><a href="advanced-subsetting.html#cb248-2" tabindex="-1"></a><span class="co"># the observations where ALL of the selected</span></span>
-<span id="cb248-3"><a href="advanced-subsetting.html#cb248-3" tabindex="-1"></a><span class="co"># columns have a value greater than or equal to 1:</span></span>
-<span id="cb248-4"><a href="advanced-subsetting.html#cb248-4" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb248-5"><a href="advanced-subsetting.html#cb248-5" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">starts_with</span>(<span class="st">&quot;K&quot;</span>), <span class="sc">~</span> . <span class="sc">&gt;=</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb248-6"><a href="advanced-subsetting.html#cb248-6" tabindex="-1"></a>  <span class="fu">dim</span>()</span>
-<span id="cb248-7"><a href="advanced-subsetting.html#cb248-7" tabindex="-1"></a><span class="co">#&gt; [1] 728 788</span></span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="advanced-subsetting.html#cb247-1" tabindex="-1"></a><span class="co"># Show the number of rows and columns for</span></span>
+<span id="cb247-2"><a href="advanced-subsetting.html#cb247-2" tabindex="-1"></a><span class="co"># the observations where ALL of the selected</span></span>
+<span id="cb247-3"><a href="advanced-subsetting.html#cb247-3" tabindex="-1"></a><span class="co"># columns have a value greater than or equal to 1:</span></span>
+<span id="cb247-4"><a href="advanced-subsetting.html#cb247-4" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb247-5"><a href="advanced-subsetting.html#cb247-5" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">starts_with</span>(<span class="st">&quot;K&quot;</span>), <span class="sc">~</span> . <span class="sc">&gt;=</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb247-6"><a href="advanced-subsetting.html#cb247-6" tabindex="-1"></a>  <span class="fu">dim</span>()</span>
+<span id="cb247-7"><a href="advanced-subsetting.html#cb247-7" tabindex="-1"></a><span class="co">#&gt; [1] 728 788</span></span></code></pre></div>
 <div class="rmdimportant">
 <p><strong>From <code>dat</code>, return only the observations where the values of <u>ALL</u> columns that start with “K” are greater than or equal to 1.</strong></p>
 </div>
 <p>Importantly, these functions will not give you an error if you do something incorrect (whereas using <code>select()</code> would). Since you are dealing with logical vectors and tests, having nothing return is not inherently indicative of a problem!</p>
 <p>Look what happens when we try this on columns that we know do not exist (there are no columns that start with “Y”).</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="advanced-subsetting.html#cb249-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb249-2"><a href="advanced-subsetting.html#cb249-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Y&quot;</span>))</span>
-<span id="cb249-3"><a href="advanced-subsetting.html#cb249-3" tabindex="-1"></a><span class="co">#&gt; data frame with 0 columns and 1472 rows</span></span>
-<span id="cb249-4"><a href="advanced-subsetting.html#cb249-4" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb249-5"><a href="advanced-subsetting.html#cb249-5" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Y&quot;</span>), <span class="sc">~</span> . <span class="sc">&gt;</span> <span class="dv">75</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb249-6"><a href="advanced-subsetting.html#cb249-6" tabindex="-1"></a>  <span class="fu">dim</span>()</span>
-<span id="cb249-7"><a href="advanced-subsetting.html#cb249-7" tabindex="-1"></a><span class="co">#&gt; [1] 1472  788</span></span>
-<span id="cb249-8"><a href="advanced-subsetting.html#cb249-8" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb249-9"><a href="advanced-subsetting.html#cb249-9" tabindex="-1"></a>  <span class="fu">dim</span>()</span>
-<span id="cb249-10"><a href="advanced-subsetting.html#cb249-10" tabindex="-1"></a><span class="co">#&gt; [1] 1472  788</span></span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="advanced-subsetting.html#cb248-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb248-2"><a href="advanced-subsetting.html#cb248-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Y&quot;</span>))</span>
+<span id="cb248-3"><a href="advanced-subsetting.html#cb248-3" tabindex="-1"></a><span class="co">#&gt; data frame with 0 columns and 1472 rows</span></span>
+<span id="cb248-4"><a href="advanced-subsetting.html#cb248-4" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb248-5"><a href="advanced-subsetting.html#cb248-5" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">if_all</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Y&quot;</span>), <span class="sc">~</span> . <span class="sc">&gt;</span> <span class="dv">75</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb248-6"><a href="advanced-subsetting.html#cb248-6" tabindex="-1"></a>  <span class="fu">dim</span>()</span>
+<span id="cb248-7"><a href="advanced-subsetting.html#cb248-7" tabindex="-1"></a><span class="co">#&gt; [1] 1472  788</span></span>
+<span id="cb248-8"><a href="advanced-subsetting.html#cb248-8" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb248-9"><a href="advanced-subsetting.html#cb248-9" tabindex="-1"></a>  <span class="fu">dim</span>()</span>
+<span id="cb248-10"><a href="advanced-subsetting.html#cb248-10" tabindex="-1"></a><span class="co">#&gt; [1] 1472  788</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -2022,7 +2026,7 @@ Volvo 142E
   <div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-10-08.</p>
+    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-10-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

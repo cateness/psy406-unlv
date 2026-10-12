@@ -124,7 +124,83 @@ dat %>%
 #> 6             191         0   JAIL
 ```
 
-#### `matches()`
+#### `where()`
+
+`where()` takes a function and returns all variables for which the function returns `TRUE`. For example, say you wanted to find how many quantitative variables there are in this df. As a reminder, `ncol()` returns the number of columns of the object passed to it. 
+
+
+``` r
+dat %>%
+  select(where(is.numeric)) %>%
+  ncol()
+#> [1] 782
+```
+
+::: {.rmdimportant}
+**This takes the `dat` dataframe, selects only the columns that are numeric, and then finds the number of columns.**
+:::
+
+<p class="text-info"> **Note: 1. You do not <u>call</u> the function by including parentheses after it, you just *NAME* the function. 2. The `ncol()` here is only used to make these notes easier for you to understand (and not print hundreds of columns). It is <u>NOT</u> necessary when using `where()`.**</p>
+
+<button class="btn btn-primary" data-toggle="collapse" data-target="#BlockName"> How the Syntax Works</button>  
+<div id="BlockName" class="collapse">  
+
+Under the hood of `where()`, it just needs a function. This means it can take functions that are designed on the spot. 
+
+The long form version of the code above would be the following:
+
+
+``` r
+dat %>%
+  select(where(function(x) is.numeric(x))) %>%
+  ncol()
+#> [1] 782
+```
+
+Where you define the function that calls `is.numeric()` inline. A slightly condensed version of this inline defining looks like this:
+
+
+``` r
+dat %>%
+  select(where(~ is.numeric(.x))) %>%
+  ncol()
+#> [1] 782
+```
+
+You can replace the `function(x)` part with a `~`. Note that you need `.` before the `x` here though! 
+
+This inline shorthand is really useful because it allows you to string multiple functions together using logic statements. For example, you could first select all the abuse columns, then only the columns that are numeric and have a mean larger than 1.
+
+
+``` r
+dat %>% 
+  drop_na(contains("ABUSE")) %>%
+  select(contains("ABUSE")) %>%
+  select(where(~ is.numeric(.x) && mean(.x) > 1)) %>%
+  head()
+#>   ABUSE2 ABUSE3
+#> 1      3      2
+#> 2      1      1
+#> 3      1      1
+#> 4      3      2
+#> 5      0      0
+#> 6      0      0
+```
+
+Breaking this down line by line:
+
+- `dat %>%` take the `dat` dataframe
+- `drop_na(contains("ABUSE")) %>%` get rid of the `NA` values in all the columns used, because it will mess things up otherwise (note that you can use the selection helper functions here too!).
+- `select(contains("ABUSE")) %>%` select only the columns that contain "ABUSE"
+- `select(where(~ is.numeric(.x) && mean(.x) > 1)) %>%` select only the columns that are numeric AND have a mean greater than 1
+- `head()` show just the first 5 observations
+
+<p class="text-info"> **NOTE: You are not looking for the mean of the column, the output *IS* the column that has a mean greater than 1. Remember, selection helper functions are to help select certain columns. You can just get VERY specific with which columns you want in this way!**</p>
+</div>
+
+<br>
+
+<!-- #### `matches()`
 
 `matches()` works similarly to `contains()` but uses *regular expressions* rather than patterns.
 
@@ -164,7 +240,7 @@ dat %>%
 #> 6  6.366667  6.366667 NA NA   6    1    0
 ```
 
-<!-- #### `num_range()`
+ #### `num_range()`
 
 `num_range()` matches a series of columns that has a string ending with a numerical range, e.g., x01, x02, x03.
 
@@ -268,82 +344,6 @@ dat %>%
 ```
 
 `any_of()` is particularly useful when removing variables from your df, since there will be no error if you are including a variable that already does not exist. In this way, it can be used to make sure a variable is truly removed.
-
-#### `where()`
-
-`where()` takes a function and returns all variables for which the function returns `TRUE`. For example, say you wanted to find how many quantitative variables there are in this df. As a reminder, `ncol()` returns the number of columns of the object passed to it. 
-
-
-``` r
-dat %>%
-  select(where(is.numeric)) %>%
-  ncol()
-#> [1] 782
-```
-
-::: {.rmdimportant}
-**This takes the `dat` dataframe, selects only the columns that are numeric, and then finds the number of columns.**
-:::
-
-<p class="text-info"> **Note: 1. You do not <u>call</u> the function by including parentheses after it, you just *NAME* the function. 2. The `ncol()` here is only used to make these notes easier for you to understand (and not print hundreds of columns). It is <u>NOT</u> necessary when using `where()`.**</p>
-
-<button class="btn btn-primary" data-toggle="collapse" data-target="#BlockName"> How the Syntax Works</button>  
-<div id="BlockName" class="collapse">  
-
-Under the hood of `where()`, it just needs a function. This means it can take functions that are designed on the spot. 
-
-The long form version of the code above would be the following:
-
-
-``` r
-dat %>%
-  select(where(function(x) is.numeric(x))) %>%
-  ncol()
-#> [1] 782
-```
-
-Where you define the function that calls `is.numeric()` inline. A slightly condensed version of this inline defining looks like this:
-
-
-``` r
-dat %>%
-  select(where(~ is.numeric(.x))) %>%
-  ncol()
-#> [1] 782
-```
-
-You can replace the `function(x)` part with a `~`. Note that you need `.` before the `x` here though! 
-
-This inline shorthand is really useful because it allows you to string multiple functions together using logic statements. For example, you could first select all the abuse columns, then only the columns that are numeric and have a mean larger than 1.
-
-
-``` r
-dat %>% 
-  drop_na(contains("ABUSE")) %>%
-  select(contains("ABUSE")) %>%
-  select(where(~ is.numeric(.x) && mean(.x) > 1)) %>%
-  head()
-#>   ABUSE2 ABUSE3
-#> 1      3      2
-#> 2      1      1
-#> 3      1      1
-#> 4      3      2
-#> 5      0      0
-#> 6      0      0
-```
-
-Breaking this down line by line:
-
-- `dat %>%` take the `dat` dataframe
-- `drop_na(contains("ABUSE")) %>%` get rid of the `NA` values in all the columns used, because it will mess things up otherwise (note that you can use the selection helper functions here too!).
-- `select(contains("ABUSE")) %>%` select only the columns that contain "ABUSE"
-- `select(where(~ is.numeric(.x) && mean(.x) > 1)) %>%` select only the columns that are numeric AND have a mean greater than 1
-- `head()` show just the first 5 observations
-
-<p class="text-info"> **NOTE: You are not looking for the mean of the column, the output *IS* the column that has a mean greater than 1. Remember, selection helper functions are to help select certain columns. You can just get VERY specific with which columns you want in this way!**</p>
-</div>
-
-<br>
 
 ### Selecting & Logical operators
 
