@@ -2396,7 +2396,6 @@ ex_df %>%
 #> 2 4  4 5
 ```
 
-
 #### Modifying Existing Variables {#Modifying-Existing-Variables}
 
 `mutate()` can also be used to modify existing variables! This is done by passing a column name that already exists in the dataframe. For example:
@@ -2417,4 +2416,4 @@ mtcars2 %>%
 
 By tweaking the code above, instead of creating a new one, the existing `wt` variable is modified.
 
-<p class="text-info"> **<u>Note:</u> You will generally not want to overwrite a variable if you are changing it in some meaningful way (as is the case in the example above). Instead, you should create a new variable.**</p>
+**<u>Note:</u> You will generally not want to overwrite a variable if you are changing it in some meaningful way (as is the case in the example above). Instead, you should create a new variable.**

@@ -409,7 +409,7 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span id="cb260-7"><a href="advanced-variable-changing.html#cb260-7" tabindex="-1"></a>}</span>
 <span id="cb260-8"><a href="advanced-variable-changing.html#cb260-8" tabindex="-1"></a><span class="co">#&gt; [1] &quot;the condition evaluated FALSE&quot;</span></span>
 <span id="cb260-9"><a href="advanced-variable-changing.html#cb260-9" tabindex="-1"></a>x</span>
-<span id="cb260-10"><a href="advanced-variable-changing.html#cb260-10" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<span id="cb260-10"><a href="advanced-variable-changing.html#cb260-10" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 <p>This code specifies what to do depending on whether the test evaluates to <code>TRUE</code> or if it evaluates to <code>FALSE</code>.</p>
 <p>You can get more specific and link several conditions together. You may not want just 2 options – e.g., something to do if a test is <code>TRUE</code> and something else done in <strong>all</strong> other cases. Instead of using <code>else</code>, you use <code>else if()</code> and specify another test.</p>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="advanced-variable-changing.html#cb261-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), <span class="dv">1</span>)</span>
@@ -438,9 +438,9 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span id="cb262-3"><a href="advanced-variable-changing.html#cb262-3" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="dv">4</span> <span class="sc">&lt;</span> x, <span class="st">&quot;The first condition evaluated true.&quot;</span>,</span>
 <span id="cb262-4"><a href="advanced-variable-changing.html#cb262-4" tabindex="-1"></a>       <span class="fu">ifelse</span>(<span class="dv">2</span> <span class="sc">&lt;</span> x <span class="sc">&amp;</span> x <span class="sc">&lt;</span> <span class="dv">5</span>, <span class="st">&quot;The second condition evaluated true.&quot;</span>, </span>
 <span id="cb262-5"><a href="advanced-variable-changing.html#cb262-5" tabindex="-1"></a>              <span class="st">&quot;Neither the first or second condition evaluated true.&quot;</span>))</span>
-<span id="cb262-6"><a href="advanced-variable-changing.html#cb262-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;The second condition evaluated true.&quot;</span></span>
+<span id="cb262-6"><a href="advanced-variable-changing.html#cb262-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;The first condition evaluated true.&quot;</span></span>
 <span id="cb262-7"><a href="advanced-variable-changing.html#cb262-7" tabindex="-1"></a>x</span>
-<span id="cb262-8"><a href="advanced-variable-changing.html#cb262-8" tabindex="-1"></a><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<span id="cb262-8"><a href="advanced-variable-changing.html#cb262-8" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
 </div>
 <div id="case_when-1" class="section level3" number="16.2.2">
 <h3><span class="header-section-number">16.2.2</span> case_when()</h3>
@@ -454,7 +454,7 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span id="cb263-7"><a href="advanced-variable-changing.html#cb263-7" tabindex="-1"></a>)</span>
 <span id="cb263-8"><a href="advanced-variable-changing.html#cb263-8" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Neither the first or second condition evaluated true.&quot;</span></span>
 <span id="cb263-9"><a href="advanced-variable-changing.html#cb263-9" tabindex="-1"></a>x</span>
-<span id="cb263-10"><a href="advanced-variable-changing.html#cb263-10" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+<span id="cb263-10"><a href="advanced-variable-changing.html#cb263-10" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span></code></pre></div>
 <p><strong>In sum:</strong></p>
 <ul>
 <li>Traditional <code>if...else</code> statements are useful when you need the result to execute some code.</li>
