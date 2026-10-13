@@ -1,50 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>Chapter 16 Advanced Variable Changing | PSY406</title>
-
-    <meta name="author" content="Catie Nielson (with help from Ethan Hurwitz)" />
-  
-   <meta name="description" content="Course material related to PSY406 at UNLV" />
-   <meta name="generator" content="placeholder" />
-  <meta property="og:title" content="Chapter 16 Advanced Variable Changing | PSY406" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://cateness.github.io/psy406-unlv/" />
-  
-  <meta property="og:description" content="Course material related to PSY406 at UNLV" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 16 Advanced Variable Changing | PSY406" />
-  
-  <meta name="twitter:description" content="Course material related to PSY406 at UNLV" />
-  
-  <!-- JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
-    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
-    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="libs/bs3compat-0.12.0/transition.js"></script>
-    <script src="libs/bs3compat-0.12.0/tabs.js"></script>
-    <script src="libs/bs3compat-0.12.0/bs3compat.js"></script>
-    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
-    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
-    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
-    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
-
-  <!-- CSS -->
-  <style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 15 Advanced Variable Changing | PSY406</title>
+<meta name="author" content="Catie Nielson (with help from Ethan Hurwitz)">
+<meta name="description" content="library(tidyverse) library(palmerpenguins) library(kableExtra) library(knitr)  15.1 Advanced Mutating  15.1.1 Mutating across() mutate() was previously used to make changes to the data in our...">
+<meta name="generator" content="bookdown 0.48 with bs4_book()">
+<meta property="og:title" content="Chapter 15 Advanced Variable Changing | PSY406">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://cateness.github.io/psy406-unlv/advanced-variable-changing.html">
+<meta property="og:description" content="library(tidyverse) library(palmerpenguins) library(kableExtra) library(knitr)  15.1 Advanced Mutating  15.1.1 Mutating across() mutate() was previously used to make changes to the data in our...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 15 Advanced Variable Changing | PSY406">
+<meta name="twitter:description" content="library(tidyverse) library(palmerpenguins) library(kableExtra) library(knitr)  15.1 Advanced Mutating  15.1.1 Mutating across() mutate() was previously used to make changes to the data in our...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-    <style type="text/css">
+<style type="text/css">
     /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
     div.csl-bib-body { }
     div.csl-entry {
@@ -67,17 +46,14 @@
       margin-left: 2em;
     }
   </style>
-      <link rel="stylesheet" href="bs4_style.css" />
-    <link rel="stylesheet" href="style.css" />
-  
+<link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
@@ -89,593 +65,700 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-      </form>
+</form>
 
-      <nav aria-label="Table of contents">
-        <h2>Table of contents</h2>
-        <div id="book-toc"></div>
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
+<li class="book-part">R Basics</li>
+<li><a class="" href="why-use-r.html"><span class="header-section-number">2</span> Why use R?</a></li>
+<li><a class="" href="r-coding-basics.html"><span class="header-section-number">3</span> R Coding Basics</a></li>
+<li><a class="" href="using-r-effectively.html"><span class="header-section-number">4</span> Using R Effectively</a></li>
+<li class="book-part">Visualizations</li>
+<li><a class="" href="intro-to-ggplot2.html"><span class="header-section-number">5</span> Intro to ggplot2</a></li>
+<li><a class="" href="aesthetics.html"><span class="header-section-number">6</span> Aesthetics</a></li>
+<li><a class="" href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></li>
+<li><a class="" href="one-variable.html"><span class="header-section-number">8</span> One Variable</a></li>
+<li><a class="" href="two-variables.html"><span class="header-section-number">9</span> Two Variables</a></li>
+<li><a class="" href="three-variables.html"><span class="header-section-number">10</span> Three Variables</a></li>
+<li><a class="" href="customization.html"><span class="header-section-number">11</span> Customization</a></li>
+<li><a class="" href="color-theory.html"><span class="header-section-number">12</span> Color Theory</a></li>
+<li class="book-part">Data Manipulation</li>
+<li><a class="" href="tidy-data-and-tidyverse.html"><span class="header-section-number">13</span> Tidy Data and Tidyverse</a></li>
+<li><a class="" href="advanced-subsetting.html"><span class="header-section-number">14</span> Advanced Subsetting</a></li>
+<li><a class="active" href="advanced-variable-changing.html"><span class="header-section-number">15</span> Advanced Variable Changing</a></li>
+<li><a class="" href="basic-wrangling.html"><span class="header-section-number">16</span> Basic Wrangling</a></li>
+</ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+          
         </div>
       </nav>
-    </div>
-  </header>
-
-  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
-<div id="advanced-variable-changing" class="section level1" number="16">
-<h1><span class="header-section-number">Chapter 16</span> Advanced Variable Changing</h1>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="advanced-variable-changing.html#cb249-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb249-2"><a href="advanced-variable-changing.html#cb249-2" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb249-3"><a href="advanced-variable-changing.html#cb249-3" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb249-4"><a href="advanced-variable-changing.html#cb249-4" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code></pre></div>
-<div id="advanced-mutating" class="section level2" number="16.1">
-<h2><span class="header-section-number">16.1</span> Advanced Mutating</h2>
-<div id="mutating-across" class="section level3" number="16.1.1">
-<h3><span class="header-section-number">16.1.1</span> Mutating <code>across()</code></h3>
-<p><code>mutate()</code> was <a href="basic-wrangling.html#Modifying-Existing-Variables">previously</a> used to make changes to the data in our columns. To do so, you had to specify the specific column you wanted to change and what you wanted to do to it. However, utilizing the <code>across()</code> function, you can instead apply some changes to <strong>multiple</strong> columns simultaneously!</p>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="advanced-variable-changing" class="section level1" number="15">
+<h1>
+<span class="header-section-number">15</span> Advanced Variable Changing<a class="anchor" aria-label="anchor" href="#advanced-variable-changing"><i class="fas fa-link"></i></a>
+</h1>
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span></code></pre></div>
+<div id="advanced-mutating" class="section level2" number="15.1">
+<h2>
+<span class="header-section-number">15.1</span> Advanced Mutating<a class="anchor" aria-label="anchor" href="#advanced-mutating"><i class="fas fa-link"></i></a>
+</h2>
+<div id="mutating-across" class="section level3" number="15.1.1">
+<h3>
+<span class="header-section-number">15.1.1</span> Mutating <code>across()</code><a class="anchor" aria-label="anchor" href="#mutating-across"><i class="fas fa-link"></i></a>
+</h3>
+<p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> was <a href="basic-wrangling.html#Modifying-Existing-Variables">previously</a> used to make changes to the data in our columns. To do so, you had to specify the specific column you wanted to change and what you wanted to do to it. However, utilizing the <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> function, you can instead apply some changes to <strong>multiple</strong> columns simultaneously!</p>
 <p><code>across(selection_of_columns, NAME of function to apply to each)</code></p>
-<p>For example, if you wanted to <code>scale()</code> specific columns:</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="advanced-variable-changing.html#cb250-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
-<span id="cb250-2"><a href="advanced-variable-changing.html#cb250-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(<span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q3&quot;</span>), scale)) <span class="sc">%&gt;%</span></span>
-<span id="cb250-3"><a href="advanced-variable-changing.html#cb250-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q3&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb250-4"><a href="advanced-variable-changing.html#cb250-4" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="cb250-5"><a href="advanced-variable-changing.html#cb250-5" tabindex="-1"></a><span class="co">#&gt;            Q2         Q3</span></span>
-<span id="cb250-6"><a href="advanced-variable-changing.html#cb250-6" tabindex="-1"></a><span class="co">#&gt; 1  -0.3443861 -0.3158289</span></span>
-<span id="cb250-7"><a href="advanced-variable-changing.html#cb250-7" tabindex="-1"></a><span class="co">#&gt; 2  -0.3443861 -0.3158289</span></span>
-<span id="cb250-8"><a href="advanced-variable-changing.html#cb250-8" tabindex="-1"></a><span class="co">#&gt; 3  -0.3443861 -0.3158289</span></span>
-<span id="cb250-9"><a href="advanced-variable-changing.html#cb250-9" tabindex="-1"></a><span class="co">#&gt; 4  -0.3443861 -0.3158289</span></span>
-<span id="cb250-10"><a href="advanced-variable-changing.html#cb250-10" tabindex="-1"></a><span class="co">#&gt; 5  -0.3443861 -0.3158289</span></span>
-<span id="cb250-11"><a href="advanced-variable-changing.html#cb250-11" tabindex="-1"></a><span class="co">#&gt; 6  -0.3443861 -0.3158289</span></span>
-<span id="cb250-12"><a href="advanced-variable-changing.html#cb250-12" tabindex="-1"></a><span class="co">#&gt; 7   2.9017304  5.3304180</span></span>
-<span id="cb250-13"><a href="advanced-variable-changing.html#cb250-13" tabindex="-1"></a><span class="co">#&gt; 8   2.9017304  3.4483357</span></span>
-<span id="cb250-14"><a href="advanced-variable-changing.html#cb250-14" tabindex="-1"></a><span class="co">#&gt; 9   2.9017304  5.3304180</span></span>
-<span id="cb250-15"><a href="advanced-variable-changing.html#cb250-15" tabindex="-1"></a><span class="co">#&gt; 10 -0.3443861 -0.3158289</span></span></code></pre></div>
-<p>Just like in the <code>if_*()</code> calls, because the first argument of <code>across()</code> expects a selection of columns, you can use helper functions to make these selections as well!</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="advanced-variable-changing.html#cb251-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
-<span id="cb251-2"><a href="advanced-variable-changing.html#cb251-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Q&quot;</span>), scale)) <span class="sc">%&gt;%</span></span>
-<span id="cb251-3"><a href="advanced-variable-changing.html#cb251-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Q&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb251-4"><a href="advanced-variable-changing.html#cb251-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb251-5"><a href="advanced-variable-changing.html#cb251-5" tabindex="-1"></a>  <span class="co"># Take just the first 7 columns</span></span>
-<span id="cb251-6"><a href="advanced-variable-changing.html#cb251-6" tabindex="-1"></a>  <span class="co"># to save space</span></span>
-<span id="cb251-7"><a href="advanced-variable-changing.html#cb251-7" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="cb251-8"><a href="advanced-variable-changing.html#cb251-8" tabindex="-1"></a><span class="co">#&gt;           Q1A       Q1B         Q2         Q3         Q4</span></span>
-<span id="cb251-9"><a href="advanced-variable-changing.html#cb251-9" tabindex="-1"></a><span class="co">#&gt; 1   1.3247918 -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
-<span id="cb251-10"><a href="advanced-variable-changing.html#cb251-10" tabindex="-1"></a><span class="co">#&gt; 2          NA -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
-<span id="cb251-11"><a href="advanced-variable-changing.html#cb251-11" tabindex="-1"></a><span class="co">#&gt; 3          NA -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
-<span id="cb251-12"><a href="advanced-variable-changing.html#cb251-12" tabindex="-1"></a><span class="co">#&gt; 4          NA -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
-<span id="cb251-13"><a href="advanced-variable-changing.html#cb251-13" tabindex="-1"></a><span class="co">#&gt; 5   1.3247918 -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
-<span id="cb251-14"><a href="advanced-variable-changing.html#cb251-14" tabindex="-1"></a><span class="co">#&gt; 6          NA -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
-<span id="cb251-15"><a href="advanced-variable-changing.html#cb251-15" tabindex="-1"></a><span class="co">#&gt; 7   1.3247918  2.120156  2.9017304  5.3304180  1.4294526</span></span>
-<span id="cb251-16"><a href="advanced-variable-changing.html#cb251-16" tabindex="-1"></a><span class="co">#&gt; 8          NA  2.120156  2.9017304  3.4483357  4.8284766</span></span>
-<span id="cb251-17"><a href="advanced-variable-changing.html#cb251-17" tabindex="-1"></a><span class="co">#&gt; 9          NA  2.120156  2.9017304  5.3304180 -0.2700594</span></span>
-<span id="cb251-18"><a href="advanced-variable-changing.html#cb251-18" tabindex="-1"></a><span class="co">#&gt; 10 -0.7532261 -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
-<span id="cb251-19"><a href="advanced-variable-changing.html#cb251-19" tabindex="-1"></a><span class="co">#&gt;            Q5         Q6</span></span>
-<span id="cb251-20"><a href="advanced-variable-changing.html#cb251-20" tabindex="-1"></a><span class="co">#&gt; 1   1.3360441 -0.2731168</span></span>
-<span id="cb251-21"><a href="advanced-variable-changing.html#cb251-21" tabindex="-1"></a><span class="co">#&gt; 2  -0.6042744 -0.2731168</span></span>
-<span id="cb251-22"><a href="advanced-variable-changing.html#cb251-22" tabindex="-1"></a><span class="co">#&gt; 3  -0.6042744 -0.2731168</span></span>
-<span id="cb251-23"><a href="advanced-variable-changing.html#cb251-23" tabindex="-1"></a><span class="co">#&gt; 4  -0.6042744 -0.2731168</span></span>
-<span id="cb251-24"><a href="advanced-variable-changing.html#cb251-24" tabindex="-1"></a><span class="co">#&gt; 5   2.3062033 -0.2731168</span></span>
-<span id="cb251-25"><a href="advanced-variable-changing.html#cb251-25" tabindex="-1"></a><span class="co">#&gt; 6  -0.6042744 -0.2731168</span></span>
-<span id="cb251-26"><a href="advanced-variable-changing.html#cb251-26" tabindex="-1"></a><span class="co">#&gt; 7  -0.6042744  4.9244139</span></span>
-<span id="cb251-27"><a href="advanced-variable-changing.html#cb251-27" tabindex="-1"></a><span class="co">#&gt; 8   0.3658848 -0.2731168</span></span>
-<span id="cb251-28"><a href="advanced-variable-changing.html#cb251-28" tabindex="-1"></a><span class="co">#&gt; 9  -0.6042744  4.9244139</span></span>
-<span id="cb251-29"><a href="advanced-variable-changing.html#cb251-29" tabindex="-1"></a><span class="co">#&gt; 10 -0.6042744 -0.2731168</span></span></code></pre></div>
+<p>For example, if you wanted to <code><a href="https://rdrr.io/r/base/scale.html">scale()</a></code> specific columns:</p>
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Q2"</span>, <span class="st">"Q3"</span><span class="op">)</span>, <span class="va">scale</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Q2"</span>, <span class="st">"Q3"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt;            Q2         Q3</span></span>
+<span><span class="co">#&gt; 1  -0.3443861 -0.3158289</span></span>
+<span><span class="co">#&gt; 2  -0.3443861 -0.3158289</span></span>
+<span><span class="co">#&gt; 3  -0.3443861 -0.3158289</span></span>
+<span><span class="co">#&gt; 4  -0.3443861 -0.3158289</span></span>
+<span><span class="co">#&gt; 5  -0.3443861 -0.3158289</span></span>
+<span><span class="co">#&gt; 6  -0.3443861 -0.3158289</span></span>
+<span><span class="co">#&gt; 7   2.9017304  5.3304180</span></span>
+<span><span class="co">#&gt; 8   2.9017304  3.4483357</span></span>
+<span><span class="co">#&gt; 9   2.9017304  5.3304180</span></span>
+<span><span class="co">#&gt; 10 -0.3443861 -0.3158289</span></span></code></pre></div>
+<p>Just like in the <code>if_*()</code> calls, because the first argument of <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> expects a selection of columns, you can use helper functions to make these selections as well!</p>
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Q"</span><span class="op">)</span>, <span class="va">scale</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Q"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="co"># Take just the first 7 columns</span></span>
+<span>  <span class="co"># to save space</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co">#&gt;           Q1A       Q1B         Q2         Q3         Q4</span></span>
+<span><span class="co">#&gt; 1   1.3247918 -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
+<span><span class="co">#&gt; 2          NA -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
+<span><span class="co">#&gt; 3          NA -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
+<span><span class="co">#&gt; 4          NA -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
+<span><span class="co">#&gt; 5   1.3247918 -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
+<span><span class="co">#&gt; 6          NA -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
+<span><span class="co">#&gt; 7   1.3247918  2.120156  2.9017304  5.3304180  1.4294526</span></span>
+<span><span class="co">#&gt; 8          NA  2.120156  2.9017304  3.4483357  4.8284766</span></span>
+<span><span class="co">#&gt; 9          NA  2.120156  2.9017304  5.3304180 -0.2700594</span></span>
+<span><span class="co">#&gt; 10 -0.7532261 -0.471342 -0.3443861 -0.3158289 -0.2700594</span></span>
+<span><span class="co">#&gt;            Q5         Q6</span></span>
+<span><span class="co">#&gt; 1   1.3360441 -0.2731168</span></span>
+<span><span class="co">#&gt; 2  -0.6042744 -0.2731168</span></span>
+<span><span class="co">#&gt; 3  -0.6042744 -0.2731168</span></span>
+<span><span class="co">#&gt; 4  -0.6042744 -0.2731168</span></span>
+<span><span class="co">#&gt; 5   2.3062033 -0.2731168</span></span>
+<span><span class="co">#&gt; 6  -0.6042744 -0.2731168</span></span>
+<span><span class="co">#&gt; 7  -0.6042744  4.9244139</span></span>
+<span><span class="co">#&gt; 8   0.3658848 -0.2731168</span></span>
+<span><span class="co">#&gt; 9  -0.6042744  4.9244139</span></span>
+<span><span class="co">#&gt; 10 -0.6042744 -0.2731168</span></span></code></pre></div>
 <p class="text-info">
-<strong><u>Note:</u> All of the <code>select()</code> calls were added only to save space and make these notes easier for you to understand by highlighting the specific rows that are changed. Without the <code>select()</code> calls, this code will output all of the data (which is what you want!). <code>select()</code> calls are NOT something that should <em>always</em> be used in your code with <code>mutate(across())</code>.</strong>
+<strong><u>Note:</u> All of the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> calls were added only to save space and make these notes easier for you to understand by highlighting the specific rows that are changed. Without the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> calls, this code will output all of the data (which is what you want!). <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> calls are NOT something that should <em>always</em> be used in your code with <code>mutate(across())</code>.</strong>
 </p>
-<p>You can combine <code>where()</code> with <code>across()</code> to mutate conditionally. In other words, <strong>IF</strong> the column passes some test, the function will be applied to all its values.</p>
+<p>You can combine <code><a href="https://tidyselect.r-lib.org/reference/where.html">where()</a></code> with <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> to mutate conditionally. In other words, <strong>IF</strong> the column passes some test, the function will be applied to all its values.</p>
 <p>Consider the following scenario: say you wanted to convert all the <em>factors</em> to <em>characters</em>.</p>
 <p>First, you would check which columns contain <em>factors</em>:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="advanced-variable-changing.html#cb252-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb252-2"><a href="advanced-variable-changing.html#cb252-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.factor)) <span class="sc">%&gt;%</span></span>
-<span id="cb252-3"><a href="advanced-variable-changing.html#cb252-3" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span>
-<span id="cb252-4"><a href="advanced-variable-changing.html#cb252-4" tabindex="-1"></a><span class="co">#&gt; Rows: 1,472</span></span>
-<span id="cb252-5"><a href="advanced-variable-changing.html#cb252-5" tabindex="-1"></a><span class="co">#&gt; Columns: 6</span></span>
-<span id="cb252-6"><a href="advanced-variable-changing.html#cb252-6" tabindex="-1"></a><span class="co">#&gt; $ A14G_T &lt;fct&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;JAIL&quot;, &quot;&quot;, &quot;JAIL&quot;, &quot;&quot;,…</span></span>
-<span id="cb252-7"><a href="advanced-variable-changing.html#cb252-7" tabindex="-1"></a><span class="co">#&gt; $ A17I_T &lt;fct&gt; , , , , , , , , FOOD STAMPS, , , , , , , , …</span></span>
-<span id="cb252-8"><a href="advanced-variable-changing.html#cb252-8" tabindex="-1"></a><span class="co">#&gt; $ C3F_T  &lt;fct&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,…</span></span>
-<span id="cb252-9"><a href="advanced-variable-changing.html#cb252-9" tabindex="-1"></a><span class="co">#&gt; $ U2Q_T  &lt;fct&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;NO NEED TO…</span></span>
-<span id="cb252-10"><a href="advanced-variable-changing.html#cb252-10" tabindex="-1"></a><span class="co">#&gt; $ U2R    &lt;fct&gt; , A, A, A, , H, , H, Q, , A, H, P, , H, D, …</span></span>
-<span id="cb252-11"><a href="advanced-variable-changing.html#cb252-11" tabindex="-1"></a><span class="co">#&gt; $ U7A_T  &lt;fct&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,…</span></span></code></pre></div>
-<p>Next, you can use <code>across()</code> and <code>where()</code> to change only columns that are <em>factors</em> into <em>characters</em>, checking which columns are <em>characters</em>. The columns that were previously <em>factors</em> should show up here.</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="advanced-variable-changing.html#cb253-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
-<span id="cb253-2"><a href="advanced-variable-changing.html#cb253-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.factor), as.character)) <span class="sc">%&gt;%</span></span>
-<span id="cb253-3"><a href="advanced-variable-changing.html#cb253-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.character)) <span class="sc">%&gt;%</span></span>
-<span id="cb253-4"><a href="advanced-variable-changing.html#cb253-4" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span>
-<span id="cb253-5"><a href="advanced-variable-changing.html#cb253-5" tabindex="-1"></a><span class="co">#&gt; Rows: 1,472</span></span>
-<span id="cb253-6"><a href="advanced-variable-changing.html#cb253-6" tabindex="-1"></a><span class="co">#&gt; Columns: 6</span></span>
-<span id="cb253-7"><a href="advanced-variable-changing.html#cb253-7" tabindex="-1"></a><span class="co">#&gt; $ A14G_T &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;JAIL&quot;, &quot;&quot;, &quot;JAIL&quot;, &quot;&quot;,…</span></span>
-<span id="cb253-8"><a href="advanced-variable-changing.html#cb253-8" tabindex="-1"></a><span class="co">#&gt; $ A17I_T &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;FOOD STAMP…</span></span>
-<span id="cb253-9"><a href="advanced-variable-changing.html#cb253-9" tabindex="-1"></a><span class="co">#&gt; $ C3F_T  &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,…</span></span>
-<span id="cb253-10"><a href="advanced-variable-changing.html#cb253-10" tabindex="-1"></a><span class="co">#&gt; $ U2Q_T  &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;NO NEED TO…</span></span>
-<span id="cb253-11"><a href="advanced-variable-changing.html#cb253-11" tabindex="-1"></a><span class="co">#&gt; $ U2R    &lt;chr&gt; &quot;&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;&quot;, &quot;H&quot;, &quot;&quot;, &quot;H&quot;, &quot;Q&quot;, &quot;…</span></span>
-<span id="cb253-12"><a href="advanced-variable-changing.html#cb253-12" tabindex="-1"></a><span class="co">#&gt; $ U7A_T  &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,…</span></span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.factor</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 1,472</span></span>
+<span><span class="co">#&gt; Columns: 6</span></span>
+<span><span class="co">#&gt; $ A14G_T &lt;fct&gt; "", "", "", "", "", "JAIL", "", "JAIL", "",…</span></span>
+<span><span class="co">#&gt; $ A17I_T &lt;fct&gt; , , , , , , , , FOOD STAMPS, , , , , , , , …</span></span>
+<span><span class="co">#&gt; $ C3F_T  &lt;fct&gt; "", "", "", "", "", "", "", "", "", "", "",…</span></span>
+<span><span class="co">#&gt; $ U2Q_T  &lt;fct&gt; "", "", "", "", "", "", "", "", "NO NEED TO…</span></span>
+<span><span class="co">#&gt; $ U2R    &lt;fct&gt; , A, A, A, , H, , H, Q, , A, H, P, , H, D, …</span></span>
+<span><span class="co">#&gt; $ U7A_T  &lt;fct&gt; "", "", "", "", "", "", "", "", "", "", "",…</span></span></code></pre></div>
+<p>Next, you can use <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> and <code><a href="https://tidyselect.r-lib.org/reference/where.html">where()</a></code> to change only columns that are <em>factors</em> into <em>characters</em>, checking which columns are <em>characters</em>. The columns that were previously <em>factors</em> should show up here.</p>
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.factor</span><span class="op">)</span>, <span class="va">as.character</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.character</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 1,472</span></span>
+<span><span class="co">#&gt; Columns: 6</span></span>
+<span><span class="co">#&gt; $ A14G_T &lt;chr&gt; "", "", "", "", "", "JAIL", "", "JAIL", "",…</span></span>
+<span><span class="co">#&gt; $ A17I_T &lt;chr&gt; "", "", "", "", "", "", "", "", "FOOD STAMP…</span></span>
+<span><span class="co">#&gt; $ C3F_T  &lt;chr&gt; "", "", "", "", "", "", "", "", "", "", "",…</span></span>
+<span><span class="co">#&gt; $ U2Q_T  &lt;chr&gt; "", "", "", "", "", "", "", "", "NO NEED TO…</span></span>
+<span><span class="co">#&gt; $ U2R    &lt;chr&gt; "", "A", "A", "A", "", "H", "", "H", "Q", "…</span></span>
+<span><span class="co">#&gt; $ U7A_T  &lt;chr&gt; "", "", "", "", "", "", "", "", "", "", "",…</span></span></code></pre></div>
 <p>Which they do!</p>
 <p class="text-info">
-<strong><u>Note:</u> <code>glimpse()</code> was added here only to make these notes easier for you to understand. Without <code>glimpse()</code>, this code will just output the actual data (which is what you want!). <code>glimpse()</code> is NOT something that should <em>always</em> be used in your code with <code>across()</code> or <code>where()</code>.</strong>
+<strong><u>Note:</u> <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> was added here only to make these notes easier for you to understand. Without <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>, this code will just output the actual data (which is what you want!). <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> is NOT something that should <em>always</em> be used in your code with <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> or <code><a href="https://tidyselect.r-lib.org/reference/where.html">where()</a></code>.</strong>
 </p>
 <p>As before, multiple helper functions can be strung together with operators and they can also be negated with <code>!</code>. For example:</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="advanced-variable-changing.html#cb254-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb254-2"><a href="advanced-variable-changing.html#cb254-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric) <span class="sc">&amp;</span> <span class="fu">starts_with</span>(<span class="st">&quot;Z&quot;</span>), log)) <span class="sc">%&gt;%</span></span>
-<span id="cb254-3"><a href="advanced-variable-changing.html#cb254-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Z&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb254-4"><a href="advanced-variable-changing.html#cb254-4" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb254-5"><a href="advanced-variable-changing.html#cb254-5" tabindex="-1"></a><span class="co">#&gt;         Z1       Z2</span></span>
-<span id="cb254-6"><a href="advanced-variable-changing.html#cb254-6" tabindex="-1"></a><span class="co">#&gt; 1       NA       NA</span></span>
-<span id="cb254-7"><a href="advanced-variable-changing.html#cb254-7" tabindex="-1"></a><span class="co">#&gt; 2     -Inf       NA</span></span>
-<span id="cb254-8"><a href="advanced-variable-changing.html#cb254-8" tabindex="-1"></a><span class="co">#&gt; 3     -Inf       NA</span></span>
-<span id="cb254-9"><a href="advanced-variable-changing.html#cb254-9" tabindex="-1"></a><span class="co">#&gt; 4 6.906755 6.906755</span></span>
-<span id="cb254-10"><a href="advanced-variable-changing.html#cb254-10" tabindex="-1"></a><span class="co">#&gt; 5       NA       NA</span></span>
-<span id="cb254-11"><a href="advanced-variable-changing.html#cb254-11" tabindex="-1"></a><span class="co">#&gt; 6 6.906755 6.906755</span></span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Z"</span><span class="op">)</span>, <span class="va">log</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Z"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         Z1       Z2</span></span>
+<span><span class="co">#&gt; 1       NA       NA</span></span>
+<span><span class="co">#&gt; 2     -Inf       NA</span></span>
+<span><span class="co">#&gt; 3     -Inf       NA</span></span>
+<span><span class="co">#&gt; 4 6.906755 6.906755</span></span>
+<span><span class="co">#&gt; 5       NA       NA</span></span>
+<span><span class="co">#&gt; 6 6.906755 6.906755</span></span></code></pre></div>
 <p>You also can apply <em>multiple</em> functions simultaneously by <code>list</code>ing them. For example:</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="advanced-variable-changing.html#cb255-1" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb255-2"><a href="advanced-variable-changing.html#cb255-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric) <span class="sc">&amp;</span> <span class="fu">starts_with</span>(<span class="st">&quot;Z&quot;</span>), <span class="fu">list</span>(<span class="at">log =</span> log, <span class="at">round =</span> round))) <span class="sc">%&gt;%</span></span>
-<span id="cb255-3"><a href="advanced-variable-changing.html#cb255-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Z&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb255-4"><a href="advanced-variable-changing.html#cb255-4" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb255-5"><a href="advanced-variable-changing.html#cb255-5" tabindex="-1"></a><span class="co">#&gt;    Z1  Z2   Z1_log Z1_round   Z2_log Z2_round</span></span>
-<span id="cb255-6"><a href="advanced-variable-changing.html#cb255-6" tabindex="-1"></a><span class="co">#&gt; 1  NA  NA       NA       NA       NA       NA</span></span>
-<span id="cb255-7"><a href="advanced-variable-changing.html#cb255-7" tabindex="-1"></a><span class="co">#&gt; 2   0  NA     -Inf        0       NA       NA</span></span>
-<span id="cb255-8"><a href="advanced-variable-changing.html#cb255-8" tabindex="-1"></a><span class="co">#&gt; 3   0  NA     -Inf        0       NA       NA</span></span>
-<span id="cb255-9"><a href="advanced-variable-changing.html#cb255-9" tabindex="-1"></a><span class="co">#&gt; 4 999 999 6.906755      999 6.906755      999</span></span>
-<span id="cb255-10"><a href="advanced-variable-changing.html#cb255-10" tabindex="-1"></a><span class="co">#&gt; 5  NA  NA       NA       NA       NA       NA</span></span>
-<span id="cb255-11"><a href="advanced-variable-changing.html#cb255-11" tabindex="-1"></a><span class="co">#&gt; 6 999 999 6.906755      999 6.906755      999</span></span></code></pre></div>
-<p>Some common functions you may want to apply to columns in this way include: <code>mean()</code>, <code>sd()</code>, <code>round()</code>, <code>scale()</code>, <code>log()</code>, and many many others!</p>
+<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Z"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>log <span class="op">=</span> <span class="va">log</span>, round <span class="op">=</span> <span class="va">round</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Z"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    Z1  Z2   Z1_log Z1_round   Z2_log Z2_round</span></span>
+<span><span class="co">#&gt; 1  NA  NA       NA       NA       NA       NA</span></span>
+<span><span class="co">#&gt; 2   0  NA     -Inf        0       NA       NA</span></span>
+<span><span class="co">#&gt; 3   0  NA     -Inf        0       NA       NA</span></span>
+<span><span class="co">#&gt; 4 999 999 6.906755      999 6.906755      999</span></span>
+<span><span class="co">#&gt; 5  NA  NA       NA       NA       NA       NA</span></span>
+<span><span class="co">#&gt; 6 999 999 6.906755      999 6.906755      999</span></span></code></pre></div>
+<p>Some common functions you may want to apply to columns in this way include: <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code>, <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code>, <code><a href="https://rdrr.io/r/base/scale.html">scale()</a></code>, <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code>, and many many others!</p>
 </div>
-<div id="conditional-values" class="section level3" number="16.1.2">
-<h3><span class="header-section-number">16.1.2</span> Conditional Values</h3>
+<div id="conditional-values" class="section level3" number="15.1.2">
+<h3>
+<span class="header-section-number">15.1.2</span> Conditional Values<a class="anchor" aria-label="anchor" href="#conditional-values"><i class="fas fa-link"></i></a>
+</h3>
 <p>You may want a variable to have a value based on some different conditions. This can be extremely useful when creating new variables!</p>
-<div id="case_when" class="section level4" number="16.1.2.1">
-<h4><span class="header-section-number">16.1.2.1</span> case_when()</h4>
-<p><code>case_when()</code> is most useful when you have many nested tests/conditions to specify.</p>
-<img src="figures/dplyr_case_when.png" style="width:100.0%" />
-<p style="font-size:6pt">
+<div id="case_when" class="section level4" number="15.1.2.1">
+<h4>
+<span class="header-section-number">15.1.2.1</span> case_when()<a class="anchor" aria-label="anchor" href="#case_when"><i class="fas fa-link"></i></a>
+</h4>
+<p><code><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when()</a></code> is most useful when you have many nested tests/conditions to specify.</p>
+<img src="figures/dplyr_case_when.png" style="width:100.0%"><p style="font-size:6pt">
 Artwork by <span class="citation">Horst (2022)</span>
 </p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="advanced-variable-changing.html#cb256-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
-<span id="cb256-2"><a href="advanced-variable-changing.html#cb256-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fuel_efficiency =</span> <span class="fu">case_when</span>(</span>
-<span id="cb256-3"><a href="advanced-variable-changing.html#cb256-3" tabindex="-1"></a>    mpg <span class="sc">&lt;=</span> <span class="dv">19</span> <span class="sc">~</span> <span class="st">&quot;Poor&quot;</span>,</span>
-<span id="cb256-4"><a href="advanced-variable-changing.html#cb256-4" tabindex="-1"></a>    mpg <span class="sc">&gt;=</span> <span class="dv">20</span> <span class="sc">&amp;</span> mpg <span class="sc">&lt;=</span> <span class="dv">25</span> <span class="sc">~</span> <span class="st">&quot;Average&quot;</span>,</span>
-<span id="cb256-5"><a href="advanced-variable-changing.html#cb256-5" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Great&quot;</span></span>
-<span id="cb256-6"><a href="advanced-variable-changing.html#cb256-6" tabindex="-1"></a>  ))</span>
-<span id="cb256-7"><a href="advanced-variable-changing.html#cb256-7" tabindex="-1"></a><span class="co">#&gt;                  model  mpg cyl  disp  hp drat    wt  qsec</span></span>
-<span id="cb256-8"><a href="advanced-variable-changing.html#cb256-8" tabindex="-1"></a><span class="co">#&gt; 1            Mazda RX4 21.0   6 160.0 110 3.90 2.620 16.46</span></span>
-<span id="cb256-9"><a href="advanced-variable-changing.html#cb256-9" tabindex="-1"></a><span class="co">#&gt; 2        Mazda RX4 Wag 21.0   6 160.0 110 3.90 2.875 17.02</span></span>
-<span id="cb256-10"><a href="advanced-variable-changing.html#cb256-10" tabindex="-1"></a><span class="co">#&gt; 3           Datsun 710 22.8   4 108.0  93 3.85 2.320 18.61</span></span>
-<span id="cb256-11"><a href="advanced-variable-changing.html#cb256-11" tabindex="-1"></a><span class="co">#&gt; 4       Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44</span></span>
-<span id="cb256-12"><a href="advanced-variable-changing.html#cb256-12" tabindex="-1"></a><span class="co">#&gt; 5    Hornet Sportabout 18.7   8 360.0 175 3.15 3.440 17.02</span></span>
-<span id="cb256-13"><a href="advanced-variable-changing.html#cb256-13" tabindex="-1"></a><span class="co">#&gt; 6              Valiant 18.1   6 225.0 105 2.76 3.460 20.22</span></span>
-<span id="cb256-14"><a href="advanced-variable-changing.html#cb256-14" tabindex="-1"></a><span class="co">#&gt; 7           Duster 360 14.3   8 360.0 245 3.21 3.570 15.84</span></span>
-<span id="cb256-15"><a href="advanced-variable-changing.html#cb256-15" tabindex="-1"></a><span class="co">#&gt; 8            Merc 240D 24.4   4 146.7  62 3.69 3.190 20.00</span></span>
-<span id="cb256-16"><a href="advanced-variable-changing.html#cb256-16" tabindex="-1"></a><span class="co">#&gt; 9             Merc 230 22.8   4 140.8  95 3.92 3.150 22.90</span></span>
-<span id="cb256-17"><a href="advanced-variable-changing.html#cb256-17" tabindex="-1"></a><span class="co">#&gt; 10            Merc 280 19.2   6 167.6 123 3.92 3.440 18.30</span></span>
-<span id="cb256-18"><a href="advanced-variable-changing.html#cb256-18" tabindex="-1"></a><span class="co">#&gt; 11           Merc 280C 17.8   6 167.6 123 3.92 3.440 18.90</span></span>
-<span id="cb256-19"><a href="advanced-variable-changing.html#cb256-19" tabindex="-1"></a><span class="co">#&gt; 12          Merc 450SE 16.4   8 275.8 180 3.07 4.070 17.40</span></span>
-<span id="cb256-20"><a href="advanced-variable-changing.html#cb256-20" tabindex="-1"></a><span class="co">#&gt; 13          Merc 450SL 17.3   8 275.8 180 3.07 3.730 17.60</span></span>
-<span id="cb256-21"><a href="advanced-variable-changing.html#cb256-21" tabindex="-1"></a><span class="co">#&gt; 14         Merc 450SLC 15.2   8 275.8 180 3.07 3.780 18.00</span></span>
-<span id="cb256-22"><a href="advanced-variable-changing.html#cb256-22" tabindex="-1"></a><span class="co">#&gt; 15  Cadillac Fleetwood 10.4   8 472.0 205 2.93 5.250 17.98</span></span>
-<span id="cb256-23"><a href="advanced-variable-changing.html#cb256-23" tabindex="-1"></a><span class="co">#&gt; 16 Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82</span></span>
-<span id="cb256-24"><a href="advanced-variable-changing.html#cb256-24" tabindex="-1"></a><span class="co">#&gt; 17   Chrysler Imperial 14.7   8 440.0 230 3.23 5.345 17.42</span></span>
-<span id="cb256-25"><a href="advanced-variable-changing.html#cb256-25" tabindex="-1"></a><span class="co">#&gt; 18            Fiat 128 32.4   4  78.7  66 4.08 2.200 19.47</span></span>
-<span id="cb256-26"><a href="advanced-variable-changing.html#cb256-26" tabindex="-1"></a><span class="co">#&gt; 19         Honda Civic 30.4   4  75.7  52 4.93 1.615 18.52</span></span>
-<span id="cb256-27"><a href="advanced-variable-changing.html#cb256-27" tabindex="-1"></a><span class="co">#&gt; 20      Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90</span></span>
-<span id="cb256-28"><a href="advanced-variable-changing.html#cb256-28" tabindex="-1"></a><span class="co">#&gt; 21       Toyota Corona 21.5   4 120.1  97 3.70 2.465 20.01</span></span>
-<span id="cb256-29"><a href="advanced-variable-changing.html#cb256-29" tabindex="-1"></a><span class="co">#&gt; 22    Dodge Challenger 15.5   8 318.0 150 2.76 3.520 16.87</span></span>
-<span id="cb256-30"><a href="advanced-variable-changing.html#cb256-30" tabindex="-1"></a><span class="co">#&gt; 23         AMC Javelin 15.2   8 304.0 150 3.15 3.435 17.30</span></span>
-<span id="cb256-31"><a href="advanced-variable-changing.html#cb256-31" tabindex="-1"></a><span class="co">#&gt; 24          Camaro Z28 13.3   8 350.0 245 3.73 3.840 15.41</span></span>
-<span id="cb256-32"><a href="advanced-variable-changing.html#cb256-32" tabindex="-1"></a><span class="co">#&gt; 25    Pontiac Firebird 19.2   8 400.0 175 3.08 3.845 17.05</span></span>
-<span id="cb256-33"><a href="advanced-variable-changing.html#cb256-33" tabindex="-1"></a><span class="co">#&gt; 26           Fiat X1-9 27.3   4  79.0  66 4.08 1.935 18.90</span></span>
-<span id="cb256-34"><a href="advanced-variable-changing.html#cb256-34" tabindex="-1"></a><span class="co">#&gt; 27       Porsche 914-2 26.0   4 120.3  91 4.43 2.140 16.70</span></span>
-<span id="cb256-35"><a href="advanced-variable-changing.html#cb256-35" tabindex="-1"></a><span class="co">#&gt; 28        Lotus Europa 30.4   4  95.1 113 3.77 1.513 16.90</span></span>
-<span id="cb256-36"><a href="advanced-variable-changing.html#cb256-36" tabindex="-1"></a><span class="co">#&gt; 29      Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.50</span></span>
-<span id="cb256-37"><a href="advanced-variable-changing.html#cb256-37" tabindex="-1"></a><span class="co">#&gt; 30        Ferrari Dino 19.7   6 145.0 175 3.62 2.770 15.50</span></span>
-<span id="cb256-38"><a href="advanced-variable-changing.html#cb256-38" tabindex="-1"></a><span class="co">#&gt; 31       Maserati Bora 15.0   8 301.0 335 3.54 3.570 14.60</span></span>
-<span id="cb256-39"><a href="advanced-variable-changing.html#cb256-39" tabindex="-1"></a><span class="co">#&gt; 32          Volvo 142E 21.4   4 121.0 109 4.11 2.780 18.60</span></span>
-<span id="cb256-40"><a href="advanced-variable-changing.html#cb256-40" tabindex="-1"></a><span class="co">#&gt;    vs am gear carb fuel_efficiency</span></span>
-<span id="cb256-41"><a href="advanced-variable-changing.html#cb256-41" tabindex="-1"></a><span class="co">#&gt; 1   0  1    4    4         Average</span></span>
-<span id="cb256-42"><a href="advanced-variable-changing.html#cb256-42" tabindex="-1"></a><span class="co">#&gt; 2   0  1    4    4         Average</span></span>
-<span id="cb256-43"><a href="advanced-variable-changing.html#cb256-43" tabindex="-1"></a><span class="co">#&gt; 3   1  1    4    1         Average</span></span>
-<span id="cb256-44"><a href="advanced-variable-changing.html#cb256-44" tabindex="-1"></a><span class="co">#&gt; 4   1  0    3    1         Average</span></span>
-<span id="cb256-45"><a href="advanced-variable-changing.html#cb256-45" tabindex="-1"></a><span class="co">#&gt; 5   0  0    3    2            Poor</span></span>
-<span id="cb256-46"><a href="advanced-variable-changing.html#cb256-46" tabindex="-1"></a><span class="co">#&gt; 6   1  0    3    1            Poor</span></span>
-<span id="cb256-47"><a href="advanced-variable-changing.html#cb256-47" tabindex="-1"></a><span class="co">#&gt; 7   0  0    3    4            Poor</span></span>
-<span id="cb256-48"><a href="advanced-variable-changing.html#cb256-48" tabindex="-1"></a><span class="co">#&gt; 8   1  0    4    2         Average</span></span>
-<span id="cb256-49"><a href="advanced-variable-changing.html#cb256-49" tabindex="-1"></a><span class="co">#&gt; 9   1  0    4    2         Average</span></span>
-<span id="cb256-50"><a href="advanced-variable-changing.html#cb256-50" tabindex="-1"></a><span class="co">#&gt; 10  1  0    4    4           Great</span></span>
-<span id="cb256-51"><a href="advanced-variable-changing.html#cb256-51" tabindex="-1"></a><span class="co">#&gt; 11  1  0    4    4            Poor</span></span>
-<span id="cb256-52"><a href="advanced-variable-changing.html#cb256-52" tabindex="-1"></a><span class="co">#&gt; 12  0  0    3    3            Poor</span></span>
-<span id="cb256-53"><a href="advanced-variable-changing.html#cb256-53" tabindex="-1"></a><span class="co">#&gt; 13  0  0    3    3            Poor</span></span>
-<span id="cb256-54"><a href="advanced-variable-changing.html#cb256-54" tabindex="-1"></a><span class="co">#&gt; 14  0  0    3    3            Poor</span></span>
-<span id="cb256-55"><a href="advanced-variable-changing.html#cb256-55" tabindex="-1"></a><span class="co">#&gt; 15  0  0    3    4            Poor</span></span>
-<span id="cb256-56"><a href="advanced-variable-changing.html#cb256-56" tabindex="-1"></a><span class="co">#&gt; 16  0  0    3    4            Poor</span></span>
-<span id="cb256-57"><a href="advanced-variable-changing.html#cb256-57" tabindex="-1"></a><span class="co">#&gt; 17  0  0    3    4            Poor</span></span>
-<span id="cb256-58"><a href="advanced-variable-changing.html#cb256-58" tabindex="-1"></a><span class="co">#&gt; 18  1  1    4    1           Great</span></span>
-<span id="cb256-59"><a href="advanced-variable-changing.html#cb256-59" tabindex="-1"></a><span class="co">#&gt; 19  1  1    4    2           Great</span></span>
-<span id="cb256-60"><a href="advanced-variable-changing.html#cb256-60" tabindex="-1"></a><span class="co">#&gt; 20  1  1    4    1           Great</span></span>
-<span id="cb256-61"><a href="advanced-variable-changing.html#cb256-61" tabindex="-1"></a><span class="co">#&gt; 21  1  0    3    1         Average</span></span>
-<span id="cb256-62"><a href="advanced-variable-changing.html#cb256-62" tabindex="-1"></a><span class="co">#&gt; 22  0  0    3    2            Poor</span></span>
-<span id="cb256-63"><a href="advanced-variable-changing.html#cb256-63" tabindex="-1"></a><span class="co">#&gt; 23  0  0    3    2            Poor</span></span>
-<span id="cb256-64"><a href="advanced-variable-changing.html#cb256-64" tabindex="-1"></a><span class="co">#&gt; 24  0  0    3    4            Poor</span></span>
-<span id="cb256-65"><a href="advanced-variable-changing.html#cb256-65" tabindex="-1"></a><span class="co">#&gt; 25  0  0    3    2           Great</span></span>
-<span id="cb256-66"><a href="advanced-variable-changing.html#cb256-66" tabindex="-1"></a><span class="co">#&gt; 26  1  1    4    1           Great</span></span>
-<span id="cb256-67"><a href="advanced-variable-changing.html#cb256-67" tabindex="-1"></a><span class="co">#&gt; 27  0  1    5    2           Great</span></span>
-<span id="cb256-68"><a href="advanced-variable-changing.html#cb256-68" tabindex="-1"></a><span class="co">#&gt; 28  1  1    5    2           Great</span></span>
-<span id="cb256-69"><a href="advanced-variable-changing.html#cb256-69" tabindex="-1"></a><span class="co">#&gt; 29  0  1    5    4            Poor</span></span>
-<span id="cb256-70"><a href="advanced-variable-changing.html#cb256-70" tabindex="-1"></a><span class="co">#&gt; 30  0  1    5    6           Great</span></span>
-<span id="cb256-71"><a href="advanced-variable-changing.html#cb256-71" tabindex="-1"></a><span class="co">#&gt; 31  0  1    5    8            Poor</span></span>
-<span id="cb256-72"><a href="advanced-variable-changing.html#cb256-72" tabindex="-1"></a><span class="co">#&gt; 32  1  1    4    2         Average</span></span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>fuel_efficiency <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when</a></span><span class="op">(</span></span>
+<span>    <span class="va">mpg</span> <span class="op">&lt;=</span> <span class="fl">19</span> <span class="op">~</span> <span class="st">"Poor"</span>,</span>
+<span>    <span class="va">mpg</span> <span class="op">&gt;=</span> <span class="fl">20</span> <span class="op">&amp;</span> <span class="va">mpg</span> <span class="op">&lt;=</span> <span class="fl">25</span> <span class="op">~</span> <span class="st">"Average"</span>,</span>
+<span>    <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"Great"</span></span>
+<span>  <span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                  model  mpg cyl  disp  hp drat    wt  qsec</span></span>
+<span><span class="co">#&gt; 1            Mazda RX4 21.0   6 160.0 110 3.90 2.620 16.46</span></span>
+<span><span class="co">#&gt; 2        Mazda RX4 Wag 21.0   6 160.0 110 3.90 2.875 17.02</span></span>
+<span><span class="co">#&gt; 3           Datsun 710 22.8   4 108.0  93 3.85 2.320 18.61</span></span>
+<span><span class="co">#&gt; 4       Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44</span></span>
+<span><span class="co">#&gt; 5    Hornet Sportabout 18.7   8 360.0 175 3.15 3.440 17.02</span></span>
+<span><span class="co">#&gt; 6              Valiant 18.1   6 225.0 105 2.76 3.460 20.22</span></span>
+<span><span class="co">#&gt; 7           Duster 360 14.3   8 360.0 245 3.21 3.570 15.84</span></span>
+<span><span class="co">#&gt; 8            Merc 240D 24.4   4 146.7  62 3.69 3.190 20.00</span></span>
+<span><span class="co">#&gt; 9             Merc 230 22.8   4 140.8  95 3.92 3.150 22.90</span></span>
+<span><span class="co">#&gt; 10            Merc 280 19.2   6 167.6 123 3.92 3.440 18.30</span></span>
+<span><span class="co">#&gt; 11           Merc 280C 17.8   6 167.6 123 3.92 3.440 18.90</span></span>
+<span><span class="co">#&gt; 12          Merc 450SE 16.4   8 275.8 180 3.07 4.070 17.40</span></span>
+<span><span class="co">#&gt; 13          Merc 450SL 17.3   8 275.8 180 3.07 3.730 17.60</span></span>
+<span><span class="co">#&gt; 14         Merc 450SLC 15.2   8 275.8 180 3.07 3.780 18.00</span></span>
+<span><span class="co">#&gt; 15  Cadillac Fleetwood 10.4   8 472.0 205 2.93 5.250 17.98</span></span>
+<span><span class="co">#&gt; 16 Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82</span></span>
+<span><span class="co">#&gt; 17   Chrysler Imperial 14.7   8 440.0 230 3.23 5.345 17.42</span></span>
+<span><span class="co">#&gt; 18            Fiat 128 32.4   4  78.7  66 4.08 2.200 19.47</span></span>
+<span><span class="co">#&gt; 19         Honda Civic 30.4   4  75.7  52 4.93 1.615 18.52</span></span>
+<span><span class="co">#&gt; 20      Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90</span></span>
+<span><span class="co">#&gt; 21       Toyota Corona 21.5   4 120.1  97 3.70 2.465 20.01</span></span>
+<span><span class="co">#&gt; 22    Dodge Challenger 15.5   8 318.0 150 2.76 3.520 16.87</span></span>
+<span><span class="co">#&gt; 23         AMC Javelin 15.2   8 304.0 150 3.15 3.435 17.30</span></span>
+<span><span class="co">#&gt; 24          Camaro Z28 13.3   8 350.0 245 3.73 3.840 15.41</span></span>
+<span><span class="co">#&gt; 25    Pontiac Firebird 19.2   8 400.0 175 3.08 3.845 17.05</span></span>
+<span><span class="co">#&gt; 26           Fiat X1-9 27.3   4  79.0  66 4.08 1.935 18.90</span></span>
+<span><span class="co">#&gt; 27       Porsche 914-2 26.0   4 120.3  91 4.43 2.140 16.70</span></span>
+<span><span class="co">#&gt; 28        Lotus Europa 30.4   4  95.1 113 3.77 1.513 16.90</span></span>
+<span><span class="co">#&gt; 29      Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.50</span></span>
+<span><span class="co">#&gt; 30        Ferrari Dino 19.7   6 145.0 175 3.62 2.770 15.50</span></span>
+<span><span class="co">#&gt; 31       Maserati Bora 15.0   8 301.0 335 3.54 3.570 14.60</span></span>
+<span><span class="co">#&gt; 32          Volvo 142E 21.4   4 121.0 109 4.11 2.780 18.60</span></span>
+<span><span class="co">#&gt;    vs am gear carb fuel_efficiency</span></span>
+<span><span class="co">#&gt; 1   0  1    4    4         Average</span></span>
+<span><span class="co">#&gt; 2   0  1    4    4         Average</span></span>
+<span><span class="co">#&gt; 3   1  1    4    1         Average</span></span>
+<span><span class="co">#&gt; 4   1  0    3    1         Average</span></span>
+<span><span class="co">#&gt; 5   0  0    3    2            Poor</span></span>
+<span><span class="co">#&gt; 6   1  0    3    1            Poor</span></span>
+<span><span class="co">#&gt; 7   0  0    3    4            Poor</span></span>
+<span><span class="co">#&gt; 8   1  0    4    2         Average</span></span>
+<span><span class="co">#&gt; 9   1  0    4    2         Average</span></span>
+<span><span class="co">#&gt; 10  1  0    4    4           Great</span></span>
+<span><span class="co">#&gt; 11  1  0    4    4            Poor</span></span>
+<span><span class="co">#&gt; 12  0  0    3    3            Poor</span></span>
+<span><span class="co">#&gt; 13  0  0    3    3            Poor</span></span>
+<span><span class="co">#&gt; 14  0  0    3    3            Poor</span></span>
+<span><span class="co">#&gt; 15  0  0    3    4            Poor</span></span>
+<span><span class="co">#&gt; 16  0  0    3    4            Poor</span></span>
+<span><span class="co">#&gt; 17  0  0    3    4            Poor</span></span>
+<span><span class="co">#&gt; 18  1  1    4    1           Great</span></span>
+<span><span class="co">#&gt; 19  1  1    4    2           Great</span></span>
+<span><span class="co">#&gt; 20  1  1    4    1           Great</span></span>
+<span><span class="co">#&gt; 21  1  0    3    1         Average</span></span>
+<span><span class="co">#&gt; 22  0  0    3    2            Poor</span></span>
+<span><span class="co">#&gt; 23  0  0    3    2            Poor</span></span>
+<span><span class="co">#&gt; 24  0  0    3    4            Poor</span></span>
+<span><span class="co">#&gt; 25  0  0    3    2           Great</span></span>
+<span><span class="co">#&gt; 26  1  1    4    1           Great</span></span>
+<span><span class="co">#&gt; 27  0  1    5    2           Great</span></span>
+<span><span class="co">#&gt; 28  1  1    5    2           Great</span></span>
+<span><span class="co">#&gt; 29  0  1    5    4            Poor</span></span>
+<span><span class="co">#&gt; 30  0  1    5    6           Great</span></span>
+<span><span class="co">#&gt; 31  0  1    5    8            Poor</span></span>
+<span><span class="co">#&gt; 32  1  1    4    2         Average</span></span></code></pre></div>
 <div class="rmdimportant">
 <p><strong>This creates a new variable called <code>fuel_efficiency</code>. Each observation’s value for this variable depends on its value for <code>mpg</code>, and differs based on different conditions.</strong></p>
 </div>
 <p>In more simple instances, <a href="advanced-variable-changing.html#ifelse">ifelse()</a> can be used:</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="advanced-variable-changing.html#cb257-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
-<span id="cb257-2"><a href="advanced-variable-changing.html#cb257-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">power =</span> <span class="fu">ifelse</span>(hp <span class="sc">&gt;=</span><span class="dv">200</span>, <span class="st">&quot;High&quot;</span>, <span class="st">&quot;Low&quot;</span>))</span>
-<span id="cb257-3"><a href="advanced-variable-changing.html#cb257-3" tabindex="-1"></a><span class="co">#&gt;                  model  mpg cyl  disp  hp drat    wt  qsec</span></span>
-<span id="cb257-4"><a href="advanced-variable-changing.html#cb257-4" tabindex="-1"></a><span class="co">#&gt; 1            Mazda RX4 21.0   6 160.0 110 3.90 2.620 16.46</span></span>
-<span id="cb257-5"><a href="advanced-variable-changing.html#cb257-5" tabindex="-1"></a><span class="co">#&gt; 2        Mazda RX4 Wag 21.0   6 160.0 110 3.90 2.875 17.02</span></span>
-<span id="cb257-6"><a href="advanced-variable-changing.html#cb257-6" tabindex="-1"></a><span class="co">#&gt; 3           Datsun 710 22.8   4 108.0  93 3.85 2.320 18.61</span></span>
-<span id="cb257-7"><a href="advanced-variable-changing.html#cb257-7" tabindex="-1"></a><span class="co">#&gt; 4       Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44</span></span>
-<span id="cb257-8"><a href="advanced-variable-changing.html#cb257-8" tabindex="-1"></a><span class="co">#&gt; 5    Hornet Sportabout 18.7   8 360.0 175 3.15 3.440 17.02</span></span>
-<span id="cb257-9"><a href="advanced-variable-changing.html#cb257-9" tabindex="-1"></a><span class="co">#&gt; 6              Valiant 18.1   6 225.0 105 2.76 3.460 20.22</span></span>
-<span id="cb257-10"><a href="advanced-variable-changing.html#cb257-10" tabindex="-1"></a><span class="co">#&gt; 7           Duster 360 14.3   8 360.0 245 3.21 3.570 15.84</span></span>
-<span id="cb257-11"><a href="advanced-variable-changing.html#cb257-11" tabindex="-1"></a><span class="co">#&gt; 8            Merc 240D 24.4   4 146.7  62 3.69 3.190 20.00</span></span>
-<span id="cb257-12"><a href="advanced-variable-changing.html#cb257-12" tabindex="-1"></a><span class="co">#&gt; 9             Merc 230 22.8   4 140.8  95 3.92 3.150 22.90</span></span>
-<span id="cb257-13"><a href="advanced-variable-changing.html#cb257-13" tabindex="-1"></a><span class="co">#&gt; 10            Merc 280 19.2   6 167.6 123 3.92 3.440 18.30</span></span>
-<span id="cb257-14"><a href="advanced-variable-changing.html#cb257-14" tabindex="-1"></a><span class="co">#&gt; 11           Merc 280C 17.8   6 167.6 123 3.92 3.440 18.90</span></span>
-<span id="cb257-15"><a href="advanced-variable-changing.html#cb257-15" tabindex="-1"></a><span class="co">#&gt; 12          Merc 450SE 16.4   8 275.8 180 3.07 4.070 17.40</span></span>
-<span id="cb257-16"><a href="advanced-variable-changing.html#cb257-16" tabindex="-1"></a><span class="co">#&gt; 13          Merc 450SL 17.3   8 275.8 180 3.07 3.730 17.60</span></span>
-<span id="cb257-17"><a href="advanced-variable-changing.html#cb257-17" tabindex="-1"></a><span class="co">#&gt; 14         Merc 450SLC 15.2   8 275.8 180 3.07 3.780 18.00</span></span>
-<span id="cb257-18"><a href="advanced-variable-changing.html#cb257-18" tabindex="-1"></a><span class="co">#&gt; 15  Cadillac Fleetwood 10.4   8 472.0 205 2.93 5.250 17.98</span></span>
-<span id="cb257-19"><a href="advanced-variable-changing.html#cb257-19" tabindex="-1"></a><span class="co">#&gt; 16 Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82</span></span>
-<span id="cb257-20"><a href="advanced-variable-changing.html#cb257-20" tabindex="-1"></a><span class="co">#&gt; 17   Chrysler Imperial 14.7   8 440.0 230 3.23 5.345 17.42</span></span>
-<span id="cb257-21"><a href="advanced-variable-changing.html#cb257-21" tabindex="-1"></a><span class="co">#&gt; 18            Fiat 128 32.4   4  78.7  66 4.08 2.200 19.47</span></span>
-<span id="cb257-22"><a href="advanced-variable-changing.html#cb257-22" tabindex="-1"></a><span class="co">#&gt; 19         Honda Civic 30.4   4  75.7  52 4.93 1.615 18.52</span></span>
-<span id="cb257-23"><a href="advanced-variable-changing.html#cb257-23" tabindex="-1"></a><span class="co">#&gt; 20      Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90</span></span>
-<span id="cb257-24"><a href="advanced-variable-changing.html#cb257-24" tabindex="-1"></a><span class="co">#&gt; 21       Toyota Corona 21.5   4 120.1  97 3.70 2.465 20.01</span></span>
-<span id="cb257-25"><a href="advanced-variable-changing.html#cb257-25" tabindex="-1"></a><span class="co">#&gt; 22    Dodge Challenger 15.5   8 318.0 150 2.76 3.520 16.87</span></span>
-<span id="cb257-26"><a href="advanced-variable-changing.html#cb257-26" tabindex="-1"></a><span class="co">#&gt; 23         AMC Javelin 15.2   8 304.0 150 3.15 3.435 17.30</span></span>
-<span id="cb257-27"><a href="advanced-variable-changing.html#cb257-27" tabindex="-1"></a><span class="co">#&gt; 24          Camaro Z28 13.3   8 350.0 245 3.73 3.840 15.41</span></span>
-<span id="cb257-28"><a href="advanced-variable-changing.html#cb257-28" tabindex="-1"></a><span class="co">#&gt; 25    Pontiac Firebird 19.2   8 400.0 175 3.08 3.845 17.05</span></span>
-<span id="cb257-29"><a href="advanced-variable-changing.html#cb257-29" tabindex="-1"></a><span class="co">#&gt; 26           Fiat X1-9 27.3   4  79.0  66 4.08 1.935 18.90</span></span>
-<span id="cb257-30"><a href="advanced-variable-changing.html#cb257-30" tabindex="-1"></a><span class="co">#&gt; 27       Porsche 914-2 26.0   4 120.3  91 4.43 2.140 16.70</span></span>
-<span id="cb257-31"><a href="advanced-variable-changing.html#cb257-31" tabindex="-1"></a><span class="co">#&gt; 28        Lotus Europa 30.4   4  95.1 113 3.77 1.513 16.90</span></span>
-<span id="cb257-32"><a href="advanced-variable-changing.html#cb257-32" tabindex="-1"></a><span class="co">#&gt; 29      Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.50</span></span>
-<span id="cb257-33"><a href="advanced-variable-changing.html#cb257-33" tabindex="-1"></a><span class="co">#&gt; 30        Ferrari Dino 19.7   6 145.0 175 3.62 2.770 15.50</span></span>
-<span id="cb257-34"><a href="advanced-variable-changing.html#cb257-34" tabindex="-1"></a><span class="co">#&gt; 31       Maserati Bora 15.0   8 301.0 335 3.54 3.570 14.60</span></span>
-<span id="cb257-35"><a href="advanced-variable-changing.html#cb257-35" tabindex="-1"></a><span class="co">#&gt; 32          Volvo 142E 21.4   4 121.0 109 4.11 2.780 18.60</span></span>
-<span id="cb257-36"><a href="advanced-variable-changing.html#cb257-36" tabindex="-1"></a><span class="co">#&gt;    vs am gear carb power</span></span>
-<span id="cb257-37"><a href="advanced-variable-changing.html#cb257-37" tabindex="-1"></a><span class="co">#&gt; 1   0  1    4    4   Low</span></span>
-<span id="cb257-38"><a href="advanced-variable-changing.html#cb257-38" tabindex="-1"></a><span class="co">#&gt; 2   0  1    4    4   Low</span></span>
-<span id="cb257-39"><a href="advanced-variable-changing.html#cb257-39" tabindex="-1"></a><span class="co">#&gt; 3   1  1    4    1   Low</span></span>
-<span id="cb257-40"><a href="advanced-variable-changing.html#cb257-40" tabindex="-1"></a><span class="co">#&gt; 4   1  0    3    1   Low</span></span>
-<span id="cb257-41"><a href="advanced-variable-changing.html#cb257-41" tabindex="-1"></a><span class="co">#&gt; 5   0  0    3    2   Low</span></span>
-<span id="cb257-42"><a href="advanced-variable-changing.html#cb257-42" tabindex="-1"></a><span class="co">#&gt; 6   1  0    3    1   Low</span></span>
-<span id="cb257-43"><a href="advanced-variable-changing.html#cb257-43" tabindex="-1"></a><span class="co">#&gt; 7   0  0    3    4  High</span></span>
-<span id="cb257-44"><a href="advanced-variable-changing.html#cb257-44" tabindex="-1"></a><span class="co">#&gt; 8   1  0    4    2   Low</span></span>
-<span id="cb257-45"><a href="advanced-variable-changing.html#cb257-45" tabindex="-1"></a><span class="co">#&gt; 9   1  0    4    2   Low</span></span>
-<span id="cb257-46"><a href="advanced-variable-changing.html#cb257-46" tabindex="-1"></a><span class="co">#&gt; 10  1  0    4    4   Low</span></span>
-<span id="cb257-47"><a href="advanced-variable-changing.html#cb257-47" tabindex="-1"></a><span class="co">#&gt; 11  1  0    4    4   Low</span></span>
-<span id="cb257-48"><a href="advanced-variable-changing.html#cb257-48" tabindex="-1"></a><span class="co">#&gt; 12  0  0    3    3   Low</span></span>
-<span id="cb257-49"><a href="advanced-variable-changing.html#cb257-49" tabindex="-1"></a><span class="co">#&gt; 13  0  0    3    3   Low</span></span>
-<span id="cb257-50"><a href="advanced-variable-changing.html#cb257-50" tabindex="-1"></a><span class="co">#&gt; 14  0  0    3    3   Low</span></span>
-<span id="cb257-51"><a href="advanced-variable-changing.html#cb257-51" tabindex="-1"></a><span class="co">#&gt; 15  0  0    3    4  High</span></span>
-<span id="cb257-52"><a href="advanced-variable-changing.html#cb257-52" tabindex="-1"></a><span class="co">#&gt; 16  0  0    3    4  High</span></span>
-<span id="cb257-53"><a href="advanced-variable-changing.html#cb257-53" tabindex="-1"></a><span class="co">#&gt; 17  0  0    3    4  High</span></span>
-<span id="cb257-54"><a href="advanced-variable-changing.html#cb257-54" tabindex="-1"></a><span class="co">#&gt; 18  1  1    4    1   Low</span></span>
-<span id="cb257-55"><a href="advanced-variable-changing.html#cb257-55" tabindex="-1"></a><span class="co">#&gt; 19  1  1    4    2   Low</span></span>
-<span id="cb257-56"><a href="advanced-variable-changing.html#cb257-56" tabindex="-1"></a><span class="co">#&gt; 20  1  1    4    1   Low</span></span>
-<span id="cb257-57"><a href="advanced-variable-changing.html#cb257-57" tabindex="-1"></a><span class="co">#&gt; 21  1  0    3    1   Low</span></span>
-<span id="cb257-58"><a href="advanced-variable-changing.html#cb257-58" tabindex="-1"></a><span class="co">#&gt; 22  0  0    3    2   Low</span></span>
-<span id="cb257-59"><a href="advanced-variable-changing.html#cb257-59" tabindex="-1"></a><span class="co">#&gt; 23  0  0    3    2   Low</span></span>
-<span id="cb257-60"><a href="advanced-variable-changing.html#cb257-60" tabindex="-1"></a><span class="co">#&gt; 24  0  0    3    4  High</span></span>
-<span id="cb257-61"><a href="advanced-variable-changing.html#cb257-61" tabindex="-1"></a><span class="co">#&gt; 25  0  0    3    2   Low</span></span>
-<span id="cb257-62"><a href="advanced-variable-changing.html#cb257-62" tabindex="-1"></a><span class="co">#&gt; 26  1  1    4    1   Low</span></span>
-<span id="cb257-63"><a href="advanced-variable-changing.html#cb257-63" tabindex="-1"></a><span class="co">#&gt; 27  0  1    5    2   Low</span></span>
-<span id="cb257-64"><a href="advanced-variable-changing.html#cb257-64" tabindex="-1"></a><span class="co">#&gt; 28  1  1    5    2   Low</span></span>
-<span id="cb257-65"><a href="advanced-variable-changing.html#cb257-65" tabindex="-1"></a><span class="co">#&gt; 29  0  1    5    4  High</span></span>
-<span id="cb257-66"><a href="advanced-variable-changing.html#cb257-66" tabindex="-1"></a><span class="co">#&gt; 30  0  1    5    6   Low</span></span>
-<span id="cb257-67"><a href="advanced-variable-changing.html#cb257-67" tabindex="-1"></a><span class="co">#&gt; 31  0  1    5    8  High</span></span>
-<span id="cb257-68"><a href="advanced-variable-changing.html#cb257-68" tabindex="-1"></a><span class="co">#&gt; 32  1  1    4    2   Low</span></span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">hp</span> <span class="op">&gt;=</span><span class="fl">200</span>, <span class="st">"High"</span>, <span class="st">"Low"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                  model  mpg cyl  disp  hp drat    wt  qsec</span></span>
+<span><span class="co">#&gt; 1            Mazda RX4 21.0   6 160.0 110 3.90 2.620 16.46</span></span>
+<span><span class="co">#&gt; 2        Mazda RX4 Wag 21.0   6 160.0 110 3.90 2.875 17.02</span></span>
+<span><span class="co">#&gt; 3           Datsun 710 22.8   4 108.0  93 3.85 2.320 18.61</span></span>
+<span><span class="co">#&gt; 4       Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44</span></span>
+<span><span class="co">#&gt; 5    Hornet Sportabout 18.7   8 360.0 175 3.15 3.440 17.02</span></span>
+<span><span class="co">#&gt; 6              Valiant 18.1   6 225.0 105 2.76 3.460 20.22</span></span>
+<span><span class="co">#&gt; 7           Duster 360 14.3   8 360.0 245 3.21 3.570 15.84</span></span>
+<span><span class="co">#&gt; 8            Merc 240D 24.4   4 146.7  62 3.69 3.190 20.00</span></span>
+<span><span class="co">#&gt; 9             Merc 230 22.8   4 140.8  95 3.92 3.150 22.90</span></span>
+<span><span class="co">#&gt; 10            Merc 280 19.2   6 167.6 123 3.92 3.440 18.30</span></span>
+<span><span class="co">#&gt; 11           Merc 280C 17.8   6 167.6 123 3.92 3.440 18.90</span></span>
+<span><span class="co">#&gt; 12          Merc 450SE 16.4   8 275.8 180 3.07 4.070 17.40</span></span>
+<span><span class="co">#&gt; 13          Merc 450SL 17.3   8 275.8 180 3.07 3.730 17.60</span></span>
+<span><span class="co">#&gt; 14         Merc 450SLC 15.2   8 275.8 180 3.07 3.780 18.00</span></span>
+<span><span class="co">#&gt; 15  Cadillac Fleetwood 10.4   8 472.0 205 2.93 5.250 17.98</span></span>
+<span><span class="co">#&gt; 16 Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82</span></span>
+<span><span class="co">#&gt; 17   Chrysler Imperial 14.7   8 440.0 230 3.23 5.345 17.42</span></span>
+<span><span class="co">#&gt; 18            Fiat 128 32.4   4  78.7  66 4.08 2.200 19.47</span></span>
+<span><span class="co">#&gt; 19         Honda Civic 30.4   4  75.7  52 4.93 1.615 18.52</span></span>
+<span><span class="co">#&gt; 20      Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90</span></span>
+<span><span class="co">#&gt; 21       Toyota Corona 21.5   4 120.1  97 3.70 2.465 20.01</span></span>
+<span><span class="co">#&gt; 22    Dodge Challenger 15.5   8 318.0 150 2.76 3.520 16.87</span></span>
+<span><span class="co">#&gt; 23         AMC Javelin 15.2   8 304.0 150 3.15 3.435 17.30</span></span>
+<span><span class="co">#&gt; 24          Camaro Z28 13.3   8 350.0 245 3.73 3.840 15.41</span></span>
+<span><span class="co">#&gt; 25    Pontiac Firebird 19.2   8 400.0 175 3.08 3.845 17.05</span></span>
+<span><span class="co">#&gt; 26           Fiat X1-9 27.3   4  79.0  66 4.08 1.935 18.90</span></span>
+<span><span class="co">#&gt; 27       Porsche 914-2 26.0   4 120.3  91 4.43 2.140 16.70</span></span>
+<span><span class="co">#&gt; 28        Lotus Europa 30.4   4  95.1 113 3.77 1.513 16.90</span></span>
+<span><span class="co">#&gt; 29      Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.50</span></span>
+<span><span class="co">#&gt; 30        Ferrari Dino 19.7   6 145.0 175 3.62 2.770 15.50</span></span>
+<span><span class="co">#&gt; 31       Maserati Bora 15.0   8 301.0 335 3.54 3.570 14.60</span></span>
+<span><span class="co">#&gt; 32          Volvo 142E 21.4   4 121.0 109 4.11 2.780 18.60</span></span>
+<span><span class="co">#&gt;    vs am gear carb power</span></span>
+<span><span class="co">#&gt; 1   0  1    4    4   Low</span></span>
+<span><span class="co">#&gt; 2   0  1    4    4   Low</span></span>
+<span><span class="co">#&gt; 3   1  1    4    1   Low</span></span>
+<span><span class="co">#&gt; 4   1  0    3    1   Low</span></span>
+<span><span class="co">#&gt; 5   0  0    3    2   Low</span></span>
+<span><span class="co">#&gt; 6   1  0    3    1   Low</span></span>
+<span><span class="co">#&gt; 7   0  0    3    4  High</span></span>
+<span><span class="co">#&gt; 8   1  0    4    2   Low</span></span>
+<span><span class="co">#&gt; 9   1  0    4    2   Low</span></span>
+<span><span class="co">#&gt; 10  1  0    4    4   Low</span></span>
+<span><span class="co">#&gt; 11  1  0    4    4   Low</span></span>
+<span><span class="co">#&gt; 12  0  0    3    3   Low</span></span>
+<span><span class="co">#&gt; 13  0  0    3    3   Low</span></span>
+<span><span class="co">#&gt; 14  0  0    3    3   Low</span></span>
+<span><span class="co">#&gt; 15  0  0    3    4  High</span></span>
+<span><span class="co">#&gt; 16  0  0    3    4  High</span></span>
+<span><span class="co">#&gt; 17  0  0    3    4  High</span></span>
+<span><span class="co">#&gt; 18  1  1    4    1   Low</span></span>
+<span><span class="co">#&gt; 19  1  1    4    2   Low</span></span>
+<span><span class="co">#&gt; 20  1  1    4    1   Low</span></span>
+<span><span class="co">#&gt; 21  1  0    3    1   Low</span></span>
+<span><span class="co">#&gt; 22  0  0    3    2   Low</span></span>
+<span><span class="co">#&gt; 23  0  0    3    2   Low</span></span>
+<span><span class="co">#&gt; 24  0  0    3    4  High</span></span>
+<span><span class="co">#&gt; 25  0  0    3    2   Low</span></span>
+<span><span class="co">#&gt; 26  1  1    4    1   Low</span></span>
+<span><span class="co">#&gt; 27  0  1    5    2   Low</span></span>
+<span><span class="co">#&gt; 28  1  1    5    2   Low</span></span>
+<span><span class="co">#&gt; 29  0  1    5    4  High</span></span>
+<span><span class="co">#&gt; 30  0  1    5    6   Low</span></span>
+<span><span class="co">#&gt; 31  0  1    5    8  High</span></span>
+<span><span class="co">#&gt; 32  1  1    4    2   Low</span></span></code></pre></div>
 <div class="rmdimportant">
 <p><strong>This creates a new variable called <code>power</code>. Each observation’s value for this variable depends on its value for <code>hp</code>. If <code>hp</code> is greater than 200, it is “High” powered, if lower than 200 then “Low” powered.</strong></p>
 </div>
 </div>
 </div>
 </div>
-<div id="conditional-statements" class="section level2" number="16.2">
-<h2><span class="header-section-number">16.2</span> Conditional statements</h2>
+<div id="conditional-statements" class="section level2" number="15.2">
+<h2>
+<span class="header-section-number">15.2</span> Conditional statements<a class="anchor" aria-label="anchor" href="#conditional-statements"><i class="fas fa-link"></i></a>
+</h2>
 <p>The idea of mutating variables based on conditional values brings up the larger idea of <em>conditional statements</em>. These are powerful programming tools that help us manipulate data based on conditions, also known as <em>“if/else statements”</em>.</p>
 <p>Sometimes, you will want your code to perform different actions depending on something’s value. In these circumstances, it is useful to implement <code>if...else</code> statements. <code>if</code> statements work as such:</p>
 <p><strong>if</strong> some test/condition evaluates to <code>TRUE</code>, execute some specific code.</p>
 <p>Other tests/conditions can be appended with <code>else</code> statements, which specify what to do when the original test/condition evaluates to <code>FALSE</code> and is based on subsequent tests/conditions. The syntax of a basic <code>if</code> statement is as follows:</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="advanced-variable-changing.html#cb258-1" tabindex="-1"></a><span class="cf">if</span>(some test<span class="sc">/</span>condition to evaluate) {</span>
-<span id="cb258-2"><a href="advanced-variable-changing.html#cb258-2" tabindex="-1"></a>  code <span class="cf">for</span> what to do <span class="cf">if</span> that test<span class="sc">/</span>condition evaluates to true</span>
-<span id="cb258-3"><a href="advanced-variable-changing.html#cb258-3" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="advanced-variable-changing.html#cb226-1" tabindex="-1"></a><span class="cf">if</span>(some test<span class="sc">/</span>condition to evaluate) {</span>
+<span id="cb226-2"><a href="advanced-variable-changing.html#cb226-2" tabindex="-1"></a>  code <span class="cf">for</span> what to do <span class="cf">if</span> that test<span class="sc">/</span>condition evaluates to true</span>
+<span id="cb226-3"><a href="advanced-variable-changing.html#cb226-3" tabindex="-1"></a>}</span></code></pre></div>
 <p>For example:</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="advanced-variable-changing.html#cb259-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">4</span></span>
-<span id="cb259-2"><a href="advanced-variable-changing.html#cb259-2" tabindex="-1"></a></span>
-<span id="cb259-3"><a href="advanced-variable-changing.html#cb259-3" tabindex="-1"></a><span class="cf">if</span>(<span class="dv">3</span> <span class="sc">&lt;</span> x) {</span>
-<span id="cb259-4"><a href="advanced-variable-changing.html#cb259-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;The condition evaluated TRUE&quot;</span>)</span>
-<span id="cb259-5"><a href="advanced-variable-changing.html#cb259-5" tabindex="-1"></a>}</span>
-<span id="cb259-6"><a href="advanced-variable-changing.html#cb259-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;The condition evaluated TRUE&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fl">4</span></span>
+<span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="fl">3</span> <span class="op">&lt;</span> <span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"The condition evaluated TRUE"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co">#&gt; [1] "The condition evaluated TRUE"</span></span></code></pre></div>
 <p><code>x</code> was set equal to 4. R evaluates the test <code>3 &lt; x</code> in the <code>if</code> statement, here equivalent to <code>3 &lt; 4</code>, which evaluates to <code>TRUE</code>. Since the <code>if</code> condition evaluates <code>TRUE</code>, it runs the code in the curly brackets.</p>
 <p><code>x</code> may not always be 4 though. What if <code>x</code> was not 4? What if you do not know what <code>x</code> is? If the test in the <code>if</code> statement evaluates to <code>FALSE</code>, nothing happens. If nothing at all happens, you may not know if there was an error in the code or the test just evaluated to <code>FALSE</code>. Considering this, it is always good practice to set up an alternative for when the test evaluates to <code>FALSE</code>. That is where <code>else</code> statements come in.</p>
 <p>The code below will change <code>x</code> to be a random value, so its actual value will be unknown.</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="advanced-variable-changing.html#cb260-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), <span class="dv">1</span>) <span class="co"># From the values 1 to 6, sample 1 value</span></span>
-<span id="cb260-2"><a href="advanced-variable-changing.html#cb260-2" tabindex="-1"></a></span>
-<span id="cb260-3"><a href="advanced-variable-changing.html#cb260-3" tabindex="-1"></a><span class="cf">if</span>(<span class="dv">3</span> <span class="sc">&lt;</span> x) {</span>
-<span id="cb260-4"><a href="advanced-variable-changing.html#cb260-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;The condition evaluated TRUE&quot;</span>)</span>
-<span id="cb260-5"><a href="advanced-variable-changing.html#cb260-5" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb260-6"><a href="advanced-variable-changing.html#cb260-6" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;the condition evaluated FALSE&quot;</span>)</span>
-<span id="cb260-7"><a href="advanced-variable-changing.html#cb260-7" tabindex="-1"></a>}</span>
-<span id="cb260-8"><a href="advanced-variable-changing.html#cb260-8" tabindex="-1"></a><span class="co">#&gt; [1] &quot;the condition evaluated FALSE&quot;</span></span>
-<span id="cb260-9"><a href="advanced-variable-changing.html#cb260-9" tabindex="-1"></a>x</span>
-<span id="cb260-10"><a href="advanced-variable-changing.html#cb260-10" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span> <span class="co"># From the values 1 to 6, sample 1 value</span></span>
+<span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="fl">3</span> <span class="op">&lt;</span> <span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"The condition evaluated TRUE"</span><span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"the condition evaluated FALSE"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co">#&gt; [1] "The condition evaluated TRUE"</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] 6</span></span></code></pre></div>
 <p>This code specifies what to do depending on whether the test evaluates to <code>TRUE</code> or if it evaluates to <code>FALSE</code>.</p>
 <p>You can get more specific and link several conditions together. You may not want just 2 options – e.g., something to do if a test is <code>TRUE</code> and something else done in <strong>all</strong> other cases. Instead of using <code>else</code>, you use <code>else if()</code> and specify another test.</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="advanced-variable-changing.html#cb261-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), <span class="dv">1</span>)</span>
-<span id="cb261-2"><a href="advanced-variable-changing.html#cb261-2" tabindex="-1"></a></span>
-<span id="cb261-3"><a href="advanced-variable-changing.html#cb261-3" tabindex="-1"></a><span class="cf">if</span>(<span class="dv">4</span> <span class="sc">&lt;</span> x) {</span>
-<span id="cb261-4"><a href="advanced-variable-changing.html#cb261-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;The first condition evaluated TRUE&quot;</span>)</span>
-<span id="cb261-5"><a href="advanced-variable-changing.html#cb261-5" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (<span class="dv">2</span> <span class="sc">&lt;</span> x <span class="sc">&amp;</span> x <span class="sc">&lt;</span> <span class="dv">5</span>) { </span>
-<span id="cb261-6"><a href="advanced-variable-changing.html#cb261-6" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;The second condition evaluated TRUE&quot;</span>)</span>
-<span id="cb261-7"><a href="advanced-variable-changing.html#cb261-7" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb261-8"><a href="advanced-variable-changing.html#cb261-8" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Neither the first or second condition evaluated TRUE.&quot;</span>)</span>
-<span id="cb261-9"><a href="advanced-variable-changing.html#cb261-9" tabindex="-1"></a>}</span>
-<span id="cb261-10"><a href="advanced-variable-changing.html#cb261-10" tabindex="-1"></a><span class="co">#&gt; [1] &quot;The first condition evaluated TRUE&quot;</span></span>
-<span id="cb261-11"><a href="advanced-variable-changing.html#cb261-11" tabindex="-1"></a>x</span>
-<span id="cb261-12"><a href="advanced-variable-changing.html#cb261-12" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span></code></pre></div>
-<p>Writing <code>if</code> statements like this is most useful when the code you want to run executes a function. As you will note above, in all instances the <code>print()</code> function was the code being executed (what is in the curly brackets). An infinite number of <code>if</code> conditions can be chained together in an <code>if...else</code> chain.</p>
+<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="fl">4</span> <span class="op">&lt;</span> <span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"The first condition evaluated TRUE"</span><span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fl">2</span> <span class="op">&lt;</span> <span class="va">x</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">5</span><span class="op">)</span> <span class="op">{</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"The second condition evaluated TRUE"</span><span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Neither the first or second condition evaluated TRUE."</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co">#&gt; [1] "The second condition evaluated TRUE"</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<p>Writing <code>if</code> statements like this is most useful when the code you want to run executes a function. As you will note above, in all instances the <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> function was the code being executed (what is in the curly brackets). An infinite number of <code>if</code> conditions can be chained together in an <code>if...else</code> chain.</p>
 <p>There are two alternative ways to write <code>if...else</code> statements.</p>
-<div id="ifelse" class="section level3" number="16.2.1">
-<h3><span class="header-section-number">16.2.1</span> ifelse()</h3>
-<p><code>ifelse()</code> is most useful when you need to <em>return values</em> rather than execute some other code/function (like printing a character string).</p>
-<p><code>ifelse()</code> statements take the form:</p>
+<div id="ifelse" class="section level3" number="15.2.1">
+<h3>
+<span class="header-section-number">15.2.1</span> ifelse()<a class="anchor" aria-label="anchor" href="#ifelse"><i class="fas fa-link"></i></a>
+</h3>
+<p><code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> is most useful when you need to <em>return values</em> rather than execute some other code/function (like printing a character string).</p>
+<p><code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> statements take the form:</p>
 <p><code>ifelse(test, the value to return if the test evaluates *TRUE*, the value to return if the test evaluates *FALSE*)</code></p>
-<p>Multiple <code>ifelse()</code> statements can be chained together, akin to an <code>else if</code> by adding a nested <code>ifelse()</code> call in place of the <code>FALSE</code> argument.</p>
+<p>Multiple <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> statements can be chained together, akin to an <code>else if</code> by adding a nested <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> call in place of the <code>FALSE</code> argument.</p>
 <p>The examples below demonstrates this:</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="advanced-variable-changing.html#cb262-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), <span class="dv">1</span>)</span>
-<span id="cb262-2"><a href="advanced-variable-changing.html#cb262-2" tabindex="-1"></a></span>
-<span id="cb262-3"><a href="advanced-variable-changing.html#cb262-3" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="dv">4</span> <span class="sc">&lt;</span> x, <span class="st">&quot;The first condition evaluated true.&quot;</span>,</span>
-<span id="cb262-4"><a href="advanced-variable-changing.html#cb262-4" tabindex="-1"></a>       <span class="fu">ifelse</span>(<span class="dv">2</span> <span class="sc">&lt;</span> x <span class="sc">&amp;</span> x <span class="sc">&lt;</span> <span class="dv">5</span>, <span class="st">&quot;The second condition evaluated true.&quot;</span>, </span>
-<span id="cb262-5"><a href="advanced-variable-changing.html#cb262-5" tabindex="-1"></a>              <span class="st">&quot;Neither the first or second condition evaluated true.&quot;</span>))</span>
-<span id="cb262-6"><a href="advanced-variable-changing.html#cb262-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;The first condition evaluated true.&quot;</span></span>
-<span id="cb262-7"><a href="advanced-variable-changing.html#cb262-7" tabindex="-1"></a>x</span>
-<span id="cb262-8"><a href="advanced-variable-changing.html#cb262-8" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fl">4</span> <span class="op">&lt;</span> <span class="va">x</span>, <span class="st">"The first condition evaluated true."</span>,</span>
+<span>       <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">&lt;</span> <span class="va">x</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">5</span>, <span class="st">"The second condition evaluated true."</span>, </span>
+<span>              <span class="st">"Neither the first or second condition evaluated true."</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Neither the first or second condition evaluated true."</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 </div>
-<div id="case_when-1" class="section level3" number="16.2.2">
-<h3><span class="header-section-number">16.2.2</span> case_when()</h3>
-<p>As shown above, <code>case_when()</code> can be used in combination with <code>mutate()</code> or on its own:</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="advanced-variable-changing.html#cb263-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>), <span class="dv">1</span>)</span>
-<span id="cb263-2"><a href="advanced-variable-changing.html#cb263-2" tabindex="-1"></a></span>
-<span id="cb263-3"><a href="advanced-variable-changing.html#cb263-3" tabindex="-1"></a><span class="fu">case_when</span>(</span>
-<span id="cb263-4"><a href="advanced-variable-changing.html#cb263-4" tabindex="-1"></a>  x <span class="sc">&lt;</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">&quot;The first condition evaluated true.&quot;</span>,</span>
-<span id="cb263-5"><a href="advanced-variable-changing.html#cb263-5" tabindex="-1"></a>  <span class="dv">2</span> <span class="sc">&lt;</span> x <span class="sc">&amp;</span> x <span class="sc">&lt;</span> <span class="dv">5</span> <span class="sc">~</span> <span class="st">&quot;The second condition evaluated true.&quot;</span>,</span>
-<span id="cb263-6"><a href="advanced-variable-changing.html#cb263-6" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Neither the first or second condition evaluated true.&quot;</span></span>
-<span id="cb263-7"><a href="advanced-variable-changing.html#cb263-7" tabindex="-1"></a>)</span>
-<span id="cb263-8"><a href="advanced-variable-changing.html#cb263-8" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Neither the first or second condition evaluated true.&quot;</span></span>
-<span id="cb263-9"><a href="advanced-variable-changing.html#cb263-9" tabindex="-1"></a>x</span>
-<span id="cb263-10"><a href="advanced-variable-changing.html#cb263-10" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span></code></pre></div>
+<div id="case_when-1" class="section level3" number="15.2.2">
+<h3>
+<span class="header-section-number">15.2.2</span> case_when()<a class="anchor" aria-label="anchor" href="#case_when-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>As shown above, <code><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when()</a></code> can be used in combination with <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> or on its own:</p>
+<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when</a></span><span class="op">(</span></span>
+<span>  <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">4</span> <span class="op">~</span> <span class="st">"The first condition evaluated true."</span>,</span>
+<span>  <span class="fl">2</span> <span class="op">&lt;</span> <span class="va">x</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">5</span> <span class="op">~</span> <span class="st">"The second condition evaluated true."</span>,</span>
+<span>  <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"Neither the first or second condition evaluated true."</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Neither the first or second condition evaluated true."</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] 6</span></span></code></pre></div>
 <p><strong>In sum:</strong></p>
 <ul>
 <li>Traditional <code>if...else</code> statements are useful when you need the result to execute some code.</li>
-<li><code>ifelse()</code> and <code>case_when()</code> are useful when you need the result to be a specific value and are often used to create new data or variables.</li>
+<li>
+<code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when()</a></code> are useful when you need the result to be a specific value and are often used to create new data or variables.</li>
 </ul>
 </div>
 </div>
-<div id="change-variable-types" class="section level2" number="16.3">
-<h2><span class="header-section-number">16.3</span> Change Variable Types</h2>
-<p>One of the ways in which it <em>is</em> appropriate to modify a variable is when you need to change the <em>type</em> of data it contains. In R, you can change data type by using the <code>as.*</code> function. For example, <code>as.logical()</code> changes the passed values to be <em>logical.</em> The one exception is that when changing something to a <em>factor</em>, you should use <code>factor()</code> (more on this below.)</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="advanced-variable-changing.html#cb264-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
-<span id="cb264-2"><a href="advanced-variable-changing.html#cb264-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mpg =</span> <span class="fu">as.character</span>(mpg),</span>
-<span id="cb264-3"><a href="advanced-variable-changing.html#cb264-3" tabindex="-1"></a>         <span class="at">cyl =</span> <span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span></span>
-<span id="cb264-4"><a href="advanced-variable-changing.html#cb264-4" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span>
-<span id="cb264-5"><a href="advanced-variable-changing.html#cb264-5" tabindex="-1"></a><span class="co">#&gt; Rows: 32</span></span>
-<span id="cb264-6"><a href="advanced-variable-changing.html#cb264-6" tabindex="-1"></a><span class="co">#&gt; Columns: 12</span></span>
-<span id="cb264-7"><a href="advanced-variable-changing.html#cb264-7" tabindex="-1"></a><span class="co">#&gt; $ model &lt;chr&gt; &quot;Mazda RX4&quot;, &quot;Mazda RX4 Wag&quot;, &quot;Datsun 710&quot;, …</span></span>
-<span id="cb264-8"><a href="advanced-variable-changing.html#cb264-8" tabindex="-1"></a><span class="co">#&gt; $ mpg   &lt;chr&gt; &quot;21&quot;, &quot;21&quot;, &quot;22.8&quot;, &quot;21.4&quot;, &quot;18.7&quot;, &quot;18.1&quot;, …</span></span>
-<span id="cb264-9"><a href="advanced-variable-changing.html#cb264-9" tabindex="-1"></a><span class="co">#&gt; $ cyl   &lt;fct&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8,…</span></span>
-<span id="cb264-10"><a href="advanced-variable-changing.html#cb264-10" tabindex="-1"></a><span class="co">#&gt; $ disp  &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 36…</span></span>
-<span id="cb264-11"><a href="advanced-variable-changing.html#cb264-11" tabindex="-1"></a><span class="co">#&gt; $ hp    &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 12…</span></span>
-<span id="cb264-12"><a href="advanced-variable-changing.html#cb264-12" tabindex="-1"></a><span class="co">#&gt; $ drat  &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.…</span></span>
-<span id="cb264-13"><a href="advanced-variable-changing.html#cb264-13" tabindex="-1"></a><span class="co">#&gt; $ wt    &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.…</span></span>
-<span id="cb264-14"><a href="advanced-variable-changing.html#cb264-14" tabindex="-1"></a><span class="co">#&gt; $ qsec  &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15…</span></span>
-<span id="cb264-15"><a href="advanced-variable-changing.html#cb264-15" tabindex="-1"></a><span class="co">#&gt; $ vs    &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,…</span></span>
-<span id="cb264-16"><a href="advanced-variable-changing.html#cb264-16" tabindex="-1"></a><span class="co">#&gt; $ am    &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
-<span id="cb264-17"><a href="advanced-variable-changing.html#cb264-17" tabindex="-1"></a><span class="co">#&gt; $ gear  &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3,…</span></span>
-<span id="cb264-18"><a href="advanced-variable-changing.html#cb264-18" tabindex="-1"></a><span class="co">#&gt; $ carb  &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4,…</span></span></code></pre></div>
+<div id="change-variable-types" class="section level2" number="15.3">
+<h2>
+<span class="header-section-number">15.3</span> Change Variable Types<a class="anchor" aria-label="anchor" href="#change-variable-types"><i class="fas fa-link"></i></a>
+</h2>
+<p>One of the ways in which it <em>is</em> appropriate to modify a variable is when you need to change the <em>type</em> of data it contains. In R, you can change data type by using the <code>as.*</code> function. For example, <code><a href="https://rdrr.io/r/base/logical.html">as.logical()</a></code> changes the passed values to be <em>logical.</em> The one exception is that when changing something to a <em>factor</em>, you should use <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> (more on this below.)</p>
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>mpg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span>,</span>
+<span>         cyl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 32</span></span>
+<span><span class="co">#&gt; Columns: 12</span></span>
+<span><span class="co">#&gt; $ model &lt;chr&gt; "Mazda RX4", "Mazda RX4 Wag", "Datsun 710", …</span></span>
+<span><span class="co">#&gt; $ mpg   &lt;chr&gt; "21", "21", "22.8", "21.4", "18.7", "18.1", …</span></span>
+<span><span class="co">#&gt; $ cyl   &lt;fct&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8,…</span></span>
+<span><span class="co">#&gt; $ disp  &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 36…</span></span>
+<span><span class="co">#&gt; $ hp    &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 12…</span></span>
+<span><span class="co">#&gt; $ drat  &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.…</span></span>
+<span><span class="co">#&gt; $ wt    &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.…</span></span>
+<span><span class="co">#&gt; $ qsec  &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15…</span></span>
+<span><span class="co">#&gt; $ vs    &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,…</span></span>
+<span><span class="co">#&gt; $ am    &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
+<span><span class="co">#&gt; $ gear  &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3,…</span></span>
+<span><span class="co">#&gt; $ carb  &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4,…</span></span></code></pre></div>
 <div class="rmdimportant">
-<p><strong>This modifies the data in the <code>mpg</code> column to be of <em>character</em>, and the data in the <code>cyl</code> column to be a factor. The output of this is then piped to <code>glimpse()</code> so the types of each column will be displayed.</strong></p>
+<p><strong>This modifies the data in the <code>mpg</code> column to be of <em>character</em>, and the data in the <code>cyl</code> column to be a factor. The output of this is then piped to <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> so the types of each column will be displayed.</strong></p>
 </div>
-<p>You can see from this output that all the numbers in <code>mpg</code> have quotes around them. Also, it is labeled “<chr>” and not “<dbl>”. While the raw data for <code>cyl</code> look unchanged, you can see it now says “<fct>”.</p>
-<div id="factors" class="section level3" number="16.3.1">
-<h3><span class="header-section-number">16.3.1</span> Factors</h3>
+<p>You can see from this output that all the numbers in <code>mpg</code> have quotes around them. Also, it is labeled “<chr>” and not “<dbl>”. While the raw data for <code>cyl</code> look unchanged, you can see it now says “<fct>”.</fct></dbl></chr></p>
+<div id="factors" class="section level3" number="15.3.1">
+<h3>
+<span class="header-section-number">15.3.1</span> Factors<a class="anchor" aria-label="anchor" href="#factors"><i class="fas fa-link"></i></a>
+</h3>
 <p>Factors are important, and can be a little tricky to work with, so they get their own section. Factors are categorical data that have a specific order, and by proxy a specific defined range of possible values (e.g., Months of the year).</p>
-<div id="factor-conversion" class="section level4" number="16.3.1.1">
-<h4><span class="header-section-number">16.3.1.1</span> Factor Conversion</h4>
+<div id="factor-conversion" class="section level4" number="15.3.1.1">
+<h4>
+<span class="header-section-number">15.3.1.1</span> Factor Conversion<a class="anchor" aria-label="anchor" href="#factor-conversion"><i class="fas fa-link"></i></a>
+</h4>
 <p>When working with factors, particularly when converting data to and from a factor, you have to be very careful. Consider the following:</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="advanced-variable-changing.html#cb265-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">test =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;1&quot;</span>)))</span>
-<span id="cb265-2"><a href="advanced-variable-changing.html#cb265-2" tabindex="-1"></a><span class="co">#&gt;   test</span></span>
-<span id="cb265-3"><a href="advanced-variable-changing.html#cb265-3" tabindex="-1"></a><span class="co">#&gt; 1    0</span></span>
-<span id="cb265-4"><a href="advanced-variable-changing.html#cb265-4" tabindex="-1"></a><span class="co">#&gt; 2    1</span></span></code></pre></div>
-<p>This simple dataframe that has one column with data as a factor with the values 0 and 1. Say you want to change that data from a factor to numeric. Simple enough, just apply the appropriate <code>as.*</code> function (<code>as.numeric()</code>).</p>
+<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>test <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"0"</span>, <span class="st">"1"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   test</span></span>
+<span><span class="co">#&gt; 1    0</span></span>
+<span><span class="co">#&gt; 2    1</span></span></code></pre></div>
+<p>This simple dataframe that has one column with data as a factor with the values 0 and 1. Say you want to change that data from a factor to numeric. Simple enough, just apply the appropriate <code>as.*</code> function (<code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code>).</p>
 <p>However, observe the output from doing so:</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="advanced-variable-changing.html#cb266-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">test =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;1&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb266-2"><a href="advanced-variable-changing.html#cb266-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">test =</span> <span class="fu">as.numeric</span>(test))</span>
-<span id="cb266-3"><a href="advanced-variable-changing.html#cb266-3" tabindex="-1"></a><span class="co">#&gt;   test</span></span>
-<span id="cb266-4"><a href="advanced-variable-changing.html#cb266-4" tabindex="-1"></a><span class="co">#&gt; 1    1</span></span>
-<span id="cb266-5"><a href="advanced-variable-changing.html#cb266-5" tabindex="-1"></a><span class="co">#&gt; 2    2</span></span></code></pre></div>
-<p>This is obviously not what was intended. What is happening here is <code>mutate()</code> is taking the <em>level</em> of each value, with <code>0</code> being level 1 and <code>1</code> being level 2. Instead, you have to circumvent this issue by first converting the values to a <em>character</em>, and then a <em>number</em>:</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="advanced-variable-changing.html#cb267-1" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">test =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;1&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb267-2"><a href="advanced-variable-changing.html#cb267-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">test =</span> <span class="fu">as.character</span>(test),</span>
-<span id="cb267-3"><a href="advanced-variable-changing.html#cb267-3" tabindex="-1"></a>         <span class="at">test =</span> <span class="fu">as.numeric</span>(test))</span>
-<span id="cb267-4"><a href="advanced-variable-changing.html#cb267-4" tabindex="-1"></a><span class="co">#&gt;   test</span></span>
-<span id="cb267-5"><a href="advanced-variable-changing.html#cb267-5" tabindex="-1"></a><span class="co">#&gt; 1    0</span></span>
-<span id="cb267-6"><a href="advanced-variable-changing.html#cb267-6" tabindex="-1"></a><span class="co">#&gt; 2    1</span></span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>test <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"0"</span>, <span class="st">"1"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>test <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   test</span></span>
+<span><span class="co">#&gt; 1    1</span></span>
+<span><span class="co">#&gt; 2    2</span></span></code></pre></div>
+<p>This is obviously not what was intended. What is happening here is <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> is taking the <em>level</em> of each value, with <code>0</code> being level 1 and <code>1</code> being level 2. Instead, you have to circumvent this issue by first converting the values to a <em>character</em>, and then a <em>number</em>:</p>
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>test <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"0"</span>, <span class="st">"1"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>test <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span>,</span>
+<span>         test <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   test</span></span>
+<span><span class="co">#&gt; 1    0</span></span>
+<span><span class="co">#&gt; 2    1</span></span></code></pre></div>
 <p>The take-home point is to always double check that your code is doing what you intend it to, especially when converting to and from a <em>factor</em>!</p>
 </div>
-<div id="reorder-levels" class="section level4" number="16.3.1.2">
-<h4><span class="header-section-number">16.3.1.2</span> Reorder Levels</h4>
+<div id="reorder-levels" class="section level4" number="15.3.1.2">
+<h4>
+<span class="header-section-number">15.3.1.2</span> Reorder Levels<a class="anchor" aria-label="anchor" href="#reorder-levels"><i class="fas fa-link"></i></a>
+</h4>
 <p>While the levels of a <em>factor</em> are ordered, you may at times want to change what that order is. One of the more common instances when this will occur is in visualizations. Consider the following:</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="advanced-variable-changing.html#cb268-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
-<span id="cb268-2"><a href="advanced-variable-changing.html#cb268-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span></span>
-<span id="cb268-3"><a href="advanced-variable-changing.html#cb268-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cyl, <span class="at">fill =</span> cyl)) <span class="sc">+</span></span>
-<span id="cb268-4"><a href="advanced-variable-changing.html#cb268-4" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
-<p><img src="Manip_Mutating_files/figure-html/unnamed-chunk-21-1.png" alt="" width="672" /></p>
-<p>The x-axis has a sensible arrangement, but this 1. is a function of the fact that the factors happen to be numbers, 2. is not particularly aesthetically pleasing when looking at the actual bars. The bars themselves have an inherent ordering and it may make more sense to organize them as such. This can be accomplished using <code>fct_infreq()</code>, which will reorder the levels of a factor <strong>in</strong> their <strong>freq</strong>uency of occurrence (with highest frequency first).</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="advanced-variable-changing.html#cb269-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
-<span id="cb269-2"><a href="advanced-variable-changing.html#cb269-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl) <span class="sc">%&gt;%</span></span>
-<span id="cb269-3"><a href="advanced-variable-changing.html#cb269-3" tabindex="-1"></a>           <span class="fu">fct_infreq</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb269-4"><a href="advanced-variable-changing.html#cb269-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cyl, <span class="at">fill =</span> cyl)) <span class="sc">+</span></span>
-<span id="cb269-5"><a href="advanced-variable-changing.html#cb269-5" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
-<p><img src="Manip_Mutating_files/figure-html/unnamed-chunk-22-1.png" alt="" width="672" /></p>
-<p>To order the levels with lowest frequency first, you can use <code>fct_rev()</code> for “<strong>rev</strong>erse <strong>freq</strong>uency”.</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="advanced-variable-changing.html#cb270-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
-<span id="cb270-2"><a href="advanced-variable-changing.html#cb270-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl) <span class="sc">%&gt;%</span></span>
-<span id="cb270-3"><a href="advanced-variable-changing.html#cb270-3" tabindex="-1"></a>           <span class="fu">fct_infreq</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb270-4"><a href="advanced-variable-changing.html#cb270-4" tabindex="-1"></a>           <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb270-5"><a href="advanced-variable-changing.html#cb270-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cyl, <span class="at">fill =</span> cyl)) <span class="sc">+</span></span>
-<span id="cb270-6"><a href="advanced-variable-changing.html#cb270-6" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
-<p><img src="Manip_Mutating_files/figure-html/unnamed-chunk-23-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cyl</span>, fill <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Manip_Mutating_files/figure-html/unnamed-chunk-21-1.png" alt="" width="672"></div>
+<p>The x-axis has a sensible arrangement, but this 1. is a function of the fact that the factors happen to be numbers, 2. is not particularly aesthetically pleasing when looking at the actual bars. The bars themselves have an inherent ordering and it may make more sense to organize them as such. This can be accomplished using <code><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_infreq()</a></code>, which will reorder the levels of a factor <strong>in</strong> their <strong>freq</strong>uency of occurrence (with highest frequency first).</p>
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>           <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_infreq</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cyl</span>, fill <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Manip_Mutating_files/figure-html/unnamed-chunk-22-1.png" alt="" width="672"></div>
+<p>To order the levels with lowest frequency first, you can use <code><a href="https://forcats.tidyverse.org/reference/fct_rev.html">fct_rev()</a></code> for “<strong>rev</strong>erse <strong>freq</strong>uency”.</p>
+<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>           <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_infreq</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>           <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_rev.html">fct_rev</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cyl</span>, fill <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Manip_Mutating_files/figure-html/unnamed-chunk-23-1.png" alt="" width="672"></div>
 <p class="text-info">
 <strong><u>Note:</u> Notice that the color mapping is changing as well. In the bottom graph, the blue bar is on the 4 cylinder bar, whereas on the preceding graph it was on the 6 cylinder bar. This is because color mappings correspond to factor levels!</strong>
 </p>
 <p>Most of the time you will not be creating graphs to visualize counts of a single variable. Instead, you will be visualizing the relationship or comparison between two more more variables, like in the graph below:</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="advanced-variable-changing.html#cb271-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
-<span id="cb271-2"><a href="advanced-variable-changing.html#cb271-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span></span>
-<span id="cb271-3"><a href="advanced-variable-changing.html#cb271-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> mpg, <span class="at">x =</span> cyl)) <span class="sc">+</span></span>
-<span id="cb271-4"><a href="advanced-variable-changing.html#cb271-4" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">&quot;mean_se&quot;</span>, <span class="at">geom =</span> <span class="st">&quot;pointrange&quot;</span>)</span></code></pre></div>
-<p><img src="Manip_Mutating_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672" /></p>
-<p>To reorder the levels of a factor by their relationship with another variable (instead of frequency of occurrence), you can use <code>fct_reorder()</code>. In <code>fct_reorder()</code>, you must specify the factor to reorder, and the other variable you wish to reorder the levels by. By default, <code>fct_order()</code> will use the median. To change this, you must specify the exact function (similar to how we do in <code>stat_summary()</code>).</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="advanced-variable-changing.html#cb272-1" tabindex="-1"></a>mtcars2 <span class="sc">%&gt;%</span></span>
-<span id="cb272-2"><a href="advanced-variable-changing.html#cb272-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cyl =</span> <span class="fu">factor</span>(cyl)) <span class="sc">%&gt;%</span></span>
-<span id="cb272-3"><a href="advanced-variable-changing.html#cb272-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> mpg, <span class="at">x =</span> <span class="fu">fct_reorder</span>(cyl, mpg, <span class="at">.fun =</span> <span class="st">&quot;mean&quot;</span>))) <span class="sc">+</span></span>
-<span id="cb272-4"><a href="advanced-variable-changing.html#cb272-4" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">&quot;mean_se&quot;</span>, <span class="at">geom =</span> <span class="st">&quot;pointrange&quot;</span>)</span></code></pre></div>
-<p><img src="Manip_Mutating_files/figure-html/unnamed-chunk-25-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">mpg</span>, x <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, geom <span class="op">=</span> <span class="st">"pointrange"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Manip_Mutating_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672"></div>
+<p>To reorder the levels of a factor by their relationship with another variable (instead of frequency of occurrence), you can use <code><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder()</a></code>. In <code><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder()</a></code>, you must specify the factor to reorder, and the other variable you wish to reorder the levels by. By default, <code>fct_order()</code> will use the median. To change this, you must specify the exact function (similar to how we do in <code><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary()</a></code>).</p>
+<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">mpg</span>, x <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">mpg</span>, .fun <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, geom <span class="op">=</span> <span class="st">"pointrange"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Manip_Mutating_files/figure-html/unnamed-chunk-25-1.png" alt="" width="672"></div>
 <p class="text-info">
-<strong><u>Note:</u> <code>fct_reorder()</code> was used in the ggplot call directly because this is a fairly particular reordering. It is unlikely that, outside of for the purpose of generating this specific visualization, you would want the levels of <code>cyl</code> to be ordered based on its level of <code>mpg</code>.<br><br>Also, you can combine <code>fct_reorder()</code> with <code>fct_rev()</code> to reverse the order of the levels.</strong>
+<strong><u>Note:</u> <code><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder()</a></code> was used in the ggplot call directly because this is a fairly particular reordering. It is unlikely that, outside of for the purpose of generating this specific visualization, you would want the levels of <code>cyl</code> to be ordered based on its level of <code>mpg</code>.<br><br>Also, you can combine <code><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder()</a></code> with <code><a href="https://forcats.tidyverse.org/reference/fct_rev.html">fct_rev()</a></code> to reverse the order of the levels.</strong>
 </p>
 </div>
 </div>
 </div>
-<div id="text-cleaning" class="section level2" number="16.4">
-<h2><span class="header-section-number">16.4</span> Text Cleaning</h2>
+<div id="text-cleaning" class="section level2" number="15.4">
+<h2>
+<span class="header-section-number">15.4</span> Text Cleaning<a class="anchor" aria-label="anchor" href="#text-cleaning"><i class="fas fa-link"></i></a>
+</h2>
 <p>More often than not, when working with text responses or any sort of character data output, it will initially be very difficult to work with. This is the case both when dealing with qualitative data and sometimes even just from the output of your data collection means (Qualtrics, Googleforms, etc.). What follow are some common cleaning procedures.</p>
-<div id="remove-text-from-strings" class="section level3" number="16.4.1">
-<h3><span class="header-section-number">16.4.1</span> Remove Text From Strings</h3>
-<p>Say your data output included a “Response:” before each response. Obviously, you would want the variable to just contain the actual response values. You can use <code>str_remove_all()</code> to remove a specified pattern from a text response. Here, removing “Response:”.</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="advanced-variable-changing.html#cb273-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&quot;Response:Apple Juice&quot;</span></span>
-<span id="cb273-2"><a href="advanced-variable-changing.html#cb273-2" tabindex="-1"></a>x</span>
-<span id="cb273-3"><a href="advanced-variable-changing.html#cb273-3" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Response:Apple Juice&quot;</span></span>
-<span id="cb273-4"><a href="advanced-variable-changing.html#cb273-4" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">str_remove_all</span>(x, <span class="st">&quot;Response:&quot;</span>)</span>
-<span id="cb273-5"><a href="advanced-variable-changing.html#cb273-5" tabindex="-1"></a>x</span>
-<span id="cb273-6"><a href="advanced-variable-changing.html#cb273-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Apple Juice&quot;</span></span></code></pre></div>
+<div id="remove-text-from-strings" class="section level3" number="15.4.1">
+<h3>
+<span class="header-section-number">15.4.1</span> Remove Text From Strings<a class="anchor" aria-label="anchor" href="#remove-text-from-strings"><i class="fas fa-link"></i></a>
+</h3>
+<p>Say your data output included a “Response:” before each response. Obviously, you would want the variable to just contain the actual response values. You can use <code><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all()</a></code> to remove a specified pattern from a text response. Here, removing “Response:”.</p>
+<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">"Response:Apple Juice"</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] "Response:Apple Juice"</span></span>
+<span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"Response:"</span><span class="op">)</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] "Apple Juice"</span></span></code></pre></div>
 </div>
-<div id="escaping-special-characters" class="section level3" number="16.4.2">
-<h3><span class="header-section-number">16.4.2</span> Escaping Special Characters</h3>
+<div id="escaping-special-characters" class="section level3" number="15.4.2">
+<h3>
+<span class="header-section-number">15.4.2</span> Escaping Special Characters<a class="anchor" aria-label="anchor" href="#escaping-special-characters"><i class="fas fa-link"></i></a>
+</h3>
 <p>In many programming languages, dealing with special characters is difficult. The language has trouble deciding if you are trying to <strong>use</strong> the character or just <em>refer</em> to it.</p>
 <p>Consider the example below:</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="advanced-variable-changing.html#cb274-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&#39;{Response:&quot;Apple Juice&quot;}&#39;</span></span>
-<span id="cb274-2"><a href="advanced-variable-changing.html#cb274-2" tabindex="-1"></a>x</span>
-<span id="cb274-3"><a href="advanced-variable-changing.html#cb274-3" tabindex="-1"></a><span class="co">#&gt; [1] &quot;{Response:\&quot;Apple Juice\&quot;}&quot;</span></span>
-<span id="cb274-4"><a href="advanced-variable-changing.html#cb274-4" tabindex="-1"></a><span class="fu">str_remove_all</span>(x, <span class="st">&#39;{&#39;</span>)</span>
-<span id="cb274-5"><a href="advanced-variable-changing.html#cb274-5" tabindex="-1"></a><span class="co">#&gt; Error in `stri_replace_all_regex()`:</span></span>
-<span id="cb274-6"><a href="advanced-variable-changing.html#cb274-6" tabindex="-1"></a><span class="co">#&gt; ! Syntax error in regex pattern. (U_REGEX_RULE_SYNTAX, context=`{`)</span></span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">'{Response:"Apple Juice"}'</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] "{Response:\"Apple Juice\"}"</span></span>
+<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">'{'</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in `stri_replace_all_regex()`:</span></span>
+<span><span class="co">#&gt; ! Syntax error in regex pattern. (U_REGEX_RULE_SYNTAX, context=`{`)</span></span></code></pre></div>
 <p>Instead, you have to do what is called “escaping” a special character. One way to do so in R is to wrap the character in brackets.</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="advanced-variable-changing.html#cb275-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&#39;{Response:&quot;Apple Juice&quot;}&#39;</span></span>
-<span id="cb275-2"><a href="advanced-variable-changing.html#cb275-2" tabindex="-1"></a>x</span>
-<span id="cb275-3"><a href="advanced-variable-changing.html#cb275-3" tabindex="-1"></a><span class="co">#&gt; [1] &quot;{Response:\&quot;Apple Juice\&quot;}&quot;</span></span>
-<span id="cb275-4"><a href="advanced-variable-changing.html#cb275-4" tabindex="-1"></a><span class="fu">str_remove_all</span>(x, <span class="st">&#39;[{]&#39;</span>)</span>
-<span id="cb275-5"><a href="advanced-variable-changing.html#cb275-5" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Response:\&quot;Apple Juice\&quot;}&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">'{Response:"Apple Juice"}'</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] "{Response:\"Apple Juice\"}"</span></span>
+<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">'[{]'</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Response:\"Apple Juice\"}"</span></span></code></pre></div>
 <p>Now this raises the question of what do you do when you want to escape a bracket? You can do so with double forward slash.</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="advanced-variable-changing.html#cb276-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&#39;[Response:&quot;Apple Juice&quot;]&#39;</span></span>
-<span id="cb276-2"><a href="advanced-variable-changing.html#cb276-2" tabindex="-1"></a>x</span>
-<span id="cb276-3"><a href="advanced-variable-changing.html#cb276-3" tabindex="-1"></a><span class="co">#&gt; [1] &quot;[Response:\&quot;Apple Juice\&quot;]&quot;</span></span>
-<span id="cb276-4"><a href="advanced-variable-changing.html#cb276-4" tabindex="-1"></a><span class="fu">str_remove_all</span>(x, <span class="st">&#39;</span><span class="sc">\\</span><span class="st">[&#39;</span>)</span>
-<span id="cb276-5"><a href="advanced-variable-changing.html#cb276-5" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Response:\&quot;Apple Juice\&quot;]&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">'[Response:"Apple Juice"]'</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] "[Response:\"Apple Juice\"]"</span></span>
+<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">'\\['</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Response:\"Apple Juice\"]"</span></span></code></pre></div>
 <p class="text-info">
 <strong>Note: Double forward slash (\) can be used to escape any special character as well, not just brackets.</strong>
 </p>
 </div>
-<div id="removing-multiple-strings-at-once" class="section level3" number="16.4.3">
-<h3><span class="header-section-number">16.4.3</span> Removing Multiple Strings at Once</h3>
-<p>You can remove multiple strings at once by using <code>paste()</code> to include all the characters or strings you want removed.</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="advanced-variable-changing.html#cb277-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&#39;Response:{&quot;Apple Juice&quot;}&#39;</span></span>
-<span id="cb277-2"><a href="advanced-variable-changing.html#cb277-2" tabindex="-1"></a></span>
-<span id="cb277-3"><a href="advanced-variable-changing.html#cb277-3" tabindex="-1"></a><span class="fu">str_remove_all</span>(x, <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&#39;Response&#39;</span>, <span class="st">&#39;[:]&#39;</span>, <span class="st">&#39;[{]&#39;</span>, <span class="st">&#39;[&quot;]&#39;</span>, <span class="st">&#39;[}]&#39;</span>), </span>
-<span id="cb277-4"><a href="advanced-variable-changing.html#cb277-4" tabindex="-1"></a>                        <span class="at">collapse=</span><span class="st">&#39;|&#39;</span>))</span>
-<span id="cb277-5"><a href="advanced-variable-changing.html#cb277-5" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Apple Juice&quot;</span></span></code></pre></div>
+<div id="removing-multiple-strings-at-once" class="section level3" number="15.4.3">
+<h3>
+<span class="header-section-number">15.4.3</span> Removing Multiple Strings at Once<a class="anchor" aria-label="anchor" href="#removing-multiple-strings-at-once"><i class="fas fa-link"></i></a>
+</h3>
+<p>You can remove multiple strings at once by using <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> to include all the characters or strings you want removed.</p>
+<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">'Response:{"Apple Juice"}'</span></span>
+<span></span>
+<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Response'</span>, <span class="st">'[:]'</span>, <span class="st">'[{]'</span>, <span class="st">'["]'</span>, <span class="st">'[}]'</span><span class="op">)</span>, </span>
+<span>                        collapse<span class="op">=</span><span class="st">'|'</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Apple Juice"</span></span></code></pre></div>
 </div>
-<div id="removing-the-first-instance" class="section level3" number="16.4.4">
-<h3><span class="header-section-number">16.4.4</span> Removing the First Instance</h3>
+<div id="removing-the-first-instance" class="section level3" number="15.4.4">
+<h3>
+<span class="header-section-number">15.4.4</span> Removing the First Instance<a class="anchor" aria-label="anchor" href="#removing-the-first-instance"><i class="fas fa-link"></i></a>
+</h3>
 <p>Sometimes, you do not want EVERY instance of a string removed. In the example below, the string “Answer” is actually part of a participant’s response. This should not be removed!</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="advanced-variable-changing.html#cb278-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&#39;Response:{&quot;Apple Juice Response&quot;}&#39;</span></span>
-<span id="cb278-2"><a href="advanced-variable-changing.html#cb278-2" tabindex="-1"></a></span>
-<span id="cb278-3"><a href="advanced-variable-changing.html#cb278-3" tabindex="-1"></a><span class="fu">str_remove_all</span>(x, <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&#39;Response&#39;</span>, <span class="st">&#39;[:]&#39;</span>, <span class="st">&#39;[{]&#39;</span>, <span class="st">&#39;[&quot;]&#39;</span>, <span class="st">&#39;[}]&#39;</span>), </span>
-<span id="cb278-4"><a href="advanced-variable-changing.html#cb278-4" tabindex="-1"></a>                        <span class="at">collapse=</span><span class="st">&#39;|&#39;</span>))</span>
-<span id="cb278-5"><a href="advanced-variable-changing.html#cb278-5" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Apple Juice &quot;</span></span></code></pre></div>
-<p>If we removed things as we had been before, we’d lose part of their response! Instead, we can just remove the <em>first</em> instance of a string by using <code>str_remove()</code></p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="advanced-variable-changing.html#cb279-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&#39;Response:{&quot;Apple Juice Response&quot;}&#39;</span></span>
-<span id="cb279-2"><a href="advanced-variable-changing.html#cb279-2" tabindex="-1"></a></span>
-<span id="cb279-3"><a href="advanced-variable-changing.html#cb279-3" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">str_remove_all</span>(x, <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&#39;[:]&#39;</span>, <span class="st">&#39;[{]&#39;</span>, <span class="st">&#39;[&quot;]&#39;</span>, <span class="st">&#39;[}]&#39;</span>), </span>
-<span id="cb279-4"><a href="advanced-variable-changing.html#cb279-4" tabindex="-1"></a>                            <span class="at">collapse=</span><span class="st">&#39;|&#39;</span>))</span>
-<span id="cb279-5"><a href="advanced-variable-changing.html#cb279-5" tabindex="-1"></a>x</span>
-<span id="cb279-6"><a href="advanced-variable-changing.html#cb279-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;ResponseApple Juice Response&quot;</span></span>
-<span id="cb279-7"><a href="advanced-variable-changing.html#cb279-7" tabindex="-1"></a><span class="fu">str_remove</span>(x, <span class="st">&quot;Response&quot;</span>)</span>
-<span id="cb279-8"><a href="advanced-variable-changing.html#cb279-8" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Apple Juice Response&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">'Response:{"Apple Juice Response"}'</span></span>
+<span></span>
+<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Response'</span>, <span class="st">'[:]'</span>, <span class="st">'[{]'</span>, <span class="st">'["]'</span>, <span class="st">'[}]'</span><span class="op">)</span>, </span>
+<span>                        collapse<span class="op">=</span><span class="st">'|'</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Apple Juice "</span></span></code></pre></div>
+<p>If we removed things as we had been before, we’d lose part of their response! Instead, we can just remove the <em>first</em> instance of a string by using <code><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove()</a></code></p>
+<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">'Response:{"Apple Juice Response"}'</span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'[:]'</span>, <span class="st">'[{]'</span>, <span class="st">'["]'</span>, <span class="st">'[}]'</span><span class="op">)</span>, </span>
+<span>                            collapse<span class="op">=</span><span class="st">'|'</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; [1] "ResponseApple Juice Response"</span></span>
+<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"Response"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Apple Juice Response"</span></span></code></pre></div>
 <div class="rmdimportant">
-<p><strong>This first gets rid of all the other text strings that are to be removed by using <code>str_remove_all()</code> as before. Then, to deal with the extra “Response”, <code>str_remove()</code> is used, and only the first instance is removed.</strong></p>
+<p><strong>This first gets rid of all the other text strings that are to be removed by using <code><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all()</a></code> as before. Then, to deal with the extra “Response”, <code><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove()</a></code> is used, and only the first instance is removed.</strong></p>
 </div>
 </div>
-<div id="replace-parts-of-a-response" class="section level3" number="16.4.5">
-<h3><span class="header-section-number">16.4.5</span> Replace Parts of a Response</h3>
-<p>Sometimes you will not want to only <strong>remove</strong> part of a response but also <strong>replace</strong> it with something else. Whereas the <code>str_remove()</code> function will simply remove the string, <code>gsub()</code> will substitute it with something else that you specify!</p>
-<p><code>gsub()</code> takes the form:<br>
-<code>gsub(string to replace, what to replace with, where to look)</code></p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="advanced-variable-changing.html#cb280-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&quot;foo:bar&quot;</span></span>
-<span id="cb280-2"><a href="advanced-variable-changing.html#cb280-2" tabindex="-1"></a></span>
-<span id="cb280-3"><a href="advanced-variable-changing.html#cb280-3" tabindex="-1"></a><span class="fu">str_remove</span>(x, <span class="st">&quot;:&quot;</span>) <span class="co"># Not what you want</span></span>
-<span id="cb280-4"><a href="advanced-variable-changing.html#cb280-4" tabindex="-1"></a><span class="co">#&gt; [1] &quot;foobar&quot;</span></span>
-<span id="cb280-5"><a href="advanced-variable-changing.html#cb280-5" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">&quot;:&quot;</span>, <span class="st">&quot; &quot;</span>, x) <span class="co"># What you want!</span></span>
-<span id="cb280-6"><a href="advanced-variable-changing.html#cb280-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;foo bar&quot;</span></span></code></pre></div>
+<div id="replace-parts-of-a-response" class="section level3" number="15.4.5">
+<h3>
+<span class="header-section-number">15.4.5</span> Replace Parts of a Response<a class="anchor" aria-label="anchor" href="#replace-parts-of-a-response"><i class="fas fa-link"></i></a>
+</h3>
+<p>Sometimes you will not want to only <strong>remove</strong> part of a response but also <strong>replace</strong> it with something else. Whereas the <code><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove()</a></code> function will simply remove the string, <code><a href="https://rdrr.io/r/base/grep.html">gsub()</a></code> will substitute it with something else that you specify!</p>
+<p><code><a href="https://rdrr.io/r/base/grep.html">gsub()</a></code> takes the form:<br><code>gsub(string to replace, what to replace with, where to look)</code></p>
+<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">"foo:bar"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">":"</span><span class="op">)</span> <span class="co"># Not what you want</span></span>
+<span><span class="co">#&gt; [1] "foobar"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">":"</span>, <span class="st">" "</span>, <span class="va">x</span><span class="op">)</span> <span class="co"># What you want!</span></span>
+<span><span class="co">#&gt; [1] "foo bar"</span></span></code></pre></div>
 </div>
 </div>
-<div id="extras" class="section level2" number="16.5">
-<h2><span class="header-section-number">16.5</span> Extras</h2>
+<div id="extras" class="section level2" number="15.5">
+<h2>
+<span class="header-section-number">15.5</span> Extras<a class="anchor" aria-label="anchor" href="#extras"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li><a href="https://github.com/rstudio/cheatsheets/blob/main/factors.pdf">Factors cheatsheet</a></li>
 </ul>
 </div>
-<div id="references-3" class="section level2" number="16.6">
-<h2><span class="header-section-number">16.6</span> References</h2>
+<div id="references-3" class="section level2" number="15.6">
+<h2>
+<span class="header-section-number">15.6</span> References<a class="anchor" aria-label="anchor" href="#references-3"><i class="fas fa-link"></i></a>
+</h2>
 
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0" line-spacing="2">
-<div id="ref-allison_horst" class="csl-entry">
-Horst, A. (2022). <em>R &amp; stats illustrations by <span class="nocase">@allison_horst</span></em>. <a href="https://github.com/allisonhorst/stats-illustrations/">https://github.com/allisonhorst/stats-illustrations/</a>
 </div>
 </div>
-</div>
-</div>
-  </main>
-
-  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page">
-      <h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+  <div class="chapter-nav">
+<div class="prev"><a href="advanced-subsetting.html"><span class="header-section-number">14</span> Advanced Subsetting</a></div>
+<div class="next"><a href="basic-wrangling.html"><span class="header-section-number">16</span> Basic Wrangling</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#advanced-variable-changing"><span class="header-section-number">15</span> Advanced Variable Changing</a></li>
+<li>
+<a class="nav-link" href="#advanced-mutating"><span class="header-section-number">15.1</span> Advanced Mutating</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#mutating-across"><span class="header-section-number">15.1.1</span> Mutating across()</a></li>
+<li><a class="nav-link" href="#conditional-values"><span class="header-section-number">15.1.2</span> Conditional Values</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#conditional-statements"><span class="header-section-number">15.2</span> Conditional statements</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#ifelse"><span class="header-section-number">15.2.1</span> ifelse()</a></li>
+<li><a class="nav-link" href="#case_when-1"><span class="header-section-number">15.2.2</span> case_when()</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#change-variable-types"><span class="header-section-number">15.3</span> Change Variable Types</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#factors"><span class="header-section-number">15.3.1</span> Factors</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#text-cleaning"><span class="header-section-number">15.4</span> Text Cleaning</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#remove-text-from-strings"><span class="header-section-number">15.4.1</span> Remove Text From Strings</a></li>
+<li><a class="nav-link" href="#escaping-special-characters"><span class="header-section-number">15.4.2</span> Escaping Special Characters</a></li>
+<li><a class="nav-link" href="#removing-multiple-strings-at-once"><span class="header-section-number">15.4.3</span> Removing Multiple Strings at Once</a></li>
+<li><a class="nav-link" href="#removing-the-first-instance"><span class="header-section-number">15.4.4</span> Removing the First Instance</a></li>
+<li><a class="nav-link" href="#replace-parts-of-a-response"><span class="header-section-number">15.4.5</span> Replace Parts of a Response</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#extras"><span class="header-section-number">15.5</span> Extras</a></li>
+<li><a class="nav-link" href="#references-3"><span class="header-section-number">15.6</span> References</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+          
         </ul>
-      </div>
+</div>
     </nav>
-  </div>
+</div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5">
-  <div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-10-13.</p>
@@ -686,11 +769,7 @@ Horst, A. (2022). <em>R &amp; stats illustrations by <span class="nocase">@allis
   </div>
 
 </div></div>
-</footer>
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -702,8 +781,7 @@ Horst, A. (2022). <em>R &amp; stats illustrations by <span class="nocase">@allis
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script>
-<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -721,5 +799,4 @@ for (let popover of popovers) {
 }
 </script>
 </body>
-
 </html>
