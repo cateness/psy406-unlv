@@ -139,8 +139,6 @@ mtcars2 %>%
 #> [1] 3
 ```
 
-</div>
-
 ## Re-Locating
 
 Sometimes, you can find the values you want, but you want to change where they are in the dataframe. We'll look at how to do this, first for columns, then for rows.
@@ -2343,7 +2341,7 @@ mtcars2 %>%
 
 <p class="text-info"> **<u>Note:</u> The `.before` and `.after` specifications apply to ALL new variables created by the particular `mutate()` call. If you want to create multiple new variables and have them added in different places in your dataframe, you will need to separate them into different `mutate()` calls.**</p>
 
-#### NAs {#NAs}
+#### NAs
 
 When performing vector computations, you have to be mindful of `NA` values in your data. `NA` values can cause major issues. For example:
 
@@ -2396,7 +2394,7 @@ ex_df %>%
 #> 2 4  4 5
 ```
 
-#### Modifying Existing Variables {#Modifying-Existing-Variables}
+#### Modifying Existing Variables
 
 `mutate()` can also be used to modify existing variables! This is done by passing a column name that already exists in the dataframe. For example:
 

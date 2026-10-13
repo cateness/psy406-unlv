@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 16 Basic Wrangling | PSY406</title>
+<title>Chapter 14 Basic Wrangling | PSY406</title>
 <meta name="author" content="Catie Nielson (with help from Ethan Hurwitz)">
 <meta name="description" content="Artwork by Horst (2022)  Throughout this page, explanations for the code above will appear in blocks like this one! When wrangling your data, you will be performing a series of actions to clean...">
 <meta name="generator" content="bookdown 0.48 with bs4_book()">
-<meta property="og:title" content="Chapter 16 Basic Wrangling | PSY406">
+<meta property="og:title" content="Chapter 14 Basic Wrangling | PSY406">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://cateness.github.io/psy406-unlv/basic-wrangling.html">
 <meta property="og:description" content="Artwork by Horst (2022)  Throughout this page, explanations for the code above will appear in blocks like this one! When wrangling your data, you will be performing a series of actions to clean...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 16 Basic Wrangling | PSY406">
+<meta name="twitter:title" content="Chapter 14 Basic Wrangling | PSY406">
 <meta name="twitter:description" content="Artwork by Horst (2022)  Throughout this page, explanations for the code above will appear in blocks like this one! When wrangling your data, you will be performing a series of actions to clean...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -85,9 +85,9 @@
 <li><a class="" href="color-theory.html"><span class="header-section-number">12</span> Color Theory</a></li>
 <li class="book-part">Data Manipulation</li>
 <li><a class="" href="tidy-data-and-tidyverse.html"><span class="header-section-number">13</span> Tidy Data and Tidyverse</a></li>
-<li><a class="" href="advanced-subsetting.html"><span class="header-section-number">14</span> Advanced Subsetting</a></li>
-<li><a class="" href="advanced-variable-changing.html"><span class="header-section-number">15</span> Advanced Variable Changing</a></li>
-<li><a class="active" href="basic-wrangling.html"><span class="header-section-number">16</span> Basic Wrangling</a></li>
+<li><a class="active" href="basic-wrangling.html"><span class="header-section-number">14</span> Basic Wrangling</a></li>
+<li><a class="" href="advanced-subsetting.html"><span class="header-section-number">15</span> Advanced Subsetting</a></li>
+<li><a class="" href="advanced-variable-changing.html"><span class="header-section-number">16</span> Advanced Variable Changing</a></li>
 </ul>
 
         <div class="book-extra">
@@ -95,9 +95,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="basic-wrangling" class="section level1" number="16">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="basic-wrangling" class="section level1" number="14">
 <h1>
-<span class="header-section-number">16</span> Basic Wrangling<a class="anchor" aria-label="anchor" href="#basic-wrangling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14</span> Basic Wrangling<a class="anchor" aria-label="anchor" href="#basic-wrangling"><i class="fas fa-link"></i></a>
 </h1>
 <img src="figures/data_cowboy.png" style="width:100.0%"><p style="font-size:6pt">
 Artwork by <span class="citation">Horst (2022)</span>
@@ -107,26 +107,26 @@ Artwork by <span class="citation">Horst (2022)</span>
 </div>
 <p>When wrangling your data, you will be performing a series of actions to clean and prepare it for whatever task you have. Whether you are creating visualizations, performing statistical analyses, or doing anything else, you will likely need to change your data object in some way. Below, several of the most fundamental and basic data manipulation functions will be outlined. You will notice that the function names are all verbs, denoting that they are performing some action on the data object.</p>
 <p>You may find it helpful to review the <a href="using-r-effectively.html#pipes">section</a> on pipes before moving forward!</p>
-<div id="locating" class="section level2" number="16.1">
+<div id="locating" class="section level2" number="14.1">
 <h2>
-<span class="header-section-number">16.1</span> Locating<a class="anchor" aria-label="anchor" href="#locating"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.1</span> Locating<a class="anchor" aria-label="anchor" href="#locating"><i class="fas fa-link"></i></a>
 </h2>
-<div id="indexing" class="section level3" number="16.1.1">
+<div id="indexing" class="section level3" number="14.1.1">
 <h3>
-<span class="header-section-number">16.1.1</span> Indexing<a class="anchor" aria-label="anchor" href="#indexing"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.1.1</span> Indexing<a class="anchor" aria-label="anchor" href="#indexing"><i class="fas fa-link"></i></a>
 </h3>
 <p>Indexing dfs was introduced <a href="#Indexing-dfs">previously</a>, but will often need to be done throughout a pipe chain. There are two functions to help with this: <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> and <code><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck()</a></code>.</p>
-<div id="pull" class="section level4" number="16.1.1.1">
+<div id="pull" class="section level4" number="14.1.1.1">
 <h4>
-<span class="header-section-number">16.1.1.1</span> pull()<a class="anchor" aria-label="anchor" href="#pull"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.1.1.1</span> pull()<a class="anchor" aria-label="anchor" href="#pull"><i class="fas fa-link"></i></a>
 </h4>
 <p><code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> will extract a variable from a df. This can be done by the variable’s name or its numeric position (using name is always preferred). <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> is like using the <code>$</code> operator to index.</p>
-<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 4 4 4 8 6 8 4</span></span></code></pre></div>
 <p>The result is a vector, as variables are just vectors! This is helpful because it allows the result to then be piped to a number of functions that require a vector rather than a df. For example:</p>
-<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -143,12 +143,12 @@ Artwork by <span class="citation">Horst (2022)</span>
 </p>
 <p>By using <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code>, the result is a vector and can be passed to <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> without issue.</p>
 </div>
-<div id="pluck" class="section level4" number="16.1.1.2">
+<div id="pluck" class="section level4" number="14.1.1.2">
 <h4>
-<span class="header-section-number">16.1.1.2</span> pluck()<a class="anchor" aria-label="anchor" href="#pluck"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.1.1.2</span> pluck()<a class="anchor" aria-label="anchor" href="#pluck"><i class="fas fa-link"></i></a>
 </h4>
 <p><code><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck()</a></code> allows you to index elements from an object, and can also be done by name or numeric position. Above, the <code>cyl</code> column was indexed from <code>mtcars2</code>. Say you wanted the 4th observation from that column:</p>
-<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span>
@@ -158,12 +158,12 @@ Advanced
 </button>
 <div id="BlockName" class="collapse">
 <p><code><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck()</a></code> is extremely useful for indexing deeply into nested data structures. These will not be covered in this course, but as a brief demonstration you can consider a df to be a nested object. Each vector is an 1st level element and then values within vectors are 2nd level elements. To get the 4th value in the 3rd vector (the previous code string), you would do the following:</p>
-<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 8</span></span></code></pre></div>
 <p>This can also be done with named positions.</p>
-<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"model"</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Porsche 914-2"</span></span></code></pre></div>
@@ -172,12 +172,12 @@ Advanced
 <p><br></p>
 </div>
 </div>
-<div id="Unique-Entries" class="section level3" number="16.1.2">
+<div id="Unique-Entries" class="section level3" number="14.1.2">
 <h3>
-<span class="header-section-number">16.1.2</span> Unique Entries<a class="anchor" aria-label="anchor" href="#Unique-Entries"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.1.2</span> Unique Entries<a class="anchor" aria-label="anchor" href="#Unique-Entries"><i class="fas fa-link"></i></a>
 </h3>
 <p>When working with larger dfs, it is difficult to get a sense of the unique values a particular variable may contain. You can get this using <code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a></code>.</p>
-<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span></span>
 <span><span class="co">#&gt;            model mpg cyl disp  hp   wt gear</span></span>
 <span><span class="co">#&gt; 1      Fiat X1-9  27   4   79  66 1.94    4</span></span>
@@ -194,7 +194,7 @@ Advanced
 <span><span class="co">#&gt; 2   8</span></span>
 <span><span class="co">#&gt; 3   6</span></span></code></pre></div>
 <p>The way this works is by keeping the row that corresponds with the first entry of a unique value from that particular column. This becomes clear by using the <code>.keep_all</code> argument</p>
-<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">cyl</span>, .keep_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;            model mpg cyl disp  hp   wt gear</span></span>
@@ -202,28 +202,27 @@ Advanced
 <span><span class="co">#&gt; 2 Ford Pantera L  16   8  351 264 3.17    5</span></span>
 <span><span class="co">#&gt; 3   Ferrari Dino  20   6  145 175 2.77    5</span></span></code></pre></div>
 <p>To get the <em>number</em> of unique values you can use <code><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct()</a></code>, which takes a vector of values as input.</p>
-<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 3</span></span></code></pre></div>
 </div>
 </div>
-</div>
-<div id="re-locating" class="section level2" number="16.2">
+<div id="re-locating" class="section level2" number="14.2">
 <h2>
-<span class="header-section-number">16.2</span> Re-Locating<a class="anchor" aria-label="anchor" href="#re-locating"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2</span> Re-Locating<a class="anchor" aria-label="anchor" href="#re-locating"><i class="fas fa-link"></i></a>
 </h2>
 <p>Sometimes, you can find the values you want, but you want to change where they are in the dataframe. We’ll look at how to do this, first for columns, then for rows.</p>
-<div id="relocate" class="section level3" number="16.2.1">
+<div id="relocate" class="section level3" number="14.2.1">
 <h3>
-<span class="header-section-number">16.2.1</span> Relocate<a class="anchor" aria-label="anchor" href="#relocate"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2.1</span> Relocate<a class="anchor" aria-label="anchor" href="#relocate"><i class="fas fa-link"></i></a>
 </h3>
 <p><code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> can be used to reorder the columns in your dataframe. With <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code>, you specify which column(s) you want to move, and what they should come <em>.before</em> or <em>.after</em>.</p>
 <img src="figures/dplyr_relocate.png" style="width:100.0%"><p style="font-size:6pt">
 Artwork by <span class="citation">Horst (2022)</span>
 </p>
-<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">wt</span>, .after <span class="op">=</span> <span class="va">model</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="kable_wrapper"><tbody><tr>
@@ -643,7 +642,7 @@ Volvo 142E
 <p><strong>This code moves the <code>wt</code> column <em>after</em> the <code>model</code> column.</strong></p>
 </div>
 <p><code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> can also move multiple columns simultaneously when passed a vector of column names.</p>
-<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">disp</span>, <span class="va">drat</span><span class="op">)</span>, .after <span class="op">=</span> <span class="va">model</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="kable_wrapper"><tbody><tr>
@@ -1060,12 +1059,12 @@ Volvo 142E
 </td>
 </tr></tbody></table></div>
 </div>
-<div id="arrange" class="section level3" number="16.2.2">
+<div id="arrange" class="section level3" number="14.2.2">
 <h3>
-<span class="header-section-number">16.2.2</span> Arrange<a class="anchor" aria-label="anchor" href="#arrange"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2.2</span> Arrange<a class="anchor" aria-label="anchor" href="#arrange"><i class="fas fa-link"></i></a>
 </h3>
 <p><code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> orders the rows of a data frame by the values of selected columns. By default this will be ascending, where the lowest values are in the first few rows.</p>
-<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">wt</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="kable_wrapper"><tbody><tr>
@@ -1487,19 +1486,19 @@ Maserati Bora
 <p>To get rows arranged in a descending order, with highest values at the top, wrap variable names in <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a></code> within the <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> call. If a second column is passed, the rows with identical values on the first variable will be arranged by the values on the second.</p>
 </div>
 </div>
-<div id="subsetting" class="section level2" number="16.3">
+<div id="subsetting" class="section level2" number="14.3">
 <h2>
-<span class="header-section-number">16.3</span> Subsetting<a class="anchor" aria-label="anchor" href="#subsetting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3</span> Subsetting<a class="anchor" aria-label="anchor" href="#subsetting"><i class="fas fa-link"></i></a>
 </h2>
 <p>Sometime you will want to use only specific variables or values. This is called <em>subsetting</em>. We’ll look first at subsetting by columns (using the <code>select</code> function) and then by rows (using the <code>filter</code> function).</p>
-<div id="select" class="section level3" number="16.3.1">
+<div id="select" class="section level3" number="14.3.1">
 <h3>
-<span class="header-section-number">16.3.1</span> Select<a class="anchor" aria-label="anchor" href="#select"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3.1</span> Select<a class="anchor" aria-label="anchor" href="#select"><i class="fas fa-link"></i></a>
 </h3>
 <p>Above, you used <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> when you wanted to output a preview of your dataframe. There will be many times like this when you want to <strong>subset</strong> your data (cutting it to show only subsets of it – which contain or exclude specific variables/observations).</p>
 <p>There are two primary subsetting functions. The first is <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, which selects and returns only the specified columns (passed to as a vector of column names).</p>
 <p><code>select(c(columns_of_interest))</code></p>
-<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">gear</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="kable_wrapper"><tbody><tr>
@@ -1796,7 +1795,7 @@ gear
 </td>
 </tr></tbody></table></div>
 <p>Just as the <code>:</code> could be used to generate all the values in a range of numbers (e.g., <code>1:4</code> would return: 1,2,3,4), you can also use a <code>:</code> to return all the values in a range of <em>columns</em>. For example:</p>
-<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">:</span><span class="va">hp</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="kable_wrapper"><tbody><tr>
@@ -2120,7 +2119,7 @@ hp
 <p><strong>This selects the <code>cyl</code> column, the <code>hp</code> column, and all columns in between the two!</strong></p>
 </div>
 <p><code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> can also be used to <em>get rid of columns</em> you do <strong>NOT</strong> want by negating the vector of column names using a <code>!</code>.</p>
-<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">gear</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="kable_wrapper"><tbody><tr>
@@ -2492,7 +2491,7 @@ Volvo 142E
 <p><strong>This selects all columns <em>except</em> <code>cyl</code> and <code>gear</code>.</strong></p>
 </div>
 <p>When you specifically want to move a variable (or variables) to the front of your df, there is an easy way to do so using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> instead of <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code>:</p>
-<div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">wt</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     wt          model mpg cyl disp  hp gear</span></span>
@@ -2505,16 +2504,16 @@ Volvo 142E
 <span><span class="co">#&gt; 7 2.78     Volvo 142E  21   4  121 109    4</span></span></code></pre></div>
 <p>The <code><a href="https://tidyselect.r-lib.org/reference/everything.html">everything()</a></code> function selects… everything! It will select all the variables in a df. So this is first selecting the <code>wt</code> variable, and then everything else. The result is still all the variables in the df, but <code>wt</code> is at the front.</p>
 </div>
-<div id="filter" class="section level3" number="16.3.2">
+<div id="filter" class="section level3" number="14.3.2">
 <h3>
-<span class="header-section-number">16.3.2</span> Filter<a class="anchor" aria-label="anchor" href="#filter"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3.2</span> Filter<a class="anchor" aria-label="anchor" href="#filter"><i class="fas fa-link"></i></a>
 </h3>
 <p>The second primary subsetting function is <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, which returns rows that meet specified condition(s). Each condition is a logical test performed on a column. This will results in a vector of <code>TRUE</code> and <code>FALSE</code> values, and only the rows where the test evaluates to <code>TRUE</code> will be returned!</p>
 <img src="figures/dplyr_filter.jpeg" style="width:100.0%"><p style="font-size:6pt">
 Artwork by <span class="citation">Horst (2022)</span>
 </p>
 <p>As you see in the illustration above, only the rows with a check mark (where the logical test resulted in <code>TRUE</code>) would be returned from that <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> call!</p>
-<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gear</span> <span class="op">==</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="kable_wrapper"><tbody><tr>
@@ -2819,7 +2818,7 @@ Volvo 142E
 <p><strong>This filters the dataframe to return only rows where <code>gear</code> has a value of 4.</strong></p>
 </div>
 <p>Any evaluative operator can be used in the conditions. The test conditions only need to result in <code>TRUE</code> or <code>FALSE</code>:</p>
-<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">&gt;</span> <span class="fl">300</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="kable_wrapper"><tbody><tr>
@@ -3124,7 +3123,7 @@ Maserati Bora
 <p><strong>This filters the dataframe to return only rows where the <code>gear</code> column has a value of 4.</strong></p>
 </div>
 <p>The values specified in your tests do not have to be numbers, they can be text strings as well!</p>
-<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">model</span> <span class="op">==</span> <span class="st">"Lotus Europa"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="kable_wrapper"><tbody><tr>
@@ -3404,7 +3403,7 @@ Lotus Europa
 <p><strong>This filters the dataframe to return only rows where the <code>model</code> column has the value “Lotus Europa”.</strong></p>
 </div>
 <p>Multiple conditions can be strung together using logical operators:</p>
-<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">cyl</span> <span class="op">!=</span> <span class="fl">4</span> <span class="op">|</span> <span class="va">hp</span> <span class="op">&lt;</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="kable_wrapper"><tbody><tr>
@@ -3783,25 +3782,25 @@ Maserati Bora
 which is different than:<br><code>filter((cyl == 4 | hp &lt; 200) &amp; gear == 5)</code>.</p>
 </div>
 </div>
-<div id="changing-variables" class="section level2" number="16.4">
+<div id="changing-variables" class="section level2" number="14.4">
 <h2>
-<span class="header-section-number">16.4</span> Changing variables<a class="anchor" aria-label="anchor" href="#changing-variables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4</span> Changing variables<a class="anchor" aria-label="anchor" href="#changing-variables"><i class="fas fa-link"></i></a>
 </h2>
 <p>Sometimes you need to do more than just view, relocate, or subset your data. Sometimes you need to change it! In this section, we’ll first examine how to change the name of a column or variable (<code>rename</code>) and then how to change it’s values or even create a new column (<code>mutate</code>)!</p>
-<div id="rename" class="section level3" number="16.4.1">
+<div id="rename" class="section level3" number="14.4.1">
 <h3>
-<span class="header-section-number">16.4.1</span> Rename<a class="anchor" aria-label="anchor" href="#rename"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.1</span> Rename<a class="anchor" aria-label="anchor" href="#rename"><i class="fas fa-link"></i></a>
 </h3>
 <img src="figures/dplyr_rename_new.jpeg" style="width:100.0%"><p style="font-size:6pt">
 Artwork by <span class="citation">Horst (2022)</span>
 </p>
 <p>Columns in a dataframe can be named poorly in several ways. They could have a name that is not meaningful or interpretable, they could have a name that is too long, or they could have a name that includes special characters or is otherwise difficult to work with (e.g., including spaces).</p>
 <p>You can rename columns by using the <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> function. This function takes the following form:</p>
-<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="st">"new_column_name"</span> <span class="op">=</span> <span class="st">"old_column_name"</span><span class="op">)</span></span></code></pre></div>
 <p>In the <code>mtcars2</code> object, several variable names are shorthand or abbreviations that may not make sense to someone who is not already familiar with the dataset. <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> can be used to change these:</p>
-<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="st">"weight"</span> <span class="op">=</span> <span class="st">"wt"</span>, <span class="st">"horse_power"</span> <span class="op">=</span> <span class="st">"hp"</span>,</span>
 <span>         <span class="st">"cylinders"</span> <span class="op">=</span> <span class="st">"cyl"</span>, <span class="st">"displacement"</span> <span class="op">=</span> <span class="st">"disp"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -3828,12 +3827,12 @@ Artwork by <span class="citation">Horst (2022)</span>
 <!--   <div class="panel-body"> -->
 <!--   Both of the weight columns in this dataset are measuring in kilograms. Use `rename()` to give those variables more informative names.</div> -->
 <!-- </div> -->
-<div id="saving-changes" class="section level4" number="16.4.1.1">
+<div id="saving-changes" class="section level4" number="14.4.1.1">
 <h4>
-<span class="header-section-number">16.4.1.1</span> Saving Changes<a class="anchor" aria-label="anchor" href="#saving-changes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.1.1</span> Saving Changes<a class="anchor" aria-label="anchor" href="#saving-changes"><i class="fas fa-link"></i></a>
 </h4>
 <p>The code above using <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> changed some of the variable names in the <code>mtcars2</code> dataframe. However, if you look at the <code>mtcars2</code> dataframe…</p>
-<div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;            model mpg cyl disp  hp   wt gear</span></span>
@@ -3844,18 +3843,18 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span><span class="co">#&gt; 5   Ferrari Dino  20   6  145 175 2.77    5</span></span>
 <span><span class="co">#&gt; 6  Maserati Bora  15   8  301 335 3.57    5</span></span></code></pre></div>
 <p>The variable names are the same as before, the the <code><a href="https://dplyr.tidyverse.org/reference/rename.html">rename()</a></code> code seems like it did not work! Look carefully at the code though:</p>
-<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="st">"weight"</span> <span class="op">=</span> <span class="st">"wt"</span>, <span class="st">"horse_power"</span> <span class="op">=</span> <span class="st">"hp"</span>,</span>
 <span>         <span class="st">"cylinders"</span> <span class="op">=</span> <span class="st">"cyl"</span>, <span class="st">"displacement"</span> <span class="op">=</span> <span class="st">"disp"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>When this code is executed it just prints the results. They are not saved anywhere! If you actually wanted to update your dataframe, you need to save these results:</p>
-<div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op">=</span> <span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="st">"weight"</span> <span class="op">=</span> <span class="st">"wt"</span>, <span class="st">"horse_power"</span> <span class="op">=</span> <span class="st">"hp"</span>,</span>
 <span>         <span class="st">"cylinders"</span> <span class="op">=</span> <span class="st">"cyl"</span>, <span class="st">"displacement"</span> <span class="op">=</span> <span class="st">"disp"</span><span class="op">)</span></span></code></pre></div>
 <p>Saving over an object is a permanent change, though. You should be very careful when doing so. It is good practice to first make sure the code runs and does what you intend it to do. Once you have verified that, you can overwrite an object if you would like:</p>
-<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="st">"weight"</span> <span class="op">=</span> <span class="st">"wt"</span>, <span class="st">"horse_power"</span> <span class="op">=</span> <span class="st">"hp"</span>,</span>
 <span>         <span class="st">"cylinders"</span> <span class="op">=</span> <span class="st">"cyl"</span>, <span class="st">"displacement"</span> <span class="op">=</span> <span class="st">"disp"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -3869,9 +3868,9 @@ Artwork by <span class="citation">Horst (2022)</span>
 </p>
 <p>A good rule of thumb is that if you need to use the object in its current state again or make significant changes to it, particularly if you change its structure, you should create a new object (e.g., mtcars3) rather than overwrite/update the existing one.</p>
 </div>
-<div id="clean-names" class="section level4" number="16.4.1.2">
+<div id="clean-names" class="section level4" number="14.4.1.2">
 <h4>
-<span class="header-section-number">16.4.1.2</span> Clean Names<a class="anchor" aria-label="anchor" href="#clean-names"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.1.2</span> Clean Names<a class="anchor" aria-label="anchor" href="#clean-names"><i class="fas fa-link"></i></a>
 </h4>
 <img src="figures/janitor_clean_names.png" style="width:100.0%"><p style="font-size:6pt">
 Artwork by <span class="citation">Horst (2022)</span>
@@ -3890,9 +3889,9 @@ Artwork by <span class="citation">Horst (2022)</span>
 </div>
 </div>
 </div>
-<div id="adding-variables" class="section level3" number="16.4.2">
+<div id="adding-variables" class="section level3" number="14.4.2">
 <h3>
-<span class="header-section-number">16.4.2</span> Adding Variables<a class="anchor" aria-label="anchor" href="#adding-variables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.2</span> Adding Variables<a class="anchor" aria-label="anchor" href="#adding-variables"><i class="fas fa-link"></i></a>
 </h3>
 <p>To add new variables to your dataframe, you use the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function.</p>
 <img src="figures/dplyr_mutate.png" style="width:100.0%"><p style="font-size:6pt">
@@ -3901,7 +3900,7 @@ Artwork by <span class="citation">Horst (2022)</span>
 <p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> takes the form:</p>
 <p><code>mutate("new_col_name" = content_for_that_column)</code></p>
 <p>The new column’s name will be whatever is passed on the left, its contents will be the result of the R expression assigned to it. For example:</p>
-<div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>wt_lbs <span class="op">=</span> <span class="va">wt</span> <span class="op">*</span> <span class="fl">1000</span><span class="op">)</span></span>
 <span><span class="co">#&gt;            model mpg cyl disp  hp   wt gear wt_lbs</span></span>
@@ -3925,7 +3924,7 @@ Artwork by <span class="citation">Horst (2022)</span>
 </li>
 </ol>
 <p>Multiple new columns can be created simultaneously within the same <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> call:</p>
-<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">price_of_gas</span> <span class="op">=</span> <span class="fl">6.25</span></span>
 <span></span>
 <span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -3950,12 +3949,12 @@ Artwork by <span class="citation">Horst (2022)</span>
 <div class="rmdimportant">
 <p><strong>In addition to the weight in pounds variable, this code also creates a variable showing the cost of traveling 1 mile for each observation (car) considering the current price of gas.</strong></p>
 </div>
-<div id="position" class="section level4" number="16.4.2.1">
+<div id="position" class="section level4" number="14.4.2.1">
 <h4>
-<span class="header-section-number">16.4.2.1</span> Position<a class="anchor" aria-label="anchor" href="#position"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.2.1</span> Position<a class="anchor" aria-label="anchor" href="#position"><i class="fas fa-link"></i></a>
 </h4>
 <p>By default <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> adds the new variable(s) to the end of the dataframe. However, you can specify what existing column you want the new column to appear <code>.before</code> or <code>.after</code>.</p>
-<div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">price_of_gas</span> <span class="op">=</span> <span class="fl">6.25</span></span>
 <span></span>
 <span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -3975,12 +3974,12 @@ Artwork by <span class="citation">Horst (2022)</span>
 <strong><u>Note:</u> The <code>.before</code> and <code>.after</code> specifications apply to ALL new variables created by the particular <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> call. If you want to create multiple new variables and have them added in different places in your dataframe, you will need to separate them into different <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> calls.</strong>
 </p>
 </div>
-<div id="NAs" class="section level4" number="16.4.2.2">
+<div id="nas" class="section level4" number="14.4.2.2">
 <h4>
-<span class="header-section-number">16.4.2.2</span> NAs<a class="anchor" aria-label="anchor" href="#NAs"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.2.2</span> NAs<a class="anchor" aria-label="anchor" href="#nas"><i class="fas fa-link"></i></a>
 </h4>
 <p>When performing vector computations, you have to be mindful of <code>NA</code> values in your data. <code>NA</code> values can cause major issues. For example:</p>
-<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">4</span> <span class="op">+</span> <span class="cn">NA</span> <span class="op">+</span> <span class="fl">2</span></span>
 <span><span class="co">#&gt; [1] NA</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">3</span>,<span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span>
@@ -3988,14 +3987,14 @@ Artwork by <span class="citation">Horst (2022)</span>
 <p>As you can see, any time you have <code>NA</code> as part of your computation, the results are <code>NA</code>. It is because of this that NAs are thought to be <strong>contagious</strong>. In these instances, you get around this by utilizing functions like <code><a href="https://rdrr.io/r/stats/na.fail.html">na.omit()</a></code>, <code><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na()</a></code>, or the <code>na.rm</code> argument set to <code>TRUE</code>.</p>
 <p><code><a href="https://rdrr.io/r/stats/na.fail.html">na.omit()</a></code> will remove all NAs. When used on a dataframe, this will remove an entire row of data if it has an <code>NA</code> value for <strong><em>any</em></strong> column.</p>
 <p><code><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na()</a></code> is used specifically for dataframes, and will remove an entire row of data if it has an <code>NA</code> value for <strong><em>specific</em></strong> column(s) that you select. If you do not pass any specific columns, it will function similarly to <code><a href="https://rdrr.io/r/stats/na.fail.html">na.omit()</a></code> and remove an entire row if it as an <code>NA</code> value for <strong><em>any</em></strong> column.</p>
-<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="cn">NA</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 4</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">3</span>,<span class="cn">NA</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 4</span></span></code></pre></div>
-<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ex_df</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span>, </span>
 <span>           B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">NA</span>, <span class="fl">4</span><span class="op">)</span>, </span>
 <span>           C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">4</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
@@ -4018,12 +4017,12 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span><span class="co">#&gt; 1 1 NA 4</span></span>
 <span><span class="co">#&gt; 2 4  4 5</span></span></code></pre></div>
 </div>
-<div id="Modifying-Existing-Variables" class="section level4" number="16.4.2.3">
+<div id="modifying-existing-variables" class="section level4" number="14.4.2.3">
 <h4>
-<span class="header-section-number">16.4.2.3</span> Modifying Existing Variables<a class="anchor" aria-label="anchor" href="#Modifying-Existing-Variables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.2.3</span> Modifying Existing Variables<a class="anchor" aria-label="anchor" href="#modifying-existing-variables"><i class="fas fa-link"></i></a>
 </h4>
 <p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> can also be used to modify existing variables! This is done by passing a column name that already exists in the dataframe. For example:</p>
-<div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>wt <span class="op">=</span> <span class="va">wt</span> <span class="op">*</span> <span class="fl">1000</span><span class="op">)</span></span>
 <span><span class="co">#&gt;            model mpg cyl disp  hp   wt gear</span></span>
@@ -4037,43 +4036,39 @@ Artwork by <span class="citation">Horst (2022)</span>
 <p>By tweaking the code above, instead of creating a new one, the existing <code>wt</code> variable is modified.</p>
 <p><strong><u>Note:</u> You will generally not want to overwrite a variable if you are changing it in some meaningful way (as is the case in the example above). Instead, you should create a new variable.</strong></p>
 
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0" line-spacing="2">
-<div id="ref-allison_horst" class="csl-entry">
-Horst, A. (2022). <em>R &amp; stats illustrations by <span class="nocase">@allison_horst</span></em>. <a href="https://github.com/allisonhorst/stats-illustrations/">https://github.com/allisonhorst/stats-illustrations/</a>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="chapter-nav">
-<div class="prev"><a href="advanced-variable-changing.html"><span class="header-section-number">15</span> Advanced Variable Changing</a></div>
-<div class="empty"></div>
+  <div class="chapter-nav">
+<div class="prev"><a href="tidy-data-and-tidyverse.html"><span class="header-section-number">13</span> Tidy Data and Tidyverse</a></div>
+<div class="next"><a href="advanced-subsetting.html"><span class="header-section-number">15</span> Advanced Subsetting</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#basic-wrangling"><span class="header-section-number">16</span> Basic Wrangling</a></li>
+<li><a class="nav-link" href="#basic-wrangling"><span class="header-section-number">14</span> Basic Wrangling</a></li>
 <li>
-<a class="nav-link" href="#locating"><span class="header-section-number">16.1</span> Locating</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#indexing"><span class="header-section-number">16.1.1</span> Indexing</a></li>
-<li><a class="nav-link" href="#Unique-Entries"><span class="header-section-number">16.1.2</span> Unique Entries</a></li>
+<a class="nav-link" href="#locating"><span class="header-section-number">14.1</span> Locating</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#indexing"><span class="header-section-number">14.1.1</span> Indexing</a></li>
+<li><a class="nav-link" href="#Unique-Entries"><span class="header-section-number">14.1.2</span> Unique Entries</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#re-locating"><span class="header-section-number">16.2</span> Re-Locating</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#relocate"><span class="header-section-number">16.2.1</span> Relocate</a></li>
-<li><a class="nav-link" href="#arrange"><span class="header-section-number">16.2.2</span> Arrange</a></li>
+<a class="nav-link" href="#re-locating"><span class="header-section-number">14.2</span> Re-Locating</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#relocate"><span class="header-section-number">14.2.1</span> Relocate</a></li>
+<li><a class="nav-link" href="#arrange"><span class="header-section-number">14.2.2</span> Arrange</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#subsetting"><span class="header-section-number">16.3</span> Subsetting</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#select"><span class="header-section-number">16.3.1</span> Select</a></li>
-<li><a class="nav-link" href="#filter"><span class="header-section-number">16.3.2</span> Filter</a></li>
+<a class="nav-link" href="#subsetting"><span class="header-section-number">14.3</span> Subsetting</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#select"><span class="header-section-number">14.3.1</span> Select</a></li>
+<li><a class="nav-link" href="#filter"><span class="header-section-number">14.3.2</span> Filter</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#changing-variables"><span class="header-section-number">16.4</span> Changing variables</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#rename"><span class="header-section-number">16.4.1</span> Rename</a></li>
-<li><a class="nav-link" href="#adding-variables"><span class="header-section-number">16.4.2</span> Adding Variables</a></li>
+<a class="nav-link" href="#changing-variables"><span class="header-section-number">14.4</span> Changing variables</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#rename"><span class="header-section-number">14.4.1</span> Rename</a></li>
+<li><a class="nav-link" href="#adding-variables"><span class="header-section-number">14.4.2</span> Adding Variables</a></li>
 </ul>
 </li>
 </ul>
@@ -4085,13 +4080,9 @@ Horst, A. (2022). <em>R &amp; stats illustrations by <span class="nocase">@allis
 </div>
     </nav>
 </div>
-</div>
-  
-
-  
 
 </div>
- <!-- .container -->
+</div> <!-- .container -->
 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 

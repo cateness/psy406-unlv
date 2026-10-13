@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 15 Advanced Variable Changing | PSY406</title>
+<title>Chapter 16 Advanced Variable Changing | PSY406</title>
 <meta name="author" content="Catie Nielson (with help from Ethan Hurwitz)">
-<meta name="description" content="library(tidyverse) library(palmerpenguins) library(kableExtra) library(knitr)  15.1 Advanced Mutating  15.1.1 Mutating across() mutate() was previously used to make changes to the data in our...">
+<meta name="description" content="library(tidyverse) library(palmerpenguins) library(kableExtra) library(knitr)  16.1 Advanced Mutating  16.1.1 Mutating across() mutate() was previously used to make changes to the data in our...">
 <meta name="generator" content="bookdown 0.48 with bs4_book()">
-<meta property="og:title" content="Chapter 15 Advanced Variable Changing | PSY406">
+<meta property="og:title" content="Chapter 16 Advanced Variable Changing | PSY406">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://cateness.github.io/psy406-unlv/advanced-variable-changing.html">
-<meta property="og:description" content="library(tidyverse) library(palmerpenguins) library(kableExtra) library(knitr)  15.1 Advanced Mutating  15.1.1 Mutating across() mutate() was previously used to make changes to the data in our...">
+<meta property="og:description" content="library(tidyverse) library(palmerpenguins) library(kableExtra) library(knitr)  16.1 Advanced Mutating  16.1.1 Mutating across() mutate() was previously used to make changes to the data in our...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 15 Advanced Variable Changing | PSY406">
-<meta name="twitter:description" content="library(tidyverse) library(palmerpenguins) library(kableExtra) library(knitr)  15.1 Advanced Mutating  15.1.1 Mutating across() mutate() was previously used to make changes to the data in our...">
+<meta name="twitter:title" content="Chapter 16 Advanced Variable Changing | PSY406">
+<meta name="twitter:description" content="library(tidyverse) library(palmerpenguins) library(kableExtra) library(knitr)  16.1 Advanced Mutating  16.1.1 Mutating across() mutate() was previously used to make changes to the data in our...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -85,9 +85,9 @@
 <li><a class="" href="color-theory.html"><span class="header-section-number">12</span> Color Theory</a></li>
 <li class="book-part">Data Manipulation</li>
 <li><a class="" href="tidy-data-and-tidyverse.html"><span class="header-section-number">13</span> Tidy Data and Tidyverse</a></li>
-<li><a class="" href="advanced-subsetting.html"><span class="header-section-number">14</span> Advanced Subsetting</a></li>
-<li><a class="active" href="advanced-variable-changing.html"><span class="header-section-number">15</span> Advanced Variable Changing</a></li>
-<li><a class="" href="basic-wrangling.html"><span class="header-section-number">16</span> Basic Wrangling</a></li>
+<li><a class="" href="basic-wrangling.html"><span class="header-section-number">14</span> Basic Wrangling</a></li>
+<li><a class="" href="advanced-subsetting.html"><span class="header-section-number">15</span> Advanced Subsetting</a></li>
+<li><a class="active" href="advanced-variable-changing.html"><span class="header-section-number">16</span> Advanced Variable Changing</a></li>
 </ul>
 
         <div class="book-extra">
@@ -95,27 +95,27 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="advanced-variable-changing" class="section level1" number="15">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="advanced-variable-changing" class="section level1" number="16">
 <h1>
-<span class="header-section-number">15</span> Advanced Variable Changing<a class="anchor" aria-label="anchor" href="#advanced-variable-changing"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16</span> Advanced Variable Changing<a class="anchor" aria-label="anchor" href="#advanced-variable-changing"><i class="fas fa-link"></i></a>
 </h1>
-<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span></code></pre></div>
-<div id="advanced-mutating" class="section level2" number="15.1">
+<div id="advanced-mutating" class="section level2" number="16.1">
 <h2>
-<span class="header-section-number">15.1</span> Advanced Mutating<a class="anchor" aria-label="anchor" href="#advanced-mutating"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.1</span> Advanced Mutating<a class="anchor" aria-label="anchor" href="#advanced-mutating"><i class="fas fa-link"></i></a>
 </h2>
-<div id="mutating-across" class="section level3" number="15.1.1">
+<div id="mutating-across" class="section level3" number="16.1.1">
 <h3>
-<span class="header-section-number">15.1.1</span> Mutating <code>across()</code><a class="anchor" aria-label="anchor" href="#mutating-across"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.1.1</span> Mutating <code>across()</code><a class="anchor" aria-label="anchor" href="#mutating-across"><i class="fas fa-link"></i></a>
 </h3>
-<p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> was <a href="basic-wrangling.html#Modifying-Existing-Variables">previously</a> used to make changes to the data in our columns. To do so, you had to specify the specific column you wanted to change and what you wanted to do to it. However, utilizing the <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> function, you can instead apply some changes to <strong>multiple</strong> columns simultaneously!</p>
+<p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> was <a href="#Modifying-Existing-Variables">previously</a> used to make changes to the data in our columns. To do so, you had to specify the specific column you wanted to change and what you wanted to do to it. However, utilizing the <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> function, you can instead apply some changes to <strong>multiple</strong> columns simultaneously!</p>
 <p><code>across(selection_of_columns, NAME of function to apply to each)</code></p>
 <p>For example, if you wanted to <code><a href="https://rdrr.io/r/base/scale.html">scale()</a></code> specific columns:</p>
-<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Q2"</span>, <span class="st">"Q3"</span><span class="op">)</span>, <span class="va">scale</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Q2"</span>, <span class="st">"Q3"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -132,7 +132,7 @@
 <span><span class="co">#&gt; 9   2.9017304  5.3304180</span></span>
 <span><span class="co">#&gt; 10 -0.3443861 -0.3158289</span></span></code></pre></div>
 <p>Just like in the <code>if_*()</code> calls, because the first argument of <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> expects a selection of columns, you can use helper functions to make these selections as well!</p>
-<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Q"</span><span class="op">)</span>, <span class="va">scale</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Q"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -168,7 +168,7 @@
 <p>You can combine <code><a href="https://tidyselect.r-lib.org/reference/where.html">where()</a></code> with <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> to mutate conditionally. In other words, <strong>IF</strong> the column passes some test, the function will be applied to all its values.</p>
 <p>Consider the following scenario: say you wanted to convert all the <em>factors</em> to <em>characters</em>.</p>
 <p>First, you would check which columns contain <em>factors</em>:</p>
-<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.factor</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -181,7 +181,7 @@
 <span><span class="co">#&gt; $ U2R    &lt;fct&gt; , A, A, A, , H, , H, Q, , A, H, P, , H, D, …</span></span>
 <span><span class="co">#&gt; $ U7A_T  &lt;fct&gt; "", "", "", "", "", "", "", "", "", "", "",…</span></span></code></pre></div>
 <p>Next, you can use <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> and <code><a href="https://tidyselect.r-lib.org/reference/where.html">where()</a></code> to change only columns that are <em>factors</em> into <em>characters</em>, checking which columns are <em>characters</em>. The columns that were previously <em>factors</em> should show up here.</p>
-<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.factor</span><span class="op">)</span>, <span class="va">as.character</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.character</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -199,7 +199,7 @@
 <strong><u>Note:</u> <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> was added here only to make these notes easier for you to understand. Without <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>, this code will just output the actual data (which is what you want!). <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> is NOT something that should <em>always</em> be used in your code with <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> or <code><a href="https://tidyselect.r-lib.org/reference/where.html">where()</a></code>.</strong>
 </p>
 <p>As before, multiple helper functions can be strung together with operators and they can also be negated with <code>!</code>. For example:</p>
-<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Z"</span><span class="op">)</span>, <span class="va">log</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Z"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -212,7 +212,7 @@
 <span><span class="co">#&gt; 5       NA       NA</span></span>
 <span><span class="co">#&gt; 6 6.906755 6.906755</span></span></code></pre></div>
 <p>You also can apply <em>multiple</em> functions simultaneously by <code>list</code>ing them. For example:</p>
-<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Z"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>log <span class="op">=</span> <span class="va">log</span>, round <span class="op">=</span> <span class="va">round</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"Z"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -226,20 +226,20 @@
 <span><span class="co">#&gt; 6 999 999 6.906755      999 6.906755      999</span></span></code></pre></div>
 <p>Some common functions you may want to apply to columns in this way include: <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code>, <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code>, <code><a href="https://rdrr.io/r/base/scale.html">scale()</a></code>, <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code>, and many many others!</p>
 </div>
-<div id="conditional-values" class="section level3" number="15.1.2">
+<div id="conditional-values" class="section level3" number="16.1.2">
 <h3>
-<span class="header-section-number">15.1.2</span> Conditional Values<a class="anchor" aria-label="anchor" href="#conditional-values"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.1.2</span> Conditional Values<a class="anchor" aria-label="anchor" href="#conditional-values"><i class="fas fa-link"></i></a>
 </h3>
 <p>You may want a variable to have a value based on some different conditions. This can be extremely useful when creating new variables!</p>
-<div id="case_when" class="section level4" number="15.1.2.1">
+<div id="case_when" class="section level4" number="16.1.2.1">
 <h4>
-<span class="header-section-number">15.1.2.1</span> case_when()<a class="anchor" aria-label="anchor" href="#case_when"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.1.2.1</span> case_when()<a class="anchor" aria-label="anchor" href="#case_when"><i class="fas fa-link"></i></a>
 </h4>
 <p><code><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when()</a></code> is most useful when you have many nested tests/conditions to specify.</p>
 <img src="figures/dplyr_case_when.png" style="width:100.0%"><p style="font-size:6pt">
 Artwork by <span class="citation">Horst (2022)</span>
 </p>
-<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>fuel_efficiency <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when</a></span><span class="op">(</span></span>
 <span>    <span class="va">mpg</span> <span class="op">&lt;=</span> <span class="fl">19</span> <span class="op">~</span> <span class="st">"Poor"</span>,</span>
@@ -316,7 +316,7 @@ Artwork by <span class="citation">Horst (2022)</span>
 <p><strong>This creates a new variable called <code>fuel_efficiency</code>. Each observation’s value for this variable depends on its value for <code>mpg</code>, and differs based on different conditions.</strong></p>
 </div>
 <p>In more simple instances, <a href="advanced-variable-changing.html#ifelse">ifelse()</a> can be used:</p>
-<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">hp</span> <span class="op">&gt;=</span><span class="fl">200</span>, <span class="st">"High"</span>, <span class="st">"Low"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                  model  mpg cyl  disp  hp drat    wt  qsec</span></span>
@@ -391,19 +391,19 @@ Artwork by <span class="citation">Horst (2022)</span>
 </div>
 </div>
 </div>
-<div id="conditional-statements" class="section level2" number="15.2">
+<div id="conditional-statements" class="section level2" number="16.2">
 <h2>
-<span class="header-section-number">15.2</span> Conditional statements<a class="anchor" aria-label="anchor" href="#conditional-statements"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2</span> Conditional statements<a class="anchor" aria-label="anchor" href="#conditional-statements"><i class="fas fa-link"></i></a>
 </h2>
 <p>The idea of mutating variables based on conditional values brings up the larger idea of <em>conditional statements</em>. These are powerful programming tools that help us manipulate data based on conditions, also known as <em>“if/else statements”</em>.</p>
 <p>Sometimes, you will want your code to perform different actions depending on something’s value. In these circumstances, it is useful to implement <code>if...else</code> statements. <code>if</code> statements work as such:</p>
 <p><strong>if</strong> some test/condition evaluates to <code>TRUE</code>, execute some specific code.</p>
 <p>Other tests/conditions can be appended with <code>else</code> statements, which specify what to do when the original test/condition evaluates to <code>FALSE</code> and is based on subsequent tests/conditions. The syntax of a basic <code>if</code> statement is as follows:</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="advanced-variable-changing.html#cb226-1" tabindex="-1"></a><span class="cf">if</span>(some test<span class="sc">/</span>condition to evaluate) {</span>
-<span id="cb226-2"><a href="advanced-variable-changing.html#cb226-2" tabindex="-1"></a>  code <span class="cf">for</span> what to do <span class="cf">if</span> that test<span class="sc">/</span>condition evaluates to true</span>
-<span id="cb226-3"><a href="advanced-variable-changing.html#cb226-3" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="advanced-variable-changing.html#cb258-1" tabindex="-1"></a><span class="cf">if</span>(some test<span class="sc">/</span>condition to evaluate) {</span>
+<span id="cb258-2"><a href="advanced-variable-changing.html#cb258-2" tabindex="-1"></a>  code <span class="cf">for</span> what to do <span class="cf">if</span> that test<span class="sc">/</span>condition evaluates to true</span>
+<span id="cb258-3"><a href="advanced-variable-changing.html#cb258-3" tabindex="-1"></a>}</span></code></pre></div>
 <p>For example:</p>
-<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fl">4</span></span>
 <span></span>
 <span><span class="kw">if</span><span class="op">(</span><span class="fl">3</span> <span class="op">&lt;</span> <span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
@@ -413,7 +413,7 @@ Artwork by <span class="citation">Horst (2022)</span>
 <p><code>x</code> was set equal to 4. R evaluates the test <code>3 &lt; x</code> in the <code>if</code> statement, here equivalent to <code>3 &lt; 4</code>, which evaluates to <code>TRUE</code>. Since the <code>if</code> condition evaluates <code>TRUE</code>, it runs the code in the curly brackets.</p>
 <p><code>x</code> may not always be 4 though. What if <code>x</code> was not 4? What if you do not know what <code>x</code> is? If the test in the <code>if</code> statement evaluates to <code>FALSE</code>, nothing happens. If nothing at all happens, you may not know if there was an error in the code or the test just evaluated to <code>FALSE</code>. Considering this, it is always good practice to set up an alternative for when the test evaluates to <code>FALSE</code>. That is where <code>else</code> statements come in.</p>
 <p>The code below will change <code>x</code> to be a random value, so its actual value will be unknown.</p>
-<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span> <span class="co"># From the values 1 to 6, sample 1 value</span></span>
 <span></span>
 <span><span class="kw">if</span><span class="op">(</span><span class="fl">3</span> <span class="op">&lt;</span> <span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
@@ -421,12 +421,12 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"the condition evaluated FALSE"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="co">#&gt; [1] "The condition evaluated TRUE"</span></span>
+<span><span class="co">#&gt; [1] "the condition evaluated FALSE"</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 6</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 3</span></span></code></pre></div>
 <p>This code specifies what to do depending on whether the test evaluates to <code>TRUE</code> or if it evaluates to <code>FALSE</code>.</p>
 <p>You can get more specific and link several conditions together. You may not want just 2 options – e.g., something to do if a test is <code>TRUE</code> and something else done in <strong>all</strong> other cases. Instead of using <code>else</code>, you use <code>else if()</code> and specify another test.</p>
-<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw">if</span><span class="op">(</span><span class="fl">4</span> <span class="op">&lt;</span> <span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
@@ -436,36 +436,36 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Neither the first or second condition evaluated TRUE."</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="co">#&gt; [1] "The second condition evaluated TRUE"</span></span>
+<span><span class="co">#&gt; [1] "The first condition evaluated TRUE"</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 5</span></span></code></pre></div>
 <p>Writing <code>if</code> statements like this is most useful when the code you want to run executes a function. As you will note above, in all instances the <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> function was the code being executed (what is in the curly brackets). An infinite number of <code>if</code> conditions can be chained together in an <code>if...else</code> chain.</p>
 <p>There are two alternative ways to write <code>if...else</code> statements.</p>
-<div id="ifelse" class="section level3" number="15.2.1">
+<div id="ifelse" class="section level3" number="16.2.1">
 <h3>
-<span class="header-section-number">15.2.1</span> ifelse()<a class="anchor" aria-label="anchor" href="#ifelse"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2.1</span> ifelse()<a class="anchor" aria-label="anchor" href="#ifelse"><i class="fas fa-link"></i></a>
 </h3>
 <p><code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> is most useful when you need to <em>return values</em> rather than execute some other code/function (like printing a character string).</p>
 <p><code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> statements take the form:</p>
 <p><code>ifelse(test, the value to return if the test evaluates *TRUE*, the value to return if the test evaluates *FALSE*)</code></p>
 <p>Multiple <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> statements can be chained together, akin to an <code>else if</code> by adding a nested <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> call in place of the <code>FALSE</code> argument.</p>
 <p>The examples below demonstrates this:</p>
-<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fl">4</span> <span class="op">&lt;</span> <span class="va">x</span>, <span class="st">"The first condition evaluated true."</span>,</span>
 <span>       <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">&lt;</span> <span class="va">x</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">5</span>, <span class="st">"The second condition evaluated true."</span>, </span>
 <span>              <span class="st">"Neither the first or second condition evaluated true."</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Neither the first or second condition evaluated true."</span></span>
+<span><span class="co">#&gt; [1] "The first condition evaluated true."</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 6</span></span></code></pre></div>
 </div>
-<div id="case_when-1" class="section level3" number="15.2.2">
+<div id="case_when-1" class="section level3" number="16.2.2">
 <h3>
-<span class="header-section-number">15.2.2</span> case_when()<a class="anchor" aria-label="anchor" href="#case_when-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2.2</span> case_when()<a class="anchor" aria-label="anchor" href="#case_when-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>As shown above, <code><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when()</a></code> can be used in combination with <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> or on its own:</p>
-<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when</a></span><span class="op">(</span></span>
@@ -473,9 +473,9 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span>  <span class="fl">2</span> <span class="op">&lt;</span> <span class="va">x</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">5</span> <span class="op">~</span> <span class="st">"The second condition evaluated true."</span>,</span>
 <span>  <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"Neither the first or second condition evaluated true."</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Neither the first or second condition evaluated true."</span></span>
+<span><span class="co">#&gt; [1] "The first condition evaluated true."</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 6</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 3</span></span></code></pre></div>
 <p><strong>In sum:</strong></p>
 <ul>
 <li>Traditional <code>if...else</code> statements are useful when you need the result to execute some code.</li>
@@ -484,12 +484,12 @@ Artwork by <span class="citation">Horst (2022)</span>
 </ul>
 </div>
 </div>
-<div id="change-variable-types" class="section level2" number="15.3">
+<div id="change-variable-types" class="section level2" number="16.3">
 <h2>
-<span class="header-section-number">15.3</span> Change Variable Types<a class="anchor" aria-label="anchor" href="#change-variable-types"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.3</span> Change Variable Types<a class="anchor" aria-label="anchor" href="#change-variable-types"><i class="fas fa-link"></i></a>
 </h2>
 <p>One of the ways in which it <em>is</em> appropriate to modify a variable is when you need to change the <em>type</em> of data it contains. In R, you can change data type by using the <code>as.*</code> function. For example, <code><a href="https://rdrr.io/r/base/logical.html">as.logical()</a></code> changes the passed values to be <em>logical.</em> The one exception is that when changing something to a <em>factor</em>, you should use <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> (more on this below.)</p>
-<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>mpg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span>,</span>
 <span>         cyl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -512,31 +512,31 @@ Artwork by <span class="citation">Horst (2022)</span>
 <p><strong>This modifies the data in the <code>mpg</code> column to be of <em>character</em>, and the data in the <code>cyl</code> column to be a factor. The output of this is then piped to <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> so the types of each column will be displayed.</strong></p>
 </div>
 <p>You can see from this output that all the numbers in <code>mpg</code> have quotes around them. Also, it is labeled “<chr>” and not “<dbl>”. While the raw data for <code>cyl</code> look unchanged, you can see it now says “<fct>”.</fct></dbl></chr></p>
-<div id="factors" class="section level3" number="15.3.1">
+<div id="factors" class="section level3" number="16.3.1">
 <h3>
-<span class="header-section-number">15.3.1</span> Factors<a class="anchor" aria-label="anchor" href="#factors"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.3.1</span> Factors<a class="anchor" aria-label="anchor" href="#factors"><i class="fas fa-link"></i></a>
 </h3>
 <p>Factors are important, and can be a little tricky to work with, so they get their own section. Factors are categorical data that have a specific order, and by proxy a specific defined range of possible values (e.g., Months of the year).</p>
-<div id="factor-conversion" class="section level4" number="15.3.1.1">
+<div id="factor-conversion" class="section level4" number="16.3.1.1">
 <h4>
-<span class="header-section-number">15.3.1.1</span> Factor Conversion<a class="anchor" aria-label="anchor" href="#factor-conversion"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.3.1.1</span> Factor Conversion<a class="anchor" aria-label="anchor" href="#factor-conversion"><i class="fas fa-link"></i></a>
 </h4>
 <p>When working with factors, particularly when converting data to and from a factor, you have to be very careful. Consider the following:</p>
-<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>test <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"0"</span>, <span class="st">"1"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   test</span></span>
 <span><span class="co">#&gt; 1    0</span></span>
 <span><span class="co">#&gt; 2    1</span></span></code></pre></div>
 <p>This simple dataframe that has one column with data as a factor with the values 0 and 1. Say you want to change that data from a factor to numeric. Simple enough, just apply the appropriate <code>as.*</code> function (<code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code>).</p>
 <p>However, observe the output from doing so:</p>
-<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>test <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"0"</span>, <span class="st">"1"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>test <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   test</span></span>
 <span><span class="co">#&gt; 1    1</span></span>
 <span><span class="co">#&gt; 2    2</span></span></code></pre></div>
 <p>This is obviously not what was intended. What is happening here is <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> is taking the <em>level</em> of each value, with <code>0</code> being level 1 and <code>1</code> being level 2. Instead, you have to circumvent this issue by first converting the values to a <em>character</em>, and then a <em>number</em>:</p>
-<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>test <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"0"</span>, <span class="st">"1"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>test <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span>,</span>
 <span>         test <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span><span class="op">)</span></span>
@@ -545,19 +545,19 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span><span class="co">#&gt; 2    1</span></span></code></pre></div>
 <p>The take-home point is to always double check that your code is doing what you intend it to, especially when converting to and from a <em>factor</em>!</p>
 </div>
-<div id="reorder-levels" class="section level4" number="15.3.1.2">
+<div id="reorder-levels" class="section level4" number="16.3.1.2">
 <h4>
-<span class="header-section-number">15.3.1.2</span> Reorder Levels<a class="anchor" aria-label="anchor" href="#reorder-levels"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.3.1.2</span> Reorder Levels<a class="anchor" aria-label="anchor" href="#reorder-levels"><i class="fas fa-link"></i></a>
 </h4>
 <p>While the levels of a <em>factor</em> are ordered, you may at times want to change what that order is. One of the more common instances when this will occur is in visualizations. Consider the following:</p>
-<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cyl</span>, fill <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="Manip_Mutating_files/figure-html/unnamed-chunk-21-1.png" alt="" width="672"></div>
 <p>The x-axis has a sensible arrangement, but this 1. is a function of the fact that the factors happen to be numbers, 2. is not particularly aesthetically pleasing when looking at the actual bars. The bars themselves have an inherent ordering and it may make more sense to organize them as such. This can be accomplished using <code><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_infreq()</a></code>, which will reorder the levels of a factor <strong>in</strong> their <strong>freq</strong>uency of occurrence (with highest frequency first).</p>
-<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>           <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_infreq</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -565,7 +565,7 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="Manip_Mutating_files/figure-html/unnamed-chunk-22-1.png" alt="" width="672"></div>
 <p>To order the levels with lowest frequency first, you can use <code><a href="https://forcats.tidyverse.org/reference/fct_rev.html">fct_rev()</a></code> for “<strong>rev</strong>erse <strong>freq</strong>uency”.</p>
-<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>           <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_infreq</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -577,14 +577,14 @@ Artwork by <span class="citation">Horst (2022)</span>
 <strong><u>Note:</u> Notice that the color mapping is changing as well. In the bottom graph, the blue bar is on the 4 cylinder bar, whereas on the preceding graph it was on the 6 cylinder bar. This is because color mappings correspond to factor levels!</strong>
 </p>
 <p>Most of the time you will not be creating graphs to visualize counts of a single variable. Instead, you will be visualizing the relationship or comparison between two more more variables, like in the graph below:</p>
-<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">mpg</span>, x <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, geom <span class="op">=</span> <span class="st">"pointrange"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="Manip_Mutating_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672"></div>
 <p>To reorder the levels of a factor by their relationship with another variable (instead of frequency of occurrence), you can use <code><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder()</a></code>. In <code><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder()</a></code>, you must specify the factor to reorder, and the other variable you wish to reorder the levels by. By default, <code>fct_order()</code> will use the median. To change this, you must specify the exact function (similar to how we do in <code><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary()</a></code>).</p>
-<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mtcars2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">mpg</span>, x <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">cyl</span>, <span class="va">mpg</span>, .fun <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -596,17 +596,17 @@ Artwork by <span class="citation">Horst (2022)</span>
 </div>
 </div>
 </div>
-<div id="text-cleaning" class="section level2" number="15.4">
+<div id="text-cleaning" class="section level2" number="16.4">
 <h2>
-<span class="header-section-number">15.4</span> Text Cleaning<a class="anchor" aria-label="anchor" href="#text-cleaning"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4</span> Text Cleaning<a class="anchor" aria-label="anchor" href="#text-cleaning"><i class="fas fa-link"></i></a>
 </h2>
 <p>More often than not, when working with text responses or any sort of character data output, it will initially be very difficult to work with. This is the case both when dealing with qualitative data and sometimes even just from the output of your data collection means (Qualtrics, Googleforms, etc.). What follow are some common cleaning procedures.</p>
-<div id="remove-text-from-strings" class="section level3" number="15.4.1">
+<div id="remove-text-from-strings" class="section level3" number="16.4.1">
 <h3>
-<span class="header-section-number">15.4.1</span> Remove Text From Strings<a class="anchor" aria-label="anchor" href="#remove-text-from-strings"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4.1</span> Remove Text From Strings<a class="anchor" aria-label="anchor" href="#remove-text-from-strings"><i class="fas fa-link"></i></a>
 </h3>
 <p>Say your data output included a “Response:” before each response. Obviously, you would want the variable to just contain the actual response values. You can use <code><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all()</a></code> to remove a specified pattern from a text response. Here, removing “Response:”.</p>
-<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">"Response:Apple Juice"</span></span>
 <span><span class="va">x</span></span>
 <span><span class="co">#&gt; [1] "Response:Apple Juice"</span></span>
@@ -614,13 +614,13 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span><span class="va">x</span></span>
 <span><span class="co">#&gt; [1] "Apple Juice"</span></span></code></pre></div>
 </div>
-<div id="escaping-special-characters" class="section level3" number="15.4.2">
+<div id="escaping-special-characters" class="section level3" number="16.4.2">
 <h3>
-<span class="header-section-number">15.4.2</span> Escaping Special Characters<a class="anchor" aria-label="anchor" href="#escaping-special-characters"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4.2</span> Escaping Special Characters<a class="anchor" aria-label="anchor" href="#escaping-special-characters"><i class="fas fa-link"></i></a>
 </h3>
 <p>In many programming languages, dealing with special characters is difficult. The language has trouble deciding if you are trying to <strong>use</strong> the character or just <em>refer</em> to it.</p>
 <p>Consider the example below:</p>
-<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">'{Response:"Apple Juice"}'</span></span>
 <span><span class="va">x</span></span>
 <span><span class="co">#&gt; [1] "{Response:\"Apple Juice\"}"</span></span>
@@ -628,14 +628,14 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span><span class="co">#&gt; Error in `stri_replace_all_regex()`:</span></span>
 <span><span class="co">#&gt; ! Syntax error in regex pattern. (U_REGEX_RULE_SYNTAX, context=`{`)</span></span></code></pre></div>
 <p>Instead, you have to do what is called “escaping” a special character. One way to do so in R is to wrap the character in brackets.</p>
-<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">'{Response:"Apple Juice"}'</span></span>
 <span><span class="va">x</span></span>
 <span><span class="co">#&gt; [1] "{Response:\"Apple Juice\"}"</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">'[{]'</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Response:\"Apple Juice\"}"</span></span></code></pre></div>
 <p>Now this raises the question of what do you do when you want to escape a bracket? You can do so with double forward slash.</p>
-<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">'[Response:"Apple Juice"]'</span></span>
 <span><span class="va">x</span></span>
 <span><span class="co">#&gt; [1] "[Response:\"Apple Juice\"]"</span></span>
@@ -645,31 +645,31 @@ Artwork by <span class="citation">Horst (2022)</span>
 <strong>Note: Double forward slash (\) can be used to escape any special character as well, not just brackets.</strong>
 </p>
 </div>
-<div id="removing-multiple-strings-at-once" class="section level3" number="15.4.3">
+<div id="removing-multiple-strings-at-once" class="section level3" number="16.4.3">
 <h3>
-<span class="header-section-number">15.4.3</span> Removing Multiple Strings at Once<a class="anchor" aria-label="anchor" href="#removing-multiple-strings-at-once"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4.3</span> Removing Multiple Strings at Once<a class="anchor" aria-label="anchor" href="#removing-multiple-strings-at-once"><i class="fas fa-link"></i></a>
 </h3>
 <p>You can remove multiple strings at once by using <code><a href="https://rdrr.io/r/base/paste.html">paste()</a></code> to include all the characters or strings you want removed.</p>
-<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">'Response:{"Apple Juice"}'</span></span>
 <span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Response'</span>, <span class="st">'[:]'</span>, <span class="st">'[{]'</span>, <span class="st">'["]'</span>, <span class="st">'[}]'</span><span class="op">)</span>, </span>
 <span>                        collapse<span class="op">=</span><span class="st">'|'</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Apple Juice"</span></span></code></pre></div>
 </div>
-<div id="removing-the-first-instance" class="section level3" number="15.4.4">
+<div id="removing-the-first-instance" class="section level3" number="16.4.4">
 <h3>
-<span class="header-section-number">15.4.4</span> Removing the First Instance<a class="anchor" aria-label="anchor" href="#removing-the-first-instance"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4.4</span> Removing the First Instance<a class="anchor" aria-label="anchor" href="#removing-the-first-instance"><i class="fas fa-link"></i></a>
 </h3>
 <p>Sometimes, you do not want EVERY instance of a string removed. In the example below, the string “Answer” is actually part of a participant’s response. This should not be removed!</p>
-<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">'Response:{"Apple Juice Response"}'</span></span>
 <span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Response'</span>, <span class="st">'[:]'</span>, <span class="st">'[{]'</span>, <span class="st">'["]'</span>, <span class="st">'[}]'</span><span class="op">)</span>, </span>
 <span>                        collapse<span class="op">=</span><span class="st">'|'</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Apple Juice "</span></span></code></pre></div>
 <p>If we removed things as we had been before, we’d lose part of their response! Instead, we can just remove the <em>first</em> instance of a string by using <code><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove()</a></code></p>
-<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">'Response:{"Apple Juice Response"}'</span></span>
 <span></span>
 <span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'[:]'</span>, <span class="st">'[{]'</span>, <span class="st">'["]'</span>, <span class="st">'[}]'</span><span class="op">)</span>, </span>
@@ -682,13 +682,13 @@ Artwork by <span class="citation">Horst (2022)</span>
 <p><strong>This first gets rid of all the other text strings that are to be removed by using <code><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all()</a></code> as before. Then, to deal with the extra “Response”, <code><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove()</a></code> is used, and only the first instance is removed.</strong></p>
 </div>
 </div>
-<div id="replace-parts-of-a-response" class="section level3" number="15.4.5">
+<div id="replace-parts-of-a-response" class="section level3" number="16.4.5">
 <h3>
-<span class="header-section-number">15.4.5</span> Replace Parts of a Response<a class="anchor" aria-label="anchor" href="#replace-parts-of-a-response"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.4.5</span> Replace Parts of a Response<a class="anchor" aria-label="anchor" href="#replace-parts-of-a-response"><i class="fas fa-link"></i></a>
 </h3>
 <p>Sometimes you will not want to only <strong>remove</strong> part of a response but also <strong>replace</strong> it with something else. Whereas the <code><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove()</a></code> function will simply remove the string, <code><a href="https://rdrr.io/r/base/grep.html">gsub()</a></code> will substitute it with something else that you specify!</p>
 <p><code><a href="https://rdrr.io/r/base/grep.html">gsub()</a></code> takes the form:<br><code>gsub(string to replace, what to replace with, where to look)</code></p>
-<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="st">"foo:bar"</span></span>
 <span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">":"</span><span class="op">)</span> <span class="co"># Not what you want</span></span>
@@ -697,54 +697,59 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span><span class="co">#&gt; [1] "foo bar"</span></span></code></pre></div>
 </div>
 </div>
-<div id="extras" class="section level2" number="15.5">
+<div id="extras" class="section level2" number="16.5">
 <h2>
-<span class="header-section-number">15.5</span> Extras<a class="anchor" aria-label="anchor" href="#extras"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.5</span> Extras<a class="anchor" aria-label="anchor" href="#extras"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><a href="https://github.com/rstudio/cheatsheets/blob/main/factors.pdf">Factors cheatsheet</a></li>
 </ul>
 </div>
-<div id="references-3" class="section level2" number="15.6">
+<div id="references-3" class="section level2" number="16.6">
 <h2>
-<span class="header-section-number">15.6</span> References<a class="anchor" aria-label="anchor" href="#references-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.6</span> References<a class="anchor" aria-label="anchor" href="#references-3"><i class="fas fa-link"></i></a>
 </h2>
 
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0" line-spacing="2">
+<div id="ref-allison_horst" class="csl-entry">
+Horst, A. (2022). <em>R &amp; stats illustrations by <span class="nocase">@allison_horst</span></em>. <a href="https://github.com/allisonhorst/stats-illustrations/">https://github.com/allisonhorst/stats-illustrations/</a>
+</div>
+</div>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="advanced-subsetting.html"><span class="header-section-number">14</span> Advanced Subsetting</a></div>
-<div class="next"><a href="basic-wrangling.html"><span class="header-section-number">16</span> Basic Wrangling</a></div>
+<div class="prev"><a href="advanced-subsetting.html"><span class="header-section-number">15</span> Advanced Subsetting</a></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#advanced-variable-changing"><span class="header-section-number">15</span> Advanced Variable Changing</a></li>
+<li><a class="nav-link" href="#advanced-variable-changing"><span class="header-section-number">16</span> Advanced Variable Changing</a></li>
 <li>
-<a class="nav-link" href="#advanced-mutating"><span class="header-section-number">15.1</span> Advanced Mutating</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#mutating-across"><span class="header-section-number">15.1.1</span> Mutating across()</a></li>
-<li><a class="nav-link" href="#conditional-values"><span class="header-section-number">15.1.2</span> Conditional Values</a></li>
+<a class="nav-link" href="#advanced-mutating"><span class="header-section-number">16.1</span> Advanced Mutating</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#mutating-across"><span class="header-section-number">16.1.1</span> Mutating across()</a></li>
+<li><a class="nav-link" href="#conditional-values"><span class="header-section-number">16.1.2</span> Conditional Values</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#conditional-statements"><span class="header-section-number">15.2</span> Conditional statements</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#ifelse"><span class="header-section-number">15.2.1</span> ifelse()</a></li>
-<li><a class="nav-link" href="#case_when-1"><span class="header-section-number">15.2.2</span> case_when()</a></li>
+<a class="nav-link" href="#conditional-statements"><span class="header-section-number">16.2</span> Conditional statements</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#ifelse"><span class="header-section-number">16.2.1</span> ifelse()</a></li>
+<li><a class="nav-link" href="#case_when-1"><span class="header-section-number">16.2.2</span> case_when()</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#change-variable-types"><span class="header-section-number">15.3</span> Change Variable Types</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#factors"><span class="header-section-number">15.3.1</span> Factors</a></li></ul>
+<a class="nav-link" href="#change-variable-types"><span class="header-section-number">16.3</span> Change Variable Types</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#factors"><span class="header-section-number">16.3.1</span> Factors</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#text-cleaning"><span class="header-section-number">15.4</span> Text Cleaning</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#remove-text-from-strings"><span class="header-section-number">15.4.1</span> Remove Text From Strings</a></li>
-<li><a class="nav-link" href="#escaping-special-characters"><span class="header-section-number">15.4.2</span> Escaping Special Characters</a></li>
-<li><a class="nav-link" href="#removing-multiple-strings-at-once"><span class="header-section-number">15.4.3</span> Removing Multiple Strings at Once</a></li>
-<li><a class="nav-link" href="#removing-the-first-instance"><span class="header-section-number">15.4.4</span> Removing the First Instance</a></li>
-<li><a class="nav-link" href="#replace-parts-of-a-response"><span class="header-section-number">15.4.5</span> Replace Parts of a Response</a></li>
+<a class="nav-link" href="#text-cleaning"><span class="header-section-number">16.4</span> Text Cleaning</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#remove-text-from-strings"><span class="header-section-number">16.4.1</span> Remove Text From Strings</a></li>
+<li><a class="nav-link" href="#escaping-special-characters"><span class="header-section-number">16.4.2</span> Escaping Special Characters</a></li>
+<li><a class="nav-link" href="#removing-multiple-strings-at-once"><span class="header-section-number">16.4.3</span> Removing Multiple Strings at Once</a></li>
+<li><a class="nav-link" href="#removing-the-first-instance"><span class="header-section-number">16.4.4</span> Removing the First Instance</a></li>
+<li><a class="nav-link" href="#replace-parts-of-a-response"><span class="header-section-number">16.4.5</span> Replace Parts of a Response</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#extras"><span class="header-section-number">15.5</span> Extras</a></li>
-<li><a class="nav-link" href="#references-3"><span class="header-section-number">15.6</span> References</a></li>
+<li><a class="nav-link" href="#extras"><span class="header-section-number">16.5</span> Extras</a></li>
+<li><a class="nav-link" href="#references-3"><span class="header-section-number">16.6</span> References</a></li>
 </ul>
 
       <div class="book-extra">
