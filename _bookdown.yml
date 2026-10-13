@@ -14,8 +14,8 @@ rmd_files:
  - Visualizations3.Rmd
  - Visualizations4.Rmd
  - Manip_Intro_Investigating.Rmd
- - Manip_BasicWrangling.Rmd
  - Manip_Subsetting.Rmd
+ - Manip_BasicWrangling.Rmd
  - Manip_Mutating.Rmd
 # - Manip_Summarize.Rmd
 # - Manip_DataTransformation.Rmd
