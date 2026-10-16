@@ -17,8 +17,8 @@ rmd_files:
  - Manip_BasicWrangling.Rmd
  - Manip_Subsetting.Rmd
  - Manip_Mutating.Rmd
-# - Manip_Summarize.Rmd
-# - Manip_DataTransformation.Rmd
+ - Manip_Summarize.Rmd
+ - Manip_DataTransformation.Rmd
 # - Projects.Rmd
 
 language:
