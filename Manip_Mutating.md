@@ -373,7 +373,7 @@ if(3 < x) {
 }
 #> [1] "the condition evaluated FALSE"
 x
-#> [1] 3
+#> [1] 2
 ```
 
 This code specifies what to do depending on whether the test evaluates to `TRUE` or if it evaluates to `FALSE`.
@@ -440,7 +440,7 @@ case_when(
 )
 #> [1] "The first condition evaluated true."
 x
-#> [1] 3
+#> [1] 1
 ```
 
 **In sum:**

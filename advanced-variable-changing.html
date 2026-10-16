@@ -88,6 +88,8 @@
 <li><a class="" href="basic-wrangling.html"><span class="header-section-number">14</span> Basic Wrangling</a></li>
 <li><a class="" href="advanced-subsetting.html"><span class="header-section-number">15</span> Advanced Subsetting</a></li>
 <li><a class="active" href="advanced-variable-changing.html"><span class="header-section-number">16</span> Advanced Variable Changing</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">17</span> Summarizing Data</a></li>
+<li><a class="" href="data-transformation.html"><span class="header-section-number">18</span> Data Transformation</a></li>
 </ul>
 
         <div class="book-extra">
@@ -423,7 +425,7 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span><span class="op">}</span></span>
 <span><span class="co">#&gt; [1] "the condition evaluated FALSE"</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 2</span></span></code></pre></div>
 <p>This code specifies what to do depending on whether the test evaluates to <code>TRUE</code> or if it evaluates to <code>FALSE</code>.</p>
 <p>You can get more specific and link several conditions together. You may not want just 2 options – e.g., something to do if a test is <code>TRUE</code> and something else done in <strong>all</strong> other cases. Instead of using <code>else</code>, you use <code>else if()</code> and specify another test.</p>
 <div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
@@ -475,7 +477,7 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "The first condition evaluated true."</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 3</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 <p><strong>In sum:</strong></p>
 <ul>
 <li>Traditional <code>if...else</code> statements are useful when you need the result to execute some code.</li>
@@ -710,16 +712,11 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span class="header-section-number">16.6</span> References<a class="anchor" aria-label="anchor" href="#references-3"><i class="fas fa-link"></i></a>
 </h2>
 
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0" line-spacing="2">
-<div id="ref-allison_horst" class="csl-entry">
-Horst, A. (2022). <em>R &amp; stats illustrations by <span class="nocase">@allison_horst</span></em>. <a href="https://github.com/allisonhorst/stats-illustrations/">https://github.com/allisonhorst/stats-illustrations/</a>
-</div>
-</div>
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="advanced-subsetting.html"><span class="header-section-number">15</span> Advanced Subsetting</a></div>
-<div class="empty"></div>
+<div class="next"><a href="summarizing-data.html"><span class="header-section-number">17</span> Summarizing Data</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -766,7 +763,7 @@ Horst, A. (2022). <em>R &amp; stats illustrations by <span class="nocase">@allis
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-10-13.</p>
+    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-10-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
