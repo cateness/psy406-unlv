@@ -19,6 +19,8 @@ rmd_files:
  - Manip_Mutating.Rmd
  - Manip_Summarize.Rmd
  - Manip_DataTransformation.Rmd
+ - Stats_Intro.Rmd
+ - Stats_2variables.Rmd
 # - Projects.Rmd
 
 language:
