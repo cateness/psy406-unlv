@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 20 Statistical Analysis with Two Variables | PSY406</title>
+<meta name="author" content="Catie Nielson (with help from Ethan Hurwitz)">
+<meta name="description" content="In this chapter, we will cover three main statistical tests for analyses with two variables: chi-square, correlation, and t-test.  20.1 Two categorical variables: Chi-square test When both your...">
+<meta name="generator" content="bookdown 0.48 with bs4_book()">
+<meta property="og:title" content="Chapter 20 Statistical Analysis with Two Variables | PSY406">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://cateness.github.io/psy406-unlv/statistical-analysis-with-two-variables.html">
+<meta property="og:description" content="In this chapter, we will cover three main statistical tests for analyses with two variables: chi-square, correlation, and t-test.  20.1 Two categorical variables: Chi-square test When both your...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 20 Statistical Analysis with Two Variables | PSY406">
+<meta name="twitter:description" content="In this chapter, we will cover three main statistical tests for analyses with two variables: chi-square, correlation, and t-test.  20.1 Two categorical variables: Chi-square test When both your...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">PSY406</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
+<li class="book-part">R Basics</li>
+<li><a class="" href="why-use-r.html"><span class="header-section-number">2</span> Why use R?</a></li>
+<li><a class="" href="r-coding-basics.html"><span class="header-section-number">3</span> R Coding Basics</a></li>
+<li><a class="" href="using-r-effectively.html"><span class="header-section-number">4</span> Using R Effectively</a></li>
+<li class="book-part">Visualizations</li>
+<li><a class="" href="intro-to-ggplot2.html"><span class="header-section-number">5</span> Intro to ggplot2</a></li>
+<li><a class="" href="aesthetics.html"><span class="header-section-number">6</span> Aesthetics</a></li>
+<li><a class="" href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></li>
+<li><a class="" href="one-variable.html"><span class="header-section-number">8</span> One Variable</a></li>
+<li><a class="" href="two-variables.html"><span class="header-section-number">9</span> Two Variables</a></li>
+<li><a class="" href="three-variables.html"><span class="header-section-number">10</span> Three Variables</a></li>
+<li><a class="" href="customization.html"><span class="header-section-number">11</span> Customization</a></li>
+<li><a class="" href="color-theory.html"><span class="header-section-number">12</span> Color Theory</a></li>
+<li class="book-part">Data Manipulation</li>
+<li><a class="" href="tidy-data-and-tidyverse.html"><span class="header-section-number">13</span> Tidy Data and Tidyverse</a></li>
+<li><a class="" href="basic-wrangling.html"><span class="header-section-number">14</span> Basic Wrangling</a></li>
+<li><a class="" href="advanced-subsetting.html"><span class="header-section-number">15</span> Advanced Subsetting</a></li>
+<li><a class="" href="advanced-variable-changing.html"><span class="header-section-number">16</span> Advanced Variable Changing</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">17</span> Summarizing Data</a></li>
+<li><a class="" href="data-transformation.html"><span class="header-section-number">18</span> Data Transformation</a></li>
+<li class="book-part">Statistics in R</li>
+<li><a class="" href="statistics-a-review.html"><span class="header-section-number">19</span> Statistics: A Review</a></li>
+<li><a class="active" href="statistical-analysis-with-two-variables.html"><span class="header-section-number">20</span> Statistical Analysis with Two Variables</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="statistical-analysis-with-two-variables" class="section level1" number="20">
+<h1>
+<span class="header-section-number">20</span> Statistical Analysis with Two Variables<a class="anchor" aria-label="anchor" href="#statistical-analysis-with-two-variables"><i class="fas fa-link"></i></a>
+</h1>
+<p>In this chapter, we will cover three main statistical tests for analyses with two variables: chi-square, correlation, and t-test.</p>
+<div id="two-categorical-variables-chi-square-test" class="section level2" number="20.1">
+<h2>
+<span class="header-section-number">20.1</span> Two categorical variables: Chi-square test<a class="anchor" aria-label="anchor" href="#two-categorical-variables-chi-square-test"><i class="fas fa-link"></i></a>
+</h2>
+<p>When both your predictor and outcome variables are categorical, the statistical test we will use is the chi-square test of independence. Very simply put, this test allows us to examine if there is an association between two categorical variables by comparing the <em>expected counts</em> within each group (all things being equal) to the <em>actual counts</em>. If you want more of an explanation of this test, check out the <a href="https://learningstatisticswithr.com/12-chisquare.html">whole chapter</a> on chi-square and related tests in LSWR. Chi comes from the Greek letter and mathematical symbol <span class="math inline">\(\chi\)</span>, square because of how this test statistic is calculated.</p>
+<p>To think about how this test works and how to interpret it, let’s look at an example from the penguins dataset.</p>
+<p>In our visualization section, we made a graph to answer the question, “what is the distribution of penguin species on each island?” It looked like this:</p>
+<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># color</span></span>
+<span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">island</span>, fill <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_dodge.html">position_dodge</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Stats_2variables_files/figure-html/unnamed-chunk-2-1.png" alt="" width="672"></div>
+<p>As you can see, there are different numbers of each penguin species on each island and no island has all types of penguins. But how can we determine if this differences is <strong>statistically significant</strong>? We can use a chi-square test!</p>
+<p>First, we need to decide on our statistical hypotheses. For a chi-square test, the <strong><em>null hypothesis</em></strong> is usually that the two variables are not related (hence, the test of independence). In other words, the count should be the same for each group. So in this case, the null hypothesis is that there are an <em>equal</em> number of penguins of each species on each island. The <strong><em>alternative hypothesis</em></strong> is that the two variables are related (not independent) or that there are an <em>unequal</em> number of each species on each island.</p>
+<div id="calculating-a-chi-square-test-in-r" class="section level3" number="20.1.1">
+<h3>
+<span class="header-section-number">20.1.1</span> Calculating a chi-square test in R<a class="anchor" aria-label="anchor" href="#calculating-a-chi-square-test-in-r"><i class="fas fa-link"></i></a>
+</h3>
+<p>Now that we know the hypotheses the test will be comparing, we can run the test. In R, we can use the built in <code>stats</code> package to run most of our statistical tests. However, this package doesn’t play well with the tidyverse, so if you want to put a statistical test onto the end of a pipe chain (after some mutating and filtering, for example) you’ll use a different package (see the end of the this chapter).</p>
+<p>The function we will use is <code><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test()</a></code> which takes the inputs x and y for our two variables. In this case, x and y are two columns in the dataframe, so I can call them using column indexing (in this case, $).</p>
+<div class="sourceCode" id="cb316"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">penguins</span><span class="op">$</span><span class="va">species</span>, <span class="va">penguins</span><span class="op">$</span><span class="va">island</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Pearson's Chi-squared test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  penguins$species and penguins$island</span></span>
+<span><span class="co">#&gt; X-squared = 299.55, df = 4, p-value &lt; 2.2e-16</span></span></code></pre></div>
+</div>
+<div id="interpreting-a-chi-square-test" class="section level3" number="20.1.2">
+<h3>
+<span class="header-section-number">20.1.2</span> Interpreting a chi-square test<a class="anchor" aria-label="anchor" href="#interpreting-a-chi-square-test"><i class="fas fa-link"></i></a>
+</h3>
+<p>How exciting, your first statistical test in R! But what does it mean?</p>
+<p>As you can see, there are three numerical outputs from this test, just like I promised last chapter: 1) <strong>a test statistic</strong> (X-square where X = chi), 2) <strong>degrees of freedom</strong>, and 3) a <strong><em>p</em>-value</strong>.</p>
+<p>The test statistic is very large, so that means there is a large effect (yay!). The degrees of freedom is small because for chi-square tests it is based on the number of groups (islands and species), not the number of observations (penguins).</p>
+<p>Then looking at the p-value, it is written in scientific notation, so this means that <em>p</em> &lt; 2.2 x <span class="math inline">\(10^{-16}\)</span>. For those of you who don’t like scientific notation, that is <em>p</em> &lt; 0.00000000000000022 (basically 0). This is much, much smaller than 0.05, so we can say that this result is statistically significant, reject the null hypothesis, and conclude that there is an unequal number of penguins in each species on each island. In other words, your conclusion based on your graph was statistically supported!</p>
+<p>However, the output of a chi-square test doesn’t tell us <strong>how</strong> that the null hypothesis is wrong, just that it is not supported. In other words, this output doesn’t tell us which island has which penguin species. For that, we need a table of counts (like the ones you practiced making last week!).</p>
+<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">island</span>, .drop <span class="op">=</span> <span class="cn">F</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 9 × 4</span></span>
+<span><span class="co">#&gt;   island    species       n total</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 Biscoe    Adelie       44   344</span></span>
+<span><span class="co">#&gt; 2 Biscoe    Chinstrap     0   344</span></span>
+<span><span class="co">#&gt; 3 Biscoe    Gentoo      124   344</span></span>
+<span><span class="co">#&gt; 4 Dream     Adelie       56   344</span></span>
+<span><span class="co">#&gt; 5 Dream     Chinstrap    68   344</span></span>
+<span><span class="co">#&gt; 6 Dream     Gentoo        0   344</span></span>
+<span><span class="co">#&gt; 7 Torgersen Adelie       52   344</span></span>
+<span><span class="co">#&gt; 8 Torgersen Chinstrap     0   344</span></span>
+<span><span class="co">#&gt; 9 Torgersen Gentoo        0   344</span></span></code></pre></div>
+<p><em>Note that I have included the input <code>.drop = F</code> in the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> function so that we can see the cells where there are 0 penguins of a certain species on each island.</em></p>
+<p>Or, if you want to make it look more like a traditional table, you can use the <code><a href="https://rdrr.io/r/stats/xtabs.html">xtabs()</a></code> function
+from the stats package. You’ll notice in this function that you input a formula instead of an x and y separately. A formula input is set up like an equation, where the ~ represents an equals sign. This may not make a lot of sense here, but we’ll discuss it more later on.</p>
+<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/xtabs.html">xtabs</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="op">~</span> <span class="va">island</span> <span class="op">+</span> <span class="va">species</span>, data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span></span>
+<span><span class="co">#&gt;            species</span></span>
+<span><span class="co">#&gt; island      Adelie Chinstrap Gentoo</span></span>
+<span><span class="co">#&gt;   Biscoe        44         0    124</span></span>
+<span><span class="co">#&gt;   Dream         56        68      0</span></span>
+<span><span class="co">#&gt;   Torgersen     52         0      0</span></span></code></pre></div>
+<p>No matter how you make your table, you can see that there are distinct distributions of penguins on each island. Biscoe island has Adelie and Gentoo penguins, but not Chinstrap. Dream island has Adelie and Chinstrap, but not Gentoo. And Torgersen island has only Adelie penguins. Or, put another way, Adelie penguins are on all three islands, whereas Chinstrap are only on Dream island and Gentoo are only on Biscoe.</p>
+</div>
+<div id="reporting-a-chi-square-test" class="section level3" number="20.1.3">
+<h3>
+<span class="header-section-number">20.1.3</span> Reporting a chi-square test<a class="anchor" aria-label="anchor" href="#reporting-a-chi-square-test"><i class="fas fa-link"></i></a>
+</h3>
+<p>As a reminder from the previous chapter, we can use these 4 steps to report a statistical test and result:</p>
+<ol style="list-style-type: decimal">
+<li>Describe the statistical analysis you performed.</li>
+<li>Tell whether the result is statistically significant.</li>
+<li>Present the statistical results or outputs (the test statistic, p-value, degrees of freedom, etc.).</li>
+<li>Describe the relation in the context of your hypothesis and variables.</li>
+</ol>
+<p>You can report the statistical results of a chi-quare test result using the following template: “X and Y were [not] significantly related, (<span class="math inline">\(\chi^2\)</span>(a, N=b)=c, <em>p</em>=d).”</p>
+<p>X, Y: variables being compared</p>
+<p>a: Degrees of freedom for the Chi-square test</p>
+<p>b: total number of observations</p>
+<p>c: Chi-square value</p>
+<p>d: p-value for the effect</p>
+<div class="rmdimportant">
+<p>Using this to report the results of the chi-square test above, you could say:
+“(1) We analyzed whether penguin species and island were independent of one another using a Chi-Square test of independence.(2 &amp; 3) A significant relationship between island and penguin species was found (<span class="math inline">\(\chi^2\)</span>(2, N=344) = 299.55, <em>p</em> &lt; 0.0001). (4) These results suggest that which penguin species were present varied from island to island. Adelie penguins were found on all three islands, whereas Chinstrap were only found on Dream island and Gentoo were only on Biscoe (see Table 1).”</p>
+</div>
+<p>Notice a few things about this report of statistical results. First, steps 2 and 3 of our reporting template were in the same sentence. This is typical, since you usually do not need a separate sentence just for the numerical results and you can just include them in a parenthesis, as you see here. For a chi-square test you also do not need to interpret the test statistic or chi-square value; it’s enough just to report it and interpret it as you do in step 4.</p>
+<p>Second, you might notice that I didn’t write out the scientific notation with the very small p-value. Instead, I just said that <em>p</em> &lt; 0.0001. That’s just because anything smaller than that is a highly reliable effect, so the exact p-value doesn’t really matter.</p>
+<p>Finally, for a chi-square test, you do need to provide additional context in step 4 in the form of a count table (here referred to in the text as Table 1), not just the output of the test. Again, that is because the test tells you if there is a relationship or not, but not the direction or content of that relationship. You can only get that information from a count table.</p>
+</div>
+</div>
+<div id="two-continuous-variables-correlation" class="section level2" number="20.2">
+<h2>
+<span class="header-section-number">20.2</span> Two continuous variables: correlation<a class="anchor" aria-label="anchor" href="#two-continuous-variables-correlation"><i class="fas fa-link"></i></a>
+</h2>
+<p>When both your predictor and outcome variables are continuous, the statistical test to use is a <strong>correlation</strong>. In this class, we will use <strong>Pearson’s r</strong> correlations, although there are other types (see <a href="https://learningstatisticswithr.com/05-descriptives.html#spearmans-rank-correlations">LSWR</a>). Like chi-square tests of independence, correlations express the relationship between two variables. However, since the variables are continuous, this relationship is not measured through counts or frequencies, but with a <strong>linear relationship</strong>. While the calculation for a Pearson’s r correlation does not match exactly with the slope of a line (that would be a regression, and we’ll talk more about those next week), it does tell us about the strength and the direction of the relationship between our two variables.</p>
+<p>As an example of a research question that would use a correlation, consider another graph from the Visualization section showing the relationship between body mass (in grams) and flipper length (in millimeters) among penguins in the Palmers Penguins dataset:</p>
+<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">'lm'</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Stats_2variables_files/figure-html/unnamed-chunk-6-1.png" alt="" width="672"></div>
+<p>Looking at this graph and its trendline, it seems pretty obvious that there is a strong, positive relationship between body mass and flipper length. But to be sure, we need to calculate the correlation.</p>
+<div id="calculating-a-correlation-in-r" class="section level3" number="20.2.1">
+<h3>
+<span class="header-section-number">20.2.1</span> Calculating a correlation in R<a class="anchor" aria-label="anchor" href="#calculating-a-correlation-in-r"><i class="fas fa-link"></i></a>
+</h3>
+<p>To calculate a correlation, you can use the <code><a href="https://rdrr.io/r/stats/cor.html">cor()</a></code> function from the stats package. You can also specify the method as “pearson”, or you can leave it blank because Pearson’s r is the default. <code>use = "complete.obs"</code> tells R to only use <strong>complete obs</strong>ervations (that is, to remove NAs).</p>
+<div class="sourceCode" id="cb320"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">penguins</span><span class="op">$</span><span class="va">body_mass_g</span>, </span>
+<span>    y <span class="op">=</span> <span class="va">penguins</span><span class="op">$</span><span class="va">flipper_length_mm</span>, </span>
+<span>    method <span class="op">=</span> <span class="st">"pearson"</span>, </span>
+<span>    use <span class="op">=</span> <span class="st">"complete.obs"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.8712018</span></span></code></pre></div>
+<p>Great! We calculated a correlation, <em>r</em> = 0.87, which seems to match our prediction that there is a strong positive relationship between our two variables. Hooray! But how do we know if this relationship is statistically significant? Where is the p-value?</p>
+<p>It turns out that calculating a correlation does not automatically provide information about statistical significance because it’s not a comparison between groups or hypotheses like a chi-square test. To calculate a p-value and determine significance, we need to use a function with a hypothesis test built in: <code><a href="https://rdrr.io/r/stats/cor.test.html">cor.test()</a></code>.</p>
+<p>Before we run the test though, let’s think about what the statistical hypotheses are for the analysis. For hypothesis testing with a correlation, the null hypothesis is typically that there is no relationship between our variables, or <em>r</em> = 0. A non-directional alternative hypothesis would that there is a relationship, <em>r</em> <span class="math inline">\(\neq\)</span> 0 (two-tailed test). If you think the relationship will be positive your alternative hypothesis would be <em>r</em> &gt; 0, if negative then <em>r</em> &lt; 0 (in either case, a one-tailed test). So our <code><a href="https://rdrr.io/r/stats/cor.test.html">cor.test()</a></code> function will be comparing the r value you calculated above (using <code><a href="https://rdrr.io/r/stats/cor.html">cor()</a></code>) to a correlation of 0.</p>
+<p>For a two-tailed test or non-directional alternative hypothesis we would write:</p>
+<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">penguins</span><span class="op">$</span><span class="va">body_mass_g</span>, </span>
+<span>         y <span class="op">=</span> <span class="va">penguins</span><span class="op">$</span><span class="va">flipper_length_mm</span>, </span>
+<span>         method <span class="op">=</span> <span class="st">"pearson"</span>, </span>
+<span>         use <span class="op">=</span> <span class="st">"complete.obs"</span>,</span>
+<span>         alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Pearson's product-moment correlation</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  penguins$body_mass_g and penguins$flipper_length_mm</span></span>
+<span><span class="co">#&gt; t = 32.722, df = 340, p-value &lt; 2.2e-16</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true correlation is not equal to 0</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;  0.843041 0.894599</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt;       cor </span></span>
+<span><span class="co">#&gt; 0.8712018</span></span></code></pre></div>
+<p>Nice! So now you have your r value, but also a p-value and degrees of freedom (df). Interestingly, you also have a t-value and a 95% confidence interval. That’s because the comparison that R is doing on the back end to get this result is a t-test (we’ll review those below).</p>
+<p>If you wanted to test a directional hypothesis–let’s say you think that there will be a positive relationship between body mass and flipper length–then you would use a one-tailed test with the alternative hypothesis of “greater” than 0.</p>
+<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">penguins</span><span class="op">$</span><span class="va">body_mass_g</span>, </span>
+<span>         y <span class="op">=</span> <span class="va">penguins</span><span class="op">$</span><span class="va">flipper_length_mm</span>, </span>
+<span>         method <span class="op">=</span> <span class="st">"pearson"</span>, </span>
+<span>         use <span class="op">=</span> <span class="st">"complete.obs"</span>,</span>
+<span>         alternative <span class="op">=</span> <span class="st">"greater"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Pearson's product-moment correlation</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  penguins$body_mass_g and penguins$flipper_length_mm</span></span>
+<span><span class="co">#&gt; t = 32.722, df = 340, p-value &lt; 2.2e-16</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true correlation is greater than 0</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;  0.847921 1.000000</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt;       cor </span></span>
+<span><span class="co">#&gt; 0.8712018</span></span></code></pre></div>
+</div>
+<div id="interpreting-a-correlation" class="section level3" number="20.2.2">
+<h3>
+<span class="header-section-number">20.2.2</span> Interpreting a correlation<a class="anchor" aria-label="anchor" href="#interpreting-a-correlation"><i class="fas fa-link"></i></a>
+</h3>
+<p>Interpreting a correlation involves two things: 1) interpreting the size and direction of the relationship based on the r-value, and 2) determining whether the effect is significant or not using the p-value.</p>
+<p>Simply put, r can be any value from -1 to 1. <strong><em>Direction</em></strong> of the relationship is indicated by the <strong>sign</strong> of the r value, positive or negative. A positive r value indicates a positive relationship between two variables (as one increases, the other <em>increases</em>). A negative r value indicates a negative or inverse relationship between two variables (as one increases, the other <em>decreases</em>).</p>
+<p><strong><em>Strength</em></strong> of the relationship is indicated by the absolute <strong>size</strong> of the r value, positive or negative. Where a specific r value is considered strong or weak depends a lot on the field you are in and the relationship you expect based on past research. You will see a lot of different rules out there for what to call a “small” vs. a “large” r value! For this class, we will use these cut-offs, which are relatively standard in psychology (see the “Traditional/Popular cutoffs for Effect Sizes” in <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8210805/">this paper</a>).</p>
+<div class="inline-table"><table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+Pearson’s r
+</th>
+<th style="text-align:left;">
+Effect size
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0.1 - 0.29
+</td>
+<td style="text-align:left;">
+small
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0.3 - 0.49
+</td>
+<td style="text-align:left;">
+medium
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0.5 - 1
+</td>
+<td style="text-align:left;">
+large
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>So given our finding that <em>r</em> = 0.87, we would conclude that there is a strong, positive relationship between body mass and flipper length because the correlation is positive and the value is greater than 0.5. <em>(Note: if the value was -0.87, this would still be a strong relationship, just in the negative direction.)</em></p>
+<p>As with the chi-square test above, to interpret the p-value, we would compare it to <em>p</em> = 0.05. In this case, the p-value for the two-sided test is <em>p</em> = 2.2 * <span class="math inline">\(10^{-16}\)</span>, which is less than p = 0.05. So we would conclude this result is statistically significant.</p>
+</div>
+<div id="reporting-a-correlation" class="section level3" number="20.2.3">
+<h3>
+<span class="header-section-number">20.2.3</span> Reporting a correlation<a class="anchor" aria-label="anchor" href="#reporting-a-correlation"><i class="fas fa-link"></i></a>
+</h3>
+<p>You can present the statistical output of a correlation using the following template:</p>
+<p>“X and Y were [not] significantly correlated (r=a, p=b).”</p>
+<p>X, Y: Independent variables for which you observe significant effects</p>
+<p>a: Correlation</p>
+<p>b: p-value for correlation</p>
+<p>You can also report the t-test and degrees of freedom, but you don’t have to. It depends on the standards of your professor or journal editor (if you are submitting for publication). In this class, you don’t need to report them.</p>
+<div class="rmdimportant">
+<p>So to report the two-tailed correlation test above, you could say: “We examined the relationship between a penguin’s body mass (in grams) and their flipper length (in millimeters) for the Palmer’s Penguins dataset. These variables showed a strong, positive, and significant correlation (<em>r</em> = 0.97, <em>p</em> &lt; 0.0001). Among these penguins, as body mass increased, so did flipper length.”</p>
+</div>
+</div>
+</div>
+<div id="categorical-predictor-continuous-outcome-t-test" class="section level2" number="20.3">
+<h2>
+<span class="header-section-number">20.3</span> Categorical predictor &amp; Continuous outcome: t-test<a class="anchor" aria-label="anchor" href="#categorical-predictor-continuous-outcome-t-test"><i class="fas fa-link"></i></a>
+</h2>
+<p>If you have a categorical predictor with two groups and a continuous outcome, the statistical test to use is called a two-sample <strong><em>t-test</em></strong>. <em>(There are also one-sample t-tests which we will not cover in the course, though see <a href="https://learningstatisticswithr.com/13-ttest.html#sec-onesamplettest">LSWR</a> for an overview.)</em> Most often, you will use an independent samples t-test, because the two groups you are comparing contain different people or independent observations (between-subject design). However, if you are comparing scores from the same people or dependent observations (within-subject design), you will need to use a paired-samples t-test.</p>
+<p>Like a chi-square test, a t-test compares two different groups (sample 1 and sample 2). However, instead of comparing counts or frequencies between groups, a t-test compares the <strong>mean</strong> of each group (based on the continuous variable).</p>
+<img src="figures/t_test_1.jpg" style="width:100.0%"><p style="font-size:6pt">
+Finally, the return of Allison Horst’s fun illustrations!
+</p>
+<p>Before we calculate the test, let’s think about our statistical hypotheses. The <strong><em>null hypothesis</em></strong> is typically that there is no difference between the means.</p>
+<div class="inline-figure"><img src="figures/t_test_2.jpg" style="width:100.0%"></div>
+<p>Like the other tests, the alternative hypothesis can be either directional (one-tailed) or non-directional (two-tailed). A <strong><em>non-directional alternative hypothesis</em></strong> would be that there is any difference at all, either positive or negative (two-tailed test). For a <strong><em>directional alternative hypothesis</em></strong>, you could state that you expect the mean of one group to be higher or lower than the other (in either case, a one-tailed test). We’ll look at both one-tailed and two-tailed tests in the next section.</p>
+<p>For practicing t-tests, we’ll use another example from the penguins dataset, in this case answering the research question, “is there a difference in body mass between male and female penguins?” Here’s a graph of this data (notice I’ve removed the penguins without a sex [sex = NA].)</p>
+<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, geom <span class="op">=</span> <span class="st">"pointrange"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">7000</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Stats_2variables_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672"></div>
+<p>It looks like there is probably a difference of means, such that male penguins weigh more than female penguins. But there is also a lot of overlap in the body mass measurements between the two groups.</p>
+<div class="inline-figure"><img src="figures/t_test_4.jpg" style="width:100.0%"></div>
+<p>Let’s test it!</p>
+<div id="calculating-a-t-test-in-r" class="section level3" number="20.3.1">
+<h3>
+<span class="header-section-number">20.3.1</span> Calculating a t-test in R<a class="anchor" aria-label="anchor" href="#calculating-a-t-test-in-r"><i class="fas fa-link"></i></a>
+</h3>
+<p>To calculate a t-test in R we can use the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function from the stats package. <em>(Note that this test defaults to a Welch’s two-sample t-test, so if you want to use a student’s t-test, which has different assumptions, you need to add the argument <code>var.equal = T</code>. See <a href="https://learningstatisticswithr.com/13-ttest.html#doing-the-test-in-r-1">LWSR</a> for details.)</em> There are two ways to input the data: 1) if your data points are in separate columns and 2) if you have a column for the data and a column for the groups. Our data is currently set up with a data column (body_mass_g) and a group column (sex), so we will first show how the test can be done with this set up.</p>
+<div id="one-column-for-data-one-column-for-group" class="section level4" number="20.3.1.1">
+<h4>
+<span class="header-section-number">20.3.1.1</span> One column for data, one column for group<a class="anchor" aria-label="anchor" href="#one-column-for-data-one-column-for-group"><i class="fas fa-link"></i></a>
+</h4>
+<p>This set up uses a <em>formula</em> input, similar to the correlation input you saw above. We’ll start with the two-tailed test with the alternative hypothesis that there is a difference in body mass between sexes, but we aren’t specifying a direction.</p>
+<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">sex</span>, </span>
+<span>       data <span class="op">=</span> <span class="va">penguins</span>,</span>
+<span>       alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Welch Two Sample t-test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  body_mass_g by sex</span></span>
+<span><span class="co">#&gt; t = -8.5545, df = 323.9, p-value = 4.794e-16</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true difference in means between group female and group male is not equal to 0</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;  -840.5783 -526.2453</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt; mean in group female   mean in group male </span></span>
+<span><span class="co">#&gt;             3862.273             4545.685</span></span></code></pre></div>
+<p>Like the other tests, this output gives us a test statistic (<em>t</em>), degrees of freedom, and a <em>p</em>-value. You can also see a statement of the two-tailed alternative hypothesis, 95% confidence interval, and the means for each group. We’ll walk through how to interpret those below.</p>
+<p>Before that, let’s run this again but with one-tailed, directional alternative hypothesis: that male penguins have a higher body mass than female. But do we put “greater” or “less” as our alternative hypothesis?</p>
+<p>Well, it depends on the direction that R does the comparison: male &gt; female or female &lt; male. To decide this, we first need to check the order of the levels (female and male) in the factor <code>sex</code>.</p>
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">$</span><span class="va">sex</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "female" "male"</span></span></code></pre></div>
+<p>Ok, so since female is listed first, that is the first level in our factor and the one the other level is compared to. Think of this like female is 0 and male is 1. R will make the comparison with female first, so our alternative hypothesis should be written female &lt; male, or “less”.</p>
+<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">sex</span>, </span>
+<span>       data <span class="op">=</span> <span class="va">penguins</span>,</span>
+<span>       alternative <span class="op">=</span> <span class="st">"less"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Welch Two Sample t-test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  body_mass_g by sex</span></span>
+<span><span class="co">#&gt; t = -8.5545, df = 323.9, p-value = 2.397e-16</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true difference in means between group female and group male is less than 0</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;       -Inf -551.6295</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt; mean in group female   mean in group male </span></span>
+<span><span class="co">#&gt;             3862.273             4545.685</span></span></code></pre></div>
+<p>In this output, we can see the alternative hypothesis that R used: “true difference in means between group female and group male is less than 0”. This result looks very different than if we specified the alternative as “greater”. Specifically, look at the change in p-value.</p>
+<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">sex</span>, </span>
+<span>       data <span class="op">=</span> <span class="va">penguins</span>,</span>
+<span>       alternative <span class="op">=</span> <span class="st">"greater"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Welch Two Sample t-test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  body_mass_g by sex</span></span>
+<span><span class="co">#&gt; t = -8.5545, df = 323.9, p-value = 1</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true difference in means between group female and group male is greater than 0</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;  -815.1941       Inf</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt; mean in group female   mean in group male </span></span>
+<span><span class="co">#&gt;             3862.273             4545.685</span></span></code></pre></div>
+</div>
+<div id="two-columns-for-data" class="section level4" number="20.3.1.2">
+<h4>
+<span class="header-section-number">20.3.1.2</span> Two columns for data<a class="anchor" aria-label="anchor" href="#two-columns-for-data"><i class="fas fa-link"></i></a>
+</h4>
+<p>Ok, but what if you have two different columns or variables to compare, instead of one variable split into two groups? For example, imagine that you have two body mass columns, one for males and one for females.</p>
+<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins_pivot</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">sex</span>, values_from <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">male</span>, <span class="va">female</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">penguins_pivot</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 2</span></span>
+<span><span class="co">#&gt;    male female</span></span>
+<span><span class="co">#&gt;   &lt;int&gt;  &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1  3750     NA</span></span>
+<span><span class="co">#&gt; 2    NA   3800</span></span>
+<span><span class="co">#&gt; 3    NA   3250</span></span>
+<span><span class="co">#&gt; 4    NA     NA</span></span>
+<span><span class="co">#&gt; 5    NA   3450</span></span>
+<span><span class="co">#&gt; 6  3650     NA</span></span></code></pre></div>
+<p>Now instead of using a formula, I can just specify one column as x and one as y.</p>
+<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">penguins_pivot</span><span class="op">$</span><span class="va">male</span>, </span>
+<span>       y <span class="op">=</span> <span class="va">penguins_pivot</span><span class="op">$</span><span class="va">female</span>,</span>
+<span>       alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Welch Two Sample t-test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  penguins_pivot$male and penguins_pivot$female</span></span>
+<span><span class="co">#&gt; t = 8.5545, df = 323.9, p-value = 4.794e-16</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;  526.2453 840.5783</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt; mean of x mean of y </span></span>
+<span><span class="co">#&gt;  4545.685  3862.273</span></span></code></pre></div>
+<p>As you can see, this gives us the same output as the test with a formula. If you wanted to run a one-tailed directional hypothesis using this method, you would choose either “greater” or “less” as the input. Deciding on the direction is a little easier than for the formula method because R will always put the variable you specify as x first. So if I have x = male, then “greater” would mean male &gt; female and “less” would mean male &lt; female.</p>
+</div>
+<div id="paired-samples-t-test" class="section level4" number="20.3.1.3">
+<h4>
+<span class="header-section-number">20.3.1.3</span> Paired samples t-test<a class="anchor" aria-label="anchor" href="#paired-samples-t-test"><i class="fas fa-link"></i></a>
+</h4>
+<p>If you are comparing two non-independent groups (like a within-subjects or pre/post design), all you have to do is add the argument <code>paired = T</code> to your <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function. See <a href="https://learningstatisticswithr.com/13-ttest.html#sec-pairedsamplesttest">LSWR</a> for more information on the paired samples t-test and it’s interpretation.</p>
+</div>
+</div>
+<div id="interpreting-a-t-test" class="section level3" number="20.3.2">
+<h3>
+<span class="header-section-number">20.3.2</span> Interpreting a t-test<a class="anchor" aria-label="anchor" href="#interpreting-a-t-test"><i class="fas fa-link"></i></a>
+</h3>
+<p>Ok, let’s return to the output of our first test to try and interpret it.</p>
+<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">sex</span>, </span>
+<span>       data <span class="op">=</span> <span class="va">penguins</span>,</span>
+<span>       alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Welch Two Sample t-test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  body_mass_g by sex</span></span>
+<span><span class="co">#&gt; t = -8.5545, df = 323.9, p-value = 4.794e-16</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true difference in means between group female and group male is not equal to 0</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;  -840.5783 -526.2453</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt; mean in group female   mean in group male </span></span>
+<span><span class="co">#&gt;             3862.273             4545.685</span></span></code></pre></div>
+<p>First, we can see that our <em>t</em>-value is negative and different from 0. A negative t-value indicates that the mean for group 1 (in this case “female” based on how our factor is set up) is less than our mean for group 2 (male). And when we look at the means at the bottom of the output, we can see this is the case: female penguins weigh about 3862 grams on average, while male penguins weight about 4546 grams.</p>
+<p>The degrees of freedom is 323.9 (which is weird because it’s not a whole number, but sometimes this happens based on how the df is calculated), which is the total number of penguins (344) minus whatever we calculated for out constraints.</p>
+<p>As usually, we interpret our <em>p</em>-value by comparing it to the cut-off of <em>p</em> = 0.05. Once again, this <em>p</em>-value is much, much smaller than 0.05, so we can conclude that this result is statistically significant.</p>
+<div class="inline-figure"><img src="figures/t_test_5.jpg" style="width:100.0%"></div>
+</div>
+<div id="reporting-a-t-test" class="section level3" number="20.3.3">
+<h3>
+<span class="header-section-number">20.3.3</span> Reporting a t-test<a class="anchor" aria-label="anchor" href="#reporting-a-t-test"><i class="fas fa-link"></i></a>
+</h3>
+<p>You can report the statistical result of a t-test using the following template:</p>
+<p>“X and Y were [not] significantly different, (<em>t</em>(a)=b, <em>p</em>=c).”</p>
+<p>X, Y: groups being compared</p>
+<p>a: degrees of freedom (df) for the t-test</p>
+<p>b: <em>t</em>-value</p>
+<p>c: <em>p</em>-value</p>
+<div class="rmdimportant">
+<p>To report our result from the analysis above, you could say: “We ran a two-tailed independent samples t-test comparing body mass (in grams) for female penguins compared to male penguins. We observed a significant difference, (<em>t</em>(323.9) = -8.55, <em>p</em> &lt; 0.0001). Body mass was greater on average for male penguns (mean = 4546 grams) than for female penguins (mean = 3862 grams).”</p>
+</div>
+<p>As you can see, it’s helpful to include the means to help you audience understand the direction of the effect, even if you ran at two-tailed test.</p>
+</div>
+</div>
+<div id="tidyverse-friendly-statistical-tests-rstatix" class="section level2" number="20.4">
+<h2>
+<span class="header-section-number">20.4</span> tidyverse-friendly statistical tests: rstatix<a class="anchor" aria-label="anchor" href="#tidyverse-friendly-statistical-tests-rstatix"><i class="fas fa-link"></i></a>
+</h2>
+<p>As I mentioned above, the statistical functions from the <code>stats</code> package don’t play well with the <code>tidyverse</code> functions that you’ve been learning. If you want to use a statistical test within a pipe chain, I recommend using functions from <code>rstatix</code> package. I’ll walk through the relevant functions for a chi-square test, correlation, and t-test below. They are very, very similar to the <code>stats</code> package versions: the only difference is using a “_” in the function name instead of a “.”!</p>
+<p class="text-info">
+<strong><u>Note:</u> The <code>rstatix</code> functions can be a little bit more fussy than the <code>stats</code> functions. That is, they are less robust to using different types of data and more likely to throw errors. Personally, I use the <code>stats</code> functions more of the time for this reason.</strong>
+</p>
+<p>For all of these functions can interpret and report these results in the same way as the output of the corresponding <code>stats</code> functions described above.</p>
+<div id="rstatix-chi-square-test" class="section level3" number="20.4.1">
+<h3>
+<span class="header-section-number">20.4.1</span> rstatix: chi-square test<a class="anchor" aria-label="anchor" href="#rstatix-chi-square-test"><i class="fas fa-link"></i></a>
+</h3>
+<p>You can calculate a chi-square of independence in rstatix using the <code>chisq_test()</code> function. The easiest way to do this is actually to create a frequency table using <code>xtab()</code> and feed it directly into the function using a pipe chain.</p>
+<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/xtabs.html">xtabs</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="op">~</span> <span class="va">island</span> <span class="op">+</span> <span class="va">species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">chisq_test</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 6</span></span>
+<span><span class="co">#&gt;       n statistic        p    df method          p.signif</span></span>
+<span><span class="co">#&gt; * &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;   </span></span>
+<span><span class="co">#&gt; 1   344      300. 1.35e-63     4 Chi-square test ****</span></span></code></pre></div>
+<p>You’ll notice that this output looks a little different from the output of <code><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test()</a></code>. Instead of labeling the chi-square value, it just calls it “statistic” (this is a theme across the <code>rstatix</code> functions). It also gives a smaller <em>p</em>-value than the other function (<span class="math inline">\(10^-63\)</span> - miniscule!!), athough they are both essentially 0. This output also provides the n (number of observations) and a p.signif column that comes from comparing the <em>p</em>-value to different possible cut-offs (**** = p &lt; 0.0001, *** = p &lt; 0.001, ** = p &lt; 0.01, * = p &lt; 0.05, ns = p &gt; 0.05).</p>
+<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">t_test</span><span class="op">(</span><span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">sex</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 10</span></span>
+<span><span class="co">#&gt;   .y.     group1 group2    n1    n2 statistic    df        p</span></span>
+<span><span class="co">#&gt; * &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 body_m… female male     165   168     -8.55  324. 4.79e-16</span></span>
+<span><span class="co">#&gt; # ℹ 2 more variables: p.adj &lt;dbl&gt;, p.adj.signif &lt;chr&gt;</span></span></code></pre></div>
+</div>
+<div id="rstatix-correlation" class="section level3" number="20.4.2">
+<h3>
+<span class="header-section-number">20.4.2</span> rstatix: correlation<a class="anchor" aria-label="anchor" href="#rstatix-correlation"><i class="fas fa-link"></i></a>
+</h3>
+<p>In <code>rstatix</code> we use the <code>cor_test()</code> function to conduct hypothesis testing on correlation values. We specify the <strong>var</strong>iable<strong>s</strong> to correlate in the <code>vars</code> argument.</p>
+<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">cor_test</span><span class="op">(</span>vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">body_mass_g</span>, <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 9</span></span>
+<span><span class="co">#&gt;   var1        var2    cor statistic    df         p conf.low</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 body_mass_g flip…  0.87      32.7   340 4.37e-107    0.843</span></span>
+<span><span class="co">#&gt; # ℹ 2 more variables: conf.high &lt;dbl&gt;, method &lt;chr&gt;</span></span></code></pre></div>
+<p>In this output, the “statistic” refers to the <em>t</em>-value, “conf.low” to the lower bound of the confidence interval, and conf.high to it’s higher bound.</p>
+<p>The nice thing about <code>cor_test()</code> is you can use it to compare more than two variables in sequence to create what is sometimes called a correlation matrix.</p>
+<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">cor_test</span><span class="op">(</span>vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">body_mass_g</span>, <span class="va">flipper_length_mm</span><span class="op">)</span>,</span>
+<span>           vars2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">bill_length_mm</span>, <span class="va">bill_depth_mm</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 9</span></span>
+<span><span class="co">#&gt;   var1         var2    cor statistic    df        p conf.low</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 body_mass_g  bill…  0.6      13.7    340 3.81e-34    0.522</span></span>
+<span><span class="co">#&gt; 2 body_mass_g  bill… -0.47     -9.87   340 2.28e-20   -0.550</span></span>
+<span><span class="co">#&gt; 3 flipper_len… bill…  0.66     16.0    340 1.74e-43    0.591</span></span>
+<span><span class="co">#&gt; 4 flipper_len… bill… -0.58    -13.3    340 1.23e-32   -0.650</span></span>
+<span><span class="co">#&gt; # ℹ 2 more variables: conf.high &lt;dbl&gt;, method &lt;chr&gt;</span></span></code></pre></div>
+<p>This gives me 4 different correlation tests, one for each comparison I specified. This is useful if you want to test a bunch of different variables to see if there are any relationships between them. However, you need to be careful when running multiple statistical tests at once because the more you run, the more likely you are to get a Type I error (false alarm). So you really should include an adjustment for your p-value cut-off to deal with this issue, but that is beyond the scope of this class. See <a href="https://learningstatisticswithr.com/15-regression.html#sec-corrhyp">LSWR</a> for more information and a function that allows you to do this.</p>
+</div>
+<div id="rstatix-t-test" class="section level3" number="20.4.3">
+<h3>
+<span class="header-section-number">20.4.3</span> rstatix: t-test<a class="anchor" aria-label="anchor" href="#rstatix-t-test"><i class="fas fa-link"></i></a>
+</h3>
+<p>In <code>rstatix</code>, we can run a t-test using the function <code>t_test()</code>:</p>
+<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">t_test</span><span class="op">(</span><span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">sex</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 10</span></span>
+<span><span class="co">#&gt;   .y.     group1 group2    n1    n2 statistic    df        p</span></span>
+<span><span class="co">#&gt; * &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt; &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 body_m… female male     165   168     -8.55  324. 4.79e-16</span></span>
+<span><span class="co">#&gt; # ℹ 2 more variables: p.adj &lt;dbl&gt;, p.adj.signif &lt;chr&gt;</span></span></code></pre></div>
+<p>This function gives use the <em>t</em>-value (“statistic”), df, and <em>p</em>-value, as we’d expect. However, instead of the mean of each group, it returns the number of observations in each group (n1 and n2). It also provides a p.adj, which is the adjusted <em>p</em>-value if you do make multiple comparisons (as I mentioned in the correlation section).</p>
+<p>There are plenty of other statistical functions you can use from <code>rstatix</code>. If you’re interested, check out their function list <a href="https://rpkgs.datanovia.com/rstatix/reference/index.html">here</a>.</p>
+</div>
+</div>
+<div id="other-tests-for-two-variables-regression" class="section level2" number="20.5">
+<h2>
+<span class="header-section-number">20.5</span> Other tests for two variables: regression<a class="anchor" aria-label="anchor" href="#other-tests-for-two-variables-regression"><i class="fas fa-link"></i></a>
+</h2>
+<p>There is one combination of two variables we haven’t discussed yet: a continuous predictor &amp; a categorical outcome. There is a statistical test for this, but it is a type of regression. So we will cover it next week when we have more time to discuss regressions in general. Stay tuned!</p>
+</div>
+<div id="references-6" class="section level2" number="20.6">
+<h2>
+<span class="header-section-number">20.6</span> References<a class="anchor" aria-label="anchor" href="#references-6"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>This chapter uses examples and code from Learning Statistics with R: <a href="https://learningstatisticswithr.com/" class="uri">https://learningstatisticswithr.com/</a>
+</li>
+<li>As always, fun illustrations by <a href="https://www.allisonhorst.com/"><span class="citation">Horst (2022)</span></a>
+</li>
+</ul>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0" line-spacing="2">
+<div id="ref-allison_horst" class="csl-entry">
+Horst, A. (2022). <em>R &amp; stats illustrations by <span class="nocase">@allison_horst</span></em>. <a href="https://github.com/allisonhorst/stats-illustrations/">https://github.com/allisonhorst/stats-illustrations/</a>
+</div>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="statistics-a-review.html"><span class="header-section-number">19</span> Statistics: A Review</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#statistical-analysis-with-two-variables"><span class="header-section-number">20</span> Statistical Analysis with Two Variables</a></li>
+<li>
+<a class="nav-link" href="#two-categorical-variables-chi-square-test"><span class="header-section-number">20.1</span> Two categorical variables: Chi-square test</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#calculating-a-chi-square-test-in-r"><span class="header-section-number">20.1.1</span> Calculating a chi-square test in R</a></li>
+<li><a class="nav-link" href="#interpreting-a-chi-square-test"><span class="header-section-number">20.1.2</span> Interpreting a chi-square test</a></li>
+<li><a class="nav-link" href="#reporting-a-chi-square-test"><span class="header-section-number">20.1.3</span> Reporting a chi-square test</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#two-continuous-variables-correlation"><span class="header-section-number">20.2</span> Two continuous variables: correlation</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#calculating-a-correlation-in-r"><span class="header-section-number">20.2.1</span> Calculating a correlation in R</a></li>
+<li><a class="nav-link" href="#interpreting-a-correlation"><span class="header-section-number">20.2.2</span> Interpreting a correlation</a></li>
+<li><a class="nav-link" href="#reporting-a-correlation"><span class="header-section-number">20.2.3</span> Reporting a correlation</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#categorical-predictor-continuous-outcome-t-test"><span class="header-section-number">20.3</span> Categorical predictor &amp; Continuous outcome: t-test</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#calculating-a-t-test-in-r"><span class="header-section-number">20.3.1</span> Calculating a t-test in R</a></li>
+<li><a class="nav-link" href="#interpreting-a-t-test"><span class="header-section-number">20.3.2</span> Interpreting a t-test</a></li>
+<li><a class="nav-link" href="#reporting-a-t-test"><span class="header-section-number">20.3.3</span> Reporting a t-test</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#tidyverse-friendly-statistical-tests-rstatix"><span class="header-section-number">20.4</span> tidyverse-friendly statistical tests: rstatix</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#rstatix-chi-square-test"><span class="header-section-number">20.4.1</span> rstatix: chi-square test</a></li>
+<li><a class="nav-link" href="#rstatix-correlation"><span class="header-section-number">20.4.2</span> rstatix: correlation</a></li>
+<li><a class="nav-link" href="#rstatix-t-test"><span class="header-section-number">20.4.3</span> rstatix: t-test</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#other-tests-for-two-variables-regression"><span class="header-section-number">20.5</span> Other tests for two variables: regression</a></li>
+<li><a class="nav-link" href="#references-6"><span class="header-section-number">20.6</span> References</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-10-24.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
