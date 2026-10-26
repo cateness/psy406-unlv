@@ -114,7 +114,7 @@ X, Y: variables being compared
 
 a: Degrees of freedom for the Chi-square test
 
-b: total number of observations
+b: total number of observations (you can find this by adding a `total` column to your frequency table, as I did above, or just looking at how many observations are in your dataset)
 
 c: Chi-square value
 
@@ -131,6 +131,39 @@ Second, you might notice that I didn't write out the scientific notation with th
 
 Finally, for a chi-square test, you do need to provide additional context in step 4 in the form of a count table (here referred to in the text as Table 1), not just the output of the test. Again, that is because the test tells you if there is a relationship or not, but not the direction or content of that relationship. You can only get that information from a count table.
 
+### Non-significant results
+
+But what if your chi-square test does not produce a significant result? For example, let's consider the research question: "is there an association between species and sex of the penguins?" (It would be a problem if there were more male penguins of one species than females.)
+
+
+``` r
+chisq.test(penguins$sex, penguins$species)
+#> 
+#> 	Pearson's Chi-squared test
+#> 
+#> data:  penguins$sex and penguins$species
+#> X-squared = 0.048607, df = 2, p-value = 0.976
+```
+
+Comparing this *p*-value to 0.05, it is much larger. That means our result is not significant. Which is this case is a good thing, there is not a roughly equal number of male vs. female penguins in all three species.
+
+
+``` r
+xtabs(formula = ~ sex + species, data = penguins)
+#>         species
+#> sex      Adelie Chinstrap Gentoo
+#>   female     73        34     58
+#>   male       73        34     61
+```
+
+So how would we report these results? Using the same 4 steps as for significant results!
+
+:::{.rmdimportant}
+We analyzed whether penguin species and sex were independent of one another using a Chi-Square test of independence. There was not a significant relationship between sex and penguin species ($\chi^2$(2, N=333) = 0.048607, *p* = 0.976). These results suggest that there is an equal number of penguins of each sex for each species. You can see this in Table 1; there were an equal number of male and female penguins for the Adelie and Chinstrap species, and nearly equal for Gentoo penguins.
+:::
+
+*(Note: the total N changed because we dropped penguins without a sex.)*
+
 ## Two continuous variables: correlation
 
 When both your predictor and outcome variables are continuous, the statistical test to use is a **correlation**. In this class, we will use **Pearson's r** correlations, although there are other types (see [LSWR](https://learningstatisticswithr.com/05-descriptives.html#spearmans-rank-correlations)). Like chi-square tests of independence, correlations express the relationship between two variables. However, since the variables are continuous, this relationship is not measured through counts or frequencies, but with a **linear relationship**. While the calculation for a Pearson's r correlation does not match exactly with the slope of a line (that would be a regression, and we'll talk more about those next week), it does tell us about the strength and the direction of the relationship between our two variables. 
@@ -145,7 +178,7 @@ penguins %>%
   geom_smooth(method = 'lm', se = FALSE)
 ```
 
-<img src="Stats_2variables_files/figure-html/unnamed-chunk-6-1.png" alt="" width="672" />
+<img src="Stats_2variables_files/figure-html/unnamed-chunk-8-1.png" alt="" width="672" />
 
 Looking at this graph and its trendline, it seems pretty obvious that there is a strong, positive relationship between body mass and flipper length. But to be sure, we need to calculate the correlation.
 
@@ -266,7 +299,33 @@ b: p-value for correlation
 You can also report the t-test and degrees of freedom, but you don't have to. It depends on the standards of your professor or journal editor (if you are submitting for publication). In this class, you don't need to report them.
 
 :::{.rmdimportant}
-So to report the two-tailed correlation test above, you could say: "We examined the relationship between a penguin's body mass (in grams) and their flipper length (in millimeters) for the Palmer's Penguins dataset. These variables showed a strong, positive, and significant correlation (*r* = 0.97, *p* < 0.0001). Among these penguins, as body mass increased, so did flipper length."
+So to report the two-tailed correlation test above, you could say: "We examined the relationship between a penguin's body mass (in grams) and their flipper length (in millimeters) using a Pearson's r correlation. These variables showed a strong, positive, and significant correlation (*r* = 0.97, *p* < 0.0001). Among these penguins, as body mass increased, so did flipper length."
+:::
+
+### Non-significant results
+
+If your correlation test does not produce a significant result, we can follow a similar pattern for interpreting and reporting it as for non-significant results from a chi-square test. To explore this, let's consider a research question using the `mtcars` dataset: "is there a relationship between horsepower and number of gears in a car?"
+
+
+``` r
+cor.test(mtcars$hp, mtcars$gear)
+#> 
+#> 	Pearson's product-moment correlation
+#> 
+#> data:  mtcars$hp and mtcars$gear
+#> t = -0.69402, df = 30, p-value = 0.493
+#> alternative hypothesis: true correlation is not equal to 0
+#> 95 percent confidence interval:
+#>  -0.4544774  0.2332119
+#> sample estimates:
+#>        cor 
+#> -0.1257043
+```
+
+This *p*-value is larger than our cut-off of 0.05, so our result is not significant. We can report this result as follows:
+
+:::{.rmdimportant}
+We examined the relationship between a car's horsepower and the number of its gears using a Pearson's r correlation. There was not a significant correlation (*r* = -0.13, *p* = 0.493). A car's horsepower is not related to how many gears it has.
 :::
 
 ## Categorical predictor & Continuous outcome: t-test
@@ -297,7 +356,7 @@ penguins %>%
   coord_cartesian(ylim = c(0,7000))
 ```
 
-<img src="Stats_2variables_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672" />
+<img src="Stats_2variables_files/figure-html/unnamed-chunk-14-1.png" alt="" width="672" />
 
 It looks like there is probably a difference of means, such that male penguins weigh more than female penguins. But there is also a lot of overlap in the body mass measurements between the two groups. 
 
@@ -479,6 +538,35 @@ To report our result from the analysis above, you could say: "We ran a two-taile
 :::
 
 As you can see, it's helpful to include the means to help you audience understand the direction of the effect, even if you ran at two-tailed test.
+
+
+### Non-significant results
+
+If your t-test provides non-significant results, you still need to interpret and report it. Here's an example research question, using the `mtcars` dataset: "is there a difference in horsepower between cars with a manual transmission compared to an automatic?"
+
+
+``` r
+t.test(formula = hp ~ am, 
+       data = mtcars, 
+       alternative = "two.sided")
+#> 
+#> 	Welch Two Sample t-test
+#> 
+#> data:  hp by am
+#> t = 1.2662, df = 18.715, p-value = 0.221
+#> alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
+#> 95 percent confidence interval:
+#>  -21.87858  88.71259
+#> sample estimates:
+#> mean in group 0 mean in group 1 
+#>        160.2632        126.8462
+```
+
+This *p*-value is larger than our cut-off of 0.05, so our result is not significant. We can report this result as follows:
+
+:::{.rmdimportant}
+We ran a two-tailed independent samples t-test comparing horsepower for manual transmission cars compared to automatic transmissions. There was no significant difference, (*t*(18.715) = 1.266, *p* = 0.221). Manual cars do not have significantly different horsepower on average from automatic cars.
+:::
 
 ## tidyverse-friendly statistical tests: rstatix
 

@@ -242,10 +242,12 @@ two-categorical-variables-chi-square-test
 calculating-a-chi-square-test-in-r
 interpreting-a-chi-square-test
 reporting-a-chi-square-test
+non-significant-results
 two-continuous-variables-correlation
 calculating-a-correlation-in-r
 interpreting-a-correlation
 reporting-a-correlation
+non-significant-results-1
 categorical-predictor-continuous-outcome-t-test
 calculating-a-t-test-in-r
 one-column-for-data-one-column-for-group
@@ -253,6 +255,7 @@ two-columns-for-data
 paired-samples-t-test
 interpreting-a-t-test
 reporting-a-t-test
+non-significant-results-2
 tidyverse-friendly-statistical-tests-rstatix
 rstatix-chi-square-test
 rstatix-correlation

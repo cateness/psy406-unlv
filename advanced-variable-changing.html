@@ -441,9 +441,9 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Neither the first or second condition evaluated TRUE."</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="co">#&gt; [1] "The first condition evaluated TRUE"</span></span>
+<span><span class="co">#&gt; [1] "Neither the first or second condition evaluated TRUE."</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 <p>Writing <code>if</code> statements like this is most useful when the code you want to run executes a function. As you will note above, in all instances the <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> function was the code being executed (what is in the curly brackets). An infinite number of <code>if</code> conditions can be chained together in an <code>if...else</code> chain.</p>
 <p>There are two alternative ways to write <code>if...else</code> statements.</p>
 <div id="ifelse" class="section level3" number="16.2.1">
@@ -461,9 +461,9 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fl">4</span> <span class="op">&lt;</span> <span class="va">x</span>, <span class="st">"The first condition evaluated true."</span>,</span>
 <span>       <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">&lt;</span> <span class="va">x</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">5</span>, <span class="st">"The second condition evaluated true."</span>, </span>
 <span>              <span class="st">"Neither the first or second condition evaluated true."</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "The first condition evaluated true."</span></span>
+<span><span class="co">#&gt; [1] "Neither the first or second condition evaluated true."</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 </div>
 <div id="case_when-1" class="section level3" number="16.2.2">
 <h3>
@@ -478,9 +478,9 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span>  <span class="fl">2</span> <span class="op">&lt;</span> <span class="va">x</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">5</span> <span class="op">~</span> <span class="st">"The second condition evaluated true."</span>,</span>
 <span>  <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"Neither the first or second condition evaluated true."</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "The second condition evaluated true."</span></span>
+<span><span class="co">#&gt; [1] "Neither the first or second condition evaluated true."</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 4</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 6</span></span></code></pre></div>
 <p><strong>In sum:</strong></p>
 <ul>
 <li>Traditional <code>if...else</code> statements are useful when you need the result to execute some code.</li>
@@ -766,7 +766,7 @@ Artwork by <span class="citation">Horst (2022)</span>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-10-24.</p>
+    <p>"<strong>PSY406</strong>" was written by Catie Nielson (with help from Ethan Hurwitz). It was last built on 2026-10-26.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
