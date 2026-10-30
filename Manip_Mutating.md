@@ -393,7 +393,7 @@ if(4 < x) {
 }
 #> [1] "Neither the first or second condition evaluated TRUE."
 x
-#> [1] 2
+#> [1] 1
 ```
 
 Writing `if` statements like this is most useful when the code you want to run executes a function. As you will note above, in all instances the `print()` function was the code being executed (what is in the curly brackets). An infinite number of `if` conditions can be chained together in an `if...else` chain.
@@ -440,7 +440,7 @@ case_when(
 )
 #> [1] "Neither the first or second condition evaluated true."
 x
-#> [1] 6
+#> [1] 5
 ```
 
 **In sum:**
