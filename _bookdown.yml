@@ -21,6 +21,7 @@ rmd_files:
  - Manip_DataTransformation.Rmd
  - Stats_Intro.Rmd
  - Stats_2variables.Rmd
+ - Stats_3variables.Rmd
 # - Projects.Rmd
 
 language:
