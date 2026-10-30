@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 21 Statistics with More Than Two Variables | Stats_3variables</title>
+<meta name="author" content="Catie Nielson">
+<meta name="description" content="Sometimes you will need to perform statistical tests on more than two variables, or with more than two categorical groups. This chapter covers two tests you can use in this situation: ANOVA and...">
+<meta name="generator" content="bookdown 0.48 with bs4_book()">
+<meta property="og:title" content="Chapter 21 Statistics with More Than Two Variables | Stats_3variables">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://cateness.github.io/psy406-unlv/statistics-with-more-than-two-variables.html">
+<meta property="og:description" content="Sometimes you will need to perform statistical tests on more than two variables, or with more than two categorical groups. This chapter covers two tests you can use in this situation: ANOVA and...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 21 Statistics with More Than Two Variables | Stats_3variables">
+<meta name="twitter:description" content="Sometimes you will need to perform statistical tests on more than two variables, or with more than two categorical groups. This chapter covers two tests you can use in this situation: ANOVA and...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Stats_3variables</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
+<li class="book-part">R Basics</li>
+<li><a class="" href="why-use-r.html"><span class="header-section-number">2</span> Why use R?</a></li>
+<li><a class="" href="r-coding-basics.html"><span class="header-section-number">3</span> R Coding Basics</a></li>
+<li><a class="" href="using-r-effectively.html"><span class="header-section-number">4</span> Using R Effectively</a></li>
+<li class="book-part">Visualizations</li>
+<li><a class="" href="intro-to-ggplot2.html"><span class="header-section-number">5</span> Intro to ggplot2</a></li>
+<li><a class="" href="aesthetics.html"><span class="header-section-number">6</span> Aesthetics</a></li>
+<li><a class="" href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></li>
+<li><a class="" href="one-variable.html"><span class="header-section-number">8</span> One Variable</a></li>
+<li><a class="" href="two-variables.html"><span class="header-section-number">9</span> Two Variables</a></li>
+<li><a class="" href="three-variables.html"><span class="header-section-number">10</span> Three Variables</a></li>
+<li><a class="" href="customization.html"><span class="header-section-number">11</span> Customization</a></li>
+<li><a class="" href="color-theory.html"><span class="header-section-number">12</span> Color Theory</a></li>
+<li class="book-part">Data Manipulation</li>
+<li><a class="" href="tidy-data-and-tidyverse.html"><span class="header-section-number">13</span> Tidy Data and Tidyverse</a></li>
+<li><a class="" href="basic-wrangling.html"><span class="header-section-number">14</span> Basic Wrangling</a></li>
+<li><a class="" href="advanced-subsetting.html"><span class="header-section-number">15</span> Advanced Subsetting</a></li>
+<li><a class="" href="advanced-variable-changing.html"><span class="header-section-number">16</span> Advanced Variable Changing</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">17</span> Summarizing Data</a></li>
+<li><a class="" href="data-transformation.html"><span class="header-section-number">18</span> Data Transformation</a></li>
+<li class="book-part">Statistics in R</li>
+<li><a class="" href="statistics-a-review.html"><span class="header-section-number">19</span> Statistics: A Review</a></li>
+<li><a class="" href="statistical-analysis-with-two-variables.html"><span class="header-section-number">20</span> Statistical Analysis with Two Variables</a></li>
+<li><a class="active" href="statistics-with-more-than-two-variables.html"><span class="header-section-number">21</span> Statistics with More Than Two Variables</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="statistics-with-more-than-two-variables" class="section level1" number="21">
+<h1>
+<span class="header-section-number">21</span> Statistics with More Than Two Variables<a class="anchor" aria-label="anchor" href="#statistics-with-more-than-two-variables"><i class="fas fa-link"></i></a>
+</h1>
+<p>Sometimes you will need to perform statistical tests on more than two variables, or with more than two categorical groups. This chapter covers two tests you can use in this situation: ANOVA and regression.</p>
+<div id="anova" class="section level2" number="21.1">
+<h2>
+<span class="header-section-number">21.1</span> ANOVA<a class="anchor" aria-label="anchor" href="#anova"><i class="fas fa-link"></i></a>
+</h2>
+<p>ANOVA stands for <strong>an</strong>alysis <strong>o</strong>f <strong>va</strong>riance. What does that means? It means we are interested in comparing the variance <em>within</em> a group compared to the variance <em>between</em> groups. Conceptually, if the variance between groups is larger than within each group, this would indicate a significant differnce between groups.</p>
+<p><img src="figures/ANOVA.png" style="width:100.0%"><em><a href="https://shire.science.uq.edu.au/CONS7008/_book/linear-models---analysis-of-variance-anova.html" class="uri">https://shire.science.uq.edu.au/CONS7008/_book/linear-models---analysis-of-variance-anova.html</a></em></p>
+<p>Referring back to the “choosing a test” infographic, an ANOVA is the test to use when you have a <strong>continuous outcome</strong> AND a <strong>categorical predictor</strong> with more than 2 groups (one-way ANOVA) or more than 1 categorical predictor (two-way ANOVA). It’s essentially an extension of a t-test to more groups.</p>
+<div id="one-way-anova" class="section level3" number="21.1.1">
+<h3>
+<span class="header-section-number">21.1.1</span> One-way ANOVA<a class="anchor" aria-label="anchor" href="#one-way-anova"><i class="fas fa-link"></i></a>
+</h3>
+<p>A one-way ANOVA involves just two variables, a continuous outcome and a categorical predictor, but the predictor has more than two groups so you can’t use a t-test. For more information, see <a href="https://learningstatisticswithr.com/14-anova.html">LSWR</a>.</p>
+<p>Our example research question will be: “is there a difference in body mass by penguin species?” The null hypothesis is no difference and the alternative hypothesis is that there is a difference (non-directional).</p>
+<div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">species</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.8</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, geom <span class="op">=</span> <span class="st">"pointrange"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">7000</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Stats_3variables_files/figure-html/unnamed-chunk-2-1.png" alt="" width="672"></div>
+<p>Looks like Gentoo penguins weigh the most, on average. Let’s test it!</p>
+<div id="calculating-the-test-in-r" class="section level4" number="21.1.1.1">
+<h4>
+<span class="header-section-number">21.1.1.1</span> Calculating the test in R<a class="anchor" aria-label="anchor" href="#calculating-the-test-in-r"><i class="fas fa-link"></i></a>
+</h4>
+<p>To calculate an ANOVA in R, we will use the <code><a href="https://rdrr.io/r/stats/aov.html">aov()</a></code> function with a formula input. In this formula, <code>~</code> means <strong>“group by”</strong>. So y ~ x is equivalent to y grouped by x, or body mass grouped by species. Or another way to think about it is that y is the outcome and x is the predictor, so y ~ x means x predicting y.</p>
+<div class="sourceCode" id="cb341"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">species</span>, </span>
+<span>    data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt;    aov(formula = body_mass_g ~ species, data = penguins)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Terms:</span></span>
+<span><span class="co">#&gt;                   species Residuals</span></span>
+<span><span class="co">#&gt; Sum of Squares  146864214  72443483</span></span>
+<span><span class="co">#&gt; Deg. of Freedom         2       339</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residual standard error: 462.2744</span></span>
+<span><span class="co">#&gt; Estimated effects may be unbalanced</span></span>
+<span><span class="co">#&gt; 2 observations deleted due to missingness</span></span></code></pre></div>
+<p>Hold on, this doesn’t give us a p-value! Like the correlation test, this doesn’t immediately calculate a hypothesis test. To do that, we need to use the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function.</p>
+<div class="sourceCode" id="cb342"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">anova_mass</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">species</span>, </span>
+<span>    data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">anova_mass</span><span class="op">)</span></span>
+<span><span class="co">#&gt;              Df    Sum Sq  Mean Sq F value Pr(&gt;F)    </span></span>
+<span><span class="co">#&gt; species       2 146864214 73432107   343.6 &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; Residuals   339  72443483   213698                   </span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; 2 observations deleted due to missingness</span></span></code></pre></div>
+<p>There we go!</p>
+</div>
+<div id="interpreting-the-test" class="section level4" number="21.1.1.2">
+<h4>
+<span class="header-section-number">21.1.1.2</span> Interpreting the test<a class="anchor" aria-label="anchor" href="#interpreting-the-test"><i class="fas fa-link"></i></a>
+</h4>
+<p>Like the other tests we’ve discussed, there are three numbers we care about: test statistic, degrees of freedom, and p-value.</p>
+<p>The <strong><em>test statistic</em></strong> for an ANOVA is called an F-value (the 4th column in the output table above). As with the other test statistics we’ve reviewed, higher values usually mean larger differences between groups, and a higher likelihood that the null hypothesis is not supported.</p>
+<p>There are two <strong><em>degrees of freedom</em></strong> values (Df, first column) we care about here: the between group degrees of freedom (related to number of groups, top Df value = 2) and within group degrees of freedom (related to number of observations, bottom Df value = 339).</p>
+<p>We interpret the <strong><em>p-value</em></strong> here (labelled Pr(&gt;F), last column) like in the other tests, comparing it to p = 0.05. In this case, p &lt; 0.0001, so this result is significant. We reject the null and accept the alternative hypothesis that there is a difference in body mass between species.</p>
+<p>However, that doesn’t tell us about the <em>direction</em> of the difference. In the graph above, it looks like Gentoo penguins weigh more than Adelie and Chinstrap penguins, which maybe aren’t different from each other. How do we test to see if those are reliable differences between individual groups (or not)? We use a <strong>post hoc test</strong> (post-hoc meaning “after this”).</p>
+<div id="post-hoc-test" class="section level5" number="21.1.1.2.1">
+<h5>
+<span class="header-section-number">21.1.1.2.1</span> Post hoc test<a class="anchor" aria-label="anchor" href="#post-hoc-test"><i class="fas fa-link"></i></a>
+</h5>
+<p>For a one-way ANOVA, the post hoc test is a pairwise t-test: essentially running a t-test for each between group comparison. However, running multiple tests at once inflates the likelihood of getting a significant result, so we need to adjust our p-value using a “correction” method. In this class we will use the Bonferroni correction, but see <a href="https://learningstatisticswithr.com/14-anova.html#corrections-for-multiple-testing">LWSR</a> for more options and explanation.</p>
+<div class="sourceCode" id="cb343"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/pairwise.t.test.html">pairwise.t.test</a></span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="va">penguins</span><span class="op">$</span><span class="va">body_mass_g</span>, <span class="co"># outcome variable</span></span>
+<span>  g <span class="op">=</span> <span class="va">penguins</span><span class="op">$</span><span class="va">species</span>,      <span class="co"># grouping variable</span></span>
+<span>  p.adjust.method <span class="op">=</span> <span class="st">"bonferroni"</span>  <span class="co"># which correction to use?</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Pairwise comparisons using t tests with pooled SD </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  penguins$body_mass_g and penguins$species </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;           Adelie Chinstrap</span></span>
+<span><span class="co">#&gt; Chinstrap 1      -        </span></span>
+<span><span class="co">#&gt; Gentoo    &lt;2e-16 &lt;2e-16   </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; P value adjustment method: bonferroni</span></span></code></pre></div>
+<p>This gives us a table of p-values for each test. As you can see, there is a significant difference between average body mass between Adelie and Gentoo penguins (p &lt; 0.0001) and Chinstrap and Gentoo penguins (p &lt; 0.0001). But there is no significant difference between Adelie and Chinstrap penguins in average body mass (p = 1). A table of means is also helpful for interpreting and reporting these results</p>
+<div class="sourceCode" id="cb344"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">body_mass_g</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
+<span><span class="co">#&gt;   species    mean</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Adelie    3701.</span></span>
+<span><span class="co">#&gt; 2 Chinstrap 3733.</span></span>
+<span><span class="co">#&gt; 3 Gentoo    5076.</span></span></code></pre></div>
+</div>
+</div>
+<div id="reporting-the-test" class="section level4" number="21.1.1.3">
+<h4>
+<span class="header-section-number">21.1.1.3</span> Reporting the test<a class="anchor" aria-label="anchor" href="#reporting-the-test"><i class="fas fa-link"></i></a>
+</h4>
+<p>To report the statistical output of a one-way ANOVA, you can say: “We found a significant overall effect of X, (<em>F</em>(a,b)=c, <em>p</em>=d).”</p>
+<ul>
+<li>X: Independent variable</li>
+<li>a: DF for groups (predictor)</li>
+<li>b: DF for observations (residuals)</li>
+<li>c: <em>F</em>-value for the effect</li>
+<li>d: <em>p</em>-value for the effect</li>
+</ul>
+<p>For example, you can report the ANOVA above like this (using both the post hoc t-test and means to report between group differences):</p>
+<div class="rmdimportant">
+<p>“We ran a one-way ANOVA of penguin species on body mass. We observed a significant overall effect of Species (<em>F</em>(2,339) = 343.6, <em>p</em> &lt; 0.0001). On average, body mass was larger for Gentoo penguins (mean = 5076 g) compared to both Adelie penguins (mean = 3701 g, <em>p</em> &lt; 0.001) and Chinstrap penguins (mean = 3733 g, <em>p</em> &lt; 0.001). Adelie and Chinstrap penguins did not show a significant difference from each other in average body mass (<em>p</em> = 1).”</p>
+</div>
+</div>
+</div>
+<div id="two-way-anova-factorial" class="section level3" number="21.1.2">
+<h3>
+<span class="header-section-number">21.1.2</span> Two-way ANOVA (factorial)<a class="anchor" aria-label="anchor" href="#two-way-anova-factorial"><i class="fas fa-link"></i></a>
+</h3>
+<p>A two-way, or factorial, ANOVA, involves 2 categorical variables and 1 continuous outcome. This test is commonly used by psychologists using a 2 x 2 group research design. To learn more about factorial ANOVAs, see <a href="https://learningstatisticswithr.com/16-anova2.html">LWSR</a>.</p>
+<p>For this test, we will use an extension of the one-way ANOVA research question, just adding in sex as another predictor. So the research question is: “is there a difference in body mass by penguin species and sex?” The null hypothesis is no difference in mean body mass between groups by sex or species and the alternative hypothesis is that there is a difference (non-directional).</p>
+<div class="sourceCode" id="cb345"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">species</span>, color <span class="op">=</span> <span class="va">sex</span>, fill <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">.4</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, geom <span class="op">=</span> <span class="st">"pointrange"</span>, color <span class="op">=</span> <span class="st">"black"</span>, shape <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">7000</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Stats_3variables_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672"></div>
+<div id="calculating-the-test-in-r-1" class="section level4" number="21.1.2.1">
+<h4>
+<span class="header-section-number">21.1.2.1</span> Calculating the test in R<a class="anchor" aria-label="anchor" href="#calculating-the-test-in-r-1"><i class="fas fa-link"></i></a>
+</h4>
+<p>To calculate a two-way ANOVA, we can actually use the same test as a one-away ANOVA above. All we have to do is add “sex” onto our formula.</p>
+<div class="sourceCode" id="cb346"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">anova_species_sex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">species</span> <span class="op">+</span> <span class="va">sex</span>, </span>
+<span>    data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">anova_species_sex</span><span class="op">)</span></span>
+<span><span class="co">#&gt;              Df    Sum Sq  Mean Sq F value Pr(&gt;F)    </span></span>
+<span><span class="co">#&gt; species       2 145190219 72595110   724.2 &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sex           1  37090262 37090262   370.0 &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; Residuals   329  32979185   100241                   </span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; 11 observations deleted due to missingness</span></span></code></pre></div>
+<p>Notice the output of this test gives me an <em>F</em>-value and <em>p</em>-value for both species and sex, but it doesn’t tell me if there is an <strong>interaction</strong> between the two. That is, whether there is a larger difference in body mass between male and female Gentoo penguins compared to the difference between male and female Chinstrap penguins. I’m not going to cover interactions in this class, but if you are interested in learning more or using an interaction in your project see <a href="https://learningstatisticswithr.com/16-anova2.html#fig-interaction-2">LWSR</a>. If you wanted to specify an interaction in the model, you can just replace the <code>+</code> between the predictors with a <code>*</code></p>
+</div>
+<div id="interpreting-the-test-1" class="section level4" number="21.1.2.2">
+<h4>
+<span class="header-section-number">21.1.2.2</span> Interpreting the test<a class="anchor" aria-label="anchor" href="#interpreting-the-test-1"><i class="fas fa-link"></i></a>
+</h4>
+<p>Interpreting a two-way ANOVA is very similar to a one-way ANOVA, just that you have two sets of <em>F</em>-values, DFs, and <em>p</em>-values, one for each predictor. So I would examine the <em>p</em>-value of the <code>species</code> row to determine that there is a significant difference in body mass by species (p &lt; 0.0001), and the <code>sex</code> row for the significant difference based on sex (p &lt; 0.0001).</p>
+<p>Another important difference is that, in a two-way ANOVA, the relationship between each predictor and the outcome now <strong><em>accounts</em></strong> for the other predictor. That is, the <em>F</em>-value of species in this analysis is NOT the same as in the one-way ANOVA above. We will talk about this more when we discuss multiple regression below.</p>
+<p>Just as in the one-way ANOVA however, these overall or “omnibus” <em>F</em>-values do not tell us if there is a significant difference between groups and, if so, what that difference is. For that, we need a post-hoc test.</p>
+<div id="post-hoc-test-1" class="section level5" number="21.1.2.2.1">
+<h5>
+<span class="header-section-number">21.1.2.2.1</span> Post hoc test<a class="anchor" aria-label="anchor" href="#post-hoc-test-1"><i class="fas fa-link"></i></a>
+</h5>
+<p>Unfortunately, we can’t conduct a series of paiwise t-tests to look at differences in this case, because that test cannot control for multiple predictor variables. Instead, we will use a statistical technique aptly named Tukey’s “Honestly Significant Difference” test, known as a <strong>Tukey’s HSD</strong>.</p>
+<div class="sourceCode" id="cb347"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova_species_sex</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Tukey multiple comparisons of means</span></span>
+<span><span class="co">#&gt;     95% family-wise confidence level</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Fit: aov(formula = body_mass_g ~ species + sex, data = penguins)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $species</span></span>
+<span><span class="co">#&gt;                        diff        lwr      upr     p adj</span></span>
+<span><span class="co">#&gt; Chinstrap-Adelie   26.92385  -82.51532  136.363 0.8313289</span></span>
+<span><span class="co">#&gt; Gentoo-Adelie    1386.27259 1294.21284 1478.332 0.0000000</span></span>
+<span><span class="co">#&gt; Gentoo-Chinstrap 1359.34874 1246.03315 1472.664 0.0000000</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $sex</span></span>
+<span><span class="co">#&gt;                 diff     lwr      upr p adj</span></span>
+<span><span class="co">#&gt; male-female 667.4577 599.193 735.7224     0</span></span></code></pre></div>
+<p>A Tukey’s HSD essentially constructs multiple 95% confidence intervals (significance thresholds) to examine differences between all groups simultaneously. As you can see, this gives us adjusted p-values, like the pairwise t-tests, which correct for multiple comparisons. As we’d expect from previous tests, there are very low <em>p</em>-values for Gentoo compared to other species and for male penguins compared to females.</p>
+<p>We can also calculate means for each group to help us interpret the differences.</p>
+<div class="sourceCode" id="cb348"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">body_mass_g</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
+<span><span class="co">#&gt;   species    mean</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Adelie    3701.</span></span>
+<span><span class="co">#&gt; 2 Chinstrap 3733.</span></span>
+<span><span class="co">#&gt; 3 Gentoo    5076.</span></span>
+<span></span>
+<span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">body_mass_g</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 2</span></span>
+<span><span class="co">#&gt;   sex     mean</span></span>
+<span><span class="co">#&gt;   &lt;fct&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 female 3862.</span></span>
+<span><span class="co">#&gt; 2 male   4546.</span></span></code></pre></div>
+<p>Note that we can’t group by species and sex at the same time, because that would give us an interaction between to predictors (Adelie females vs. Chinstrap females) instead of overall differences by predictor (males vs. females).</p>
+</div>
+</div>
+<div id="reporting-the-test-1" class="section level4" number="21.1.2.3">
+<h4>
+<span class="header-section-number">21.1.2.3</span> Reporting the test<a class="anchor" aria-label="anchor" href="#reporting-the-test-1"><i class="fas fa-link"></i></a>
+</h4>
+<p>To report the statistical results of a two-way ANOVA, you can say: “We found a significant main effect of {X or Y} on outcome, (<em>F</em>(a,b)=c, <em>p</em>=d).”</p>
+<ul>
+<li>X, Y: Independent variables for which you observe significant effects</li>
+<li>a: DF group for the variable involved in the effect</li>
+<li>b: DF observations (residuals)</li>
+<li>c: <em>F</em>-value for the effect</li>
+<li>d: <em>p</em>-value for the effect</li>
+</ul>
+<div class="rmdimportant">
+<p>“We ran a 2 (Sex) x 3 (Species) ANOVA on body mass. We observed significant main effects of Species, (<em>F</em>(2,329) = 724.2, <em>p</em> &lt; 0.0001) and Sex (<em>F</em>(1,329) = 370.0, <em>p</em> &lt; 0.0001) and used a Tukey’s HSD to conduct post hoc analyses. For sex, body mass was larger on average for male penguins (mean = 4546 grams) than female penguins (mean = 3862 grams, p &lt; 0.0001). For species, body mass was larger on average for Gentoo penguins (mean = 5076 g) compared to Adelie penguins (mean = 3701 g, <em>p</em> &lt; 0.001) and Chinstrap penguins (mean = 3733 g, <em>p</em> &lt; 0.001). Adelie and Chinstrap penguins did not show a significant difference in average body mass (<em>p</em> = 1).”</p>
+</div>
+</div>
+</div>
+</div>
+<div id="regression" class="section level2" number="21.2">
+<h2>
+<span class="header-section-number">21.2</span> Regression<a class="anchor" aria-label="anchor" href="#regression"><i class="fas fa-link"></i></a>
+</h2>
+<p>Regression is probably the most powerful statistical tool that we will discuss in this class. That’s because you can use it in so many different analyses. Also because it tells us something we want to know: how much does our predictor tell us about our outcome variable?</p>
+<p>We can get a sense for how regressions work by looking at the trendline we’ve used in our graphs.</p>
+<div class="sourceCode" id="cb349"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">body_mass_g</span>, x <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">'lm'</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="Stats_3variables_files/figure-html/unnamed-chunk-11-1.png" alt="" width="672"></div>
+<p>This trendline is actually a regression line. It tells us, “how well do our x-values allow us to predict our y-values”? In this graph, how well does flipper length predict body mass?</p>
+<p>To answer this question, the regression calculates a <strong><em>line of best fit</em></strong> that tries to minimize the distance from the line to each dot (or observation; also called the “ordinary least squares” or OLS method, there are others). From that, we can express that relationship with numbers using a very basic formula for a line:
+<span class="math display">\[y = mx + b\]</span></p>
+<p>Where <em>m</em> is the slope of the line (change in y/change in x) and <em>b</em> is the y-intercept (the value of y when x = 0). <em>(The actual regression formula is a little bit more complicated, but not much, see <a href="https://learningstatisticswithr.com/15-regression.html#sec-introregression">LSWR</a>.)</em> The value we care most about here is the slope, because that tells us about the relationship between x and y.</p>
+<p>For our purposes in this class, there are two cool things that regressions allow us to do:</p>
+<ul>
+<li><p><strong>Cool thing #1</strong>: Examine how much change in one variable we should expect, given a change in the other (e.g., what change in y given a 1 unit change in x?).</p></li>
+<li><p><strong>Cool thing #2</strong>: Determine how well the predictor(s) in our regression predict the outcome. How well does our line actually fit the data?</p></li>
+</ul>
+<div id="simple-regression" class="section level3" number="21.2.1">
+<h3>
+<span class="header-section-number">21.2.1</span> Simple regression<a class="anchor" aria-label="anchor" href="#simple-regression"><i class="fas fa-link"></i></a>
+</h3>
+<p>A simple regression takes the same variables as a correlation: a continuous outcome and continuous predictor. The difference from a correlation is that a regression assumes a <strong><em>directional</em></strong> relationship between the two variables: we should have reason to expect that the predictor <em>predicts</em> or maybe even causes the outcome, not the other way around. However, we won’t worry about that too much for our examples here.</p>
+<div id="calculating-the-test-in-r-2" class="section level4" number="21.2.1.1">
+<h4>
+<span class="header-section-number">21.2.1.1</span> Calculating the test in R<a class="anchor" aria-label="anchor" href="#calculating-the-test-in-r-2"><i class="fas fa-link"></i></a>
+</h4>
+<p>We will use the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function to create a regression model in R (model just means equation here). Like an ANOVA, we use a formula input.</p>
+<div class="sourceCode" id="cb350"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">flipper_length_mm</span>,</span>
+<span>   data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = body_mass_g ~ flipper_length_mm, data = penguins)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;       (Intercept)  flipper_length_mm  </span></span>
+<span><span class="co">#&gt;          -5780.83              49.69</span></span></code></pre></div>
+<p>The <code>coefficients</code> here relate to the <em>m</em> and <em>b</em> in our line equation above. The first one is the y-intercept (helpfully labelled “(Intercept)”) and the second one is the slope of the relationship between body mass and flipper length (labelled with the variable name, “flipper_length_mm”).</p>
+<p>You can interpret the flipper length coefficient by saying that for every 1 mm change in flipper length there is an average change of ~50 g in body mass.</p>
+<p>However, this output does not conduct a hypothesis test or provide a <em>p</em>-value. Again, to do that we’ll need to use <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>. Before we do that, let’s think about the null and alternative hypothesis in this test.</p>
+<ul>
+<li>
+<strong>Null hypothesis</strong>: There is NO relationship between body mass and flipper length (slope = 0).</li>
+<li>
+<strong>Alternative hypothesis</strong>: There IS a relationship between body mass and flipper length (slope ≠ 0).</li>
+</ul>
+<div class="sourceCode" id="cb351"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">reg_flipper_mass</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">flipper_length_mm</span>,</span>
+<span>   data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">reg_flipper_mass</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = body_mass_g ~ flipper_length_mm, data = penguins)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residuals:</span></span>
+<span><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span><span class="co">#&gt; -1058.80  -259.27   -26.88   247.33  1288.69 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;                    Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span><span class="co">#&gt; (Intercept)       -5780.831    305.815  -18.90   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; flipper_length_mm    49.686      1.518   32.72   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residual standard error: 394.3 on 340 degrees of freedom</span></span>
+<span><span class="co">#&gt;   (2 observations deleted due to missingness)</span></span>
+<span><span class="co">#&gt; Multiple R-squared:  0.759,  Adjusted R-squared:  0.7583 </span></span>
+<span><span class="co">#&gt; F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+</div>
+<div id="interpreting-the-test-2" class="section level4" number="21.2.1.2">
+<h4>
+<span class="header-section-number">21.2.1.2</span> Interpreting the test<a class="anchor" aria-label="anchor" href="#interpreting-the-test-2"><i class="fas fa-link"></i></a>
+</h4>
+<p>There’s a lot of information in the output, but for our purposes we can ignore some of it. We want to focus on the coefficients table, R-squared values, F-statistic, and DF values.</p>
+<div id="coefficients" class="section level5" number="21.2.1.2.1">
+<h5>
+<span class="header-section-number">21.2.1.2.1</span> Coefficients<a class="anchor" aria-label="anchor" href="#coefficients"><i class="fas fa-link"></i></a>
+</h5>
+<p>The first part we can interpret is the <strong><em>Estimate</em></strong> column, specifically for the estimate next to our variable of interest, <code>flipper_length_mm</code>. You’ll notice this is the same number as in our simple <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function output above. Again, this is the slope of the line, or the relationship between change in x (flipper length) and change in y (body mass). This “raw” slope is called a B weight or <strong>unstandardized</strong> regression coefficient. We could also create a <strong>standardized</strong> regression coefficient or <span class="math inline">\(\beta\)</span> (beta) weight by controlling for the standard deviation of our predictor and outcome (z-score; see <a href="https://learningstatisticswithr.com/15-regression.html#sec-regressioncoefs">LSWR</a>). <span class="math inline">\(\beta\)</span> weights are more helpful for multiple regression to allow for a standard interpretation across multiple predictors, so we will discuss it more below.</p>
+<p>We have some additional outputs beyond the coefficients: <strong>St</strong>andar<strong>d</strong> <strong>Error</strong>, <strong>t value</strong>, and the last column Pr(&gt;|t|), which is actually our <strong>p value</strong>. We can interpret this <em>p</em>-value like the other ones, by comparing to p = 0.05. In this case, <em>p</em> &gt; 0.0001, so we can conclude that there is a significant relationship between body mass and flipper length. That is, the relationship between them is significantly different from 0.</p>
+</div>
+<div id="f-value" class="section level5" number="21.2.1.2.2">
+<h5>
+<span class="header-section-number">21.2.1.2.2</span> F-value<a class="anchor" aria-label="anchor" href="#f-value"><i class="fas fa-link"></i></a>
+</h5>
+<p>Interestingly, you’ll notice at the very bottom of the output there is an “F-statistic”. It turns out, this is the same <em>F</em>-value we discussed in the ANOVA section above! ANOVA and regression are pretty much the same math on the back-end (at least in R), so the <em>F</em>-value here gives us the overall fit along with the R-squared value. In this case, the <em>F</em>-value is 1071 and the related <em>p</em>-value (also on the bottom line of the output) is &gt; 0.0001, so the overall model fit is also statistically significant (different from <em>F</em>-value = 0). The relevant degrees of freedom are also in this bottom row.</p>
+</div>
+<div id="r-squared" class="section level5" number="21.2.1.2.3">
+<h5>
+<span class="header-section-number">21.2.1.2.3</span> R-squared<a class="anchor" aria-label="anchor" href="#r-squared"><i class="fas fa-link"></i></a>
+</h5>
+<p>There is an additional important output here: <strong><em>R-squared</em></strong> or <span class="math inline">\(R^2\)</span>. <span class="math inline">\(R^2\)</span> allows us to do cool thing #2: say something about how well x predicts y. Yes, the relationship is different from 0, but <strong>how much</strong> of the variability in y can we predict from changes in x? <em>(Note: In this class, we will use the “Multiple R-squared” output, not the “adjusted R-squared”.)</em></p>
+<p>For this test, <span class="math inline">\(R^2\)</span> = 0.759. In other words, 75.9% of the variance in body mass can be explained by flipper length. That’s pretty good! In contrast, compare this to the relationship between body mass and bill depth.</p>
+<div class="sourceCode" id="cb352"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">reg_depth_mass</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">bill_depth_mm</span>, <span class="va">penguins</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">reg_depth_mass</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = body_mass_g ~ bill_depth_mm, data = penguins)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residuals:</span></span>
+<span><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span><span class="co">#&gt; -1607.38  -510.10   -66.96   462.43  1819.28 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;               Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span><span class="co">#&gt; (Intercept)    7488.65     335.22   22.34   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; bill_depth_mm  -191.64      19.42   -9.87   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residual standard error: 708.1 on 340 degrees of freedom</span></span>
+<span><span class="co">#&gt;   (2 observations deleted due to missingness)</span></span>
+<span><span class="co">#&gt; Multiple R-squared:  0.2227, Adjusted R-squared:  0.2204 </span></span>
+<span><span class="co">#&gt; F-statistic: 97.41 on 1 and 340 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p>Bill depth is still a significant predictor of body mass (p &lt; 0.0001), but the <span class="math inline">\(R^2\)</span> is significantly lower at 0.22. So bill depth explains only 22% of the variability in body mass. In this data, flipper length is a better predictor (more closely related to) body mass than bill depth.</p>
+</div>
+</div>
+<div id="reporting-the-test-2" class="section level4" number="21.2.1.3">
+<h4>
+<span class="header-section-number">21.2.1.3</span> Reporting the test<a class="anchor" aria-label="anchor" href="#reporting-the-test-2"><i class="fas fa-link"></i></a>
+</h4>
+<p>Reporting a regression is slightly more complicated than other tests because we actually need to report two different things: 1) the fit of the overall model and 2) the coefficient for our predictor. So prepare yourself for a long list of values!</p>
+<p>To report the statistical output of a simple regression, you can say: “We found that our overall regression model was [not] significant (<span class="math inline">\(R^2\)</span>=z, <em>F</em>(a,b)=c, <em>p</em>=d). X [did not] significantly predict[ed] Y (B=e, <em>p</em>=f).”</p>
+<ul>
+<li>X: Predictor (Independent variable)</li>
+<li>Y: Outcome (Dependent variable)</li>
+<li>z: Multiple R-squared output</li>
+<li>a: 1st DF for overall model (groups, smaller DF number)</li>
+<li>b: 2nd DF for overall model (observations, larger DF number)</li>
+<li>c: <em>F</em>-value for the overall model</li>
+<li>d: <em>p</em>-value for the overall model</li>
+<li>e: coefficient estimate for X</li>
+<li>f: <em>p</em>-value for coefficient estimate (B) of X</li>
+</ul>
+<div class="rmdimportant">
+<p>“We conducted a simple linear regression to test if a penguin’s flipper length predicted their body mass. We found that our overall regression model was significant, such that flipper length explained 75.9% of the variance in body mass (<span class="math inline">\(R^2\)</span> = 0.759, <em>F</em>(1,340) = 1071, <em>p</em> &lt; 0.0001). Flipper length significantly predicted body mass (B = 49.69, <em>p</em> &lt; 0.0001). [optional] For every 1 mm change in flipper length there was, an average, a change of ~50 g in body mass.”</p>
+</div>
+</div>
+</div>
+<div id="multiple-regression" class="section level3" number="21.2.2">
+<h3>
+<span class="header-section-number">21.2.2</span> Multiple regression<a class="anchor" aria-label="anchor" href="#multiple-regression"><i class="fas fa-link"></i></a>
+</h3>
+<p>Multiple regression is just a regression with <strong>multiple</strong> predictors, like a two-way ANOVA.</p>
+<div id="calculating-the-test-in-r-3" class="section level4" number="21.2.2.1">
+<h4>
+<span class="header-section-number">21.2.2.1</span> Calculating the test in R<a class="anchor" aria-label="anchor" href="#calculating-the-test-in-r-3"><i class="fas fa-link"></i></a>
+</h4>
+<p>For our example, we can just add another predictor, bill depth, to our existing simple regression.</p>
+<div class="sourceCode" id="cb353"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">reg_flipper_mass_depth</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">~</span> </span>
+<span>                               <span class="va">flipper_length_mm</span> <span class="op">+</span> </span>
+<span>                               <span class="va">bill_depth_mm</span>,</span>
+<span>   data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">reg_flipper_mass_depth</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = body_mass_g ~ flipper_length_mm + bill_depth_mm, </span></span>
+<span><span class="co">#&gt;     data = penguins)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residuals:</span></span>
+<span><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span><span class="co">#&gt; -1029.78  -271.45   -23.58   245.15  1275.97 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;                    Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span><span class="co">#&gt; (Intercept)       -6541.907    540.751 -12.098   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; flipper_length_mm    51.541      1.865  27.635   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; bill_depth_mm        22.634     13.280   1.704   0.0892 .  </span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residual standard error: 393.2 on 339 degrees of freedom</span></span>
+<span><span class="co">#&gt;   (2 observations deleted due to missingness)</span></span>
+<span><span class="co">#&gt; Multiple R-squared:  0.761,  Adjusted R-squared:  0.7596 </span></span>
+<span><span class="co">#&gt; F-statistic: 539.8 on 2 and 339 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+</div>
+<div id="interpreting-the-test-3" class="section level4" number="21.2.2.2">
+<h4>
+<span class="header-section-number">21.2.2.2</span> Interpreting the test<a class="anchor" aria-label="anchor" href="#interpreting-the-test-3"><i class="fas fa-link"></i></a>
+</h4>
+<p>Like a two-way ANOVA, adding another predictor changes the way that we interpret the results. Now, the overall model fit depends on two variables, not just one. And the coefficient estimates or B weights for each predictor are <strong>controlling</strong> for the other predictors, they are not just the simple relationship between predictor and outcome.</p>
+<p>For example, to interpret the B weight for flipper length in this model, you would say that for every 1 unit increase in flipper length there is a ~51 g change in body mass <strong><em>if bill depth is held constant</em></strong>. You’ll notice this is a slightly different number than in the simple regression; this is a result of including multiple predictors, even if bill depth is not a significant predictor.</p>
+<p>A final note on interpreting multiple regressions: so far we have used B weights, or unstandardized regression coefficients. These are useful because they can be interpreted in the original units (mm and grams). However, if our predictors were in different units (let’s say mm and inches), we could not easily compare them. Instead, we would want to use standardized regression coefficients, called <span class="math inline">\(\beta\)</span> weights.</p>
+<p>The easiest way to calculate standardized coefficients in R is just to add the <code><a href="https://rdrr.io/r/base/scale.html">scale()</a></code> function to our regression model, which standardizes the values.</p>
+<div class="sourceCode" id="cb354"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">reg_flipper_mass_depth_std</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">body_mass_g</span><span class="op">)</span> <span class="op">~</span> </span>
+<span>                                   <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">flipper_length_mm</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>                                   <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">bill_depth_mm</span><span class="op">)</span>,</span>
+<span>   data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">reg_flipper_mass_depth_std</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = scale(body_mass_g) ~ scale(flipper_length_mm) + </span></span>
+<span><span class="co">#&gt;     scale(bill_depth_mm), data = penguins)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residuals:</span></span>
+<span><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span><span class="co">#&gt; -1.28408 -0.33849 -0.02941  0.30569  1.59107 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;                           Estimate Std. Error t value</span></span>
+<span><span class="co">#&gt; (Intercept)              8.502e-16  2.651e-02   0.000</span></span>
+<span><span class="co">#&gt; scale(flipper_length_mm) 9.037e-01  3.270e-02  27.635</span></span>
+<span><span class="co">#&gt; scale(bill_depth_mm)     5.574e-02  3.270e-02   1.704</span></span>
+<span><span class="co">#&gt;                          Pr(&gt;|t|)    </span></span>
+<span><span class="co">#&gt; (Intercept)                1.0000    </span></span>
+<span><span class="co">#&gt; scale(flipper_length_mm)   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; scale(bill_depth_mm)       0.0892 .  </span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residual standard error: 0.4903 on 339 degrees of freedom</span></span>
+<span><span class="co">#&gt;   (2 observations deleted due to missingness)</span></span>
+<span><span class="co">#&gt; Multiple R-squared:  0.761,  Adjusted R-squared:  0.7596 </span></span>
+<span><span class="co">#&gt; F-statistic: 539.8 on 2 and 339 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p>The only change here is the coefficient estimates and std. error. We would interpret these coefficients in terms of standard deviation units. For example, “Flipper length significantly predicted body mass (<span class="math inline">\(\beta\)</span> = 0.90, p &lt; 0.0001), controlling for bill depth. For every 1 unit change in flipper length there was a 0.9 unit change in body mass, standardized across units, when bill depth remained constant.”</p>
+<p>For the purposes of class assignments, we will focus on reporting and interpreting unstandardized coefficients (B weights), but you are welcome to use standardized coefficients in your project if it makes sense for your research question and/or analysis.</p>
+</div>
+<div id="reporting-the-test-3" class="section level4" number="21.2.2.3">
+<h4>
+<span class="header-section-number">21.2.2.3</span> Reporting the test<a class="anchor" aria-label="anchor" href="#reporting-the-test-3"><i class="fas fa-link"></i></a>
+</h4>
+<p>To we report the multiple regression output with unstandardized coefficients, we could say: “We found that our overall regression model was [not] significant (<span class="math inline">\(R^2\)</span>=z, <em>F</em>(a,b)=c, <em>p</em>=d). X [did not] significantly predict[ed] Y (B=e, <em>p</em>=f). W also [did not] significantly predict[ed] Y (B=g, <em>p</em>=h).”</p>
+<ul>
+<li>X: Predictor 1 (Independent variable)</li>
+<li>W: Predictor 2 (Independent variable)</li>
+<li>Y: Outcome (Dependent variable)</li>
+<li>z: Multiple R-squared output</li>
+<li>a: 1st DF for overall model (groups, smaller DF number)</li>
+<li>b: 2nd DF for overall model (observations, larger DF number)</li>
+<li>c: <em>F</em>-value for the overall model</li>
+<li>d: <em>p</em>-value for the overall model</li>
+<li>e: coefficient estimate for X</li>
+<li>f: <em>p</em>-value for coefficient estimate (B) of X</li>
+<li>g: coefficient estimate for W</li>
+<li>h: <em>p</em>-value for coefficient estimate (B) of W</li>
+</ul>
+<div class="rmdimportant">
+<p>“We conducted a multiple linear regression to test how a penguin’s flipper length and bill depth predicted their body mass. We found that our overall regression model was significant, such that both predictors explained 76.1% of the variance in body mass (<span class="math inline">\(R^2\)</span> = 0.761, <em>F</em>(2,339) = 539.8, <em>p</em> &lt; 0.0001). When looking at each predictor controlling for the other, flipper length significantly predicted body mass (B = 51.5, <em>p</em> &lt; 0.0001), while bill depth did not (B = 22.6, <em>p</em> = 0.089).”</p>
+</div>
+</div>
+</div>
+<div id="categorical-variables-in-regression" class="section level3" number="21.2.3">
+<h3>
+<span class="header-section-number">21.2.3</span> Categorical variables in regression<a class="anchor" aria-label="anchor" href="#categorical-variables-in-regression"><i class="fas fa-link"></i></a>
+</h3>
+<p>So far, we’ve been talking about regression models only in terms of continuous predictors and outcomes. Well, one of the things that makes regression such a powerful statistical too is that you can actually use it with categorical variables as well!</p>
+<p><img src="figures/dragon_regression.png" style="width:100.0%">
+Illustration by <a href="https://www.allisonhorst.com/"><span class="citation">Horst (2022)</span></a></p>
+<div id="categorical-predictors" class="section level4" number="21.2.3.1">
+<h4>
+<span class="header-section-number">21.2.3.1</span> Categorical predictors<a class="anchor" aria-label="anchor" href="#categorical-predictors"><i class="fas fa-link"></i></a>
+</h4>
+<p>Let’s say that we want to look at how both flipper length AND sex of the penguin is related to body mass.</p>
+<div class="sourceCode" id="cb355"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins_noNA</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">reg_flipper_mass_sex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">flipper_length_mm</span> <span class="op">+</span> <span class="va">sex</span>,</span>
+<span>   data <span class="op">=</span> <span class="va">penguins_noNA</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">reg_flipper_mass_sex</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = body_mass_g ~ flipper_length_mm + sex, data = penguins_noNA)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residuals:</span></span>
+<span><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span><span class="co">#&gt; -910.28 -243.89   -2.94  238.85 1067.73 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;                    Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span><span class="co">#&gt; (Intercept)       -5410.300    285.798 -18.931  &lt; 2e-16 ***</span></span>
+<span><span class="co">#&gt; flipper_length_mm    46.982      1.441  32.598  &lt; 2e-16 ***</span></span>
+<span><span class="co">#&gt; sexmale             347.850     40.342   8.623 2.78e-16 ***</span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residual standard error: 355.9 on 330 degrees of freedom</span></span>
+<span><span class="co">#&gt; Multiple R-squared:  0.8058, Adjusted R-squared:  0.8047 </span></span>
+<span><span class="co">#&gt; F-statistic: 684.8 on 2 and 330 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p>This output looks very similar to the multiple regression with bill depth above. However, in this case, you’ll notice that the third row in the coefficients table is labeled “sexmale”. This is the coefficient for specifically male penguins, that is, that body mass is 347.9 g higher for a male penguin (rather than female). If we wanted the coefficient in terms of female penguins, we would need to specify “male” as the comparison group instead of “female” using the <code><a href="https://rdrr.io/r/stats/relevel.html">relevel()</a></code> function before running the regression.</p>
+<div class="sourceCode" id="cb356"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">penguins_noNA</span><span class="op">$</span><span class="va">sex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/relevel.html">relevel</a></span><span class="op">(</span><span class="va">penguins_noNA</span><span class="op">$</span><span class="va">sex</span>, ref <span class="op">=</span> <span class="st">"male"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">reg_flipper_mass_sex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">flipper_length_mm</span> <span class="op">+</span> <span class="va">sex</span>,</span>
+<span>   data <span class="op">=</span> <span class="va">penguins_noNA</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">reg_flipper_mass_sex</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = body_mass_g ~ flipper_length_mm + sex, data = penguins_noNA)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residuals:</span></span>
+<span><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span><span class="co">#&gt; -910.28 -243.89   -2.94  238.85 1067.73 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;                    Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span><span class="co">#&gt; (Intercept)       -5062.450    296.022 -17.102  &lt; 2e-16 ***</span></span>
+<span><span class="co">#&gt; flipper_length_mm    46.982      1.441  32.598  &lt; 2e-16 ***</span></span>
+<span><span class="co">#&gt; sexfemale          -347.850     40.342  -8.623 2.78e-16 ***</span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residual standard error: 355.9 on 330 degrees of freedom</span></span>
+<span><span class="co">#&gt; Multiple R-squared:  0.8058, Adjusted R-squared:  0.8047 </span></span>
+<span><span class="co">#&gt; F-statistic: 684.8 on 2 and 330 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p>Now male is baseline or comparison group, and the coefficient tells us that the body mass of a female penguin is -347.9 g compared to a male. With two groups in the categorical variable, the difference between the two is just a negative sign.</p>
+<p>These regressions with a categorical variable with two groups can be interpreted and reported in very similarly to a multiple regression with continuous predictors.</p>
+<div class="rmdimportant">
+<p>“We conducted a multiple linear regression to test how a penguin’s flipper length and sex predicted their body mass. We found that our overall regression model was significant, such that both predictors explained 80.6% of the variance in body mass (<span class="math inline">\(R^2\)</span> = 0.806, <em>F</em>(2,330) = 684.8, <em>p</em> &lt; 0.0001). When looking at each predictor controlling for the other, flipper length significantly predicted body mass (B = 46.98, <em>p</em> &lt; 0.0001) and male penguins had significantly higher body mass than female penguins (B = 347.9, <em>p</em> &lt; 0.0001).”</p>
+</div>
+<p>You can also extend this approach, which is called “dummy coding” to categorical variables with <a href="https://www.datanovia.com/learn/biostatistics/regression/regression-with-categorical-variables-in-r">more than two groups</a>. There are also <a href="https://stats.oarc.ucla.edu/spss/faq/coding-systems-for-categorical-variables-in-regression-analysis-2/">other ways</a> to handle categorical variables in regressions that are beyond the scope of this class.</p>
+</div>
+<div id="categorical-outcome-logistic-regression" class="section level4" number="21.2.3.2">
+<h4>
+<span class="header-section-number">21.2.3.2</span> Categorical outcome (Logistic regression)<a class="anchor" aria-label="anchor" href="#categorical-outcome-logistic-regression"><i class="fas fa-link"></i></a>
+</h4>
+<p>You can also calculate regressions with binary (2 group) categorical <strong><em>outcomes</em></strong>, called logistic or logit regression. This analysis goes beyond the scope of most introductory statistics classes in psychology, so I won’t cover it here. But if you want to learn more or use it in your project, there are some overviews in <a href="https://stats.oarc.ucla.edu/r/dae/logit-regression/">UCLA’s OARC stats guide</a>, <a href="https://www.geeksforgeeks.org/r-language/logistic-regression-in-r-programming/">GeeksForGeeks</a>, and <a href="https://www.datanovia.com/learn/biostatistics/regression/logistic-regression-in-r">Datanovia</a> (the people who made <code>rstatix</code>).</p>
+
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0" line-spacing="2">
+<div id="ref-allison_horst" class="csl-entry">
+Horst, A. (2022). <em>R &amp; stats illustrations by <span class="nocase">@allison_horst</span></em>. <a href="https://github.com/allisonhorst/stats-illustrations/">https://github.com/allisonhorst/stats-illustrations/</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="statistical-analysis-with-two-variables.html"><span class="header-section-number">20</span> Statistical Analysis with Two Variables</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#statistics-with-more-than-two-variables"><span class="header-section-number">21</span> Statistics with More Than Two Variables</a></li>
+<li>
+<a class="nav-link" href="#anova"><span class="header-section-number">21.1</span> ANOVA</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#one-way-anova"><span class="header-section-number">21.1.1</span> One-way ANOVA</a></li>
+<li><a class="nav-link" href="#two-way-anova-factorial"><span class="header-section-number">21.1.2</span> Two-way ANOVA (factorial)</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#regression"><span class="header-section-number">21.2</span> Regression</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#simple-regression"><span class="header-section-number">21.2.1</span> Simple regression</a></li>
+<li><a class="nav-link" href="#multiple-regression"><span class="header-section-number">21.2.2</span> Multiple regression</a></li>
+<li><a class="nav-link" href="#categorical-variables-in-regression"><span class="header-section-number">21.2.3</span> Categorical variables in regression</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stats_3variables</strong>" was written by Catie Nielson. It was last built on 2026-10-29.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
