@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 22 Science Communication &amp; R Markdown | Communication</title>
+<meta name="author" content="Catie Nielson">
+<meta name="description" content="This semester we have learned how to do basic coding in R, visualize data with graphs, manipulate and tidy data, and conduct statistical analyses. The last step is to learn how do all of those...">
+<meta name="generator" content="bookdown 0.48 with bs4_book()">
+<meta property="og:title" content="Chapter 22 Science Communication &amp; R Markdown | Communication">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://cateness.github.io/psy406-unlv/science-communication-r-markdown.html">
+<meta property="og:description" content="This semester we have learned how to do basic coding in R, visualize data with graphs, manipulate and tidy data, and conduct statistical analyses. The last step is to learn how do all of those...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 22 Science Communication &amp; R Markdown | Communication">
+<meta name="twitter:description" content="This semester we have learned how to do basic coding in R, visualize data with graphs, manipulate and tidy data, and conduct statistical analyses. The last step is to learn how do all of those...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Communication</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
+<li class="book-part">R Basics</li>
+<li><a class="" href="why-use-r.html"><span class="header-section-number">2</span> Why use R?</a></li>
+<li><a class="" href="r-coding-basics.html"><span class="header-section-number">3</span> R Coding Basics</a></li>
+<li><a class="" href="using-r-effectively.html"><span class="header-section-number">4</span> Using R Effectively</a></li>
+<li class="book-part">Visualizations</li>
+<li><a class="" href="intro-to-ggplot2.html"><span class="header-section-number">5</span> Intro to ggplot2</a></li>
+<li><a class="" href="aesthetics.html"><span class="header-section-number">6</span> Aesthetics</a></li>
+<li><a class="" href="different-geoms-and-when-to-use-them.html"><span class="header-section-number">7</span> Different Geoms and When To Use Them</a></li>
+<li><a class="" href="one-variable.html"><span class="header-section-number">8</span> One Variable</a></li>
+<li><a class="" href="two-variables.html"><span class="header-section-number">9</span> Two Variables</a></li>
+<li><a class="" href="three-variables.html"><span class="header-section-number">10</span> Three Variables</a></li>
+<li><a class="" href="customization.html"><span class="header-section-number">11</span> Customization</a></li>
+<li><a class="" href="color-theory.html"><span class="header-section-number">12</span> Color Theory</a></li>
+<li class="book-part">Data Manipulation</li>
+<li><a class="" href="tidy-data-and-tidyverse.html"><span class="header-section-number">13</span> Tidy Data and Tidyverse</a></li>
+<li><a class="" href="basic-wrangling.html"><span class="header-section-number">14</span> Basic Wrangling</a></li>
+<li><a class="" href="advanced-subsetting.html"><span class="header-section-number">15</span> Advanced Subsetting</a></li>
+<li><a class="" href="advanced-variable-changing.html"><span class="header-section-number">16</span> Advanced Variable Changing</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">17</span> Summarizing Data</a></li>
+<li><a class="" href="data-transformation.html"><span class="header-section-number">18</span> Data Transformation</a></li>
+<li class="book-part">Statistics in R</li>
+<li><a class="" href="statistics-a-review.html"><span class="header-section-number">19</span> Statistics: A Review</a></li>
+<li><a class="" href="statistical-analysis-with-two-variables.html"><span class="header-section-number">20</span> Statistical Analysis with Two Variables</a></li>
+<li><a class="" href="statistics-with-more-than-two-variables.html"><span class="header-section-number">21</span> Statistics with More Than Two Variables</a></li>
+<li class="book-part">Science Communication with R</li>
+<li><a class="active" href="science-communication-r-markdown.html"><span class="header-section-number">22</span> Science Communication &amp; R Markdown</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="science-communication-r-markdown" class="section level1" number="22">
+<h1>
+<span class="header-section-number">22</span> Science Communication &amp; R Markdown<a class="anchor" aria-label="anchor" href="#science-communication-r-markdown"><i class="fas fa-link"></i></a>
+</h1>
+<p>This semester we have learned how to do basic coding in R, visualize data with graphs, manipulate and tidy data, and conduct statistical analyses. The last step is to learn how do all of those things in a clearly labelled document that you create! This is important so you can communicate your code and results to R users and others.</p>
+<p>To communicate with others, we will use an <strong>R Markdown</strong> document. What is an R Markdown (or .rmd) file? It’s the type of file you have been using all semester! We actually talked about this way back in the R Basics section on <a href="why-use-r.html#file-types">different types of files</a>. This is the file I use in your assignments, with my instructions in text and your code in code chunks. (It’s also the type of file I use to create these lecture notes.)</p>
+<p>The purpose of this chapter is to help you learn how to create these files yourself to communicate your code and data analysis, not just work with a file that I give you.</p>
+<div id="creating-an-r-markdown-file" class="section level2" number="22.1">
+<h2>
+<span class="header-section-number">22.1</span> Creating an R Markdown file<a class="anchor" aria-label="anchor" href="#creating-an-r-markdown-file"><i class="fas fa-link"></i></a>
+</h2>
+<p>A Markdown file is easy to create. From the RStudio menu, select File -&gt; New File -&gt; R Markdown…</p>
+<div class="inline-figure"><img src="figures/RMarkdown_create.png" style="width:100.0%"></div>
+<p>Your new Markdown file will look like this:</p>
+<div class="inline-figure"><img src="figures/RMarkdown_newFile.png" style="width:100.0%"></div>
+<p>Typically, I delete most of the template lines of code, but you can keep or alter them as you like</p>
+<p>As you can see, R Markdown documents have different sections:</p>
+<ol style="list-style-type: decimal">
+<li>code chunks in gray boxes<br>
+</li>
+<li>plain text outside the chunks in black. There are also headers and links in blue (we’ll discuss how to create those below).</li>
+<li>the top of the document has an automatically generated header surrounded by <code>----</code> with the title of the document, my name, the data, and the preferred output format.</li>
+</ol>
+<p>We’ll talk through each of these section types and how to modify them to maximize communication with your audience.</p>
+</div>
+<div id="code-chunks" class="section level2" number="22.2">
+<h2>
+<span class="header-section-number">22.2</span> Code Chunks<a class="anchor" aria-label="anchor" href="#code-chunks"><i class="fas fa-link"></i></a>
+</h2>
+<p>As you learned in the <a href="using-r-effectively.html#r-markdown-syntax">R Markdown Syntax</a> section, there are different ways to insert a code chunk into your Markdown document. But the important part for the chunk to work it must start with ````{r} without other text or code on the same line and end with ```.</p>
+<p>There are few other ways to modify code chunks to improve communication.</p>
+<div id="naming-code-chunks" class="section level3" number="22.2.1">
+<h3>
+<span class="header-section-number">22.2.1</span> Naming code chunks<a class="anchor" aria-label="anchor" href="#naming-code-chunks"><i class="fas fa-link"></i></a>
+</h3>
+<p>Although you don’t want to add any other text to the first line of your chunk, you can add a <strong>chunk name</strong> to the <code>{r}</code> header within the {}.</p>
+<p>This will make it easier for your audience to know what work that particular chunk is doing in your file. For example, you could name a chunk with a graph by its figure number <code>{r Figure 1}</code> or title <code>{r Graph: Penguin Species Frequency by Island}</code>.</p>
+</div>
+<div id="code-chunk-options" class="section level3" number="22.2.2">
+<h3>
+<span class="header-section-number">22.2.2</span> Code chunk options<a class="anchor" aria-label="anchor" href="#code-chunk-options"><i class="fas fa-link"></i></a>
+</h3>
+<p>Sometimes, you want to modify how a particular code chunk looks in the output (or if it shows up at all!). To do this, we can also modify the <code>{r}</code> header with options. The list below is just some of the most common options (taken from <a href="https://r4ds.had.co.nz/r-markdown.html#text-formatting-with-markdown">R for Data Science, 1st edition</a> aka R4DS); for the full list see <a href="http://yihui.name/knitr/options/" class="uri">http://yihui.name/knitr/options/</a>.</p>
+<ul>
+<li><p><code>eval = FALSE</code> prevents code from being evaluated. (And obviously if the code is not run, no results will be generated). This is useful for displaying example code, or for disabling a large block of code without commenting each line.</p></li>
+<li><p><code>include = FALSE</code> runs the code, but doesn’t show the code or results in the final document. Use this for setup code that you don’t want cluttering your report.</p></li>
+<li><p><code>echo = FALSE</code> prevents code, but not the results from appearing in the finished file. Use this when writing reports aimed at people who don’t want to see the underlying R code.</p></li>
+<li><p><code>message = FALSE</code> or <code>warning = FALSE</code> prevents messages or warnings from appearing in the finished file.</p></li>
+<li><p><code>results = 'hide'</code> hides printed output; <code>fig.show = 'hide'</code> hides plots.</p></li>
+<li><p><code>error = TRUE</code> causes the document to continue to render or knit (more on that below) even if code returns an error. (We have used this before so that R will ignore any fake code that was part of our assignments.) The default, <code>error = FALSE</code> causes knitting to fail if there is a single error in the document.</p></li>
+</ul>
+<p>In each case, you would include the option within the <code>{r}</code> at the beginning of a code chunk. For example: <code>{r eval = FALSE}</code>.</p>
+</div>
+<div id="formatting-code-output" class="section level3" number="22.2.3">
+<h3>
+<span class="header-section-number">22.2.3</span> Formatting code output<a class="anchor" aria-label="anchor" href="#formatting-code-output"><i class="fas fa-link"></i></a>
+</h3>
+<p>You might have noticed in the stats chapters the last few weeks that the default output of statistical tests in R are not very easy to read in the lecture notes. To make a more readable version of this output, or any table, we can use the <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable()</a></code> function from the <code>knitr</code> package. In this case, I’ve also used the <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> function from the <code>broom</code> package to put the ANOVA output into a format the <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable()</a></code> function can use. (This code chunk created with help from Thomas Elton’s <a href="https://rpubs.com/tjelton/kable_tables">RPubs post</a>).</p>
+<div class="sourceCode" id="cb357"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">anova_mass</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">species</span>, </span>
+<span>    data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">anova_tidy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">anova_mass</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">anova_tidy</span>, digits <span class="op">=</span> <span class="fl">3</span>, caption <span class="op">=</span> <span class="st">"ANOVA output"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-2">Table 22.1: </span>ANOVA output</caption>
+<thead><tr class="header">
+<th align="left">term</th>
+<th align="right">df</th>
+<th align="right">sumsq</th>
+<th align="right">meansq</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">species</td>
+<td align="right">2</td>
+<td align="right">146864214</td>
+<td align="right">73432107.1</td>
+<td align="right">343.626</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Residuals</td>
+<td align="right">339</td>
+<td align="right">72443483</td>
+<td align="right">213697.6</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="commenting-for-communication" class="section level3" number="22.2.4">
+<h3>
+<span class="header-section-number">22.2.4</span> Commenting for communication<a class="anchor" aria-label="anchor" href="#commenting-for-communication"><i class="fas fa-link"></i></a>
+</h3>
+<p>Notice that in the last code chunk, you might be able to follow what’s happening if you are familiar with these functions, but it’s not clearly described. So you might wonder what the <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> or <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable()</a></code> function is doing. That problem could be fixed by adding #comments before each section of the code.</p>
+<div class="sourceCode" id="cb358"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Load required packages</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span> <span class="co"># for kable()</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span>  <span class="co"># for tidy()</span></span>
+<span></span>
+<span><span class="co"># One-way ANOVA of species on body mass</span></span>
+<span><span class="va">anova_mass</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">~</span> <span class="va">species</span>, </span>
+<span>    data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Put ANOVA output into a tidy format that kable() can use</span></span>
+<span><span class="va">anova_tidy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">anova_mass</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create a nicely formatted table of the ANOVA output</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">anova_tidy</span>, digits <span class="op">=</span> <span class="fl">3</span>, caption <span class="op">=</span> <span class="st">"ANOVA output"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-3">Table 22.2: </span>ANOVA output</caption>
+<thead><tr class="header">
+<th align="left">term</th>
+<th align="right">df</th>
+<th align="right">sumsq</th>
+<th align="right">meansq</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">species</td>
+<td align="right">2</td>
+<td align="right">146864214</td>
+<td align="right">73432107.1</td>
+<td align="right">343.626</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Residuals</td>
+<td align="right">339</td>
+<td align="right">72443483</td>
+<td align="right">213697.6</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table></div>
+<p>We have used comments throughout the semester for you to communicate to me your interpretation of the code. Now you will use comments to explain to your audience what each part of your code is doing. Comments should be:</p>
+<ol style="list-style-type: decimal">
+<li>
+<strong>Clear</strong>: Describe what the code is doing as clearly and specifically as you can</li>
+<li>
+<strong>Concise</strong>: A comment should not go over 1 line. If you feel like you need to make a longer comment, you can break that up by adding a comment to the right of each function (like I did for each <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function above).</li>
+</ol>
+<p><strong><em>Your use of comments is part of your grade for your final project.</em></strong></p>
+</div>
+</div>
+<div id="text-formatting" class="section level2" number="22.3">
+<h2>
+<span class="header-section-number">22.3</span> Text formatting<a class="anchor" aria-label="anchor" href="#text-formatting"><i class="fas fa-link"></i></a>
+</h2>
+<p>In addition to code chunks, R Markdown files also allow for plain text sections (like this one!). You can also add headings and links to external sites if needed. Here’s how you create different types of text formatting in Markdown (again, taken from <a href="https://r4ds.had.co.nz/r-markdown.html#text-formatting-with-markdow">R4DS</a>):</p>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="science-communication-r-markdown.html#cb359-1" tabindex="-1"></a>Text formatting </span>
+<span id="cb359-2"><a href="science-communication-r-markdown.html#cb359-2" tabindex="-1"></a><span class="sc">------------------------------------------------------------</span></span>
+<span id="cb359-3"><a href="science-communication-r-markdown.html#cb359-3" tabindex="-1"></a></span>
+<span id="cb359-4"><a href="science-communication-r-markdown.html#cb359-4" tabindex="-1"></a><span class="er">*</span>italic<span class="sc">*</span>  or _italic_</span>
+<span id="cb359-5"><a href="science-communication-r-markdown.html#cb359-5" tabindex="-1"></a><span class="sc">**</span>bold<span class="sc">**</span>   __bold__</span>
+<span id="cb359-6"><a href="science-communication-r-markdown.html#cb359-6" tabindex="-1"></a><span class="st">`</span><span class="at">code</span><span class="st">`</span></span>
+<span id="cb359-7"><a href="science-communication-r-markdown.html#cb359-7" tabindex="-1"></a>superscript<span class="sc">^</span><span class="dv">2</span><span class="sc">^</span> and subscript<span class="sc">~</span><span class="dv">2</span><span class="sc">~</span></span>
+<span id="cb359-8"><a href="science-communication-r-markdown.html#cb359-8" tabindex="-1"></a></span>
+<span id="cb359-9"><a href="science-communication-r-markdown.html#cb359-9" tabindex="-1"></a>Headings</span>
+<span id="cb359-10"><a href="science-communication-r-markdown.html#cb359-10" tabindex="-1"></a><span class="sc">------------------------------------------------------------</span></span>
+<span id="cb359-11"><a href="science-communication-r-markdown.html#cb359-11" tabindex="-1"></a></span>
+<span id="cb359-12"><a href="science-communication-r-markdown.html#cb359-12" tabindex="-1"></a><span class="co"># 1st Level Heading</span></span>
+<span id="cb359-13"><a href="science-communication-r-markdown.html#cb359-13" tabindex="-1"></a></span>
+<span id="cb359-14"><a href="science-communication-r-markdown.html#cb359-14" tabindex="-1"></a><span class="do">## 2nd Level Heading</span></span>
+<span id="cb359-15"><a href="science-communication-r-markdown.html#cb359-15" tabindex="-1"></a></span>
+<span id="cb359-16"><a href="science-communication-r-markdown.html#cb359-16" tabindex="-1"></a><span class="do">### 3rd Level Heading</span></span>
+<span id="cb359-17"><a href="science-communication-r-markdown.html#cb359-17" tabindex="-1"></a></span>
+<span id="cb359-18"><a href="science-communication-r-markdown.html#cb359-18" tabindex="-1"></a>Lists</span>
+<span id="cb359-19"><a href="science-communication-r-markdown.html#cb359-19" tabindex="-1"></a><span class="sc">------------------------------------------------------------</span></span>
+<span id="cb359-20"><a href="science-communication-r-markdown.html#cb359-20" tabindex="-1"></a></span>
+<span id="cb359-21"><a href="science-communication-r-markdown.html#cb359-21" tabindex="-1"></a><span class="er">*</span>   Bulleted list item <span class="dv">1</span></span>
+<span id="cb359-22"><a href="science-communication-r-markdown.html#cb359-22" tabindex="-1"></a></span>
+<span id="cb359-23"><a href="science-communication-r-markdown.html#cb359-23" tabindex="-1"></a><span class="sc">*</span>   Item <span class="dv">2</span></span>
+<span id="cb359-24"><a href="science-communication-r-markdown.html#cb359-24" tabindex="-1"></a></span>
+<span id="cb359-25"><a href="science-communication-r-markdown.html#cb359-25" tabindex="-1"></a>    <span class="sc">*</span> Item <span class="dv">2</span>a</span>
+<span id="cb359-26"><a href="science-communication-r-markdown.html#cb359-26" tabindex="-1"></a></span>
+<span id="cb359-27"><a href="science-communication-r-markdown.html#cb359-27" tabindex="-1"></a>    <span class="sc">*</span> Item <span class="dv">2</span>b</span>
+<span id="cb359-28"><a href="science-communication-r-markdown.html#cb359-28" tabindex="-1"></a></span>
+<span id="cb359-29"><a href="science-communication-r-markdown.html#cb359-29" tabindex="-1"></a><span class="fl">1.</span>  Numbered list item <span class="dv">1</span></span>
+<span id="cb359-30"><a href="science-communication-r-markdown.html#cb359-30" tabindex="-1"></a></span>
+<span id="cb359-31"><a href="science-communication-r-markdown.html#cb359-31" tabindex="-1"></a><span class="fl">2.</span> The numbers are incremented automatically <span class="cf">in</span> the output.</span>
+<span id="cb359-32"><a href="science-communication-r-markdown.html#cb359-32" tabindex="-1"></a></span>
+<span id="cb359-33"><a href="science-communication-r-markdown.html#cb359-33" tabindex="-1"></a>Links and images</span>
+<span id="cb359-34"><a href="science-communication-r-markdown.html#cb359-34" tabindex="-1"></a><span class="sc">------------------------------------------------------------</span></span>
+<span id="cb359-35"><a href="science-communication-r-markdown.html#cb359-35" tabindex="-1"></a></span>
+<span id="cb359-36"><a href="science-communication-r-markdown.html#cb359-36" tabindex="-1"></a>link<span class="sc">:</span> <span class="er">&lt;</span>http<span class="sc">:</span><span class="er">//</span>example.com<span class="sc">&gt;</span></span>
+<span id="cb359-37"><a href="science-communication-r-markdown.html#cb359-37" tabindex="-1"></a></span>
+<span id="cb359-38"><a href="science-communication-r-markdown.html#cb359-38" tabindex="-1"></a>link embedded <span class="cf">in</span> words<span class="sc">:</span> [linked phrase](http<span class="sc">:</span><span class="er">//</span>example.com)</span>
+<span id="cb359-39"><a href="science-communication-r-markdown.html#cb359-39" tabindex="-1"></a></span>
+<span id="cb359-40"><a href="science-communication-r-markdown.html#cb359-40" tabindex="-1"></a>image<span class="sc">:</span> <span class="sc">!</span>[optional caption text](path<span class="sc">/</span>to<span class="sc">/</span>img.png)</span>
+<span id="cb359-41"><a href="science-communication-r-markdown.html#cb359-41" tabindex="-1"></a></span>
+<span id="cb359-42"><a href="science-communication-r-markdown.html#cb359-42" tabindex="-1"></a>Tables </span>
+<span id="cb359-43"><a href="science-communication-r-markdown.html#cb359-43" tabindex="-1"></a><span class="sc">------------------------------------------------------------</span></span>
+<span id="cb359-44"><a href="science-communication-r-markdown.html#cb359-44" tabindex="-1"></a></span>
+<span id="cb359-45"><a href="science-communication-r-markdown.html#cb359-45" tabindex="-1"></a>First Header  <span class="sc">|</span> Second Header</span>
+<span id="cb359-46"><a href="science-communication-r-markdown.html#cb359-46" tabindex="-1"></a><span class="sc">-------------</span> <span class="er">|</span> <span class="sc">-------------</span></span>
+<span id="cb359-47"><a href="science-communication-r-markdown.html#cb359-47" tabindex="-1"></a>Content Cell  <span class="sc">|</span> Content Cell</span>
+<span id="cb359-48"><a href="science-communication-r-markdown.html#cb359-48" tabindex="-1"></a>Content Cell  <span class="sc">|</span> Content Cell</span>
+<span id="cb359-49"><a href="science-communication-r-markdown.html#cb359-49" tabindex="-1"></a><span class="co">#&gt; Error in parse(text = input): &lt;text&gt;:2:6: unexpected symbol</span></span>
+<span id="cb359-50"><a href="science-communication-r-markdown.html#cb359-50" tabindex="-1"></a><span class="co">#&gt; 1: </span></span>
+<span id="cb359-51"><a href="science-communication-r-markdown.html#cb359-51" tabindex="-1"></a><span class="co">#&gt; 2: Text formatting</span></span>
+<span id="cb359-52"><a href="science-communication-r-markdown.html#cb359-52" tabindex="-1"></a><span class="co">#&gt;         ^</span></span></code></pre></div>
+<div id="inline-coding" class="section level3" number="22.3.1">
+<h3>
+<span class="header-section-number">22.3.1</span> Inline coding<a class="anchor" aria-label="anchor" href="#inline-coding"><i class="fas fa-link"></i></a>
+</h3>
+<p>If you want to write a bit of code within a text section, or reference a function or variable name, you can use `s around that part of the text. So `filter` becomes <code>filter</code>.</p>
+</div>
+</div>
+<div id="best-practices-for-organizing-r-markdown-files" class="section level2" number="22.4">
+<h2>
+<span class="header-section-number">22.4</span> Best Practices for Organizing R Markdown files<a class="anchor" aria-label="anchor" href="#best-practices-for-organizing-r-markdown-files"><i class="fas fa-link"></i></a>
+</h2>
+<p>To keep your R Markdown files organized and easy to read, use the following practices:</p>
+<div id="update-document-header" class="section level3" number="22.4.1">
+<h3>
+<span class="header-section-number">22.4.1</span> Update document header<a class="anchor" aria-label="anchor" href="#update-document-header"><i class="fas fa-link"></i></a>
+</h3>
+<p>At the top of your Markdown file, there is a YAML header surrounded by <code>----</code>. You should always update this header to include your name, the title of the file, and the date. (Some of you have already practiced this in your weekly assignments!)</p>
+<p>You can also add the default output type. For this week, we will use HTML output, which you can specify with <code>output: html_document</code> within the header (above the bottom —-). For more customization you can specify with your header, see <a href="https://r4ds.had.co.nz/r-markdown.html#yaml-header">R4DS</a> (including how to add a bibliography to the end of your file).</p>
+</div>
+<div id="put-set-up-and-library-chunks-at-the-top" class="section level3" number="22.4.2">
+<h3>
+<span class="header-section-number">22.4.2</span> Put set-up and library chunks at the top<a class="anchor" aria-label="anchor" href="#put-set-up-and-library-chunks-at-the-top"><i class="fas fa-link"></i></a>
+</h3>
+<p>Looking at our previous assignments, you’ll notice that there is always a code chunk called <code>{r setup}</code> and one with libraries in it at the top of the document. This is a best practice for keeping your document organized and communicating to your audience up front which libraries/packages you used. If you don’t want your library chunk to show in your output, you can add <code>echo = F</code> to the <code>{r}</code> section of that chunk.</p>
+</div>
+</div>
+<div id="exporting-r-markdown" class="section level2" number="22.5">
+<h2>
+<span class="header-section-number">22.5</span> Exporting R Markdown<a class="anchor" aria-label="anchor" href="#exporting-r-markdown"><i class="fas fa-link"></i></a>
+</h2>
+<p>Once you are finished creating your Markdown file, the time has come to create your output! This is called <strong>knitting</strong> and we’ve discussed it a little bit throughout the semester when you have turned in assignments.</p>
+<p>Knitting a document is pretty straightforward. You do it with the yarn ball option at the top of your R Studio screen.</p>
+<div class="inline-figure"><img src="figures/RMarkdown_knit.png" style="width:100.0%"></div>
+<p>Notice there are several options for output formats in the knit menu. If you click the <strong>knit</strong> button without clicking on the dropdown arrow, it will automatically generate whatever type of document type you have specified in your header.</p>
+<p>There are several types of document types you can knit your Markdown file into. For this week, we will focus on HTML outputs. Here is a list of <a href="https://r4ds.had.co.nz/r-markdown-formats.html#documents">other common types</a>. You can also output your R Markdown document as <a href="https://r4ds.had.co.nz/r-markdown-formats.html#presentations">presentation slides</a> (feel free to use this for your presentation!).</p>
+<p>Sometimes you might struggle to knit a Markdown file into the document type you want the first time you try. Usually this is because you need to install a package (such as LaTex to knit a PDF). See <a href="https://rmd4sci.njtierney.com/common-problems-with-rmarkdown-and-some-solutions">this chapter</a> for common troubleshooting steps. (That whole book is great for tips on using R Markdown for science communication!)</p>
+</div>
+<div id="extras-1" class="section level2" number="22.6">
+<h2>
+<span class="header-section-number">22.6</span> Extras<a class="anchor" aria-label="anchor" href="#extras-1"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><a href="https://opensource.posit.co/resources/cheatsheets/rmarkdown/">R Markdown cheatsheet</a></li>
+</ul>
+</div>
+<div id="references-7" class="section level2" number="22.7">
+<h2>
+<span class="header-section-number">22.7</span> References<a class="anchor" aria-label="anchor" href="#references-7"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><a href="https://r4ds.had.co.nz/communicate-intro.html">R for Data Science, chapers 26-29 on R Markdown</a></li>
+<li><a href="https://rmd4sci.njtierney.com/">R Markdown for Scientists book</a></li>
+</ul>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0" line-spacing="2">
+<div id="ref-allison_horst" class="csl-entry">
+Horst, A. (2022). <em>R &amp; stats illustrations by <span class="nocase">@allison_horst</span></em>. <a href="https://github.com/allisonhorst/stats-illustrations/">https://github.com/allisonhorst/stats-illustrations/</a>
+</div>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="statistics-with-more-than-two-variables.html"><span class="header-section-number">21</span> Statistics with More Than Two Variables</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#science-communication-r-markdown"><span class="header-section-number">22</span> Science Communication &amp; R Markdown</a></li>
+<li><a class="nav-link" href="#creating-an-r-markdown-file"><span class="header-section-number">22.1</span> Creating an R Markdown file</a></li>
+<li>
+<a class="nav-link" href="#code-chunks"><span class="header-section-number">22.2</span> Code Chunks</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#naming-code-chunks"><span class="header-section-number">22.2.1</span> Naming code chunks</a></li>
+<li><a class="nav-link" href="#code-chunk-options"><span class="header-section-number">22.2.2</span> Code chunk options</a></li>
+<li><a class="nav-link" href="#formatting-code-output"><span class="header-section-number">22.2.3</span> Formatting code output</a></li>
+<li><a class="nav-link" href="#commenting-for-communication"><span class="header-section-number">22.2.4</span> Commenting for communication</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#text-formatting"><span class="header-section-number">22.3</span> Text formatting</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#inline-coding"><span class="header-section-number">22.3.1</span> Inline coding</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#best-practices-for-organizing-r-markdown-files"><span class="header-section-number">22.4</span> Best Practices for Organizing R Markdown files</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#update-document-header"><span class="header-section-number">22.4.1</span> Update document header</a></li>
+<li><a class="nav-link" href="#put-set-up-and-library-chunks-at-the-top"><span class="header-section-number">22.4.2</span> Put set-up and library chunks at the top</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#exporting-r-markdown"><span class="header-section-number">22.5</span> Exporting R Markdown</a></li>
+<li><a class="nav-link" href="#extras-1"><span class="header-section-number">22.6</span> Extras</a></li>
+<li><a class="nav-link" href="#references-7"><span class="header-section-number">22.7</span> References</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Communication</strong>" was written by Catie Nielson. It was last built on 2026-11-06.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

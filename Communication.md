@@ -11,6 +11,7 @@ output: html_document
 
 
 
+# Science Communication & R Markdown
 
 This semester we have learned how to do basic coding in R, visualize data with graphs, manipulate and tidy data, and conduct statistical analyses. The last step is to learn how do all of those things in a clearly labelled document that you create! This is important so you can communicate your code and results to R users and others.
 

@@ -291,6 +291,7 @@ reporting-the-test-3
 categorical-variables-in-regression
 categorical-predictors
 categorical-outcome-logistic-regression
+science-communication-r-markdown
 creating-an-r-markdown-file
 code-chunks
 naming-code-chunks

@@ -484,7 +484,7 @@ summary(reg_flipper_mass_depth_std)
 #> 
 #> Coefficients:
 #>                           Estimate Std. Error t value
-#> (Intercept)              8.502e-16  2.651e-02   0.000
+#> (Intercept)              8.455e-16  2.651e-02   0.000
 #> scale(flipper_length_mm) 9.037e-01  3.270e-02  27.635
 #> scale(bill_depth_mm)     5.574e-02  3.270e-02   1.704
 #>                          Pr(>|t|)    
