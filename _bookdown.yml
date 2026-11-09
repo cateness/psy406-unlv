@@ -22,7 +22,7 @@ rmd_files:
  - Stats_Intro.Rmd
  - Stats_2variables.Rmd
  - Stats_3variables.Rmd
-# - Projects.Rmd
+ - Communication.Rmd
 
 language:
   ui:
