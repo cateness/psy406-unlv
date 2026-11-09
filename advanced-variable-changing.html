@@ -94,7 +94,7 @@
 <li><a class="" href="statistics-a-review.html"><span class="header-section-number">19</span> Statistics: A Review</a></li>
 <li><a class="" href="statistical-analysis-with-two-variables.html"><span class="header-section-number">20</span> Statistical Analysis with Two Variables</a></li>
 <li><a class="" href="statistics-with-more-than-two-variables.html"><span class="header-section-number">21</span> Statistics with More Than Two Variables</a></li>
-<li><a class="" href="science-communication-with-r.html"><span class="header-section-number">22</span> Science Communication with R</a></li>
+<li class="book-part">Science Communication with R</li>
 </ul>
 
         <div class="book-extra">
@@ -443,9 +443,9 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Neither the first or second condition evaluated TRUE."</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="co">#&gt; [1] "Neither the first or second condition evaluated TRUE."</span></span>
+<span><span class="co">#&gt; [1] "The first condition evaluated TRUE"</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 2</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 6</span></span></code></pre></div>
 <p>Writing <code>if</code> statements like this is most useful when the code you want to run executes a function. As you will note above, in all instances the <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> function was the code being executed (what is in the curly brackets). An infinite number of <code>if</code> conditions can be chained together in an <code>if...else</code> chain.</p>
 <p>There are two alternative ways to write <code>if...else</code> statements.</p>
 <div id="ifelse" class="section level3" number="16.2.1">
@@ -480,9 +480,9 @@ Artwork by <span class="citation">Horst (2022)</span>
 <span>  <span class="fl">2</span> <span class="op">&lt;</span> <span class="va">x</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">5</span> <span class="op">~</span> <span class="st">"The second condition evaluated true."</span>,</span>
 <span>  <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"Neither the first or second condition evaluated true."</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Neither the first or second condition evaluated true."</span></span>
+<span><span class="co">#&gt; [1] "The first condition evaluated true."</span></span>
 <span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 2</span></span></code></pre></div>
 <p><strong>In sum:</strong></p>
 <ul>
 <li>Traditional <code>if...else</code> statements are useful when you need the result to execute some code.</li>
