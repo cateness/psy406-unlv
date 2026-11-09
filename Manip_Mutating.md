@@ -373,7 +373,7 @@ if(3 < x) {
 }
 #> [1] "The condition evaluated TRUE"
 x
-#> [1] 6
+#> [1] 4
 ```
 
 This code specifies what to do depending on whether the test evaluates to `TRUE` or if it evaluates to `FALSE`.
@@ -393,7 +393,7 @@ if(4 < x) {
 }
 #> [1] "Neither the first or second condition evaluated TRUE."
 x
-#> [1] 1
+#> [1] 2
 ```
 
 Writing `if` statements like this is most useful when the code you want to run executes a function. As you will note above, in all instances the `print()` function was the code being executed (what is in the curly brackets). An infinite number of `if` conditions can be chained together in an `if...else` chain.
