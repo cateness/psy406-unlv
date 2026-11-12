@@ -161,7 +161,7 @@ penguins_example %>%
   <tr>
    <td> 
 
-<table class=" lightable-paper table table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<table class=" lightable-paper table table-hover table-condensed table-responsive" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;background-color: grey !important;text-align: center;"> species </th>
@@ -206,7 +206,7 @@ penguins_example %>%
  </td>
    <td> 
 
-<table class=" lightable-paper" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:left;font-size: 0px;"> test </th>
@@ -227,7 +227,7 @@ penguins_example %>%
  </td>
    <td> 
 
-<table class=" lightable-paper table table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<table class=" lightable-paper table table-hover table-condensed table-responsive" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:right;font-weight: bold;text-decoration: underline;color: white !important;background-color: grey !important;text-align: center;"> mass_m </th>
@@ -395,7 +395,7 @@ penguins_example %>%
   <tr>
    <td> 
 
-<table class=" lightable-paper table table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<table class=" lightable-paper table table-hover table-condensed table-responsive" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;background-color: gray !important;text-align: center;"> species </th>
@@ -433,7 +433,7 @@ penguins_example %>%
  </td>
    <td> 
 
-<table class=" lightable-paper" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:left;font-size: 0px;"> test </th>
@@ -454,7 +454,7 @@ penguins_example %>%
  </td>
    <td> 
 
-<table class=" lightable-paper table table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<table class=" lightable-paper table table-hover table-condensed table-responsive" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;background-color: gray !important;text-align: left;"> species </th>
@@ -502,7 +502,7 @@ penguins_example %>%
  </td>
    <td> 
 
-<table class=" lightable-paper" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;'>
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:left;font-size: 0px;"> test </th>
@@ -523,7 +523,7 @@ penguins_example %>%
  </td>
    <td> 
 
-<table class=" lightable-paper table table-hover table-condensed table-responsive" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'>
+<table class=" lightable-paper table table-hover table-condensed table-responsive" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:left;font-weight: bold;text-decoration: underline;color: white !important;background-color: gray !important;text-align: center;"> species </th>
