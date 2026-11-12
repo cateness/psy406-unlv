@@ -181,7 +181,7 @@ Content Cell  | Content Cell
 
 ### Inline coding
 
-If you want to write a bit of code within a text section, or reference a function or variable name, you can use \`s around that part of the text. So \`filter\` becomes `filter`.
+If you want to write a bit of code within a text section, or reference a function or variable name, you can use \`s around that part of the text. So &#96;` filter &#96;` becomes `filter`.
 
 ## Best Practices for Organizing R Markdown files
 
